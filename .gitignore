@@ -1,0 +1,12 @@
+.*
+*.class
+!.gitignore
+*.iml
+target
+build
+lib
+out
+.idea
+.gradle
+
+
