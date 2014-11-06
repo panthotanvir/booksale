@@ -13,7 +13,7 @@
         <div class="container">
             <!-- Topbar Navigation -->
             <ul class="loginbar pull-right">
-                <li><a href="home">HOME</a></li>
+                <li><a href="home">Home</a></li>
             </ul>
             <!-- End Topbar Navigation -->
         </div>
