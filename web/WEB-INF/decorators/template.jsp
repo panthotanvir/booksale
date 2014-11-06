@@ -9,19 +9,91 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
     <title><decorator:title/></title>
 
-    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/style.css" />" media="all">
-    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/jquery-ui-1.10.4.custom.css" />" media="all">
-    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/jquery.toastmessage.css" />" media="all">
 
-    <script src="<c:url value="/resources/js/jquery-1.10.2.js"/>"></script>
-    <script src="<c:url value="/resources/js/jquery-ui-1.10.4.custom.js" />"></script>
-    <script src="<c:url value="/resources/js/jquery.toastmessage.js" />"></script>
+    <!-- CSS Global Compulsory -->
+    <link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/bootstrap/css/bootstrap.min.css" />" media="all">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/assets/css/style.css" />" media="all">
+
+
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/line-icons/line-icons.css" />" media="all">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/font-awesome/css/font-awesome.min.css" />" media="all">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/flexslider/flexslider.css" />" media="all">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/parallax-slider/css/parallax-slider.css" />" media="all">
+
+    <!-- CSS Page Style -->
+    <link rel="stylesheet" type="text/css" href="<c:url value="/assets/css/pages/page_log_reg_v1.css" />" media="all">
+
+    <!-- CSS Theme -->
+    <link rel="stylesheet" type="text/css" href="<c:url value="/assets/css/themes/default.css" />" media="all">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/sky-forms/version-2.0.1/css/custom-sky-forms.css" />" media="all">
+
+
+    <!-- CSS Customization -->
+
+    <link rel="stylesheet" type="text/css" href="<c:url value="/assets/css/custom.css" />" media="all">
+
+    <!-- CSS End -->
+    <style>
+        .container > .navbar-header,
+        .container-fluid > .navbar-header,
+        .container > .navbar-collapse,
+        .container-fluid > .navbar-collapse {
+            margin-top: -20px;
+        }
+    </style>
+
+
 
     <decorator:head/>
 </head>
 <body>
-SiteMesh Works Fine :D
+ Works Fine :D
 <decorator:body/>
+
+
+<!-- JS Global Compulsory -->
+
+<script src="<c:url value="/assets/plugins/jquery-1.10.2.min.js"/>"></script>
+<script src="<c:url value="/assets/plugins/jquery-migrate-1.2.1.min.js"/>"></script>
+<script src="<c:url value="/assets/plugins/bootstrap/js/bootstrap.min.js"/>"></script>
+
+<!-- JS Implementing Plugins -->
+
+<script src="<c:url value="/assets/plugins/back-to-top.js"/>"></script>
+<script src="<c:url value="/assets/plugins/flexslider/jquery.flexslider-min.js"/>"></script>
+<script src="<c:url value="/assets/plugins/parallax-slider/js/modernizr.js"/>"></script>
+<script src="<c:url value="/assets/plugins/parallax-slider/js/jquery.cslider.js"/>"></script>
+<script src="<c:url value="/assets/plugins/countdown/jquery.countdown.js"/>"></script>
+<script src="<c:url value="/assets/plugins/backstretch/jquery.backstretch.min.js"/>"></script>
+
+
+<!-- JS Page Level -->
+
+<script src="<c:url value="/assets/js/app.js"/>"></script>
+<script src="<c:url value="/assets/js/pages/index.js"/>"></script>
+
+
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        App.init();
+        App.initSliders();
+        Index.initParallaxSlider();
+    });
+</script>
+
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-29166220-1']);
+    _gaq.push(['_setDomainName', 'htmlstream.com']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
 
 </body>
 </html>
