@@ -48,8 +48,24 @@
     <decorator:head/>
 </head>
 <body>
- Works Fine :D
-<decorator:body/>
+<div class="wrapper">
+    <decorator:body/>
+    <!--=== Copyright ===-->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="text-center">
+                        Copyright &copy 2014 Department of Computer Science & Engineering, University of Dhaka
+                        <a target="_blank" href="#">BookSale</a> | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div><!--/copyright-->
+    <!--=== End Copyright ===-->
+</div> <!-- Wrapper -->
 
 
 <!-- JS Global Compulsory -->
