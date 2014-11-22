@@ -24,7 +24,7 @@ public class UserServiceImp implements UserService{
     }
 
     @Override
-    public List<User> getAllUserOfWeek() {
+    public List<User> getAllUser() {
         return userDao.getAllUser();
     }
 

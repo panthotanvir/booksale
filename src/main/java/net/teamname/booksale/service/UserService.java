@@ -14,7 +14,7 @@ public interface UserService {
 
     public User getUser(String userName, String password);
 
-    public List<User> getAllUserOfWeek();
+    public List<User> getAllUser();
 
     public void updateUser(User user);
 

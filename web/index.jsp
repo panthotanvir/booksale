@@ -15,6 +15,7 @@
             <ul class="loginbar pull-right">
                 <li><a href="home">home page</a></li>
                 <li><a href="adduser">User Form</a></li>
+                <li><a href="addbook">Add Post</a></li>
             </ul>
             <!-- End Topbar Navigation -->
         </div>
