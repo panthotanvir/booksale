@@ -24,14 +24,8 @@ public class HomeController extends javax.servlet.http.HttpServlet {
         List<University>  uniList = getAllUniList();
         log.info("University lis size : {}" ,uniList.size() );
         req.setAttribute("uniList",uniList);
-//        resp.setContentType("text/html");
-//        PrintWriter pw = resp.getWriter();
-//        pw.println("<html>");
-//        pw.println("<body>");
-//        pw.print(uniList.size());
-//        pw.println("</body></html>");
-       RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/user/home.jsp");
-       requestDispatcher.forward(req, resp);
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/user/home.jsp");
+        requestDispatcher.forward(req, resp);
     }
 
     private List<University> getAllUniList()  {
