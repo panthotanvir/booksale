@@ -20,9 +20,13 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/font-awesome/css/font-awesome.min.css" />" media="all">
     <link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/flexslider/flexslider.css" />" media="all">
     <link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/parallax-slider/css/parallax-slider.css" />" media="all">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/owl-carousel/owl-carousel/owl.carousel.css" />" media="all">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/sky-forms/version-2.0.1/css/custom-sky-forms.css" />" media="all">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/scrollbar/src/perfect-scrollbar.css" />" media="all">
 
     <!-- CSS Page Style -->
     <link rel="stylesheet" type="text/css" href="<c:url value="/assets/css/pages/page_log_reg_v1.css" />" media="all">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/assets/css/pages/profile.css" />" media="all">
 
     <!-- CSS Theme -->
     <link rel="stylesheet" type="text/css" href="<c:url value="/assets/css/themes/default.css" />" media="all">
@@ -43,11 +47,38 @@
         }
     </style>
 
-
-
     <decorator:head/>
 </head>
 <body>
+
+<!--=== Header ===-->
+<div class="header">
+    <!-- Topbar -->
+    <div class="topbar">
+        <div class="container">
+            <!-- Topbar Navigation -->
+            <ul class="loginbar pull-right">
+                <li><a href="home">home page</a></li>
+                <li><a href="adduser">User Form</a></li>
+                <li><a href="addbook">Add Post</a></li>
+            </ul>
+            <!-- End Topbar Navigation -->
+        </div>
+    </div>
+    <!-- End Topbar -->
+    <!-- Navbar -->
+    <div class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="fa fa-bars"></span>
+                </button>
+                <h1 class="text-center">BookSale</h1>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="wrapper">
     <decorator:body/>
     <!--=== Copyright ===-->
@@ -73,6 +104,9 @@
 <script src="<c:url value="/assets/plugins/jquery-1.10.2.min.js"/>"></script>
 <script src="<c:url value="/assets/plugins/jquery-migrate-1.2.1.min.js"/>"></script>
 <script src="<c:url value="/assets/plugins/bootstrap/js/bootstrap.min.js"/>"></script>
+<script src="<c:url value="/assets/plugins/jquery-1.10.2.min.js"/>"></script>
+<script src="<c:url value="/assets/plugins/back-to-top.js"/>"></script>
+
 
 <!-- JS Implementing Plugins -->
 
@@ -82,11 +116,13 @@
 <script src="<c:url value="/assets/plugins/parallax-slider/js/jquery.cslider.js"/>"></script>
 <script src="<c:url value="/assets/plugins/countdown/jquery.countdown.js"/>"></script>
 <script src="<c:url value="/assets/plugins/backstretch/jquery.backstretch.min.js"/>"></script>
-
+<script src="<c:url value="/assets/plugins/bxslider/jquery.bxslider.js"/>"></script>
+<script src="<c:url value="/assets/plugins/owl-carousel/owl-carousel/owl.carousel.js"/>"></script>
 
 <!-- JS Page Level -->
 
 <script src="<c:url value="/assets/js/app.js"/>"></script>
+<script src="<c:url value="/assets/js/plugins/owl-carousel.js"/>"></script>
 <script src="<c:url value="/assets/js/pages/index.js"/>"></script>
 
 
@@ -103,7 +139,6 @@
     _gaq.push(['_setAccount', 'UA-29166220-1']);
     _gaq.push(['_setDomainName', 'htmlstream.com']);
     _gaq.push(['_trackPageview']);
-
     (function() {
         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
