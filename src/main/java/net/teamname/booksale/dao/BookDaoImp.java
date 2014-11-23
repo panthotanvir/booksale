@@ -2,9 +2,12 @@ package net.teamname.booksale.dao;
 
 import net.teamname.booksale.domain.Book;
 import net.teamname.booksale.util.DatabaseTemplate;
+import net.teamname.booksale.util.ObjectRowMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -16,7 +19,7 @@ public class BookDaoImp implements BookDao {
     public void addBook(Book book) {
         String insertQuery = "INSERT INTO `booksale`.`book` (`user_id`, `dept_id`, `title`, `author`, `publisher`," +
                 "`tag`,`type`,`description`,`price`,`photo`,`contact_no`,`contact_address`)" +
-                " VALUES (?, ?, ?, ?, ?, ?, ?);";
+                " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
         Integer userId = book.getUser_id();
         Integer deptId = book.getDept_id();
@@ -42,6 +45,33 @@ public class BookDaoImp implements BookDao {
 
     @Override
     public List<Book> getAllBookPost() {
-        return null;
+        log.info("GetAll Book Called ");
+
+        String query = "SELECT * FROM book";
+        List<Book> bookList = DatabaseTemplate.queryForObject(query,new ObjectRowMapper<Book>() {
+            @Override
+            public Book mapRowToObject(ResultSet resultSet) throws SQLException {
+                return setBook(resultSet);
+            }
+        });
+
+        log.info("book List Size : {} " , bookList.size());
+        return bookList;
+    }
+
+
+    private Book setBook(ResultSet resultSet) throws SQLException {
+        Book book = new Book();
+        Double price = Double.parseDouble(resultSet.getString("price"));
+        Integer bookId = Integer.parseInt(resultSet.getString("book_id"));
+
+        book.setBook_id(bookId);
+        book.setType(resultSet.getString("type"));
+        book.setTitle(resultSet.getString("title"));
+        book.setAuthor(resultSet.getString("author"));
+        book.setPrice(price);
+
+
+        return book;
     }
 }
