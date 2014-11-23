@@ -11,7 +11,7 @@ public interface BookService {
 
     public void addBook(Book book);
 
-    public  int getBook();
+    public  Book getBook(int bookId);
 
     public List<Book> getAllBookPost();
 }

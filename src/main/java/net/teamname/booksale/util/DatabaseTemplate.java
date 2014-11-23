@@ -59,6 +59,31 @@ public class DatabaseTemplate {
         }
         return listOfE;
     }
+
+    /*
+     public static <E> List<E> queryForObject(ObjectRowMapper<E> objectRowMapper, String query, Object... parameters) {
+        ResultSet resultSet;
+        Connection dbConnection = null;
+        PreparedStatement statement = null;
+
+        List<E> listOfElement = new ArrayList<E>();
+        try {
+            statement = getPreparedStatement(dbConnection, query);
+            putValues(statement, parameters);
+            resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                listOfElement.add(objectRowMapper.mapRowToObject(resultSet));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            closeConnectionAndStatement(dbConnection, statement);
+        }
+        return listOfElement;
+    }
+     */
+
+
     public static void executeInsertQuery(String query, Object... parameters) {
         Connection conToUse = null;
         PreparedStatement preparedStatement = null;

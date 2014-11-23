@@ -28,13 +28,14 @@ public class BookServiceImp implements BookService {
     }
 
     @Override
-    public int getBook() {
-        return 0;
+    public Book getBook(int bookId) {
+        return bookDao.getBook(bookId);
     }
 
     @Override
-    public List<Book> getAllBookPost() {
-        return null;
+    public List<Book> getAllBookPost()
+    {
+        return  bookDao.getAllBookPost();
     }
 
 }

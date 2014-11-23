@@ -47,7 +47,8 @@
         }
     </style>
 
-    <decorator:head/>
+
+<decorator:head/>
 </head>
 <body>
 
@@ -78,7 +79,7 @@
             </div>
         </div>
     </div>
-</div>
+</div><!--header-->
 <div class="wrapper">
     <decorator:body/>
     <!--=== Copyright ===-->
@@ -95,7 +96,6 @@
             </div>
         </div>
     </div><!--/copyright-->
-    <!--=== End Copyright ===-->
 </div> <!-- Wrapper -->
 
 

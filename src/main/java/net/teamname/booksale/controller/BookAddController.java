@@ -67,6 +67,8 @@ public class BookAddController extends HttpServlet {
         book.setContact_no(req.getParameter("contact_no"));
         book.setContact_address(req.getParameter("contact_address"));
 
+        log.debug("book set updated");
+
 
     }
 

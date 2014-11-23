@@ -28,7 +28,7 @@
                         <section class="col col-6">
                             <label class="input">
                                 <!-- select option will use  , drop down usable-->
-                                <input type="text" name="dept__id" placeholder="Dept Id">
+                                <input type="text" name="dept_id" placeholder="Dept Id">
                             </label>
                         </section>
                     </div>
