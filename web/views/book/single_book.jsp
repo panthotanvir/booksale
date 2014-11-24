@@ -122,11 +122,7 @@
         <p><c:out value="${requestScope.bookInfo.description}"/></p>
     </div>
 
-    <div class="margin-bottom-20 clearfix"></div>
-    <div class="tag-box tag-box-v2">
-        <h3>Description</h3>
-        <p><c:out value="${requestScope.bookInfo.description}"/></p>
-    </div>
+
 
     <div class="margin-bottom-20 clearfix"></div>
 

@@ -52,6 +52,32 @@
 </head>
 <body>
 
+<!--=== Style Switcher ===-->
+<i class="style-switcher-btn fa fa-cogs hidden-xs"></i>
+<div class="style-switcher animated fadeInRight">
+    <div class="theme-close"><i class="icon-close"></i></div>
+    <div class="theme-heading">Theme Colors</div>
+    <ul class="list-unstyled">
+        <li class="theme-default theme-active" data-style="default" data-header="light"></li>
+        <li class="theme-blue" data-style="blue" data-header="light"></li>
+        <li class="theme-orange" data-style="orange" data-header="light"></li>
+        <li class="theme-red" data-style="red" data-header="light"></li>
+        <li class="theme-light last" data-style="light" data-header="light"></li>
+
+        <li class="theme-purple" data-style="purple" data-header="light"></li>
+        <li class="theme-aqua" data-style="aqua" data-header="light"></li>
+        <li class="theme-brown" data-style="brown" data-header="light"></li>
+        <li class="theme-dark-blue" data-style="dark-blue" data-header="light"></li>
+        <li class="theme-light-green last" data-style="light-green" data-header="light"></li>
+    </ul>
+    <div style="margin-bottom:18px;"></div>
+    <div class="theme-heading">Layouts</div>
+    <div class="text-center">
+        <a href="javascript:void(0);" class="btn-u btn-u-green btn-block active-switcher-btn wide-layout-btn">Wide</a>
+        <a href="javascript:void(0);" class="btn-u btn-u-green btn-block boxed-layout-btn">Boxed</a>
+    </div>
+</div><!--/style-switcher-->
+<!--=== End Style Switcher ===-->
 <!--=== Header ===-->
 <div class="header">
     <!-- Topbar -->
@@ -118,12 +144,38 @@
 <script src="<c:url value="/assets/plugins/backstretch/jquery.backstretch.min.js"/>"></script>
 <script src="<c:url value="/assets/plugins/bxslider/jquery.bxslider.js"/>"></script>
 <script src="<c:url value="/assets/plugins/owl-carousel/owl-carousel/owl.carousel.js"/>"></script>
+<script src="<c:url value="/assets/plugins/counter/waypoints.min.js"/>"></script>
+<script src="<c:url value="/assets/plugins/counter/jquery.counterup.min.js"/>"></script>
+
+<!-- Datepicker Form -->
+<script src="<c:url value="/assets/plugins/sky-forms/version-2.0.1/js/jquery-ui.min.js"/>"></script>
+
+
+<!-- Scrollbar -->
+<script src="<c:url value="/assets/plugins/scrollbar/src/jquery.mousewheel.js"/>"></script>
+<script src="<c:url value="/assets/plugins/scrollbar/src/perfect-scrollbar.js"/>"></script>
 
 <!-- JS Page Level -->
 
 <script src="<c:url value="/assets/js/app.js"/>"></script>
 <script src="<c:url value="/assets/js/plugins/owl-carousel.js"/>"></script>
 <script src="<c:url value="/assets/js/pages/index.js"/>"></script>
+<script src="<c:url value="/assets/js/plugins/datepicker.js"/>"></script>
+
+
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        App.init();
+        App.initCounter();
+        Datepicker.initDatepicker();
+    });
+</script>
+<script>
+    jQuery(document).ready(function ($) {
+        "use strict";
+        $('.contentHolder').perfectScrollbar();
+    });
+</script>
 
 
 <script type="text/javascript">
