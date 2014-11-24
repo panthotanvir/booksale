@@ -3,6 +3,7 @@ package net.teamname.booksale.service;
 import net.teamname.booksale.dao.BookDao;
 import net.teamname.booksale.dao.BookDaoImp;
 import net.teamname.booksale.domain.Book;
+import net.teamname.booksale.domain.SingleBook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,13 +29,13 @@ public class BookServiceImp implements BookService {
     }
 
     @Override
-    public Book getBook(int bookId) {
+    public SingleBook getBook(int bookId) {
         return bookDao.getBook(bookId);
     }
 
     @Override
-    public List<Book> getAllBookPost()
-    {
+    public List<Book> getAllBookPost(){
+
         return  bookDao.getAllBookPost();
     }
 

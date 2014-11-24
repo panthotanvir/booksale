@@ -6,6 +6,7 @@ package net.teamname.booksale.domain;
  * @author: mithunshawon
  */
 public class User {
+    private int userId;
     private String userName;
     private int uniId;
     private int deptId;

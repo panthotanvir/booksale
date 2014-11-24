@@ -21,7 +21,7 @@
             <div class="carousel slide carousel-v1" id="myCarousel">
                 <div class="carousel-inner">
                     <div class="item active">
-                        <img alt="" src="uploads/<c:out value="${requestScope.bookInfo.photo}"/>.jpg">
+                        <img alt="" src="uploads/<c:out value="${requestScope.bookInfo.photo}"/>.jpg" height="400px" width="300px">
                         <!--div class="carousel-caption">
                             <p><c:out value="${requestScope.bookInfo.tag}"/></p>
                         </div-->
@@ -66,9 +66,12 @@
                     <div class="tab-content">
                         <div id="overview" class="profile-edit tab-pane fade in active">
                             <h2 class="heading-md"><c:out value="${requestScope.bookInfo.title}"/></h2>
-                            <p>24-11-2014</p>
-                            </br>
-                            <h4><c:out value="${requestScope.bookInfo.price}"/></h4>
+                            <p>Date: <c:out value="${requestScope.bookInfo.date}"/></p>
+
+                            <p>Contact No: <span><c:out value="${requestScope.bookInfo.contactNo}"/></span></p>
+                            <p>Contact Address: <span><c:out value="${requestScope.bookInfo.contactAddress}"/></span></p>
+                            <h5>Price: <span class="label label-info"><c:out value="${requestScope.bookInfo.price}"/></span></h5>
+
 
                         </div>
 
@@ -95,17 +98,17 @@
                             </br>
                             <dl class="dl-horizontal">
                                 <dt><strong>Owner Name</strong></dt>
-                                <dd>Edward Rooster </dd>
+                                <dd><c:out value="${requestScope.bookInfo.userName}"/></dd>
                                 <dt><strong>Email Address</strong></dt>
-                                <dd>Edward@Rooster.com</dd>
+                                <dd><c:out value="${requestScope.bookInfo.email}"/></dd>
                                 <dt><strong>Department</strong></dt>
-                                <dd>Computer Science & Engineering</dd>
+                                <dd><c:out value="${requestScope.bookInfo.deptName}"/></dd>
                                 <dt><strong>University</strong></dt>
-                                <dd>University of Dhaka</dd>
+                                <dd><c:out value="${requestScope.bookInfo.uniName}"/></dd>
                                 <dt><strong>Phone</strong></dt>
-                                <dd>0122222222</dd>
+                                <dd><c:out value="${requestScope.bookInfo.phoneNo}"/></dd>
                                 <dt><strong>Address</strong></dt>
-                                <dd>Meddium</dd>
+                                <dd><c:out value="${requestScope.bookInfo.address}"/></dd>
 
                             </dl>
                         </div>

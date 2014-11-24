@@ -38,22 +38,14 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="item active">
-                            <img alt="" src="uploads/<c:out value="${book.photo}"/>.jpg">
+                            <img alt="book" src="uploads/<c:out value="${book.photo}"/>.jpg">
                         </div>
 
                     </div>
                 </div>
                 <div class="overflow-h">
                     <h3><c:out value="${book.title}"/></h3>
-                    <div class="star-vote pull-right">
-                        <ul class="list-inline">
-                            <li><i class="color-green fa fa-star"></i></li>
-                            <li><i class="color-green fa fa-star"></i></li>
-                            <li><i class="color-green fa fa-star"></i></li>
-                            <li><i class="color-green fa fa-star-half-o"></i></li>
-                            <li><i class="color-green fa fa-star-o"></i></li>
-                        </ul>
-                    </div>
+
                 </div>
 
                 <ul class="list-unstyled">
