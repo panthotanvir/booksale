@@ -31,7 +31,7 @@
             </c:choose>
             <c:choose>
                 <c:when test="${sessionScope.isUser}">
-                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="dashboard">Dashboard</a></li>
                     <li><a href="logout">Logout</a></li>
                 </c:when>
 

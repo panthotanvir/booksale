@@ -78,18 +78,18 @@
     </div>
 </div><!--/style-switcher-->
 <!--=== End Style Switcher ===-->
-<!--=== Header ===-->
-<div class="header">
-    <!-- Topbar -->
 
-    <jsp:include page="/views/menu/toolbar.jsp"/>
-
-    <!-- End Topbar -->
-    <!-- Navbar -->
-    <jsp:include page="/views/menu/menu.jsp"/>
-    <!-- end navber -->
-</div><!--header-->
 <div class="wrapper">
+    <!--=== Header ===-->
+    <div class="header">
+        <!-- Topbar -->
+        <jsp:include page="/views/menu/toolbar.jsp"/>
+        <!-- End Topbar -->
+        <!-- Navbar -->
+        <jsp:include page="/views/menu/menu.jsp"/>
+        <!-- end navber -->
+    </div><!--header-->
+
     <decorator:body/>
     <!--=== Copyright ===-->
     <div class="copyright">
@@ -113,9 +113,6 @@
 <script src="<c:url value="/assets/plugins/jquery-1.10.2.min.js"/>"></script>
 <script src="<c:url value="/assets/plugins/jquery-migrate-1.2.1.min.js"/>"></script>
 <script src="<c:url value="/assets/plugins/bootstrap/js/bootstrap.min.js"/>"></script>
-<script src="<c:url value="/assets/plugins/jquery-1.10.2.min.js"/>"></script>
-<script src="<c:url value="/assets/plugins/back-to-top.js"/>"></script>
-
 
 <!-- JS Implementing Plugins -->
 

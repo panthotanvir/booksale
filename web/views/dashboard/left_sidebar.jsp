@@ -6,18 +6,14 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+
 <!--Left Sidebar-->
 <div class="col-md-3 md-margin-bottom-40">
-    <img class="img-responsive profile-img margin-bottom-20" src="assets/img/team/5.jpg" alt="">
+    <img class="img-responsive profile-img margin-bottom-20" src="assets/img/5.jpg" alt="">
 
     <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
         <li class="list-group-item active">
-            <a href="profile.jsp"><i class="fa fa-bar-chart-o"></i> Overall</a>
+            <a href="dashboard"><i class="fa fa-bar-chart-o"></i> Overall</a>
         </li>
         <li class="list-group-item">
             <a href="#"><i class="fa fa-user"></i> Profile</a>
@@ -47,5 +43,4 @@
     <!--End Datepicker-->
 </div>
 <!--End Left Sidebar-->
-</body>
-</html>
+

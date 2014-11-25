@@ -25,7 +25,7 @@
                     <div class="profile-bio">
                         <div class="row">
                             <div class="col-md-5">
-                                <img class="img-responsive md-margin-bottom-10" src="assets/img/team/5.jpg" alt="">
+                                <img class="img-responsive md-margin-bottom-10" src="assets/img/5.jpg" alt="">
                                 <a class="btn-u btn-u-sm" href="#">Change Picture</a>
                             </div>
                             <div class="col-md-7">
@@ -35,7 +35,10 @@
                                 <hr>
                             </div>
                         </div>
-                    </div><!--/end row-->
+                        <!--/end row-->
+
+                    </div>
+                    <%--end of profilr-bio--%>
 
                     <hr>
 
