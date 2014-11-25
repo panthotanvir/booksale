@@ -37,7 +37,6 @@
                     <li><a href="login">Login</a></li>
                 </c:otherwise>
             </c:choose>
-            
         </ul>
         <!-- End Topbar Navigation -->
     </div>
