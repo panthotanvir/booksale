@@ -88,6 +88,7 @@
                 <li><a href="home">home page</a></li>
                 <li><a href="adduser">User Form</a></li>
                 <li><a href="addbook">Add Post</a></li>
+                <li><a href="dashboard">Dashboard</a></li>
             </ul>
             <!-- End Topbar Navigation -->
         </div>
