@@ -11,7 +11,7 @@ import net.teamname.booksale.domain.User;
 public interface UserDao {
     public void addUser(User user);
 
-    public User getUser(String userName, String password);
+    public User getUser(String email, String password);
 
     public List<User> getAllUser();
 

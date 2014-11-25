@@ -38,7 +38,7 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="item active">
-                            <img alt="book" src="uploads/<c:out value="${book.photo}"/>.jpg">
+                            <img alt="book" src="uploads/<c:out value="${book.photo}"/>.jpg" height="340" width="260">
                         </div>
 
                     </div>
@@ -52,7 +52,7 @@
                     <li><span class="color-green">Author:</span><c:out value="${book.author}"/></li>
                     <li><span class="color-green">Price(Tk):</span><c:out value="${book.price}"/></li>
                 </ul>
-                <a class="btn-u btn-u-sm" href="singleBook?bookId=${book.book_id}">View Details</a>
+                <a class="btn-u btn-u-sm" href="singleBook?bookId=${book.bookId}">View Details</a>
             </div>
         </div>
         <!-- End Easy Block -->

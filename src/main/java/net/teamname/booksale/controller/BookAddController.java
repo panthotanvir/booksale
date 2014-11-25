@@ -54,8 +54,8 @@ public class BookAddController extends HttpServlet {
         Integer deptId = Integer.parseInt(req.getParameter("dept_id"));
         Double price = Double.parseDouble(req.getParameter("price"));
 
-        book.setUser_id(userId);
-        book.setDept_id(deptId);
+        book.setUserId(userId);
+        book.setDeptId(deptId);
         book.setTitle(req.getParameter("title"));
         book.setAuthor(req.getParameter("author"));
         book.setPublisher(req.getParameter("publisher"));
@@ -64,8 +64,8 @@ public class BookAddController extends HttpServlet {
         book.setDescription(req.getParameter("description"));
         book.setPrice(price);
         book.setPhoto(req.getParameter("photo"));
-        book.setContact_no(req.getParameter("contact_no"));
-        book.setContact_address(req.getParameter("contact_address"));
+        book.setContactNo(req.getParameter("contact_no"));
+        book.setContactAddress(req.getParameter("contact_address"));
 
         log.debug("book set updated");
 

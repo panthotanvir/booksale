@@ -81,31 +81,13 @@
 <!--=== Header ===-->
 <div class="header">
     <!-- Topbar -->
-    <div class="topbar">
-        <div class="container">
-            <!-- Topbar Navigation -->
-            <ul class="loginbar pull-right">
-                <li><a href="home">home page</a></li>
-                <li><a href="adduser">User Form</a></li>
-                <li><a href="addbook">Add Post</a></li>
-                <li><a href="dashboard">Dashboard</a></li>
-            </ul>
-            <!-- End Topbar Navigation -->
-        </div>
-    </div>
+
+    <jsp:include page="/views/menu/toolbar.jsp"/>
+
     <!-- End Topbar -->
     <!-- Navbar -->
-    <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="fa fa-bars"></span>
-                </button>
-                <h1 class="text-center">BookSale</h1>
-            </div>
-        </div>
-    </div>
+    <jsp:include page="/views/menu/menu.jsp"/>
+    <!-- end navber -->
 </div><!--header-->
 <div class="wrapper">
     <decorator:body/>

@@ -8,9 +8,9 @@ package net.teamname.booksale.domain;
  */
 public class Book {
 
-   private int user_id;
-   private int dept_id;
-   private int book_id;
+   private int userId;
+   private int deptId;
+   private int bookId;
    private String title;
    private String author;
    private String publisher;
@@ -19,31 +19,31 @@ public class Book {
    private String description;
    private Double price;
    private String photo;
-   private String contact_no;
-   private String contact_address;
+   private String contactNo;
+   private String contactAddress;
 
-    public int getBook_id() {
-        return book_id;
+    public int getBookId() {
+        return bookId;
     }
 
-    public void setBook_id(int book_id) {
-        this.book_id = book_id;
+    public void setBookId(int bookId) {
+        this.bookId = bookId;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public int getDept_id() {
-        return dept_id;
+    public int getDeptId() {
+        return deptId;
     }
 
-    public void setDept_id(int dept_id) {
-        this.dept_id = dept_id;
+    public void setDeptId(int deptId) {
+        this.deptId = deptId;
     }
 
     public String getTitle() {
@@ -110,19 +110,19 @@ public class Book {
         this.photo = photo;
     }
 
-    public String getContact_no() {
-        return contact_no;
+    public String getContactNo() {
+        return contactNo;
     }
 
-    public void setContact_no(String contact_no) {
-        this.contact_no = contact_no;
+    public void setContactNo(String contactNo) {
+        this.contactNo = contactNo;
     }
 
-    public String getContact_address() {
-        return contact_address;
+    public String getContactAddress() {
+        return contactAddress;
     }
 
-    public void setContact_address(String contact_address) {
-        this.contact_address = contact_address;
+    public void setContactAddress(String contactAddress) {
+        this.contactAddress = contactAddress;
     }
 }
