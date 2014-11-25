@@ -19,9 +19,17 @@
         <ul class="loginbar pull-right">
                 <li><a href="home">home page</a></li>
                 <li><a href="adduser">Registration</a></li>
-                <li><a href="addbook">Add Post</a></li>
             <c:choose>
                 <c:when test="${sessionScope.isUser}">
+                    <li><a href="addbook">Add Post</a></li>
+                </c:when>
+                <c:otherwise>
+                    <li><a href="login">Add Post</a></li>
+                </c:otherwise>
+            </c:choose>
+            <c:choose>
+                <c:when test="${sessionScope.isUser}">
+                    <li><a href="#">Dashboard</a></li>
                     <li><a href="logout">Logout</a></li>
                 </c:when>
 
