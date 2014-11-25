@@ -81,7 +81,9 @@
 <!--=== Header ===-->
 <div class="header">
     <!-- Topbar -->
+
     <jsp:include page="/views/menu/toolbar.jsp"/>
+
     <!-- End Topbar -->
     <!-- Navbar -->
     <jsp:include page="/views/menu/menu.jsp"/>

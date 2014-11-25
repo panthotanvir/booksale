@@ -17,8 +17,10 @@
     <div class="container">
         <!-- Topbar Navigation -->
         <ul class="loginbar pull-right">
-                <li><a href="home">home page</a></li>
-                <li><a href="adduser">Registration</a></li>
+
+            <li><a href="home">home page</a></li>
+            <li><a href="adduser">Registration</a></li>
+
             <c:choose>
                 <c:when test="${sessionScope.isUser}">
                     <li><a href="addbook">Add Post</a></li>
@@ -37,7 +39,7 @@
                     <li><a href="login">Login</a></li>
                 </c:otherwise>
             </c:choose>
-            <%--<li><a href="logout">Logout</a></li>--%>
+            
         </ul>
         <!-- End Topbar Navigation -->
     </div>
