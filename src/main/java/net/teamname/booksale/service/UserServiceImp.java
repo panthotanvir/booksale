@@ -38,8 +38,8 @@ public class UserServiceImp implements UserService{
 
     }
     @Override
-    public User getUser(String userName, String password) {
-        return userDao.getUser(userName, password);
+    public User getUser(String email, String password) {
+        return userDao.getUser(email, password);
     }
 
 }

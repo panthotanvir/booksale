@@ -19,7 +19,21 @@ import java.util.List;
 public class UserDaoImp implements UserDao {
     private static final Logger log = LoggerFactory.getLogger(UserDaoImp.class);
     @Override
-    public User getUser(String userName, String password) {
+    public User getUser(String email, String password) {
+        String query = "SELECT * FROM user WHERE email= '" + email + "' AND password = '" + password+ "' ";
+
+        log.debug("query---> {}", query);
+        List<User> userList = DatabaseTemplate.queryForObject(query, new ObjectRowMapper<User>() {
+            @Override
+            public User mapRowToObject(ResultSet resultSet) throws SQLException {
+                return setUser(resultSet);
+            }
+        });
+
+        if (userList.size() != 0) {
+            log.debug("USER returned");
+            return userList.get(0);
+        }
         return null;
     }
 
@@ -65,8 +79,11 @@ public class UserDaoImp implements UserDao {
 
     }
     public User setUser(ResultSet resultSet) throws SQLException{
+        Integer userId = Integer.parseInt(resultSet.getString("user_id"));
         User user = new User();
         user.setUserName(resultSet.getString("user_name"));
+        user.setUserId(userId);
+        user.setEmail(resultSet.getString("email"));
 
         return user;
     }

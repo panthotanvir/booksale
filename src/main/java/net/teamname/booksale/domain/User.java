@@ -14,6 +14,8 @@ public class User {
     private String password;
     private String phoneNo;
     private String address;
+    private int user;
+    private boolean isUser;
 
 
     public void setUserName(String userName) {
@@ -22,6 +24,14 @@ public class User {
 
     public String getUserName() {
         return userName;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public void setUniId(int uniId) {
@@ -70,5 +80,13 @@ public class User {
 
     public String getAddress() {
         return address;
+    }
+
+
+    public boolean isUser(){
+        if(userId!=0){
+            return isUser = true;
+        }
+        return isUser;
     }
 }

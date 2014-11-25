@@ -15,18 +15,18 @@
     <div class="row">
         <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
 
-            <form class="reg-page" enctype="multipart/form-data" class="form-horizontal" role="form" style="padding-top: 21px;" action="#" >
+            <form class="reg-page"  class="form-horizontal" role="form" style="padding-top: 21px;" method="post" action="login" >
                 <div class="reg-header">
                     <h2>Login to your account</h2>
                 </div>
 
                 <div class="input-group margin-bottom-20">
                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                    <input type="text" placeholder="Username" name="user_email"  class="form-control">
+                    <input type="text" placeholder="Username" name="userEmail"  class="form-control">
                 </div>
                 <div class="input-group margin-bottom-20">
                     <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                    <input type="password" placeholder="Password" name="user_password" class="form-control">
+                    <input type="password" placeholder="Password" name="userPassword" class="form-control">
                 </div>
 
                 <div class="row">
