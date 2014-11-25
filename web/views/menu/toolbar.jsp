@@ -17,8 +17,10 @@
     <div class="container">
         <!-- Topbar Navigation -->
         <ul class="loginbar pull-right">
+
             <li><a href="home">home page</a></li>
             <li><a href="adduser">Registration</a></li>
+
             <c:choose>
                 <c:when test="${sessionScope.isUser}">
                     <li><a href="addbook">Add Post</a></li>
