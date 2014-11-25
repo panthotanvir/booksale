@@ -222,7 +222,7 @@ var App = function () {
                 maxSlides: 4,
                 minSlides: 4,
                 slideWidth: 360,
-                slideMargin: 10,
+                slideMargin: 10
             });            
 
             jQuery('.bxslider1').bxSlider({
@@ -250,7 +250,7 @@ var App = function () {
         initParallaxBg: function () {
             jQuery('.parallaxBg').parallax("50%", 0.2);
             jQuery('.parallaxBg1').parallax("50%", 0.4);
-        },
+        }
 
     };
 

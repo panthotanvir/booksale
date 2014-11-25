@@ -94,17 +94,8 @@
     </div>
     <!-- End Topbar -->
     <!-- Navbar -->
-    <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="fa fa-bars"></span>
-                </button>
-                <h1 class="text-center">BookSale</h1>
-            </div>
-        </div>
-    </div>
+    <jsp:include page="/views/menu/menu.jsp"/>
+    <!-- end navber -->
 </div><!--header-->
 <div class="wrapper">
     <decorator:body/>

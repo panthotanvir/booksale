@@ -27,8 +27,8 @@ public class BookDaoImp implements BookDao {
                 "`tag`,`type`,`description`,`price`,`photo`,`contact_no`,`contact_address`)" +
                 " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
-        Integer userId = book.getUser_id();
-        Integer deptId = book.getDept_id();
+        Integer userId = book.getUserId();
+        Integer deptId = book.getDeptId();
         String title = book.getTitle();
         String author = book.getAuthor();
         String publisher = book.getPublisher();
@@ -37,10 +37,10 @@ public class BookDaoImp implements BookDao {
         String description = book.getDescription();
         Double price = book.getPrice();
         String photo = book.getPhoto();
-        String contact_no = book.getContact_no();
-        String contact_address = book.getContact_address();
+        String contactNo = book.getContactNo();
+        String contactAddress = book.getContactAddress();
 
-        DatabaseTemplate.executeInsertQuery(insertQuery, userId, deptId, title, author, publisher, tag, type, description, price, photo,contact_no, contact_address);
+        DatabaseTemplate.executeInsertQuery(insertQuery, userId, deptId, title, author, publisher, tag, type, description, price, photo,contactNo, contactAddress);
         log.debug("book post  inserted");
     }
 
@@ -119,7 +119,7 @@ public class BookDaoImp implements BookDao {
         Integer bookId = Integer.parseInt(resultSet.getString("book_id"));
 
 
-        book.setBook_id(bookId);
+        book.setBookId(bookId);
         book.setType(resultSet.getString("type"));
         book.setTitle(resultSet.getString("title"));
         book.setAuthor(resultSet.getString("author"));
