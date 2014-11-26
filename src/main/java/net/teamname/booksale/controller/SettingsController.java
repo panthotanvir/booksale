@@ -1,7 +1,5 @@
 package net.teamname.booksale.controller;
 
-
-import net.teamname.booksale.domain.Detail;
 import net.teamname.booksale.domain.User;
 import net.teamname.booksale.service.UserServiceImp;
 import org.slf4j.Logger;
@@ -15,21 +13,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.Timestamp;
-import java.util.List;
 
 /**
- * Created on 11/25/14 3:25 PM.
- *
- * @author: mithunshawon
+ * Created by panthotanvir on 11/26/14.
  */
-@WebServlet(name = "DashboardController", urlPatterns = "/dashboard")
-public class DashboardController extends HttpServlet{
-    private static final Logger log = LoggerFactory.getLogger(DashboardController.class);
+@WebServlet(name = "SettingsController", urlPatterns = "/settings")
+public class SettingsController extends HttpServlet {
+    private static final Logger log = LoggerFactory.getLogger(SettingsController.class);
     private User user;
     private UserServiceImp userService;
 
-    public DashboardController() {
+    public SettingsController() {
         userService = new UserServiceImp();
     }
     @Override
@@ -40,7 +34,7 @@ public class DashboardController extends HttpServlet{
         log.info("User--------- : {}" ,userInfo.getUserName());
         req.setAttribute("userInfo",userInfo);
         */
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/dashboard/profile_overview.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/dashboard/settings.jsp");
         requestDispatcher.forward(req, resp);
     }
 
@@ -50,3 +44,4 @@ public class DashboardController extends HttpServlet{
         return user.getUserId();
     }
 }
+

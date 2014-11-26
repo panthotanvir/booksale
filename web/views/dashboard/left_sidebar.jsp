@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: devil
@@ -16,19 +17,19 @@
             <a href="dashboard"><i class="fa fa-bar-chart-o"></i> Overall</a>
         </li>
         <li class="list-group-item">
-            <a href="#"><i class="fa fa-user"></i> Profile</a>
+            <a href="profile"><i class="fa fa-user"></i> Profile</a>
         </li>
         <li class="list-group-item">
-            <a href="#"><i class="fa fa-group"></i>Departmental Students</a>
+            <a href="library"><i class="fa fa-cubes"></i> My Books</a>
         </li>
         <li class="list-group-item">
-            <a href="#"><i class="fa fa-cubes"></i> My Books</a>
+            <a href="history"><i class="fa fa-history"></i> History</a>
         </li>
         <li class="list-group-item">
-            <a href="#"><i class="fa fa-history"></i> History</a>
+            <a href="fellow"><i class="fa fa-group"></i>Departmental Students</a>
         </li>
         <li class="list-group-item">
-            <a href="#"><i class="fa fa-cog"></i> Settings</a>
+            <a href="settings"><i class="fa fa-cog"></i>Settings</a>
         </li>
     </ul>
 
