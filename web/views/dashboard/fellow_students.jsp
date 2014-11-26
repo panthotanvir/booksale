@@ -33,8 +33,9 @@
                                     <div class="profile-blog">
                                         <img class="rounded-x" src="assets/img/testimonials/img1.jpg" alt="">
                                         <div class="name-location">
-                                            <strong><c:out value="${us.userName}"/></strong>
-                                            <span><i class="fa fa-map-marker"></i><a href="#"><c:out value="${us.address}"/></a> <a href="#"><c:out value="${us.email}"/></a></span>
+                                            <strong><i class=" icon-user"></i>  <c:out value="${us.userName}"/></strong>
+                                            <span><i class="fa fa-envelope"></i>  <a href="#"><c:out value="${us.email}"/></a></span></br>
+                                            <span><i class="fa fa-map-marker"></i>  <a href="#"><c:out value="${us.address}"/></a></span>
                                         </div>
                                         <div class="clearfix margin-bottom-20"></div>
                                         <hr>

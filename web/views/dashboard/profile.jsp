@@ -30,9 +30,9 @@
                                 <a class="btn-u btn-u-sm" href="#">Change Picture</a>
                             </div>
                             <div class="col-md-7">
-                                <h2>Name:<c:out value="${requestScope.userInfo.userName}"/></h2>
-                                <span><c:out value="${requestScope.userInfo.deptName}"/></span>
-                                <span><c:out value="${requestScope.userInfo.uniName}"/></span>
+                                <h2><c:out value="${requestScope.userInfo.userName}"/></h2>
+                                <span><i class="fa fa-university"></i>  <c:out value="${requestScope.userInfo.deptName}"/></span>
+                                <span><i class="fa fa-university"></i>  <c:out value="${requestScope.userInfo.uniName}"/></span>
                                 <hr>
                             </div>
                         </div>
@@ -52,9 +52,9 @@
                                     <a href="#"><i class="fa fa-cog pull-right"></i></a>
                                 </div>
                                 <div class="panel-body">
-                                    <h3><c:out value="${requestScope.userInfo.email}"/></h3>
-                                    <span><c:out value="${requestScope.userInfo.address}"/></span></br>
-                                    <span><c:out value="${requestScope.userInfo.phoneNo}"/></span>
+                                    <h3><i class="fa fa-envelope"></i>  <c:out value="${requestScope.userInfo.email}"/></h3>
+                                    <span><i class="fa fa-home"></i>  <c:out value="${requestScope.userInfo.address}"/></span></br>
+                                    <span><i class="fa fa-phone"></i>  <c:out value="${requestScope.userInfo.phoneNo}"/></span>
                                     <hr>
                                 </div>
                             </div>

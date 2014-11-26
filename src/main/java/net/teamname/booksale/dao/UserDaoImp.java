@@ -68,8 +68,8 @@ public class UserDaoImp implements UserDao {
     }
 
     @Override
-    public List<Detail> getUserDept(Integer uniId, Integer deptId) {
-        String query = "SELECT * FROM user,university,department Where user.uni_id= '" + uniId + "' AND user.dept_id= '" + deptId + "' AND user.uni_id = university.uni_id AND user.dept_id = department.dept_id";
+    public List<Detail> getUserDept(Integer userId, Integer uniId, Integer deptId) {
+        String query = "SELECT * FROM user,university,department Where user.user_id != '" + userId + "' AND user.uni_id= '" + uniId + "' AND user.dept_id= '" + deptId + "' AND user.uni_id = university.uni_id AND user.dept_id = department.dept_id";
         log.debug("query fro DeptUser---> {}", query);
         List<Detail> userDeptList = DatabaseTemplate.queryForObject(query,new ObjectRowMapper<Detail>() {
             @Override
@@ -109,7 +109,7 @@ public class UserDaoImp implements UserDao {
         userDept.setUserName(resultSet.getString("user_name"));
         userDept.setUserId(userId);
         userDept.setEmail(resultSet.getString("email"));
-        userDept.setEmail(resultSet.getString("address"));
+        userDept.setAddress(resultSet.getString("address"));
 
         return userDept;
     }
