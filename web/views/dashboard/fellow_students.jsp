@@ -1,3 +1,4 @@
+
 <%--
   Created by IntelliJ IDEA.
   User: devil
@@ -5,6 +6,7 @@
   Time: 3:24 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -22,62 +24,26 @@
             <div class="col-md-9">
                 <!--Profile Body-->
                 <div class="profile-body margin-bottom-20">
-                    <!--Profile Blog-->
-                    <div class="row margin-bottom-20">
-                        <div class="col-sm-6 sm-margin-bottom-20">
-                            <div class="profile-blog">
-                                <img class="rounded-x" src="assets/img/testimonials/img1.jpg" alt="">
-                                <div class="name-location">
-                                    <strong>Name Mr kola</strong>
-                                    <span><i class="fa fa-map-marker"></i><a href="#">Dhanmondi</a> <a href="#">Dhaka</a></span>
+
+                            <!--Profile Blog-->
+                            <div class="row margin-bottom-20">
+                                <c:if test="${requestScope.userDept != null}">
+                                <c:forEach var="us" items="${requestScope.userDept}" varStatus="item">
+                                <div class="col-sm-6 sm-margin-bottom-20">
+                                    <div class="profile-blog">
+                                        <img class="rounded-x" src="assets/img/testimonials/img1.jpg" alt="">
+                                        <div class="name-location">
+                                            <strong><c:out value="${us.userName}"/></strong>
+                                            <span><i class="fa fa-map-marker"></i><a href="#"><c:out value="${us.address}"/></a> <a href="#"><c:out value="${us.email}"/></a></span>
+                                        </div>
+                                        <div class="clearfix margin-bottom-20"></div>
+                                        <hr>
+                                    </div>
                                 </div>
-                                <div class="clearfix margin-bottom-20"></div>
-                                <hr>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 sm-margin-bottom-20">
-                            <div class="profile-blog">
-                                <img class="rounded-x" src="assets/img/testimonials/img1.jpg" alt="">
-                                <div class="name-location">
-                                    <strong>Name Mr kola</strong>
-                                    <span><i class="fa fa-map-marker"></i><a href="#">Dhanmondi</a> <a href="#">Dhaka</a></span>
-                                </div>
-                                <div class="clearfix margin-bottom-20"></div>
-                                <hr>
-                            </div>
-                        </div>
-                    </div><!--/end row-->
-                    <!--End Profile Blog-->
-
-                    <!--Profile Blog-->
-                    <div class="row margin-bottom-20">
-                        <div class="col-sm-6 sm-margin-bottom-20">
-                            <div class="profile-blog">
-                                <img class="rounded-x" src="assets/img/testimonials/img1.jpg" alt="">
-                                <div class="name-location">
-                                    <strong>Name Mr kola</strong>
-                                    <span><i class="fa fa-map-marker"></i><a href="#">Dhanmondi</a> <a href="#">Dhaka</a></span>
-                                </div>
-                                <div class="clearfix margin-bottom-20"></div>
-                                <hr>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 sm-margin-bottom-20">
-                            <div class="profile-blog">
-                                <img class="rounded-x" src="assets/img/testimonials/img1.jpg" alt="">
-                                <div class="name-location">
-                                    <strong>Name Mr kola</strong>
-                                    <span><i class="fa fa-map-marker"></i><a href="#">Dhanmondi</a> <a href="#">Dhaka</a></span>
-                                </div>
-                                <div class="clearfix margin-bottom-20"></div>
-                                <hr>
-                            </div>
-                        </div>
-                    </div><!--/end row-->
-
-
+                                </c:forEach>
+                                </c:if>
+                            </div><!--/end row-->
+                            <!--End Profile Blog-->
                     <button type="button" class="btn-u btn-u-default btn-block text-center">Load More</button>
                     <!--End Profile Blog-->
                 </div>

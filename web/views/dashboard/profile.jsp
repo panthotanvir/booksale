@@ -52,8 +52,8 @@
                                     <a href="#"><i class="fa fa-cog pull-right"></i></a>
                                 </div>
                                 <div class="panel-body">
-                                    <h2><c:out value="${requestScope.userInfo.email}"/></h2>
-                                    <span><c:out value="${requestScope.userInfo.address}"/></span>
+                                    <h3><c:out value="${requestScope.userInfo.email}"/></h3>
+                                    <span><c:out value="${requestScope.userInfo.address}"/></span></br>
                                     <span><c:out value="${requestScope.userInfo.phoneNo}"/></span>
                                     <hr>
                                 </div>

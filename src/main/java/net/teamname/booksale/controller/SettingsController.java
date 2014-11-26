@@ -1,5 +1,6 @@
 package net.teamname.booksale.controller;
 
+import net.teamname.booksale.domain.Detail;
 import net.teamname.booksale.domain.User;
 import net.teamname.booksale.service.UserServiceImp;
 import org.slf4j.Logger;
@@ -28,12 +29,15 @@ public class SettingsController extends HttpServlet {
     }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        log.info("Dashboard Controller is requested ");
-        /*Integer userID = getUserId(req);
-        Detail userInfo = userService.getUserInfo(userID);
-        log.info("User--------- : {}" ,userInfo.getUserName());
-        req.setAttribute("userInfo",userInfo);
-        */
+        log.info("Settings Controller is requested ");
+        Integer userID = getUserId(req);
+        Detail settingInfo = userService.getUserInfo(userID);
+        log.info("User--------- : {}" ,settingInfo.getUserName());
+        req.setAttribute("settingInfo",settingInfo);
+
+
+
+
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/dashboard/settings.jsp");
         requestDispatcher.forward(req, resp);
     }

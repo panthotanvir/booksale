@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: devil
@@ -43,7 +44,7 @@
                                             <section>
                                                 <label class="input">
                                                     <i class="icon-append fa fa-envelope"></i>
-                                                    <input type="text" placeholder="UserName" name="user_name">
+                                                    <input type="text" name="user_name" value="<c:out value="${requestScope.settingInfo.userName}"/>"/>
                                                     <b class="tooltip tooltip-bottom-right">Needed to verify your username</b>
                                                 </label>
                                             </section>
@@ -53,7 +54,7 @@
                                             <section>
                                                 <label class="input">
                                                     <i class="icon-append fa fa-lock"></i>
-                                                    <input type="department" id="dept_id" placeholder="Department" name="dept_name">
+                                                    <input type="department" id="dept_id"  name="dept_name" value="<c:out value="${requestScope.settingInfo.deptName}"/>">
                                                     <b class="tooltip tooltip-bottom-right">Needed to verify your Department</b>
                                                 </label>
                                             </section>
@@ -63,17 +64,13 @@
                                             <section>
                                                 <label class="input">
                                                     <i class="icon-append fa fa-lock"></i>
-                                                    <input type="text" placeholder="University" name="uni_name">
+                                                    <input type="text" name="uni_name" value="<c:out value="${requestScope.settingInfo.uniName}"/>">
                                                     <b class="tooltip tooltip-bottom-right">Needed to verify your University</b>
                                                 </label>
                                             </section>
                                         </dd>
                                     </dl>
-                                    <label class="toggle toggle-change"><input type="checkbox" checked="" name="checkbox-toggle-1"><i></i>Remember password</label>
-                                    </br>
-                                    <section>
-                                        <label class="checkbox"><input type="checkbox" id="terms" name="terms"><i></i><a href="#">I agree with the Terms and Conditions</a></label>
-                                    </section>
+
                                     <button type="button" class="btn-u btn-u-default">Cancel</button>
                                     <button class="btn-u" type="submit">Save Changes</button>
                                 </form>
@@ -92,7 +89,7 @@
                                             <section>
                                                 <label class="input">
                                                     <i class="icon-append fa fa-envelope"></i>
-                                                    <input type="email" placeholder="Email address" name="email">
+                                                    <input type="email" name="email" value="<c:out value="${requestScope.settingInfo.email}"/>">
                                                     <b class="tooltip tooltip-bottom-right">Needed to verify your account</b>
                                                 </label>
                                             </section>
@@ -102,27 +99,14 @@
                                             <section>
                                                 <label class="input">
                                                     <i class="icon-append fa fa-lock"></i>
-                                                    <input type="password" id="password" placeholder="Password" name="password">
+                                                    <input type="password" id="password"  name="password" value="<c:out value="${requestScope.settingInfo.password}"/>">
                                                     <b class="tooltip tooltip-bottom-right">Don't forget your password</b>
                                                 </label>
                                             </section>
                                         </dd>
-                                        <dt>Confirm Password</dt>
-                                        <dd>
-                                            <section>
-                                                <label class="input">
-                                                    <i class="icon-append fa fa-lock"></i>
-                                                    <input type="password" placeholder="Confirm password" name="passwordConfirm">
-                                                    <b class="tooltip tooltip-bottom-right">Don't forget your password</b>
-                                                </label>
-                                            </section>
-                                        </dd>
+
                                     </dl>
-                                    <label class="toggle toggle-change"><input type="checkbox" checked="" name="checkbox-toggle-1"><i></i>Remember password</label>
-                                    </br>
-                                    <section>
-                                        <label class="checkbox"><input type="checkbox" id="terms" name="terms"><i></i><a href="#">I agree with the Terms and Conditions</a></label>
-                                    </section>
+
                                     <button type="button" class="btn-u btn-u-default">Cancel</button>
                                     <button class="btn-u" type="submit">Save Changes</button>
                                 </form>
@@ -140,7 +124,7 @@
                                             <section>
                                                 <label class="input">
                                                     <i class="icon-append fa fa-envelope"></i>
-                                                    <input type="email" placeholder="Email address" name="email">
+                                                    <input type="email" placeholder="Email address" name="email" value="<c:out value="${requestScope.settingInfo.email}"/>">
                                                     <b class="tooltip tooltip-bottom-right">Needed to verify your account</b>
                                                 </label>
                                             </section>
@@ -150,7 +134,7 @@
                                             <section>
                                                 <label class="input">
                                                     <i class="icon-append fa fa-lock"></i>
-                                                    <input type="text" id="phone" placeholder="Contact" name="phone_no">
+                                                    <input type="text" id="phone" placeholder="Contact" name="phone_no" value="<c:out value="${requestScope.settingInfo.phoneNo}"/>">
                                                     <b class="tooltip tooltip-bottom-right">Needed to verify your Contact</b>
                                                 </label>
                                             </section>
@@ -160,17 +144,12 @@
                                             <section>
                                                 <label class="input">
                                                     <i class="icon-append fa fa-lock"></i>
-                                                    <input type="text" placeholder="Address" name="contact_addres">
+                                                    <input type="text" placeholder="Address" name="contact_addres" value="<c:out value="${requestScope.settingInfo.address}"/>">
                                                     <b class="tooltip tooltip-bottom-right">Needed to verify your Address</b>
                                                 </label>
                                             </section>
                                         </dd>
                                     </dl>
-                                    <label class="toggle toggle-change"><input type="checkbox" checked="" name="checkbox-toggle-1"><i></i>Remember password</label>
-                                    </br>
-                                    <section>
-                                        <label class="checkbox"><input type="checkbox" id="terms" name="terms"><i></i><a href="#">I agree with the Terms and Conditions</a></label>
-                                    </section>
                                     <button type="button" class="btn-u btn-u-default">Cancel</button>
                                     <button class="btn-u" type="submit">Save Changes</button>
                                 </form>

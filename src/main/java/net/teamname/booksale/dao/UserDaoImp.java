@@ -67,6 +67,24 @@ public class UserDaoImp implements UserDao {
         return null;
     }
 
+    @Override
+    public List<Detail> getUserDept(Integer uniId, Integer deptId) {
+        String query = "SELECT * FROM user,university,department Where user.uni_id= '" + uniId + "' AND user.dept_id= '" + deptId + "' AND user.uni_id = university.uni_id AND user.dept_id = department.dept_id";
+        log.debug("query fro DeptUser---> {}", query);
+        List<Detail> userDeptList = DatabaseTemplate.queryForObject(query,new ObjectRowMapper<Detail>() {
+            @Override
+            public Detail mapRowToObject(ResultSet resultSet) throws SQLException {
+                return setDeptUser(resultSet);
+            }
+        });
+        if (userDeptList.size() != 0) {
+            log.debug("All dept user list returned : {}" , userDeptList.size());
+            return userDeptList;
+        }
+        return null;
+
+
+    }
 
     public Detail setUserInfo(ResultSet resultSet) throws SQLException{
         Integer userId = Integer.parseInt(resultSet.getString("user_id"));
@@ -83,6 +101,20 @@ public class UserDaoImp implements UserDao {
 
         return userInfo;
     }
+
+
+    public Detail setDeptUser(ResultSet resultSet) throws SQLException{
+        Integer userId = Integer.parseInt(resultSet.getString("user_id"));
+        Detail userDept = new Detail();
+        userDept.setUserName(resultSet.getString("user_name"));
+        userDept.setUserId(userId);
+        userDept.setEmail(resultSet.getString("email"));
+        userDept.setEmail(resultSet.getString("address"));
+
+        return userDept;
+    }
+
+
     @Override
     public List<User> getAllUser() {
         String query = "SELECT * FROM user";
@@ -98,10 +130,15 @@ public class UserDaoImp implements UserDao {
     }
     public User setUser(ResultSet resultSet) throws SQLException{
         Integer userId = Integer.parseInt(resultSet.getString("user_id"));
+        Integer uniId = Integer.parseInt(resultSet.getString("uni_id"));
+        Integer deptId = Integer.parseInt(resultSet.getString("dept_id"));
         User user = new User();
         user.setUserName(resultSet.getString("user_name"));
         user.setUserId(userId);
         user.setEmail(resultSet.getString("email"));
+        user.setUniId(uniId);
+        user.setDeptId(deptId);
+
 
         return user;
     }
@@ -121,6 +158,7 @@ public class UserDaoImp implements UserDao {
         log.debug("User inserted");
 
     }
+
 
 
 
