@@ -102,6 +102,8 @@ public class UserDaoImp implements UserDao {
         user.setUserName(resultSet.getString("user_name"));
         user.setUserId(userId);
         user.setEmail(resultSet.getString("email"));
+        user.setPhoneNo(resultSet.getString("phone"));
+        user.setAddress(resultSet.getString("address"));
 
         return user;
     }
@@ -121,7 +123,5 @@ public class UserDaoImp implements UserDao {
         log.debug("User inserted");
 
     }
-
-
 
 }

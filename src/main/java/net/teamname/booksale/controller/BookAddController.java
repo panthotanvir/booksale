@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
@@ -50,11 +51,11 @@ public class BookAddController extends HttpServlet {
         book = new Book();
         log.debug("createAddFromRequest is called ");
 
-        Integer userId = Integer.parseInt(req.getParameter("user_id"));
+//        Integer userId = Integer.parseInt(req.getParameter("user_id"));
         Integer deptId = Integer.parseInt(req.getParameter("dept_id"));
         Double price = Double.parseDouble(req.getParameter("price"));
 
-        book.setUserId(userId);
+        book.setUserId(getUserId(req));
         book.setDeptId(deptId);
         book.setTitle(req.getParameter("title"));
         book.setAuthor(req.getParameter("author"));
@@ -72,5 +73,11 @@ public class BookAddController extends HttpServlet {
 
     }
 
+    private Integer getUserId(HttpServletRequest req) {
+        HttpSession session = req.getSession();
+        User user = (User) session.getAttribute("user");
+        log.debug("User Id from Session in bookController: {}",user.getUserId());
+        return user.getUserId();
+    }
 
 }
