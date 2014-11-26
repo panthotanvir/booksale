@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: devil
@@ -29,9 +30,9 @@
                                 <a class="btn-u btn-u-sm" href="#">Change Picture</a>
                             </div>
                             <div class="col-md-7">
-                                <h2>Name:Edward Rooster</h2>
-                                <span>CSE</span>
-                                <span>University of Dhaka</span>
+                                <h2>Name:<c:out value="${requestScope.userInfo.userName}"/></h2>
+                                <span><c:out value="${requestScope.userInfo.deptName}"/></span>
+                                <span><c:out value="${requestScope.userInfo.uniName}"/></span>
                                 <hr>
                             </div>
                         </div>
@@ -51,9 +52,9 @@
                                     <a href="#"><i class="fa fa-cog pull-right"></i></a>
                                 </div>
                                 <div class="panel-body">
-                                    <h2>Dhanmondi</h2>
-                                    <span>dhaka</span>
-                                    <span>Dhaka</span>
+                                    <h2><c:out value="${requestScope.userInfo.email}"/></h2>
+                                    <span><c:out value="${requestScope.userInfo.address}"/></span>
+                                    <span><c:out value="${requestScope.userInfo.phoneNo}"/></span>
                                     <hr>
                                 </div>
                             </div>

@@ -1,9 +1,7 @@
 package net.teamname.booksale.dao;
 
 import net.teamname.booksale.domain.Book;
-import net.teamname.booksale.domain.Department;
-import net.teamname.booksale.domain.SingleBook;
-import net.teamname.booksale.domain.User;
+import net.teamname.booksale.domain.Detail;
 import net.teamname.booksale.util.DatabaseTemplate;
 import net.teamname.booksale.util.ObjectRowMapper;
 import org.slf4j.Logger;
@@ -11,10 +9,7 @@ import org.slf4j.LoggerFactory;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by panthotanvir on 11/22/14.
@@ -45,15 +40,15 @@ public class BookDaoImp implements BookDao {
     }
 
     @Override
-    public SingleBook getBook(int bookId) {
-        log.debug("SingleBook getBook called");
+    public Detail getBook(int bookId) {
+        log.debug("Detail getBook called");
         String query = "SELECT * FROM book,user,university,department WHERE book_id = ' " +bookId+ " ' AND book.user_id = user.user_id AND " +
                 "book.dept_id = department.dept_id AND user.uni_id = university.uni_id  " ;
         log.debug("query :   {}",query);
 
-        List<SingleBook> bookInfo = DatabaseTemplate.queryForObject(query, new ObjectRowMapper<SingleBook>() {
+        List<Detail> bookInfo = DatabaseTemplate.queryForObject(query, new ObjectRowMapper<Detail>() {
             @Override
-            public SingleBook mapRowToObject(ResultSet resultSet) throws SQLException {
+            public Detail mapRowToObject(ResultSet resultSet) throws SQLException {
                 log.debug("mapRowToObject called");
                 return setSingleBook(resultSet);
             }
@@ -86,8 +81,8 @@ public class BookDaoImp implements BookDao {
     }
 
 
-    private SingleBook setSingleBook(ResultSet resultSet) throws SQLException {
-        SingleBook sBook = new SingleBook();
+    private Detail setSingleBook(ResultSet resultSet) throws SQLException {
+        Detail sBook = new Detail();
         Double price = Double.parseDouble(resultSet.getString("price"));
         Integer bookId = Integer.parseInt(resultSet.getString("book_id"));
         Integer userId = Integer.parseInt(resultSet.getString("user_id"));

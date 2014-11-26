@@ -1,6 +1,8 @@
 package net.teamname.booksale.dao;
 
+import net.teamname.booksale.domain.Detail;
 import net.teamname.booksale.domain.User;
+
 import net.teamname.booksale.util.DatabaseTemplate;
 import net.teamname.booksale.util.ObjectRowMapper;
 import org.slf4j.Logger;
@@ -8,7 +10,6 @@ import org.slf4j.LoggerFactory;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -37,7 +38,6 @@ public class UserDaoImp implements UserDao {
         return null;
     }
 
-
     @Override
     public void updateUser(User user) {
 
@@ -48,6 +48,41 @@ public class UserDaoImp implements UserDao {
 
     }
 
+    @Override
+    public Detail getUserInfo(Integer userId) {
+        String query = "SELECT * FROM user,university,department WHERE user_id= '" + userId + "' AND user.dept_id = department.dept_id AND user.uni_id = university.uni_id ";
+
+        log.debug("query---> {}", query);
+        List<Detail> userInfoList = DatabaseTemplate.queryForObject(query, new ObjectRowMapper<Detail>() {
+            @Override
+            public Detail mapRowToObject(ResultSet resultSet) throws SQLException {
+                return setUserInfo(resultSet);
+            }
+        });
+
+        if (userInfoList.size() != 0) {
+            log.debug("USER info returned");
+            return userInfoList.get(0);
+        }
+        return null;
+    }
+
+
+    public Detail setUserInfo(ResultSet resultSet) throws SQLException{
+        Integer userId = Integer.parseInt(resultSet.getString("user_id"));
+        Detail userInfo = new Detail();
+
+        userInfo.setUserName(resultSet.getString("user_name"));
+        userInfo.setUserId(userId);
+        userInfo.setEmail(resultSet.getString("email"));
+        userInfo.setAddress(resultSet.getString("address"));
+        userInfo.setDeptName(resultSet.getString("dept_name"));
+        userInfo.setUniName(resultSet.getString("uni_name"));
+        userInfo.setPassword(resultSet.getString("password"));
+        userInfo.setPhoneNo(resultSet.getString("phone"));
+
+        return userInfo;
+    }
     @Override
     public List<User> getAllUser() {
         String query = "SELECT * FROM user";
@@ -61,7 +96,15 @@ public class UserDaoImp implements UserDao {
         log.debug("All user list returned");
         return userList;
     }
+    public User setUser(ResultSet resultSet) throws SQLException{
+        Integer userId = Integer.parseInt(resultSet.getString("user_id"));
+        User user = new User();
+        user.setUserName(resultSet.getString("user_name"));
+        user.setUserId(userId);
+        user.setEmail(resultSet.getString("email"));
 
+        return user;
+    }
     @Override
     public void addUser(User user) {
         String insertQuery = "INSERT INTO `booksale`.`user` (`user_name`, `uni_id`, `dept_id`, `email`, `password`,`phone`,`address`)" +
@@ -78,14 +121,7 @@ public class UserDaoImp implements UserDao {
         log.debug("User inserted");
 
     }
-    public User setUser(ResultSet resultSet) throws SQLException{
-        Integer userId = Integer.parseInt(resultSet.getString("user_id"));
-        User user = new User();
-        user.setUserName(resultSet.getString("user_name"));
-        user.setUserId(userId);
-        user.setEmail(resultSet.getString("email"));
 
-        return user;
-    }
+
 
 }

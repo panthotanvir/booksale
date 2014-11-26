@@ -1,7 +1,6 @@
 package net.teamname.booksale.controller;
 
-import net.teamname.booksale.domain.Book;
-import net.teamname.booksale.domain.SingleBook;
+import net.teamname.booksale.domain.Detail;
 import net.teamname.booksale.service.BookService;
 import net.teamname.booksale.service.BookServiceImp;
 import org.slf4j.Logger;
@@ -14,7 +13,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 /**
  * Created on 11/24/14 12:43 AM.
@@ -30,8 +28,10 @@ public class SingleBookController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Integer bookId = Integer.parseInt(req.getParameter("bookId"));
         log.debug("Single book controller called");
+
         BookService bookService = new BookServiceImp();
-        SingleBook singleBook = bookService.getBook(bookId);
+        Detail singleBook = bookService.getBook(bookId);
+
         log.info("Book--------- : {}" ,singleBook.getUserName());
         req.setAttribute("bookInfo",singleBook);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/book/single_book.jsp");

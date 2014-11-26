@@ -5,7 +5,7 @@ package net.teamname.booksale.domain;
  *
  * @author: mithunshawon
  */
-public class SingleBook {
+public class Detail {
 
     private String userName;
     private int userId;

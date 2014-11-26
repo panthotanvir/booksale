@@ -2,7 +2,9 @@ package net.teamname.booksale.service;
 
 import net.teamname.booksale.dao.UserDao;
 import net.teamname.booksale.dao.UserDaoImp;
+import net.teamname.booksale.domain.Detail;
 import net.teamname.booksale.domain.User;
+
 
 import java.util.List;
 
@@ -28,6 +30,8 @@ public class UserServiceImp implements UserService{
         return userDao.getAllUser();
     }
 
+
+
     @Override
     public void updateUser(User user) {
 
@@ -40,6 +44,11 @@ public class UserServiceImp implements UserService{
     @Override
     public User getUser(String email, String password) {
         return userDao.getUser(email, password);
+    }
+
+    @Override
+    public Detail getUserInfo(Integer userId) {
+        return userDao.getUserInfo(userId);
     }
 
 }

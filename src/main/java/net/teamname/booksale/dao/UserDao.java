@@ -1,7 +1,10 @@
 package net.teamname.booksale.dao;
 
 import java.util.List;
+
+import net.teamname.booksale.domain.Detail;
 import net.teamname.booksale.domain.User;
+
 
 /**
  * Created on 11/22/14 3:45 PM.
@@ -13,9 +16,13 @@ public interface UserDao {
 
     public User getUser(String email, String password);
 
+    //public UserInfo getUserInfo(Integer userId);
+
     public List<User> getAllUser();
 
     public void updateUser(User user);
 
     public void deleteUser(Integer userId);
+
+    public Detail getUserInfo(Integer userId);
 }

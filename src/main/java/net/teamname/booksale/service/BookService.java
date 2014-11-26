@@ -1,7 +1,7 @@
 package net.teamname.booksale.service;
 
 import net.teamname.booksale.domain.Book;
-import net.teamname.booksale.domain.SingleBook;
+import net.teamname.booksale.domain.Detail;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ public interface BookService {
 
     public void addBook(Book book);
 
-    public SingleBook getBook(int bookId);
+    public Detail getBook(int bookId);
 
     public List<Book> getAllBookPost();
 }
