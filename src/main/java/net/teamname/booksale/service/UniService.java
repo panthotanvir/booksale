@@ -10,4 +10,8 @@ import java.util.List;
 public interface UniService {
 
     List<University> getAllUniversity();
+
+    List<University> getSpecificUniDept(int uniId);
+
+    public University getDept(int deptID);
 }

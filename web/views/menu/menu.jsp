@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: panthotanvir
@@ -30,30 +31,49 @@
         <div class="collapse navbar-collapse navbar-responsive-collapse">
             <ul class="nav navbar-nav">
                 <!-- Home -->
-                <li class="dropdown">
-                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                <li>
+                    <a href="javascript:void(0);" data-toggle="dropdown">
                         Home
                     </a>
 
                 </li>
+
                 <!-- End Home -->
 
                 <!-- University List -->
+                <c:if test="${requestScope.uniList != null}">
+
                 <li class="dropdown">
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-                        University
-                    </a>
-                    <ul class="dropdown-menu">
-                        <!-- About Pages -->
-                        <li class="dropdown-submenu">
-                            <a href="javascript:void(0);">University Name</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="page_about1.html">department</a></li>
 
-                            </ul>
-                        </li>
+                        University Name
+                    </a>
+
+                    <ul class="dropdown-menu">
+
+                        <c:forEach var="uni" items="${requestScope.uniList}" varStatus="dept">
+
+                        <!-- About Pages -->
+                            <li >
+                                <a href="#"> <c:out value="${uni.uniName}"/> </a>
+                                <%--<c:if test="${requestScope.uniList[dept.index].id == requestScope.uniList[dept.index + 1].id }">--%>
+                                <%--<ul class="dropdown-menu">--%>
+                                    <%--<c:set var="count" value="0" scope="page" />--%>
+                                    <%--<c:set var="ex_count" value="0" scope="page" />--%>
+                                    <%--<c:forEach var="depts" items="${requestScope.uniList}" varStatus="deptStatus">--%>
+                                        <%----%>
+                                            <%--<c:when test="${depts.id == uni.id}">--%>
+                                            <%--<li><a href="#"><c:out value="${requestScope.uniList[deptStatus.index + ex_count].deptName}"/><c:out value="${deptStatus.index + ex_count}"/></a></li>--%>
+                                            <%--<c:set var="count" value="${count + 1}" scope="page"/>--%>
+                                            <%--</c:when>--%>
+                                <%--</ul>--%>
+                                <%--&lt;%&ndash;</c:if>&ndash;%&gt;--%>
+                            </li>
+                        </c:forEach>
                     </ul>
+
                 </li>
+                </c:if>
                 <!-- University List -->
 
 
@@ -64,7 +84,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <!-- About Pages -->
-                        <li class="dropdown-submenu">
+                        <li>
                             <a href="javascript:void(0);">Author</a>
 
                         </li>

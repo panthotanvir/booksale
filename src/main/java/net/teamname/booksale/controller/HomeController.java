@@ -24,20 +24,25 @@ public class HomeController extends javax.servlet.http.HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("Home Controller is requested ");
 
-        List<Book>  bookList = getAllBookList();
-
+        List<Book> bookList = getAllBookList();
+        List<University> uniList = getAllUniList();
+//        List<University> deptList = getSpecificDeptList(uniList);
         log.info("Book list size : {}" ,bookList.size() );
-         req.setAttribute("bookList",bookList);
-        //List<University>  uniList = getAllUniList();
-       // log.info("University lis size : {}" ,uniList.size() );
-       // req.setAttribute("uniList",uniList);
+        log.info("University lis size : {}" ,uniList.size() );
+        req.setAttribute("bookList",bookList);
+        req.setAttribute("uniList",uniList);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/book/all_book_show.jsp");
         requestDispatcher.forward(req, resp);
     }
 
-   /*private List<University> getAllUniList()  {
+//    private List<University> getSpecificDeptList(List<University> uniList) {
+//        return new UniServiceImp().getSpecificUniDept(uniList);
+//    }
+
+    private List<University> getAllUniList()  {
        return new UniServiceImp().getAllUniversity();
-    }*/
+    }
+
    private List<Book> getAllBookList()  {
        return new BookServiceImp().getAllBookPost();
    }

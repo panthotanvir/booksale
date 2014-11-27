@@ -15,4 +15,6 @@ public interface BookDao {
     public Detail getBook(int bookId);
 
     public List<Book> getAllBookPost();
+
+    
 }

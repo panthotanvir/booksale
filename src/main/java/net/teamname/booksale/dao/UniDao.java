@@ -9,4 +9,8 @@ import net.teamname.booksale.domain.University;
 public interface UniDao {
 
     List<University> getAllUniversity();
+
+    List<University> getSpecificUniDept(int uniId);
+
+    public University getDept(int deptID);
 }
