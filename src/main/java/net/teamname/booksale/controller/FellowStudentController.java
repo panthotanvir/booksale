@@ -1,5 +1,7 @@
 package net.teamname.booksale.controller;
 
+import net.teamname.booksale.domain.Book;
+import net.teamname.booksale.domain.Detail;
 import net.teamname.booksale.domain.User;
 import net.teamname.booksale.service.UserServiceImp;
 import org.slf4j.Logger;
@@ -13,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Created by panthotanvir on 11/26/14.
@@ -28,20 +31,31 @@ public class FellowStudentController extends HttpServlet {
     }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        log.info("Dashboard Controller is requested ");
-        /*Integer userID = getUserId(req);
-        Detail userInfo = userService.getUserInfo(userID);
-        log.info("User--------- : {}" ,userInfo.getUserName());
-        req.setAttribute("userInfo",userInfo);
-        */
+        log.info("Fellow Controller is requested ");
+        Integer userId = getUserId(req);
+        Integer uniId = getUniId(req);
+        Integer deptId = getDeptId(req);
+        List<Detail> userDept = userService.getUserDept(userId, uniId, deptId);
+        req.setAttribute("userDept",userDept);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/dashboard/fellow_students.jsp");
         requestDispatcher.forward(req, resp);
     }
 
+    private Integer getUniId(HttpServletRequest req) {
+        HttpSession session = req.getSession();
+        User user = (User) session.getAttribute("user");
+        return user.getUniId();
+    }
+    private Integer getDeptId(HttpServletRequest req) {
+        HttpSession session = req.getSession();
+        User user = (User) session.getAttribute("user");
+        return user.getDeptId();
+    }
     private Integer getUserId(HttpServletRequest req) {
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");
         return user.getUserId();
     }
+
 }
 

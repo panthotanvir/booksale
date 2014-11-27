@@ -16,8 +16,6 @@ public interface UserDao {
 
     public User getUser(String email, String password);
 
-    //public UserInfo getUserInfo(Integer userId);
-
     public List<User> getAllUser();
 
     public void updateUser(User user);
@@ -25,4 +23,6 @@ public interface UserDao {
     public void deleteUser(Integer userId);
 
     public Detail getUserInfo(Integer userId);
+
+    public List<Detail> getUserDept(Integer userId,Integer uniId , Integer deptId);
 }

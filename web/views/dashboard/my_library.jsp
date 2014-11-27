@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: devil
@@ -23,90 +24,29 @@
             <div class="profile-body">
                 <!--Projects-->
                 <div class="row">
-                    <div class="col-sm-6">
-                        <div class="easy-block-v1">
-                            <img class="img-responsive" src="assets/img/main/15.jpg" alt="">
-                            <div class="easy-block-v1-badge rgba-red">Type</div>
-                        </div>
-                        <div class="projects">
-                            <h2>Book Title</h2>
-                            <ul class="list-unstyled list-inline blog-info-v2">
-                                <li>Authored By: <a class="color-green" href="#">Edward Rooster</a></li>
-                                <li>Edition 13</li>
-                                <li><i class="fa fa-clock-o"></i> Jan 02, 2013</li>
-                            </ul>
-                            <p>Description</p>
-                            <br>
-                            <h3 class="heading-xs">Price<span class="pull-right">770</span></h3>
-                        </div>
-
-                    </div>
-
-                    <div class="col-sm-6">
-                        <div class="easy-block-v1">
-                            <img class="img-responsive" src="assets/img/main/15.jpg" alt="">
-                            <div class="easy-block-v1-badge rgba-red">Type</div>
-                        </div>
-                        <div class="projects">
-                            <h2>Book Title</h2>
-                            <ul class="list-unstyled list-inline blog-info-v2">
-                                <li>Authored By: <a class="color-green" href="#">Edward Rooster</a></li>
-                                <li>Edition 13</li>
-                                <li><i class="fa fa-clock-o"></i> Jan 02, 2013</li>
-                            </ul>
-                            <p>Description</p>
-                            <br>
-                            <h3 class="heading-xs">Price<span class="pull-right">770</span></h3>
-                        </div>
-
-                    </div>
+                    <c:if test="${requestScope.libraryBook != null}">
+                        <c:forEach var="library" items="${requestScope.libraryBook}" varStatus="item">
+                            <div class="col-sm-6">
+                                <div class="easy-block-v1">
+                                    <img alt="book" class="img-responsive" src="uploads/<c:out value="${library.photo}"/>.jpg">
+                                    <div class="easy-block-v1-badge rgba-red"><c:out value="${library.type}"/></div>
+                                </div>
+                                <div class="projects">
+                                    <h2><c:out value="${library.title}"/></h2>
+                                    <ul class="list-unstyled list-inline blog-info-v2">
+                                        <li>Authored By: <a class="color-green" href="#"><c:out value="${library.author}"/></a></li>
+                                        <li>Edition 13</li>
+                                        <li><i class="fa fa-clock-o"></i> Jan 02, 2013</li>
+                                    </ul>
+                                    <h3 class="heading-xs">Price<span class="pull-right"><c:out value="${library.price}"/></span></h3>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </c:if>
                 </div><!--/end row-->
                 <!--End Projects-->
 
                 <hr>
-                <!--Projects-->
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="easy-block-v1">
-                            <img class="img-responsive" src="assets/img/main/15.jpg" alt="">
-                            <div class="easy-block-v1-badge rgba-red">Type</div>
-                        </div>
-                        <div class="projects">
-                            <h2>Book Title</h2>
-                            <ul class="list-unstyled list-inline blog-info-v2">
-                                <li>Authored By: <a class="color-green" href="#">Edward Rooster</a></li>
-                                <li>Edition 13</li>
-                                <li><i class="fa fa-clock-o"></i> Jan 02, 2013</li>
-                            </ul>
-                            <p>Description</p>
-                            <br>
-                            <h3 class="heading-xs">Price<span class="pull-right">770</span></h3>
-                        </div>
-
-                    </div>
-
-                    <div class="col-sm-6">
-                        <div class="easy-block-v1">
-                            <img class="img-responsive" src="assets/img/main/15.jpg" alt="">
-                            <div class="easy-block-v1-badge rgba-red">Type</div>
-                        </div>
-                        <div class="projects">
-                            <h2>Book Title</h2>
-                            <ul class="list-unstyled list-inline blog-info-v2">
-                                <li>Authored By: <a class="color-green" href="#">Edward Rooster</a></li>
-                                <li>Edition 13</li>
-                                <li><i class="fa fa-clock-o"></i> Jan 02, 2013</li>
-                            </ul>
-                            <p>Description:fhsdgf</p>
-                            <br>
-                            <h3 class="heading-xs">Price<span class="pull-right">770</span></h3>
-                        </div>
-
-                    </div>
-                </div><!--/end row-->
-                <!--End Projects-->
-                <hr>
-
 
                 <button type="button" class="btn-u btn-u-default btn-u-sm btn-block">Load More</button>
             </div>

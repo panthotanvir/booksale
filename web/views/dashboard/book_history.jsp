@@ -27,10 +27,27 @@
                         <time class="cbp_tmtime" datetime=""><span>4/1/08</span> <span>January</span></time>
                         <i class="cbp_tmicon rounded-x hidden-xs"></i>
                         <div class="cbp_tmlabel">
+                            <h2>Our first step</h2>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <img class="img-responsive" src="assets/img/5.jpg" alt="">
+                                    <div class="md-margin-bottom-20"></div>
+                                </div>
+                                <div class="col-md-8">
+                                    <p>Winter purslane courgette pumpkin quandong komatsuna fennel green bean cucumber watercress. Pea sprouts wattle seed rutabaga okra yarrow cress avocado grape.</p>
+                                    <p>Cabbage lentil cucumber chickpea sorrel gram garbanzo plantain lotus root bok choy squash cress potato.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <time class="cbp_tmtime" datetime=""><span>4/1/08</span> <span>January</span></time>
+                        <i class="cbp_tmicon rounded-x hidden-xs"></i>
+                        <div class="cbp_tmlabel">
                             <h2>Book Title</h2>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <img class="img-responsive" src="assets/img/job/high-rated-job-3.1.jpg" alt="">
+                                    <img class="img-responsive" src="assets/img/5.jpg" alt="">
                                     <div class="md-margin-bottom-20"></div>
                                 </div>
                                 <div class="col-md-8">
@@ -46,23 +63,7 @@
                             <h2>Book Title</h2>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <img class="img-responsive" src="assets/img/job/high-rated-job-3.1.jpg" alt="">
-                                    <div class="md-margin-bottom-20"></div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h3>Price : 550</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <time class="cbp_tmtime" datetime=""><span>4/1/08</span> <span>January</span></time>
-                        <i class="cbp_tmicon rounded-x hidden-xs"></i>
-                        <div class="cbp_tmlabel">
-                            <h2>Book Title</h2>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <img class="img-responsive" src="assets/img/job/high-rated-job-3.1.jpg" alt="">
+                                    <img class="img-responsive" src="assets/img/5.jpg" alt="">
                                     <div class="md-margin-bottom-20"></div>
                                 </div>
                                 <div class="col-md-8">

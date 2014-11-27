@@ -51,4 +51,10 @@ public class UserServiceImp implements UserService{
         return userDao.getUserInfo(userId);
     }
 
+
+    @Override
+    public List<Detail> getUserDept(Integer userId, Integer uniId, Integer deptId) {
+        return userDao.getUserDept(userId, uniId, deptId);
+    }
+
 }

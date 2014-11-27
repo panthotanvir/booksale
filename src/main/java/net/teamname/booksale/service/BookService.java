@@ -15,4 +15,6 @@ public interface BookService {
     public Detail getBook(int bookId);
 
     public List<Book> getAllBookPost();
+
+    public List<Book>  getBookList(Integer userId);
 }

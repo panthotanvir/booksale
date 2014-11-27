@@ -19,6 +19,8 @@ public interface UserService {
 
     public Detail getUserInfo(Integer userID);
 
+    public List<Detail> getUserDept(Integer userId, Integer uniId, Integer deptId);
+
     public List<User> getAllUser();
 
     public void updateUser(User user);

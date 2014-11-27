@@ -80,6 +80,42 @@ public class BookDaoImp implements BookDao {
         return bookList;
     }
 
+    @Override
+    public List<Book> getBookList(Integer userId) {
+        String query = "SELECT * FROM book Where book.user_id = '" + userId + "' ";
+        log.debug("query fro book list---> {}", query);
+        List<Book> userBookList = DatabaseTemplate.queryForObject(query,new ObjectRowMapper<Book>() {
+            @Override
+            public Book mapRowToObject(ResultSet resultSet) throws SQLException {
+                return setBook(resultSet);
+            }
+        });
+
+        return userBookList;
+    }
+
+    /*private Book setUserBookList(ResultSet resultSet) throws SQLException {
+
+
+        Double price = Double.parseDouble(resultSet.getString("price"));
+        Integer bookId = Integer.parseInt(resultSet.getString("book_id"));
+        Integer userId = Integer.parseInt(resultSet.getString("user_id"));
+
+        Book userBookList = new Book();
+
+        userBookList.setBookId(bookId);
+        userBookList.setUserId(userId);
+        userBookList.setType(resultSet.getString("type"));
+        userBookList.setTitle(resultSet.getString("title"));
+        userBookList.setAuthor(resultSet.getString("author"));
+        userBookList.setPublisher(resultSet.getString("publisher"));
+        userBookList.setDescription(resultSet.getString("description"));
+        userBookList.setPhoto(resultSet.getString("photo"));
+        userBookList.setPrice(price);
+
+        return userBookList;
+    }
+*/
 
     private Detail setSingleBook(ResultSet resultSet) throws SQLException {
         Detail sBook = new Detail();
@@ -109,12 +145,15 @@ public class BookDaoImp implements BookDao {
         return sBook;
     }
     private Book setBook(ResultSet resultSet) throws SQLException {
-        Book book = new Book();
+        ;
         Double price = Double.parseDouble(resultSet.getString("price"));
         Integer bookId = Integer.parseInt(resultSet.getString("book_id"));
+        Integer userId = Integer.parseInt(resultSet.getString("user_id"));
+        Book book = new Book();
 
 
         book.setBookId(bookId);
+        book.setUserId(userId);
         book.setType(resultSet.getString("type"));
         book.setTitle(resultSet.getString("title"));
         book.setAuthor(resultSet.getString("author"));

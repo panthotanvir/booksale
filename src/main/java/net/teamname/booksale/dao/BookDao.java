@@ -16,5 +16,6 @@ public interface BookDao {
 
     public List<Book> getAllBookPost();
 
-    
+    public List<Book> getBookList( Integer userId);
+
 }
