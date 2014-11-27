@@ -167,6 +167,8 @@ public class BookDaoImp implements BookDao {
         book.setDescription(resultSet.getString("description"));
         book.setPhoto(resultSet.getString("photo"));
         book.setPrice(price);
+        book.setDate(resultSet.getString("date"));
+
 
 
         return book;
