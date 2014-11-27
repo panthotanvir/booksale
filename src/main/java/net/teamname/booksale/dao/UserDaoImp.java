@@ -8,6 +8,7 @@ import net.teamname.booksale.util.ObjectRowMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.InputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -146,9 +147,10 @@ public class UserDaoImp implements UserDao {
     }
     @Override
     public void addUser(User user) {
-        String insertQuery = "INSERT INTO `booksale`.`user` (`user_name`, `uni_id`, `dept_id`, `email`, `password`,`phone`,`address`)" +
-                " VALUES (?, ?, ?, ?, ?, ?, ?);";
+        String insertQuery = "INSERT INTO `booksale`.`user` (`user_name`, `uni_id`, `dept_id`, `email`, `password`,`phone`,`address`,`user_photo`)" +
+                " VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
 
+        log.debug("query---> {}", insertQuery);
         String userName = user.getUserName();
         Integer uniId = user.getUniId();
         Integer deptId = user.getDeptId();
@@ -156,7 +158,8 @@ public class UserDaoImp implements UserDao {
         String password = user.getPassword();
         String phoneNo = user.getPhoneNo();
         String address = user.getAddress();
-        DatabaseTemplate.executeInsertQuery(insertQuery, userName,uniId, deptId, email, password, phoneNo, address);
+        InputStream photo = user.getPhoto();
+        DatabaseTemplate.executeInsertQuery(insertQuery, userName,uniId, deptId, email, password, phoneNo, address, photo);
         log.debug("User inserted");
 
     }

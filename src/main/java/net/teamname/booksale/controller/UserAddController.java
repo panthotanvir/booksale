@@ -10,11 +10,9 @@ import org.slf4j.LoggerFactory;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -42,8 +40,8 @@ public class UserAddController extends HttpServlet{
 
         log.info("Uni List Size in UserAddController : {} " , uniList.size());
         log.info("Dept List Size in UserAddController : {} " , deptList.size());
-        log.info("Dept List Size in UserAddController : {} " , deptList.get(0).getDeptId());
-        req.setAttribute("uniList",uniList);
+
+        req.setAttribute("uniList", uniList);
         req.setAttribute("deptList",deptList);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/user/user_registration.jsp");
         requestDispatcher.forward(req, resp);
@@ -52,6 +50,7 @@ public class UserAddController extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        log.debug("data post ");
         createUserFromRequest(req);
         userService.addUser(user);
 
@@ -59,10 +58,24 @@ public class UserAddController extends HttpServlet{
         resp.sendRedirect(req.getContextPath() + "/home");
     }
 
-    private void createUserFromRequest(HttpServletRequest req) {
+    private void createUserFromRequest(HttpServletRequest req) throws IOException, ServletException {
         user = new User();
         Integer uniId = Integer.parseInt(req.getParameter("uni_id"));
         Integer deptId = Integer.parseInt(req.getParameter("dept_id"));
+//        Integer userId = Integer.parseInt(req.getParameter("user_id"));
+
+        InputStream inputStream = null;
+
+        Part filePart = req.getPart("photo");
+        log.debug("file:  {}",filePart);
+
+        if (filePart == null) {
+            log.debug("file name:  {}",filePart.getName());
+            log.debug("file size:  {}",filePart.getSize());
+            log.debug("file type:  {}",filePart.getContentType());
+        }
+        inputStream = filePart.getInputStream();
+        log.debug("inputStream   :  {}",inputStream);
 
         user.setUserName(req.getParameter("user_name"));
         user.setUniId(uniId);
@@ -71,6 +84,7 @@ public class UserAddController extends HttpServlet{
         user.setPassword(req.getParameter("password"));
         user.setAddress(req.getParameter("address"));
         user.setPhoneNo(req.getParameter("phone"));
+        user.setPhoto(inputStream);
     }
 
     private List<University> getAllUniList() {

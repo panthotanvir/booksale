@@ -96,7 +96,7 @@ public class BookDaoImp implements BookDao {
 
     @Override
     public List<Book> getBookList(String authorName) {
-        String query = "SELECT * FROM book";
+        String query = "SELECT * FROM book WHERE author = '"+authorName +"' ";
         return null;
     }
 

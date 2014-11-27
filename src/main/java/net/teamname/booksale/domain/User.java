@@ -1,5 +1,7 @@
 package net.teamname.booksale.domain;
 
+import java.io.InputStream;
+
 /**
  * Created on 11/22/14 3:00 PM.
  *
@@ -16,6 +18,7 @@ public class User {
     private String address;
     private int user;
     private boolean isUser;
+    private InputStream photo;
 
 
     public void setUserName(String userName) {
@@ -82,6 +85,13 @@ public class User {
         return address;
     }
 
+    public InputStream getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(InputStream photo) {
+        this.photo = photo;
+    }
 
     public boolean isUser(){
         if(userId!=0){

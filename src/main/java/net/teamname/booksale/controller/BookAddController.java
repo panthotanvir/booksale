@@ -9,18 +9,19 @@ import org.slf4j.LoggerFactory;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Created by panthotanvir on 11/22/14.
  */
 
 @WebServlet(name = "BookAddController", urlPatterns = "/addbook")
+@MultipartConfig(maxFileSize = 16177215)    // file size up to 16MB
+
 public class BookAddController extends HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(BookAddController.class);
     private Book book;
@@ -47,10 +48,18 @@ public class BookAddController extends HttpServlet {
         resp.sendRedirect(req.getContextPath() + "/home");
     }
 
-    private void createAddFromRequest(HttpServletRequest req) {
+    private void createAddFromRequest(HttpServletRequest req) throws IOException, ServletException {
         book = new Book();
         log.debug("createAddFromRequest is called ");
-
+//        InputStream inputStream = null;
+//
+//        Part filePart = req.getPart("photo") ;
+//        inputStream = filePart.getInputStream();
+//        if (filePart != null) {
+//            log.debug("file name:  {}",filePart.getName());
+//            log.debug("file size:  {}",filePart.getSize());
+//            log.debug("file type:  {}",filePart.getContentType());
+//        }
 //        Integer userId = Integer.parseInt(req.getParameter("user_id"));
         Integer deptId = Integer.parseInt(req.getParameter("dept_id"));
         Double price = Double.parseDouble(req.getParameter("price"));
@@ -64,6 +73,7 @@ public class BookAddController extends HttpServlet {
         book.setTag(req.getParameter("tag"));
         book.setDescription(req.getParameter("description"));
         book.setPrice(price);
+//        book.setPhoto(inputStream);
         book.setPhoto(req.getParameter("photo"));
         book.setContactNo(req.getParameter("contact_no"));
         book.setContactAddress(req.getParameter("contact_address"));

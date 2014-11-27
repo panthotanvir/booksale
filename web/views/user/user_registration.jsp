@@ -15,7 +15,7 @@
 <div class="container content">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <form id= "sky-form" class="sky-form" method="post" action="adduser">
+            <form id= "sky-form" class="sky-form" method="post" action="adduser" enctype="multipart/form-data">
                 <header>User Registration</header>
 
                 <fieldset>
@@ -80,6 +80,13 @@
                                 <input type="text" name="address" placeholder="address">
                             </label>
                         </section>
+                        <section class="col col-6">
+
+                            <label class="input">
+                                <input type="file" name="photo"></input>
+                            </label>
+
+                        </section>
 
                     </div>
 
@@ -91,6 +98,7 @@
                             </label>
 
                         </section>
+
                     </div>
                 </fieldset>
             </form>
