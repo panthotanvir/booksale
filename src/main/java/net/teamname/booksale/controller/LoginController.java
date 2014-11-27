@@ -41,7 +41,7 @@ public class LoginController extends javax.servlet.http.HttpServlet {
         if (isUserVerified(email, password)) {
             setUpSession(req);
             log.debug("Home controller redirected ");
-            resp.sendRedirect(req.getContextPath() + "/home");
+            resp.sendRedirect(req.getContextPath() + "/userhome");
         } else {
             resp.sendRedirect(req.getContextPath());
         }
@@ -57,8 +57,9 @@ public class LoginController extends javax.servlet.http.HttpServlet {
         HttpSession session = req.getSession();
         session.setAttribute("user", user);
         session.setAttribute("authenticatedUser", true);
-        log.info("isUser {}", user.isUser());
+        log.info("isUser before {}", user.isUser());
         session.setAttribute("isUser", user.isUser());
+        log.info("isUser {}", user.isUser());
         log.info("Uni Id before set : {}", user.getUniId());
         log.info("Uni Id before set : {}", user.getUniId());
         session.setAttribute("uniId", user.getUniId());

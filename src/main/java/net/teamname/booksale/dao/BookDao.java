@@ -20,4 +20,5 @@ public interface BookDao {
 
     public List<Book> getBookList(String authorName);
 
+    public List<Book> getDeptBook( Integer deptId);
 }

@@ -100,6 +100,20 @@ public class BookDaoImp implements BookDao {
         return null;
     }
 
+    @Override
+    public List<Book> getDeptBook(Integer deptId) {
+        String query = "SELECT * FROM book Where book.dept_id = '" + deptId + "' ";
+        log.debug("query for dept book list---> {}", query);
+        List<Book> deptBookList = DatabaseTemplate.queryForObject(query,new ObjectRowMapper<Book>() {
+            @Override
+            public Book mapRowToObject(ResultSet resultSet) throws SQLException {
+                return setBook(resultSet);
+            }
+        });
+
+        return deptBookList;
+    }
+
     /*private Book setUserBookList(ResultSet resultSet) throws SQLException {
 
 
@@ -128,6 +142,7 @@ public class BookDaoImp implements BookDao {
         Double price = Double.parseDouble(resultSet.getString("price"));
         Integer bookId = Integer.parseInt(resultSet.getString("book_id"));
         Integer userId = Integer.parseInt(resultSet.getString("user_id"));
+        Integer deptId = Integer.parseInt(resultSet.getString("dept_id"));
 
         log.debug("book_id : {}", bookId);
         sBook.setBookId(bookId);
@@ -147,6 +162,7 @@ public class BookDaoImp implements BookDao {
         sBook.setUniName(resultSet.getString("uni_name"));
         sBook.setDeptName(resultSet.getString("dept_name"));
         sBook.setDate(resultSet.getString("date"));
+        sBook.setDeptId(deptId);
 
         return sBook;
     }

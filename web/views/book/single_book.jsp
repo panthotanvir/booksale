@@ -66,11 +66,11 @@
                     <div class="tab-content">
                         <div id="overview" class="profile-edit tab-pane fade in active">
                             <h2 class="heading-md"> <i class="icon-book-open"></i> <c:out value="${requestScope.bookInfo.title}"/></h2>
-                            <p><i class="fa-times-circle"></i>Date: <c:out value="${requestScope.bookInfo.date}"/></p>
+                            <p><i class="fa fa-calendar"></i>   <c:out value="${requestScope.bookInfo.date}"/></p>
 
-                            <p><i class="fa fa-mobile-phone"></i> Contact No: <span><c:out value="${requestScope.bookInfo.contactNo}"/></span></p>
-                            <p><i class="fa fa-home"></i> Contact Address: <span><c:out value="${requestScope.bookInfo.contactAddress}"/></span></p>
-                            <h5>Price: <span class="label label-info"><c:out value="${requestScope.bookInfo.price}"/></span></h5>
+                            <p><i class="fa fa-mobile-phone"></i>  <span><c:out value="${requestScope.bookInfo.contactNo}"/></span></p>
+                            <p><i class="fa fa-home"></i>   <span><c:out value="${requestScope.bookInfo.contactAddress}"/></span></p>
+                            <h5>Price: <span class="label label-info">  <c:out value="${requestScope.bookInfo.price}"/></span></h5>
 
 
                         </div>
@@ -115,7 +115,7 @@
 
     <!-- Recent Works -->
     <div class="owl-carousel-v1 owl-work-v1 margin-bottom-40">
-        <div class="headline"><h2 class="pull-left">Recommendened Books</h2>
+        <div class="headline"><h2 class="pull-left">You May Like</h2>
             <div class="owl-navigation">
                 <div class="customNavigation">
                     <a class="owl-btn prev-v2"><i class="fa fa-angle-left"></i></a>
@@ -128,14 +128,26 @@
             <div class="item">
                 <a href="#">
                     <em class="overflow-hidden">
-                        <img class="img-responsive" src="assets/img/main/1.jpg" alt="">
+                        <img class="img-responsive" src="assets/img/5.jpg" alt="">
                     </em>
-                           <span>
-                               <strong>Happy New Year</strong>
-                               <i>Anim pariatur cliche reprehenderit</i>
-                           </span>
+                        <span>
+                            <strong>Happy New Year</strong>
+                            <i>Anim pariatur cliche reprehenderit</i>
+                        </span>
                 </a>
             </div>
+            <div class="item">
+                <a href="#">
+                    <em class="overflow-hidden">
+                        <img class="img-responsive" src="assets/img/5.jpg" alt="">
+                    </em>
+                        <span>
+                            <strong>Happy New Year</strong>
+                            <i>Anim pariatur cliche reprehenderit</i>
+                        </span>
+                </a>
+            </div>
+
         </div>
     </div>
     <!-- End Recent Works -->

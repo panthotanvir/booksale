@@ -30,9 +30,12 @@ public class SingleBookController extends HttpServlet {
         log.debug("Single book controller called");
 
         BookService bookService = new BookServiceImp();
+
         Detail singleBook = bookService.getBook(bookId);
 
+
         log.info("Book--------- : {}" ,singleBook.getUserName());
+        log.info("dept Id in Single book : {} ",singleBook.getDeptId());
         req.setAttribute("bookInfo",singleBook);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/book/single_book.jsp");
         requestDispatcher.forward(req, resp);

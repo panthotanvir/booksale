@@ -56,21 +56,6 @@
 <i class="style-switcher-btn fa fa-cogs hidden-xs"></i>
 <div class="style-switcher animated fadeInRight">
     <div class="theme-close"><i class="icon-close"></i></div>
-    <div class="theme-heading">Theme Colors</div>
-    <ul class="list-unstyled">
-        <li class="theme-default theme-active" data-style="default" data-header="light"></li>
-        <li class="theme-blue" data-style="blue" data-header="light"></li>
-        <li class="theme-orange" data-style="orange" data-header="light"></li>
-        <li class="theme-red" data-style="red" data-header="light"></li>
-        <li class="theme-light last" data-style="light" data-header="light"></li>
-
-        <li class="theme-purple" data-style="purple" data-header="light"></li>
-        <li class="theme-aqua" data-style="aqua" data-header="light"></li>
-        <li class="theme-brown" data-style="brown" data-header="light"></li>
-        <li class="theme-dark-blue" data-style="dark-blue" data-header="light"></li>
-        <li class="theme-light-green last" data-style="light-green" data-header="light"></li>
-    </ul>
-    <div style="margin-bottom:18px;"></div>
     <div class="theme-heading">Layouts</div>
     <div class="text-center">
         <a href="javascript:void(0);" class="btn-u btn-u-green btn-block active-switcher-btn wide-layout-btn">Wide</a>
@@ -91,20 +76,9 @@
     </div><!--header-->
 
     <decorator:body/>
-    <!--=== Copyright ===-->
-    <div class="copyright">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <p class="text-center">
-                        Copyright &copy 2014 Department of Computer Science & Engineering, University of Dhaka
-                        <a target="_blank" href="#">BookSale</a> | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
-                    </p>
-                </div>
-
-            </div>
-        </div>
-    </div><!--/copyright-->
+        <!-- Footer -->
+    <jsp:include page="/views/menu/footer.jsp"/>
+        <!-- End Footer-->
 </div> <!-- Wrapper -->
 
 
