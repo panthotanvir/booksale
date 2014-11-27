@@ -65,52 +65,36 @@
                     </ul>
                     <div class="tab-content">
                         <div id="overview" class="profile-edit tab-pane fade in active">
-                            <h2 class="heading-md"><c:out value="${requestScope.bookInfo.title}"/></h2>
-                            <p>Date: <c:out value="${requestScope.bookInfo.date}"/></p>
+                            <h2 class="heading-md"> <i class="icon-book-open"></i> <c:out value="${requestScope.bookInfo.title}"/></h2>
+                            <p><i class="fa-times-circle"></i>Date: <c:out value="${requestScope.bookInfo.date}"/></p>
 
-                            <p>Contact No: <span><c:out value="${requestScope.bookInfo.contactNo}"/></span></p>
-                            <p>Contact Address: <span><c:out value="${requestScope.bookInfo.contactAddress}"/></span></p>
+                            <p><i class="fa fa-mobile-phone"></i> Contact No: <span><c:out value="${requestScope.bookInfo.contactNo}"/></span></p>
+                            <p><i class="fa fa-home"></i> Contact Address: <span><c:out value="${requestScope.bookInfo.contactAddress}"/></span></p>
                             <h5>Price: <span class="label label-info"><c:out value="${requestScope.bookInfo.price}"/></span></h5>
 
 
                         </div>
 
                         <div id="specification" class="profile-edit tab-pane fade">
-                            <h2 class="heading-md"><c:out value="${requestScope.bookInfo.title}"/></h2>
+                            <h2 class="heading-md"> <i class="icon-book-open"></i> <c:out value="${requestScope.bookInfo.title}"/></h2>
 
                             </br>
-                            <dl class="dl-horizontal">
+                            <p><i class="icon-user-follow"></i>  <span><c:out value="${requestScope.bookInfo.author}"/></span></p>
+                            <p><i class="icon-user"></i>  <span><c:out value="${requestScope.bookInfo.publisher}"/></span></p>
+                            <p><i class="fa fa-list"></i>  <span><c:out value="${requestScope.bookInfo.type}"/></span></p>
 
-                                <dt><strong>Author</strong></dt>
-                                <dd><c:out value="${requestScope.bookInfo.author}"/></dd>
-                                <dt><strong>Publisher</strong></dt>
-                                <dd><c:out value="${requestScope.bookInfo.publisher}"/></dd>
-                                <dt><strong>Edition</strong></dt>
-                                <dd>6th</dd>
-                                <dt><strong>Type</strong></dt>
-                                <dd><c:out value="${requestScope.bookInfo.type}"/></dd>
-                                <hr>
-                            </dl>
                         </div>
 
                         <div id="owner" class="profile-edit tab-pane fade">
-                            <h2 class="heading-md"><c:out value="${requestScope.bookInfo.title}"/></h2>
+                            <h2 class="heading-md"> <i class="icon-book-open"></i> <c:out value="${requestScope.bookInfo.title}"/></h2>
                             </br>
-                            <dl class="dl-horizontal">
-                                <dt><strong>Owner Name</strong></dt>
-                                <dd><c:out value="${requestScope.bookInfo.userName}"/></dd>
-                                <dt><strong>Email Address</strong></dt>
-                                <dd><c:out value="${requestScope.bookInfo.email}"/></dd>
-                                <dt><strong>Department</strong></dt>
-                                <dd><c:out value="${requestScope.bookInfo.deptName}"/></dd>
-                                <dt><strong>University</strong></dt>
-                                <dd><c:out value="${requestScope.bookInfo.uniName}"/></dd>
-                                <dt><strong>Phone</strong></dt>
-                                <dd><c:out value="${requestScope.bookInfo.phoneNo}"/></dd>
-                                <dt><strong>Address</strong></dt>
-                                <dd><c:out value="${requestScope.bookInfo.address}"/></dd>
+                            <h3 class="heading-md"> <i class=" icon-user"></i> <c:out value="${requestScope.bookInfo.userName}"/></h3>
+                            <p><i class="fa fa-envelope"></i>  <span><c:out value="${requestScope.bookInfo.email}"/></span></p>
+                            <p><i class="fa fa-university"></i>  <span><c:out value="${requestScope.bookInfo.deptName}"/></span></p>
+                            <p><i class="fa fa-university"></i>  <span><c:out value="${requestScope.bookInfo.uniName}"/></span></p>
+                            <p><i class="fa fa-phone"></i>  <span><c:out value="${requestScope.bookInfo.phoneNo}"/></span></p>
+                            <p><i class="fa fa-home"></i> <span><c:out value="${requestScope.bookInfo.address}"/></span></p>
 
-                            </dl>
                         </div>
                     </div>
                 </div>

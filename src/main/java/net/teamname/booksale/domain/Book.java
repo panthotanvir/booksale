@@ -21,7 +21,15 @@ public class Book {
    private String photo;
    private String contactNo;
    private String contactAddress;
+   private String date;
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 
     public int getBookId() {
         return bookId;

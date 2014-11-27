@@ -36,7 +36,7 @@
                                     <ul class="list-unstyled list-inline blog-info-v2">
                                         <li>Authored By: <a class="color-green" href="#"><c:out value="${library.author}"/></a></li>
                                         <li>Edition 13</li>
-                                        <li><i class="fa fa-clock-o"></i> Jan 02, 2013</li>
+                                        <li><i class="fa fa-clock-o"></i> <c:out value="${library.date}"/></li>
                                     </ul>
                                     <h3 class="heading-xs">Price<span class="pull-right"><c:out value="${library.price}"/></span></h3>
                                 </div>

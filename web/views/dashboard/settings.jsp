@@ -99,7 +99,7 @@
                                             <section>
                                                 <label class="input">
                                                     <i class="icon-append fa fa-lock"></i>
-                                                    <input type="password" id="password"  name="password" value="<c:out value="${requestScope.settingInfo.password}"/>">
+                                                    <input type="password"  name="password" value="<c:out value="${requestScope.settingInfo.password}"/>">
                                                     <b class="tooltip tooltip-bottom-right">Don't forget your password</b>
                                                 </label>
                                             </section>
@@ -134,7 +134,7 @@
                                             <section>
                                                 <label class="input">
                                                     <i class="icon-append fa fa-lock"></i>
-                                                    <input type="text" id="phone" placeholder="Contact" name="phone_no" value="<c:out value="${requestScope.settingInfo.phoneNo}"/>">
+                                                    <input type="text" id="phone" placeholder="Contact" name="phone" value="<c:out value="${requestScope.settingInfo.phoneNo}"/>">
                                                     <b class="tooltip tooltip-bottom-right">Needed to verify your Contact</b>
                                                 </label>
                                             </section>
@@ -144,7 +144,7 @@
                                             <section>
                                                 <label class="input">
                                                     <i class="icon-append fa fa-lock"></i>
-                                                    <input type="text" placeholder="Address" name="contact_addres" value="<c:out value="${requestScope.settingInfo.address}"/>">
+                                                    <input type="text" placeholder="Address" name="address" value="<c:out value="${requestScope.settingInfo.address}"/>">
                                                     <b class="tooltip tooltip-bottom-right">Needed to verify your Address</b>
                                                 </label>
                                             </section>
