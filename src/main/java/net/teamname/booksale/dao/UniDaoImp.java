@@ -32,11 +32,45 @@ public class UniDaoImp implements UniDao {
         return uniList;
     }
 
+    @Override
+    public List<University> getSpecificUniDept(int uniId) {
+        String query = "SELECT * FROM department where uni_id = '"+uniId+"' ";
+        List<University> uniList = DatabaseTemplate.queryForObject(query,new ObjectRowMapper<University>() {
+            @Override
+            public University mapRowToObject(ResultSet resultSet) throws SQLException {
+                return setUniDept(resultSet);
+            }
+        });
+
+        log.info("Uni List Size : {} " , uniList.size());
+        return uniList;
+    }
+
+    private University setUniDept(ResultSet resultSet) throws SQLException {
+        Integer uniId = Integer.parseInt(resultSet.getString("uni_id"));
+        Integer deptId = Integer.parseInt(resultSet.getString("dept_id"));
+
+        University dept = new University();
+        dept.setId(uniId);
+        dept.setDeptId(deptId);
+        dept.setDeptName(resultSet.getString("dept_name"));
+        dept.setUniName(resultSet.getString("uni_name"));
+        return dept;
+    }
+
+    @Override
+    public University getDept(int deptID) {
+        return null;
+    }
 
 
     private University setUniversity(ResultSet resultSet) throws SQLException {
+
+        Integer uniId = Integer.parseInt(resultSet.getString("uni_id"));
+
         University uni = new University();
         uni.setUniName(resultSet.getString("uni_name"));
+        uni.setId(uniId);
 
         return uni;
     }
