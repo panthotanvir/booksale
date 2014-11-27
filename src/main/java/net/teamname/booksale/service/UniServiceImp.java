@@ -22,6 +22,11 @@ public class UniServiceImp implements UniService {
     }
 
     @Override
+    public List<University> getAllDept() {
+        return uniDao.getAllDept();
+    }
+
+    @Override
     public List<University> getSpecificUniDept(int uniId) {
         return  uniDao.getSpecificUniDept(uniId);
     }

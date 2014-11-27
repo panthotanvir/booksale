@@ -40,7 +40,8 @@ public class HomeController extends javax.servlet.http.HttpServlet {
 //    }
 
     private List<University> getAllUniList()  {
-       return new UniServiceImp().getAllUniversity();
+
+        return new UniServiceImp().getAllUniversity();
     }
 
    private List<Book> getAllBookList()  {

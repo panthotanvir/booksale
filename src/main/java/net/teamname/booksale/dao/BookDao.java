@@ -18,4 +18,6 @@ public interface BookDao {
 
     public List<Book> getBookList( Integer userId);
 
+    public List<Book> getBookList(String authorName);
+
 }

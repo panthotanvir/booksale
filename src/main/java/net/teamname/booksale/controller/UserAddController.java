@@ -1,6 +1,8 @@
 package net.teamname.booksale.controller;
 
+import net.teamname.booksale.domain.University;
 import net.teamname.booksale.domain.User;
+import net.teamname.booksale.service.UniServiceImp;
 import net.teamname.booksale.service.UserServiceImp;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,10 +37,18 @@ public class UserAddController extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("User Registration Controller is requested ");
+        List<University> uniList = getAllUniList();
+        List<University> deptList = getAllDeptList();
 
+        log.info("Uni List Size in UserAddController : {} " , uniList.size());
+        log.info("Dept List Size in UserAddController : {} " , deptList.size());
+        log.info("Dept List Size in UserAddController : {} " , deptList.get(0).getDeptId());
+        req.setAttribute("uniList",uniList);
+        req.setAttribute("deptList",deptList);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/user/user_registration.jsp");
         requestDispatcher.forward(req, resp);
     }
+
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -63,5 +73,11 @@ public class UserAddController extends HttpServlet{
         user.setPhoneNo(req.getParameter("phone"));
     }
 
+    private List<University> getAllUniList() {
+        return new UniServiceImp().getAllUniversity();
+    }
+    private List<University> getAllDeptList() {
+        return new UniServiceImp().getAllDept();
+    }
 
 }

@@ -94,6 +94,12 @@ public class BookDaoImp implements BookDao {
         return userBookList;
     }
 
+    @Override
+    public List<Book> getBookList(String authorName) {
+        String query = "SELECT * FROM book";
+        return null;
+    }
+
     /*private Book setUserBookList(ResultSet resultSet) throws SQLException {
 
 

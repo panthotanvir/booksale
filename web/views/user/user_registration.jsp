@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: mithunshawon
@@ -26,19 +27,25 @@
                             </label>
                         </section>
                         <section class="col col-6">
-                            <label class="input">
-                                <!-- select option will use  , drop down usable-->
-                                <input type="text" name="uni_id" placeholder="uni_id">
-                            </label>
+
+                                <select name="uni_id" class="form-control">
+                                    <c:forEach var="uni" items="${requestScope.uniList}" varStatus="uniStatus">
+                                        <option value="<c:out value="${uni.id}"/>"><c:out value="${uni.uniName}"/></option>
+                                    </c:forEach>
+                                </select>
+
                         </section>
                     </div>
 
                     <div class="row">
                         <section class="col col-6">
-                            <label class="input">
 
-                                <input type="text" name="dept_id" placeholder="Dept id">
-                            </label>
+                                <select name="dept_id" class="form-control">
+                                    <c:forEach var="dept" items="${requestScope.deptList}" varStatus="deptStatus">
+                                        <option value="<c:out value="${dept.deptId}"/>"><c:out value="${dept.deptName}"/></option>
+                                    </c:forEach>
+                                </select>
+
                         </section>
                         <section class="col col-6">
                             <label class="input">
