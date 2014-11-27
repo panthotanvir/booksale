@@ -23,9 +23,6 @@
             <a href="library"><i class="fa fa-cubes"></i> My Books</a>
         </li>
         <li class="list-group-item">
-            <a href="history"><i class="fa fa-history"></i> History</a>
-        </li>
-        <li class="list-group-item">
             <a href="fellow"><i class="fa fa-group"></i>Departmental Students</a>
         </li>
         <li class="list-group-item">

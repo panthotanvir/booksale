@@ -18,5 +18,9 @@ public interface BookService {
 
     public List<Book>  getBookList(Integer userId);
 
+
     public List<Book> getBookList(String authorName);
+
+    public List<Book>  getDeptBook(Integer deptId);
+
 }
