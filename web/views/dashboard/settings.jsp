@@ -36,7 +36,7 @@
                                 <h2 class="heading-md">Manage your Name, Department and University.</h2>
 
                                 </br>
-                                <form class="sky-form" id="sky-form4" action="#">
+                                <form class="sky-form" id="sky-form4" methon="post" action="updateuser">
                                     <dl class="dl-horizontal">
 
                                         <dt>User Name</dt>
@@ -53,8 +53,12 @@
                                         <dd>
                                             <section>
                                                 <label class="input">
-                                                    <i class="icon-append fa fa-lock"></i>
-                                                    <input type="department" id="dept_id"  name="dept_name" value="<c:out value="${requestScope.settingInfo.deptName}"/>">
+
+                                                    <select name="dept_id" class="form-control">
+                                                        <c:forEach var="dept" items="${requestScope.deptList}" varStatus="deptStatus">
+                                                            <option value="<c:out value="${dept.deptId}"/>"><c:out value="${dept.deptName}"/></option>
+                                                        </c:forEach>
+                                                    </select>
                                                     <b class="tooltip tooltip-bottom-right">Needed to verify your Department</b>
                                                 </label>
                                             </section>
@@ -63,8 +67,12 @@
                                         <dd>
                                             <section>
                                                 <label class="input">
-                                                    <i class="icon-append fa fa-lock"></i>
-                                                    <input type="text" name="uni_name" value="<c:out value="${requestScope.settingInfo.uniName}"/>">
+
+                                                    <select name="uni_id" class="form-control">
+                                                        <c:forEach var="uni" items="${requestScope.uniList}" varStatus="uniStatus">
+                                                            <option value="<c:out value="${uni.id}"/>"><c:out value="${uni.uniName}"/></option>
+                                                        </c:forEach>
+                                                    </select>
                                                     <b class="tooltip tooltip-bottom-right">Needed to verify your University</b>
                                                 </label>
                                             </section>

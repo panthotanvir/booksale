@@ -19,6 +19,9 @@ dependencies {
     runtime 'javax.servlet:jstl:1.2'
     runtime 'mysql:mysql-connector-java:5.1.30'
     runtime 'opensymphony:sitemesh:2.4.2'
+
+    testCompile 'junit:junit:4.11'
+
 }
 
 task deploy(type: Copy) {
