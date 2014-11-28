@@ -25,9 +25,12 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/scrollbar/src/perfect-scrollbar.css" />" media="all">
 
     <!-- CSS Page Style -->
+    <link rel="stylesheet" type="text/css" href="<c:url value="/assets/css/pages/page_search.css" />" media="all">
     <link rel="stylesheet" type="text/css" href="<c:url value="/assets/css/pages/page_log_reg_v1.css" />" media="all">
     <link rel="stylesheet" type="text/css" href="<c:url value="/assets/css/pages/profile.css" />" media="all">
 
+    <!-- CSS Portfoilo -->
+    <link rel="stylesheet" type="text/css" href="<c:url value="/assets/css/pages/portfolio-v1.css" />" media="all">
     <!-- CSS Theme -->
     <link rel="stylesheet" type="text/css" href="<c:url value="/assets/css/themes/default.css" />" media="all">
     <link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/sky-forms/version-2.0.1/css/custom-sky-forms.css" />" media="all">

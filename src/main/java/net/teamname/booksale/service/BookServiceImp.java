@@ -45,6 +45,11 @@ public class BookServiceImp implements BookService {
     }
 
     @Override
+    public List<Book> searchTitleBookList(String title) {
+        return bookDao.searchTitleBookList(title);
+    }
+
+    @Override
 
     public List<Book> getBookList(String authorName) {
         return bookDao.getBookList(authorName);

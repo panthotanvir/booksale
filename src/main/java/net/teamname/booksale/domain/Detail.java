@@ -29,6 +29,35 @@ public class Detail {
     private String contactNo;
     private String contactAddress;
     private String date;
+    private Book book;
+    private User user;
+    private University university;
+
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public University getUniversity() {
+        return university;
+    }
+
+    public void setUniversity(University university) {
+        this.university = university;
+    }
+
 
     public String getDate() {
         return date;

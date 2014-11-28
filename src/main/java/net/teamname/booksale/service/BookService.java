@@ -18,6 +18,7 @@ public interface BookService {
 
     public List<Book>  getBookList(Integer userId);
 
+    public List<Book> searchTitleBookList( String title );
 
     public List<Book> getBookList(String authorName);
 

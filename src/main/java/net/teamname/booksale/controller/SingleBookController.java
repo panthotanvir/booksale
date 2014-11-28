@@ -34,8 +34,8 @@ public class SingleBookController extends HttpServlet {
         Detail singleBook = bookService.getBook(bookId);
 
 
-        log.info("Book--------- : {}" ,singleBook.getUserName());
-        log.info("dept Id in Single book : {} ",singleBook.getDeptId());
+        log.info("User--------- : {}" ,singleBook.getUser().getUserName());
+        log.info("dept Name in Single book : {} ",singleBook.getUniversity().getDeptName());
         req.setAttribute("bookInfo",singleBook);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/book/single_book.jsp");
         requestDispatcher.forward(req, resp);

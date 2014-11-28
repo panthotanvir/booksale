@@ -2,6 +2,8 @@ package net.teamname.booksale.dao;
 
 import net.teamname.booksale.domain.Book;
 import net.teamname.booksale.domain.Detail;
+import net.teamname.booksale.domain.University;
+import net.teamname.booksale.domain.User;
 import net.teamname.booksale.util.DatabaseTemplate;
 import net.teamname.booksale.util.ObjectRowMapper;
 import org.slf4j.Logger;
@@ -114,6 +116,21 @@ public class BookDaoImp implements BookDao {
         return deptBookList;
     }
 
+    @Override
+    public List<Book> searchTitleBookList(String title) {
+        String query = "SELECT * FROM book WHERE title like '"+title+"%'";
+        log.info("like query in searchTitleBookList  : {}",query);
+
+        List<Book> titleBookList = DatabaseTemplate.queryForObject(query,new ObjectRowMapper<Book>() {
+            @Override
+            public Book mapRowToObject(ResultSet resultSet) throws SQLException {
+                return setBook(resultSet);
+            }
+        });
+
+        return titleBookList;
+    }
+
     /*private Book setUserBookList(ResultSet resultSet) throws SQLException {
 
 
@@ -139,40 +156,49 @@ public class BookDaoImp implements BookDao {
 
     private Detail setSingleBook(ResultSet resultSet) throws SQLException {
         Detail sBook = new Detail();
+        Book book = new Book();
+        User user = new User();
+        University uni = new University();
         Double price = Double.parseDouble(resultSet.getString("price"));
         Integer bookId = Integer.parseInt(resultSet.getString("book_id"));
         Integer userId = Integer.parseInt(resultSet.getString("user_id"));
         Integer deptId = Integer.parseInt(resultSet.getString("dept_id"));
 
         log.debug("book_id : {}", bookId);
-        sBook.setBookId(bookId);
-        sBook.setType(resultSet.getString("type"));
-        sBook.setTitle(resultSet.getString("title"));
-        sBook.setAuthor(resultSet.getString("author"));
-        sBook.setPublisher(resultSet.getString("publisher"));
-        sBook.setDescription(resultSet.getString("description"));
-        sBook.setPhoto(resultSet.getString("photo"));
-        sBook.setContactAddress(resultSet.getString("contact_address"));
-        sBook.setContactNo(resultSet.getString("contact_no"));
-        sBook.setPrice(price);
-        sBook.setUserName(resultSet.getString("user_name"));
-        sBook.setEmail(resultSet.getString("email"));
-        sBook.setAddress(resultSet.getString("address"));
-        sBook.setPhoneNo(resultSet.getString("phone"));
-        sBook.setUniName(resultSet.getString("uni_name"));
-        sBook.setDeptName(resultSet.getString("dept_name"));
-        sBook.setDate(resultSet.getString("date"));
-        sBook.setDeptId(deptId);
+
+        book.setBookId(bookId);
+        book.setType(resultSet.getString("type"));
+        book.setTitle(resultSet.getString("title"));
+        book.setAuthor(resultSet.getString("author"));
+        book.setPublisher(resultSet.getString("publisher"));
+        book.setDescription(resultSet.getString("description"));
+        book.setPhoto(resultSet.getString("photo"));
+        book.setContactAddress(resultSet.getString("contact_address"));
+        book.setContactNo(resultSet.getString("contact_no"));
+        book.setTag(resultSet.getString("tag"));
+        book.setPrice(price);
+        book.setDate(resultSet.getString("date"));
+        user.setUserName(resultSet.getString("user_name"));
+        user.setEmail(resultSet.getString("email"));
+        user.setAddress(resultSet.getString("address"));
+        user.setPhoneNo(resultSet.getString("phone"));
+        user.setUserId(userId);
+        uni.setUniName(resultSet.getString("uni_name"));
+        uni.setDeptName(resultSet.getString("dept_name"));
+        uni.setDeptId(deptId);
+
+        sBook.setBook(book);
+        sBook.setUser(user);
+        sBook.setUniversity(uni);
 
         return sBook;
     }
     private Book setBook(ResultSet resultSet) throws SQLException {
-        ;
+
         Double price = Double.parseDouble(resultSet.getString("price"));
         Integer bookId = Integer.parseInt(resultSet.getString("book_id"));
         Integer userId = Integer.parseInt(resultSet.getString("user_id"));
         Book book = new Book();
-
 
         book.setBookId(bookId);
         book.setUserId(userId);
@@ -184,8 +210,6 @@ public class BookDaoImp implements BookDao {
         book.setPhoto(resultSet.getString("photo"));
         book.setPrice(price);
         book.setDate(resultSet.getString("date"));
-
-
 
         return book;
     }
