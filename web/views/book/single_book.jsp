@@ -51,7 +51,6 @@
             </div>
         </div>
         <!-- End Carousel -->
-
         <!-- Content Info -->
         <div class="col-md-7">
             <div class="profile-body margin-bottom-20">
@@ -103,14 +102,10 @@
         </div>
         <!-- End Content Info -->
     </div><!--/row-->
-
     <div class="tag-box tag-box-v2">
         <h3>Description</h3>
         <p><c:out value="${requestScope.bookInfo.book.description}"/></p>
     </div>
-
-
-
     <div class="margin-bottom-20 clearfix"></div>
 
     <!-- Recent Works -->
@@ -125,29 +120,21 @@
         </div>
 
         <div class="owl-slider-v2">
-            <div class="item">
-                <a href="#">
-                    <em class="overflow-hidden">
-                        <img class="img-responsive" src="assets/img/5.jpg" alt="">
-                    </em>
-                        <span>
-                            <strong>Happy New Year</strong>
-                            <i>Anim pariatur cliche reprehenderit</i>
-                        </span>
-                </a>
-            </div>
-            <div class="item">
-                <a href="#">
-                    <em class="overflow-hidden">
-                        <img class="img-responsive" src="assets/img/5.jpg" alt="">
-                    </em>
-                        <span>
-                            <strong>Happy New Year</strong>
-                            <i>Anim pariatur cliche reprehenderit</i>
-                        </span>
-                </a>
-            </div>
-
+            <c:if test="${requestScope.recommendedBook != null}">
+                <c:forEach var="recommend" items="${requestScope.recommendedBook}" varStatus="item">
+                    <div class="item">
+                        <a href="#">
+                            <em class="overflow-hidden">
+                                <img alt="" src="uploads/<c:out value="${recommend.photo}"/>.jpg" height="200px" width="270px">
+                            </em>
+                                <span>
+                                    <strong><a class="btn-u btn-u-sm" href="singleBook?bookId=${recommend.bookId}"><c:out value="${recommend.title}"/></a></strong>
+                                    <i><span class="color-green">Price(Tk):</span><c:out value="${recommend.price}"/></i>
+                                </span>
+                        </a>
+                    </div>
+                </c:forEach>
+            </c:if>
         </div>
     </div>
     <!-- End Recent Works -->

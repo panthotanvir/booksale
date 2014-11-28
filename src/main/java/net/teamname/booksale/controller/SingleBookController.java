@@ -1,5 +1,6 @@
 package net.teamname.booksale.controller;
 
+import net.teamname.booksale.domain.Book;
 import net.teamname.booksale.domain.Detail;
 import net.teamname.booksale.service.BookService;
 import net.teamname.booksale.service.BookServiceImp;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Created on 11/24/14 12:43 AM.
@@ -33,12 +35,22 @@ public class SingleBookController extends HttpServlet {
 
         Detail singleBook = bookService.getBook(bookId);
 
-
         log.info("User--------- : {}" ,singleBook.getUser().getUserName());
         log.info("dept Name in Single book : {} ",singleBook.getUniversity().getDeptName());
+
+        Integer deptId = singleBook.getDeptId();
+        List<Book> recommendedBookList = getDeptBookList(deptId);
+        log.info("Book--------- : {}" ,singleBook.getUserName());
+        log.info("dept Id in Single book : {} ",singleBook.getDeptId());
+
         req.setAttribute("bookInfo",singleBook);
+        req.setAttribute("recommendedBook",recommendedBookList);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/book/single_book.jsp");
         requestDispatcher.forward(req, resp);
 
+    }
+
+    private List<Book> getDeptBookList(Integer deptId)  {
+        return new BookServiceImp().getDeptBook(deptId);
     }
 }
