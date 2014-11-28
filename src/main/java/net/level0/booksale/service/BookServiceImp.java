@@ -59,4 +59,14 @@ public class BookServiceImp implements BookService {
         return  bookDao.getDeptBook(deptId);
     }
 
+    @Override
+    public List<Book> searchAuthorBookList(String authorName) {
+        return bookDao.searchAuthorBookList(authorName);
+    }
+
+    @Override
+    public List<Book> searchPublisherBookList(String publisherName) {
+        return bookDao.searchPublisherBookList(publisherName);
+    }
+
 }

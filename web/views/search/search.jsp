@@ -1,11 +1,13 @@
 <%--
-  Created by IntelliJ IDEA.
-  User: devil
+
+  User: mithunshawon
   Date: 11/28/14
   Time: 12:35 PM
-  To change this template use File | Settings | File Templates.
+
 --%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Search</title>
@@ -14,6 +16,11 @@
             line-height: 1.6;
         }
     </style>
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+        });
+    </script>
 </head>
 <body>
 <div class="search-block parallaxBg" style="background-position: 50% 16px;">
@@ -24,22 +31,43 @@
             <div class="input-group">
                 <input type="text" name="key" class="form-control" placeholder="Search what you need ...">
                     <span class="input-group-btn">
-                        <button class="btn-u" type="submit" name="submit" ><i class="fa fa-search"></i></button>
+                        <button id="btn" class="btn-u" type="submit" name="submit"><i class="fa fa-search"></i></button>
 
                     </span>
             </div>
 
-
             <div class="inline-group">
-                <label class="checkbox"><input type="radio" name="search_key" value="title"><i></i>Title</label>
-                <label class="checkbox"><input type="radio" name="search_key" value="author"><i></i>Author</label>
-                <label class="checkbox"><input type="radio" name="search_key" value="publisher"><i></i>Publisher</label>
+                <label class="checkbox"><input type="radio" name="search_key" value="title" id="title"><i></i>Title</label>
+                <label class="checkbox"><input type="radio" name="search_key" value="author" id="author"><i></i>Author</label>
+                <label class="checkbox"><input type="radio" name="search_key" value="publisher" id="publisher"><i></i>Publisher</label>
             </div>
             </form>
         </div>
 
     </div>
 </div>
+
+
+<!--/container-->
+<div class="container content">
+    <div class="row">
+        <c:if test="${requestScope.bookList != null}">
+            <c:forEach var="book" items="${requestScope.bookList}" varStatus="item">
+                <div class="col-md-3">
+                    <div class="view view-tenth">
+                        <img class="img-responsive" src="uploads/<c:out value="${book.photo}"/>.jpg" alt="" />
+                        <div class="mask">
+                            <h2><c:out value="${book.title}"/></h2>
+                            <h4><c:out value="${book.author}"/></h4>
+                            <a href="singleBook?bookId=${book.bookId}" class="info">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </c:forEach>
+        </c:if>
+    </div><!--/row-->
+</div><!--/container-->
+<!--=== End Content Part ===-->
 
 </body>
 </html>

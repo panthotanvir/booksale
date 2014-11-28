@@ -23,4 +23,8 @@ public interface BookDao {
     public List<Book> getDeptBook( Integer deptId);
 
     public List<Book> searchTitleBookList( String title );
+
+    public List<Book> searchAuthorBookList( String authorName );
+
+    public List<Book> searchPublisherBookList( String publisherName );
 }

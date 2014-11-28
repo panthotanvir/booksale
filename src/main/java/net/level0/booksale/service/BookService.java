@@ -16,12 +16,17 @@ public interface BookService {
 
     public List<Book> getAllBookPost();
 
-    public List<Book>  getBookList(Integer userId);
+    public List<Book> getBookList(Integer userId);
 
-    public List<Book> searchTitleBookList( String title );
+    public List<Book> searchTitleBookList(String title);
 
     public List<Book> getBookList(String authorName);
 
-    public List<Book>  getDeptBook(Integer deptId);
+    public List<Book> getDeptBook(Integer deptId);
+
+    public List<Book> searchAuthorBookList(String authorName);
+
+    public List<Book> searchPublisherBookList(String publisherName);
+
 
 }

@@ -132,23 +132,56 @@ public class BookDaoImp implements BookDao {
         return titleBookList;
     }
 
-    /*private Book setUserBookList(ResultSet resultSet) throws SQLException {
-        Double price = Double.parseDouble(resultSet.getString("price"));
-        Integer bookId = Integer.parseInt(resultSet.getString("book_id"));
-        Integer userId = Integer.parseInt(resultSet.getString("user_id"));
-        Book userBookList = new Book();
-        userBookList.setBookId(bookId);
-        userBookList.setUserId(userId);
-        userBookList.setType(resultSet.getString("type"));
-        userBookList.setTitle(resultSet.getString("title"));
-        userBookList.setAuthor(resultSet.getString("author"));
-        userBookList.setPublisher(resultSet.getString("publisher"));
-        userBookList.setDescription(resultSet.getString("description"));
-        userBookList.setPhoto(resultSet.getString("photo"));
-        userBookList.setPrice(price);
-        return userBookList;
+    @Override
+    public List<Book> searchAuthorBookList(String authorName) {
+
+        String query = "SELECT * FROM book WHERE author like '" + authorName + "%'";
+        log.info("like query in searchAuthorBookList  : {}", query);
+
+        List<Book> authorBookList = DatabaseTemplate.queryForObject(query, new ObjectRowMapper<Book>() {
+            @Override
+            public Book mapRowToObject(ResultSet resultSet) throws SQLException {
+                return setBook(resultSet);
+            }
+        });
+
+        return authorBookList;
+
     }
-*/
+
+    @Override
+    public List<Book> searchPublisherBookList(String publisherName) {
+        String query = "SELECT * FROM book WHERE publisher like '" + publisherName + "%'";
+        log.info("like query in searchPublisherBookList  : {}", query);
+
+        List<Book> publisherBookList = DatabaseTemplate.queryForObject(query, new ObjectRowMapper<Book>() {
+            @Override
+            public Book mapRowToObject(ResultSet resultSet) throws SQLException {
+                return setBook(resultSet);
+            }
+        });
+
+        return publisherBookList;
+
+    }
+
+//    private Book setUserBookList(ResultSet resultSet) throws SQLException {
+//        Double price = Double.parseDouble(resultSet.getString("price"));
+//        Integer bookId = Integer.parseInt(resultSet.getString("book_id"));
+//        Integer userId = Integer.parseInt(resultSet.getString("user_id"));
+//        Book userBookList = new Book();
+//        userBookList.setBookId(bookId);
+//        userBookList.setUserId(userId);
+//        userBookList.setType(resultSet.getString("type"));
+//        userBookList.setTitle(resultSet.getString("title"));
+//        userBookList.setAuthor(resultSet.getString("author"));
+//        userBookList.setPublisher(resultSet.getString("publisher"));
+//        userBookList.setDescription(resultSet.getString("description"));
+//        userBookList.setPhoto(resultSet.getString("photo"));
+//        userBookList.setPrice(price);
+//        return userBookList;
+//    }
+
 
     private Detail setSingleBook(ResultSet resultSet) throws SQLException {
         Detail sBook = new Detail();

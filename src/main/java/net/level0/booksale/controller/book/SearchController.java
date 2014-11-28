@@ -50,7 +50,7 @@ public class SearchController extends HttpServlet{
         log.info("Book list size : {}" ,bookList.size() );
         req.setAttribute("bookList",bookList);
 
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/search/search_result_show.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/search/search.jsp");
         requestDispatcher.forward(req, resp);
 
     }
@@ -61,10 +61,10 @@ public class SearchController extends HttpServlet{
             return bookService.searchTitleBookList(key);
         }
         else if(keyWord.equals("author")){
-
+            return bookService.searchAuthorBookList(key);
         }
         else if(keyWord.equals("publisher")){
-
+            return bookService.searchPublisherBookList(key);
         }
 
         return  null;
