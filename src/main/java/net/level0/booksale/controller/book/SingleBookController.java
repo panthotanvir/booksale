@@ -35,10 +35,14 @@ public class SingleBookController extends HttpServlet {
 
         Detail singleBook = bookService.getBook(bookId);
 
+        log.info("User--------- : {}" ,singleBook.getUser().getUserName());
+        log.info("dept Name in Single book : {} ",singleBook.getUniversity().getDeptName());
+
         Integer deptId = singleBook.getDeptId();
         List<Book> recommendedBookList = getDeptBookList(deptId);
         log.info("Book--------- : {}" ,singleBook.getUserName());
         log.info("dept Id in Single book : {} ",singleBook.getDeptId());
+
         req.setAttribute("bookInfo",singleBook);
         req.setAttribute("recommendedBook",recommendedBookList);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/book/single_book.jsp");

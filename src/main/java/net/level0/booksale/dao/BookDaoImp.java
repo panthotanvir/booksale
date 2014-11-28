@@ -2,6 +2,8 @@ package net.level0.booksale.dao;
 
 import net.level0.booksale.domain.Book;
 import net.level0.booksale.domain.Detail;
+import net.level0.booksale.domain.University;
+import net.level0.booksale.domain.User;
 import net.level0.booksale.util.DatabaseTemplate;
 import net.level0.booksale.util.ObjectRowMapper;
 import org.slf4j.Logger;
@@ -16,6 +18,7 @@ import java.util.List;
  */
 public class BookDaoImp implements BookDao {
     private static final Logger log = LoggerFactory.getLogger(BookDaoImp.class);
+
     @Override
     public void addBook(Book book) {
         String insertQuery = "INSERT INTO `booksale`.`book` (`user_id`, `dept_id`, `title`, `author`, `publisher`," +
@@ -35,16 +38,16 @@ public class BookDaoImp implements BookDao {
         String contactNo = book.getContactNo();
         String contactAddress = book.getContactAddress();
 
-        DatabaseTemplate.executeInsertQuery(insertQuery, userId, deptId, title, author, publisher, tag, type, description, price, photo,contactNo, contactAddress);
+        DatabaseTemplate.executeInsertQuery(insertQuery, userId, deptId, title, author, publisher, tag, type, description, price, photo, contactNo, contactAddress);
         log.debug("book post  inserted");
     }
 
     @Override
     public Detail getBook(int bookId) {
         log.debug("Detail getBook called");
-        String query = "SELECT * FROM book,user,university,department WHERE book_id = ' " +bookId+ " ' AND book.user_id = user.user_id AND " +
-                "book.dept_id = department.dept_id AND user.uni_id = university.uni_id  " ;
-        log.debug("query :   {}",query);
+        String query = "SELECT * FROM book,user,university,department WHERE book_id = ' " + bookId + " ' AND book.user_id = user.user_id AND " +
+                "book.dept_id = department.dept_id AND user.uni_id = university.uni_id  ";
+        log.debug("query :   {}", query);
 
         List<Detail> bookInfo = DatabaseTemplate.queryForObject(query, new ObjectRowMapper<Detail>() {
             @Override
@@ -55,7 +58,7 @@ public class BookDaoImp implements BookDao {
         });
 
 
-        log.debug("bookInfo size: {}" ,bookInfo.size());
+        log.debug("bookInfo size: {}", bookInfo.size());
 //        log.debug("content: {}" ,bookInfo.get(0));
         if (bookInfo.size() != 0) {
             log.debug("Book information returned");
@@ -69,14 +72,14 @@ public class BookDaoImp implements BookDao {
         log.info("GetAll Book Called ");
 
         String query = "SELECT * FROM book";
-        List<Book> bookList = DatabaseTemplate.queryForObject(query,new ObjectRowMapper<Book>() {
+        List<Book> bookList = DatabaseTemplate.queryForObject(query, new ObjectRowMapper<Book>() {
             @Override
             public Book mapRowToObject(ResultSet resultSet) throws SQLException {
                 return setBook(resultSet);
             }
         });
 
-        log.info("book List Size : {} " , bookList.size());
+        log.info("book List Size : {} ", bookList.size());
         return bookList;
     }
 
@@ -84,7 +87,7 @@ public class BookDaoImp implements BookDao {
     public List<Book> getBookList(Integer userId) {
         String query = "SELECT * FROM book Where book.user_id = '" + userId + "' ";
         log.debug("query fro book list---> {}", query);
-        List<Book> userBookList = DatabaseTemplate.queryForObject(query,new ObjectRowMapper<Book>() {
+        List<Book> userBookList = DatabaseTemplate.queryForObject(query, new ObjectRowMapper<Book>() {
             @Override
             public Book mapRowToObject(ResultSet resultSet) throws SQLException {
                 return setBook(resultSet);
@@ -96,7 +99,7 @@ public class BookDaoImp implements BookDao {
 
     @Override
     public List<Book> getBookList(String authorName) {
-        String query = "SELECT * FROM book WHERE author = '"+authorName +"' ";
+        String query = "SELECT * FROM book WHERE author = '" + authorName + "' ";
         return null;
     }
 
@@ -104,7 +107,7 @@ public class BookDaoImp implements BookDao {
     public List<Book> getDeptBook(Integer deptId) {
         String query = "SELECT * FROM book Where book.dept_id = '" + deptId + "' ";
         log.debug("query for dept book list---> {}", query);
-        List<Book> deptBookList = DatabaseTemplate.queryForObject(query,new ObjectRowMapper<Book>() {
+        List<Book> deptBookList = DatabaseTemplate.queryForObject(query, new ObjectRowMapper<Book>() {
             @Override
             public Book mapRowToObject(ResultSet resultSet) throws SQLException {
                 return setBook(resultSet);
@@ -114,15 +117,26 @@ public class BookDaoImp implements BookDao {
         return deptBookList;
     }
 
+    @Override
+    public List<Book> searchTitleBookList(String title) {
+        String query = "SELECT * FROM book WHERE title like '" + title + "%'";
+        log.info("like query in searchTitleBookList  : {}", query);
+
+        List<Book> titleBookList = DatabaseTemplate.queryForObject(query, new ObjectRowMapper<Book>() {
+            @Override
+            public Book mapRowToObject(ResultSet resultSet) throws SQLException {
+                return setBook(resultSet);
+            }
+        });
+
+        return titleBookList;
+    }
+
     /*private Book setUserBookList(ResultSet resultSet) throws SQLException {
-
-
         Double price = Double.parseDouble(resultSet.getString("price"));
         Integer bookId = Integer.parseInt(resultSet.getString("book_id"));
         Integer userId = Integer.parseInt(resultSet.getString("user_id"));
-
         Book userBookList = new Book();
-
         userBookList.setBookId(bookId);
         userBookList.setUserId(userId);
         userBookList.setType(resultSet.getString("type"));
@@ -132,47 +146,56 @@ public class BookDaoImp implements BookDao {
         userBookList.setDescription(resultSet.getString("description"));
         userBookList.setPhoto(resultSet.getString("photo"));
         userBookList.setPrice(price);
-
         return userBookList;
     }
 */
 
     private Detail setSingleBook(ResultSet resultSet) throws SQLException {
         Detail sBook = new Detail();
+        Book book = new Book();
+        User user = new User();
+        University uni = new University();
         Double price = Double.parseDouble(resultSet.getString("price"));
         Integer bookId = Integer.parseInt(resultSet.getString("book_id"));
         Integer userId = Integer.parseInt(resultSet.getString("user_id"));
         Integer deptId = Integer.parseInt(resultSet.getString("dept_id"));
 
         log.debug("book_id : {}", bookId);
-        sBook.setBookId(bookId);
-        sBook.setType(resultSet.getString("type"));
-        sBook.setTitle(resultSet.getString("title"));
-        sBook.setAuthor(resultSet.getString("author"));
-        sBook.setPublisher(resultSet.getString("publisher"));
-        sBook.setDescription(resultSet.getString("description"));
-        sBook.setPhoto(resultSet.getString("photo"));
-        sBook.setContactAddress(resultSet.getString("contact_address"));
-        sBook.setContactNo(resultSet.getString("contact_no"));
-        sBook.setPrice(price);
-        sBook.setUserName(resultSet.getString("user_name"));
-        sBook.setEmail(resultSet.getString("email"));
-        sBook.setAddress(resultSet.getString("address"));
-        sBook.setPhoneNo(resultSet.getString("phone"));
-        sBook.setUniName(resultSet.getString("uni_name"));
-        sBook.setDeptName(resultSet.getString("dept_name"));
-        sBook.setDate(resultSet.getString("date"));
-        sBook.setDeptId(deptId);
+
+        book.setBookId(bookId);
+        book.setType(resultSet.getString("type"));
+        book.setTitle(resultSet.getString("title"));
+        book.setAuthor(resultSet.getString("author"));
+        book.setPublisher(resultSet.getString("publisher"));
+        book.setDescription(resultSet.getString("description"));
+        book.setPhoto(resultSet.getString("photo"));
+        book.setContactAddress(resultSet.getString("contact_address"));
+        book.setContactNo(resultSet.getString("contact_no"));
+        book.setTag(resultSet.getString("tag"));
+        book.setPrice(price);
+        book.setDate(resultSet.getString("date"));
+        user.setUserName(resultSet.getString("user_name"));
+        user.setEmail(resultSet.getString("email"));
+        user.setAddress(resultSet.getString("address"));
+        user.setPhoneNo(resultSet.getString("phone"));
+        user.setUserId(userId);
+        uni.setUniName(resultSet.getString("uni_name"));
+        uni.setDeptName(resultSet.getString("dept_name"));
+        uni.setDeptId(deptId);
+
+        sBook.setBook(book);
+        sBook.setUser(user);
+        sBook.setUniversity(uni);
 
         return sBook;
     }
+
     private Book setBook(ResultSet resultSet) throws SQLException {
-        ;
+
         Double price = Double.parseDouble(resultSet.getString("price"));
         Integer bookId = Integer.parseInt(resultSet.getString("book_id"));
         Integer userId = Integer.parseInt(resultSet.getString("user_id"));
         Book book = new Book();
-
 
         book.setBookId(bookId);
         book.setUserId(userId);
@@ -184,8 +207,6 @@ public class BookDaoImp implements BookDao {
         book.setPhoto(resultSet.getString("photo"));
         book.setPrice(price);
         book.setDate(resultSet.getString("date"));
-
-
 
         return book;
     }

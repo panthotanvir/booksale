@@ -21,9 +21,9 @@
             <div class="carousel slide carousel-v1" id="myCarousel">
                 <div class="carousel-inner">
                     <div class="item active">
-                        <img alt="" src="uploads/<c:out value="${requestScope.bookInfo.photo}"/>.jpg" height="400px" width="300px">
+                        <img alt="" src="uploads/<c:out value="${requestScope.bookInfo.book.photo}"/>.jpg" height="400px" width="300px">
                         <!--div class="carousel-caption">
-                            <p><c:out value="${requestScope.bookInfo.tag}"/></p>
+                            <p><c:out value="${requestScope.bookInfo.book.tag}"/></p>
                         </div-->
                     </div>
                     <!--div class="item">
@@ -64,35 +64,35 @@
                     </ul>
                     <div class="tab-content">
                         <div id="overview" class="profile-edit tab-pane fade in active">
-                            <h2 class="heading-md"> <i class="icon-book-open"></i> <c:out value="${requestScope.bookInfo.title}"/></h2>
-                            <p><i class="fa fa-calendar"></i>   <c:out value="${requestScope.bookInfo.date}"/></p>
+                            <h2 class="heading-md"> <i class="icon-book-open"></i> <c:out value="${requestScope.bookInfo.book.title}"/></h2>
+                            <p><i class="fa fa-calendar"></i>   <c:out value="${requestScope.bookInfo.book.date}"/></p>
 
-                            <p><i class="fa fa-mobile-phone"></i>  <span><c:out value="${requestScope.bookInfo.contactNo}"/></span></p>
-                            <p><i class="fa fa-home"></i>   <span><c:out value="${requestScope.bookInfo.contactAddress}"/></span></p>
-                            <h5>Price: <span class="label label-info">  <c:out value="${requestScope.bookInfo.price}"/></span></h5>
+                            <p><i class="fa fa-mobile-phone"></i>  <span><c:out value="${requestScope.bookInfo.book.contactNo}"/></span></p>
+                            <p><i class="fa fa-home"></i>   <span><c:out value="${requestScope.bookInfo.book.contactAddress}"/></span></p>
+                            <h5>Price: <span class="label label-info">  <c:out value="${requestScope.bookInfo.book.price}"/></span></h5>
 
 
                         </div>
 
                         <div id="specification" class="profile-edit tab-pane fade">
-                            <h2 class="heading-md"> <i class="icon-book-open"></i> <c:out value="${requestScope.bookInfo.title}"/></h2>
+                            <h2 class="heading-md"> <i class="icon-book-open"></i> <c:out value="${requestScope.bookInfo.book.title}"/></h2>
 
                             </br>
-                            <p><i class="icon-user-follow"></i>  <span><c:out value="${requestScope.bookInfo.author}"/></span></p>
-                            <p><i class="icon-user"></i>  <span><c:out value="${requestScope.bookInfo.publisher}"/></span></p>
-                            <p><i class="fa fa-list"></i>  <span><c:out value="${requestScope.bookInfo.type}"/></span></p>
+                            <p><i class="icon-user-follow"></i>  <span><c:out value="${requestScope.bookInfo.book.author}"/></span></p>
+                            <p><i class="icon-user"></i>  <span><c:out value="${requestScope.bookInfo.book.publisher}"/></span></p>
+                            <p><i class="fa fa-list"></i>  <span><c:out value="${requestScope.bookInfo.book.type}"/></span></p>
 
                         </div>
 
                         <div id="owner" class="profile-edit tab-pane fade">
-                            <h2 class="heading-md"> <i class="icon-book-open"></i> <c:out value="${requestScope.bookInfo.title}"/></h2>
+                            <h2 class="heading-md"> <i class="icon-book-open"></i> <c:out value="${requestScope.bookInfo.book.title}"/></h2>
                             </br>
-                            <h3 class="heading-md"> <i class=" icon-user"></i> <c:out value="${requestScope.bookInfo.userName}"/></h3>
-                            <p><i class="fa fa-envelope"></i>  <span><c:out value="${requestScope.bookInfo.email}"/></span></p>
-                            <p><i class="fa fa-university"></i>  <span><c:out value="${requestScope.bookInfo.deptName}"/></span></p>
-                            <p><i class="fa fa-university"></i>  <span><c:out value="${requestScope.bookInfo.uniName}"/></span></p>
-                            <p><i class="fa fa-phone"></i>  <span><c:out value="${requestScope.bookInfo.phoneNo}"/></span></p>
-                            <p><i class="fa fa-home"></i> <span><c:out value="${requestScope.bookInfo.address}"/></span></p>
+                            <h3 class="heading-md"> <i class=" icon-user"></i> <c:out value="${requestScope.bookInfo.user.userName}"/></h3>
+                            <p><i class="fa fa-envelope"></i>  <span><c:out value="${requestScope.bookInfo.user.email}"/></span></p>
+                            <p><i class="fa fa-university"></i>  <span><c:out value="${requestScope.bookInfo.university.deptName}"/></span></p>
+                            <p><i class="fa fa-university"></i>  <span><c:out value="${requestScope.bookInfo.university.uniName}"/></span></p>
+                            <p><i class="fa fa-phone"></i>  <span><c:out value="${requestScope.bookInfo.user.phoneNo}"/></span></p>
+                            <p><i class="fa fa-home"></i> <span><c:out value="${requestScope.bookInfo.user.address}"/></span></p>
 
                         </div>
                     </div>
@@ -104,7 +104,7 @@
     </div><!--/row-->
     <div class="tag-box tag-box-v2">
         <h3>Description</h3>
-        <p><c:out value="${requestScope.bookInfo.description}"/></p>
+        <p><c:out value="${requestScope.bookInfo.book.description}"/></p>
     </div>
     <div class="margin-bottom-20 clearfix"></div>
 
