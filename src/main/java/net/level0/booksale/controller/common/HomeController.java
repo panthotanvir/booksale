@@ -1,6 +1,7 @@
 package net.level0.booksale.controller.common;
 
 import net.level0.booksale.domain.University;
+import net.level0.booksale.domain.User;
 import net.level0.booksale.service.UniServiceImp;
 import net.level0.booksale.domain.Book;
 import net.level0.booksale.service.BookServiceImp;
@@ -12,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -25,13 +27,15 @@ public class HomeController extends javax.servlet.http.HttpServlet {
 
         List<Book> bookList = getAllBookList();
         List<University> uniList = getAllUniList();
+
+        //log.info("Dept Id in Home Page: {} ",deptId);
 //        List<University> deptList = getSpecificDeptList(uniList);
         log.info("Book list size : {}" ,bookList.size() );
         log.info("University lis size : {}" ,uniList.size() );
         req.setAttribute("bookList",bookList);
         req.setAttribute("uniList",uniList);
 
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/book/all_book_show.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/book/home_page.jsp");
         requestDispatcher.forward(req, resp);
     }
 
@@ -44,6 +48,7 @@ public class HomeController extends javax.servlet.http.HttpServlet {
     private List<Book> getAllBookList()  {
        return new BookServiceImp().getAllBookPost();
    }
+
 
 
 }

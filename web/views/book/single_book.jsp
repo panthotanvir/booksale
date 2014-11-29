@@ -70,7 +70,26 @@
                             <p><i class="fa fa-mobile-phone"></i>  <span><c:out value="${requestScope.bookInfo.book.contactNo}"/></span></p>
                             <p><i class="fa fa-home"></i>   <span><c:out value="${requestScope.bookInfo.book.contactAddress}"/></span></p>
                             <h5>Price: <span class="label label-info">  <c:out value="${requestScope.bookInfo.book.price}"/></span></h5>
+                            <fieldset>
+                                <section>
+                                    <label class="label">Rate This Book</label>
+                                    <div class="rating">
+                                        <input type="radio" name="stars-rating" id="stars-rating-5">
+                                        <label for="stars-rating-5"><i class="fa fa-star"></i></label>
+                                        <input type="radio" name="stars-rating" id="stars-rating-4">
+                                        <label for="stars-rating-4"><i class="fa fa-star"></i></label>
+                                        <input type="radio" name="stars-rating" id="stars-rating-3">
+                                        <label for="stars-rating-3"><i class="fa fa-star"></i></label>
+                                        <input type="radio" name="stars-rating" id="stars-rating-2">
+                                        <label for="stars-rating-2"><i class="fa fa-star"></i></label>
+                                        <input type="radio" name="stars-rating" id="stars-rating-1">
+                                        <label for="stars-rating-1"><i class="fa fa-star"></i></label>
+                                        Stars
+                                    </div>
 
+
+                                </section>
+                            </fieldset>
 
                         </div>
 

@@ -165,24 +165,50 @@ public class BookDaoImp implements BookDao {
 
     }
 
-//    private Book setUserBookList(ResultSet resultSet) throws SQLException {
-//        Double price = Double.parseDouble(resultSet.getString("price"));
-//        Integer bookId = Integer.parseInt(resultSet.getString("book_id"));
-//        Integer userId = Integer.parseInt(resultSet.getString("user_id"));
-//        Book userBookList = new Book();
-//        userBookList.setBookId(bookId);
-//        userBookList.setUserId(userId);
-//        userBookList.setType(resultSet.getString("type"));
-//        userBookList.setTitle(resultSet.getString("title"));
-//        userBookList.setAuthor(resultSet.getString("author"));
-//        userBookList.setPublisher(resultSet.getString("publisher"));
-//        userBookList.setDescription(resultSet.getString("description"));
-//        userBookList.setPhoto(resultSet.getString("photo"));
-//        userBookList.setPrice(price);
-//        return userBookList;
-//    }
+    @Override
+    public List<Book> getRequestBook(Integer userId) {
+        String query = "SELECT * FROM book,request Where request.user_id = '" + userId + "' AND request.user_id = book.user_id AND book.title = request.title";
+        log.debug("query for dept book list---> {}", query);
+        List<Book> requestBookResult = DatabaseTemplate.queryForObject(query, new ObjectRowMapper<Book>() {
+            @Override
+            public Book mapRowToObject(ResultSet resultSet) throws SQLException {
+                return setBook(resultSet);
+            }
+        });
 
+        return requestBookResult;
+    }
 
+    @Override
+    public List<Book> getAllRequest(Integer userId) {
+        String query = "SELECT * FROM request Where user_id = '" + userId + "' ";
+        log.debug("query for request book list---> {}", query);
+        List<Book> requestBookList = DatabaseTemplate.queryForObject(query, new ObjectRowMapper<Book>() {
+            @Override
+            public Book mapRowToObject(ResultSet resultSet) throws SQLException {
+                return setRequestBook(resultSet);
+            }
+        });
+
+        return requestBookList;
+    }
+
+    private Book setRequestBook(ResultSet resultSet) throws SQLException{
+        Integer count = resultSet.getRow();
+        log.info("count value of : {}",count);
+        Integer userId = Integer.parseInt(resultSet.getString("user_id"));
+        Integer requestId = Integer.parseInt(resultSet.getString("request_id"));
+
+        Book book = new Book();
+
+        book.setUserId(userId);
+        book.setRequestId(requestId);
+        book.setTitle(resultSet.getString("title"));
+        book.setDate(resultSet.getString("date"));
+        book.setCountRequest(count);
+
+        return book;
+    }
     private Detail setSingleBook(ResultSet resultSet) throws SQLException {
         Detail sBook = new Detail();
         Book book = new Book();
@@ -225,9 +251,11 @@ public class BookDaoImp implements BookDao {
 
     private Book setBook(ResultSet resultSet) throws SQLException {
 
+        Integer count = resultSet.getRow();
         Double price = Double.parseDouble(resultSet.getString("price"));
         Integer bookId = Integer.parseInt(resultSet.getString("book_id"));
         Integer userId = Integer.parseInt(resultSet.getString("user_id"));
+
         Book book = new Book();
 
         book.setBookId(bookId);
@@ -240,6 +268,7 @@ public class BookDaoImp implements BookDao {
         book.setPhoto(resultSet.getString("photo"));
         book.setPrice(price);
         book.setDate(resultSet.getString("date"));
+        book.setCountBook(count);
 
         return book;
     }

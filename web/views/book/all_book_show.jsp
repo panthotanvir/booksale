@@ -23,38 +23,35 @@
     <!-- Easy Blocks v1 -->
     <div class="row high-rated margin-bottom-20">
 
-        <c:if test="${requestScope.bookList != null}">
-        <c:forEach var="book" items="${requestScope.bookList}" varStatus="item">
+            <c:if test="${requestScope.bookList != null}">
+            <c:forEach var="book" items="${requestScope.bookList}" varStatus="item">
 
-            <!-- Easy Block -->
-        <div class="col-md-3 col-sm-6 md-margin-bottom-40">
-            <div class="easy-block-v1">
-                <div class="easy-block-v1-badge rgba-default"><c:out value="${book.type}"/></div>
-                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li class="rounded-x active" data-target="#carousel-example-generic" data-slide-to="0"></li>
-                        <!--li class="rounded-x" data-target="#carousel-example-generic" data-slide-to="1"></li>
-                        <li class="rounded-x" data-target="#carousel-example-generic" data-slide-to="2"></li-->
-                    </ol>
-                    <div class="carousel-inner">
-                        <div class="item active">
-                            <img alt="book" class="img-responsive" src="uploads/<c:out value="${book.photo}"/>.jpg" height="340" width="260">
+                <!-- Easy Block -->
+                <div class="col-md-3 col-sm-6 md-margin-bottom-40">
+                    <div class="easy-block-v1">
+                        <div class="easy-block-v1-badge rgba-default"><c:out value="${book.type}"/></div>
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <img alt="book" class="img-responsive" src="uploads/<c:out value="${book.photo}"/>.jpg" height="340" width="260">
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="overflow-h">
+                            <h3><c:out value="${book.title}"/></h3>
+
                         </div>
 
+                        <ul class="list-unstyled">
+                            <li><span class="color-green">Author:</span><c:out value="${book.author}"/></li>
+                            <li><span class="color-green">Price(Tk):</span><c:out value="${book.price}"/></li>
+                        </ul>
+                        <a class="btn-u btn-u-sm" href="singleBook?bookId=${book.bookId}">View Details</a>
                     </div>
                 </div>
-                <div class="overflow-h">
-                    <h3><c:out value="${book.title}"/></h3>
 
-                </div>
-
-                <ul class="list-unstyled">
-                    <li><span class="color-green">Author:</span><c:out value="${book.author}"/></li>
-                    <li><span class="color-green">Price(Tk):</span><c:out value="${book.price}"/></li>
-                </ul>
-                <a class="btn-u btn-u-sm" href="singleBook?bookId=${book.bookId}">View Details</a>
-            </div>
-        </div>
         <!-- End Easy Block -->
         </c:forEach>
         </c:if>
