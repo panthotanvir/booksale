@@ -53,7 +53,7 @@ public class UserHomeController extends javax.servlet.http.HttpServlet {
     private Integer getDeptId(HttpServletRequest req) {
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");
-        return user.getUserId();
+        return user.getDeptId();
     }
 
 

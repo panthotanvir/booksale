@@ -82,8 +82,10 @@
                         </section>
                         <section class="col col-6">
 
-                            <label class="input">
-                                <input type="file" name="photo">
+                            <label class="input input-file">
+
+                                <input type="file" name="photo"> Browse
+
                             </label>
 
                         </section>

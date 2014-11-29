@@ -27,4 +27,8 @@ public interface BookDao {
     public List<Book> searchAuthorBookList( String authorName );
 
     public List<Book> searchPublisherBookList( String publisherName );
+
+    public List<Book> getRequestBook(Integer userID);
+
+    public List<Book> getAllRequest(Integer userId);
 }

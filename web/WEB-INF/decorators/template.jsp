@@ -31,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="/assets/css/pages/page_search.css" />" media="all">
     <link rel="stylesheet" type="text/css" href="<c:url value="/assets/css/pages/page_log_reg_v1.css" />" media="all">
     <link rel="stylesheet" type="text/css" href="<c:url value="/assets/css/pages/profile.css" />" media="all">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/assets/css/pages/page_search_inner.css" />" media="all">
 
     <!-- CSS Portfoilo -->
     <link rel="stylesheet" type="text/css" href="<c:url value="/assets/css/pages/portfolio-v1.css" />" media="all">
@@ -106,6 +107,7 @@
 <script src="<c:url value="/assets/plugins/owl-carousel/owl-carousel/owl.carousel.js"/>"></script>
 <script src="<c:url value="/assets/plugins/counter/waypoints.min.js"/>"></script>
 <script src="<c:url value="/assets/plugins/counter/jquery.counterup.min.js"/>"></script>
+<script src="<c:url value="/assets/plugins/circles-master/circles.js"/>"></script>
 
 <!-- Datepicker Form -->
 <script src="<c:url value="/assets/plugins/sky-forms/version-2.0.1/js/jquery-ui.min.js"/>"></script>
@@ -121,6 +123,7 @@
 <script src="<c:url value="/assets/js/plugins/owl-carousel.js"/>"></script>
 <script src="<c:url value="/assets/js/pages/index.js"/>"></script>
 <script src="<c:url value="/assets/js/plugins/datepicker.js"/>"></script>
+<script src="<c:url value="/assets/js/plugins/circles-master.js"/>"></script>
 
 
 <script type="text/javascript">

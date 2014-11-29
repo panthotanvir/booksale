@@ -31,12 +31,7 @@
         <div class="collapse navbar-collapse navbar-responsive-collapse">
             <ul class="nav navbar-nav">
                 <!-- Home -->
-                <li>
-                    <a href="javascript:void(0);" data-toggle="dropdown">
-                        Home
-                    </a>
-
-                </li>
+                <li><a href="home">Home</a> </li>
 
                 <!-- End Home -->
 

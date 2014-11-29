@@ -11,6 +11,9 @@ public class Book {
    private int userId;
    private int deptId;
    private int bookId;
+   private int requestId;
+   private int countRequest;
+   private int countBook;
    private String title;
    private String author;
    private String publisher;
@@ -22,6 +25,26 @@ public class Book {
    private String contactNo;
    private String contactAddress;
    private String date;
+
+    public int getCountRequest() {
+        return countRequest;
+    }
+
+    public void setCountRequest(int countRequest) {
+        this.countRequest = countRequest;
+    }
+
+    public int getCountBook() {
+        return countBook;
+    }
+
+    public void setCountBook(int countBook) {
+        this.countBook = countBook;
+    }
+
+    public int getRequestId() { return requestId;}
+
+    public void setRequestId(int requestId) {this.requestId = requestId;}
 
     public String getDate() {
         return date;

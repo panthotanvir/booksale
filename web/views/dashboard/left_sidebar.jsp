@@ -26,6 +26,9 @@
             <a href="fellow"><i class="fa fa-group"></i>Departmental Students</a>
         </li>
         <li class="list-group-item">
+            <a href="request"><i class="fa fa-group"></i>Book Request</a>
+        </li>
+        <li class="list-group-item">
             <a href="settings"><i class="fa fa-cog"></i>Settings</a>
         </li>
     </ul>
