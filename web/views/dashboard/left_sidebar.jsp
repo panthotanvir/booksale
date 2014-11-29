@@ -10,10 +10,10 @@
 
 <!--Left Sidebar-->
 <div class="col-md-3 md-margin-bottom-40">
-    <img class="img-responsive profile-img margin-bottom-20" src="assets/img/5.jpg" alt="">
+    <img class="img-responsive profile-img margin-bottom-20" src="uploads/<c:out value="${requestScope.userInfo.user.photo}"/>" alt="profile">
 
     <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
-        <li class="list-group-item active">
+        <li class="list-group-item">
             <a href="dashboard"><i class="fa fa-bar-chart-o"></i> Overall</a>
         </li>
         <li class="list-group-item">

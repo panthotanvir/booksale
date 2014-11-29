@@ -83,7 +83,7 @@
                         <section class="col col-6">
 
                             <label class="input">
-                                <input type="file" name="photo"></input>
+                                <input type="file" name="photo">
                             </label>
 
                         </section>

@@ -1,6 +1,8 @@
 package net.level0.booksale.dao;
 
+import net.level0.booksale.domain.Book;
 import net.level0.booksale.domain.Detail;
+import net.level0.booksale.domain.University;
 import net.level0.booksale.domain.User;
 
 import net.level0.booksale.util.DatabaseTemplate;
@@ -45,15 +47,15 @@ public class UserDaoImp implements UserDao {
     }
 
     @Override
-    public void deleteUser(Integer userId) {
+    public void deleteUser(int userId) {
 
     }
 
     @Override
-    public Detail getUserInfo(Integer userId) {
+    public Detail getUserInfo(int userId) {
         String query = "SELECT * FROM user,university,department WHERE user_id= '" + userId + "' AND user.dept_id = department.dept_id AND user.uni_id = university.uni_id ";
 
-        log.debug("query---> {}", query);
+        log.debug("query at getUserInfo in UserDaoImp ---> {}", query);
         List<Detail> userInfoList = DatabaseTemplate.queryForObject(query, new ObjectRowMapper<Detail>() {
             @Override
             public Detail mapRowToObject(ResultSet resultSet) throws SQLException {
@@ -69,7 +71,7 @@ public class UserDaoImp implements UserDao {
     }
 
     @Override
-    public List<Detail> getUserDept(Integer userId, Integer uniId, Integer deptId) {
+    public List<Detail> getUserDept(int userId, Integer uniId, Integer deptId) {
         String query = "SELECT * FROM user,university,department Where user.user_id != '" + userId + "' AND user.uni_id= '" + uniId + "' AND user.dept_id= '" + deptId + "' AND user.uni_id = university.uni_id AND user.dept_id = department.dept_id";
         log.debug("query fro DeptUser---> {}", query);
         List<Detail> userDeptList = DatabaseTemplate.queryForObject(query,new ObjectRowMapper<Detail>() {
@@ -88,17 +90,28 @@ public class UserDaoImp implements UserDao {
     }
 
     public Detail setUserInfo(ResultSet resultSet) throws SQLException{
-        Integer userId = Integer.parseInt(resultSet.getString("user_id"));
-        Detail userInfo = new Detail();
+        int userId = Integer.parseInt(resultSet.getString("user_id"));
+        int deptId = Integer.parseInt(resultSet.getString("dept_id"));
 
-        userInfo.setUserName(resultSet.getString("user_name"));
-        userInfo.setUserId(userId);
-        userInfo.setEmail(resultSet.getString("email"));
-        userInfo.setAddress(resultSet.getString("address"));
-        userInfo.setDeptName(resultSet.getString("dept_name"));
-        userInfo.setUniName(resultSet.getString("uni_name"));
-        userInfo.setPassword(resultSet.getString("password"));
-        userInfo.setPhoneNo(resultSet.getString("phone"));
+        Detail userInfo = new Detail();
+        User user = new User();
+        University uni = new University();
+
+
+        user.setUserId(userId);
+        user.setUserName(resultSet.getString("user_name"));
+        user.setPassword(resultSet.getString("password"));
+        user.setEmail(resultSet.getString("email"));
+        user.setAddress(resultSet.getString("address"));
+        user.setPhoneNo(resultSet.getString("phone"));
+        user.setPhoto(resultSet.getString("user_photo"));
+
+        uni.setUniName(resultSet.getString("uni_name"));
+        uni.setDeptName(resultSet.getString("dept_name"));
+        uni.setDeptId(deptId);
+
+        userInfo.setUser(user);
+        userInfo.setUniversity(uni);
 
         return userInfo;
     }
@@ -107,10 +120,13 @@ public class UserDaoImp implements UserDao {
     public Detail setDeptUser(ResultSet resultSet) throws SQLException{
         Integer userId = Integer.parseInt(resultSet.getString("user_id"));
         Detail userDept = new Detail();
-        userDept.setUserName(resultSet.getString("user_name"));
-        userDept.setUserId(userId);
-        userDept.setEmail(resultSet.getString("email"));
-        userDept.setAddress(resultSet.getString("address"));
+        User user = new User();
+        user.setUserName(resultSet.getString("user_name"));
+        user.setUserId(userId);
+        user.setEmail(resultSet.getString("email"));
+        user.setAddress(resultSet.getString("address"));
+
+        userDept.setUser(user);
 
         return userDept;
     }
@@ -150,15 +166,22 @@ public class UserDaoImp implements UserDao {
         String insertQuery = "INSERT INTO `booksale`.`user` (`user_name`, `uni_id`, `dept_id`, `email`, `password`,`phone`,`address`,`user_photo`)" +
                 " VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
 
-        log.debug("query---> {}", insertQuery);
         String userName = user.getUserName();
-        Integer uniId = user.getUniId();
-        Integer deptId = user.getDeptId();
+        int uniId = user.getUniId();
+        int deptId = user.getDeptId();
         String email = user.getEmail();
         String password = user.getPassword();
         String phoneNo = user.getPhoneNo();
         String address = user.getAddress();
-        InputStream photo = user.getPhoto();
+        String photo = user.getPhoto();
+        log.debug("photo---> {}", photo);
+        log.debug("name---> {}", userName);
+        log.debug("name---> {}", uniId);
+        log.debug("name---> {}", deptId);
+        log.debug("name---> {}", email);
+        log.debug("name---> {}", userName);
+        log.debug("name---> {}", password);
+        log.debug("name---> {}", phoneNo);
         DatabaseTemplate.executeInsertQuery(insertQuery, userName,uniId, deptId, email, password, phoneNo, address, photo);
         log.debug("User inserted");
 

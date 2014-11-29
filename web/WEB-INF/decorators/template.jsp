@@ -9,6 +9,9 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
     <title><decorator:title/></title>
 
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="<c:url value="/favicon.ico" />">
+
 
     <!-- CSS Global Compulsory -->
     <link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/bootstrap/css/bootstrap.min.css" />" media="all">

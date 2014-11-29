@@ -53,7 +53,7 @@ public class UserServiceImp implements UserService{
 
 
     @Override
-    public List<Detail> getUserDept(Integer userId, Integer uniId, Integer deptId) {
+    public List<Detail> getUserDept(int userId, Integer uniId, Integer deptId) {
         return userDao.getUserDept(userId, uniId, deptId);
     }
 

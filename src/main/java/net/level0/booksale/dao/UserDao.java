@@ -20,9 +20,9 @@ public interface UserDao {
 
     public void updateUser(User user);
 
-    public void deleteUser(Integer userId);
+    public void deleteUser(int userId);
 
-    public Detail getUserInfo(Integer userId);
+    public Detail getUserInfo(int userId);
 
-    public List<Detail> getUserDept(Integer userId,Integer uniId , Integer deptId);
+    public List<Detail> getUserDept(int userId,Integer uniId , Integer deptId);
 }

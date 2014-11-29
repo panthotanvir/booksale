@@ -11,7 +11,14 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
+import java.io.File;
 import java.io.IOException;
+import java.util.List;
+
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 /**
  * Created by panthotanvir on 11/22/14.
@@ -22,6 +29,8 @@ import java.io.IOException;
 
 public class BookController extends HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(BookController.class);
+
+
     private Book book;
     private BookServiceImp bookService;
 
@@ -49,16 +58,8 @@ public class BookController extends HttpServlet {
     private void createAddFromRequest(HttpServletRequest req) throws IOException, ServletException {
         book = new Book();
         log.debug("createAddFromRequest is called ");
-//        InputStream inputStream = null;
-//
-//        Part filePart = req.getPart("photo") ;
-//        inputStream = filePart.getInputStream();
-//        if (filePart != null) {
-//            log.debug("file name:  {}",filePart.getName());
-//            log.debug("file size:  {}",filePart.getSize());
-//            log.debug("file type:  {}",filePart.getContentType());
-//        }
-//        Integer userId = Integer.parseInt(req.getParameter("user_id"));
+
+
         Integer deptId = Integer.parseInt(req.getParameter("dept_id"));
         Double price = Double.parseDouble(req.getParameter("price"));
 

@@ -38,10 +38,10 @@ public class SingleBookController extends HttpServlet {
         log.info("User--------- : {}" ,singleBook.getUser().getUserName());
         log.info("dept Name in Single book : {} ",singleBook.getUniversity().getDeptName());
 
-        Integer deptId = singleBook.getDeptId();
+        Integer deptId = singleBook.getBook().getBookId();
         List<Book> recommendedBookList = getDeptBookList(deptId);
-        log.info("Book--------- : {}" ,singleBook.getUserName());
-        log.info("dept Id in Single book : {} ",singleBook.getDeptId());
+//        log.info("Book--------- : {}" ,singleBook.getUserName());
+//        log.info("dept Id in Single book : {} ",singleBook.getDeptId());
 
         req.setAttribute("bookInfo",singleBook);
         req.setAttribute("recommendedBook",recommendedBookList);

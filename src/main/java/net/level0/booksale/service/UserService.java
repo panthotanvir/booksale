@@ -19,7 +19,7 @@ public interface UserService {
 
     public Detail getUserInfo(Integer userID);
 
-    public List<Detail> getUserDept(Integer userId, Integer uniId, Integer deptId);
+    public List<Detail> getUserDept(int userId, Integer uniId, Integer deptId);
 
     public List<User> getAllUser();
 

@@ -33,7 +33,10 @@ public class SettingsController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("Settings Controller is requested ");
-        Integer userID = getUserId(req);
+        int userID = getUserId(req);
+        Detail userInfo = userService.getUserInfo(userID);
+        req.setAttribute("userInfo",userInfo);
+
         List<University> uniList = getAllUniList();
         List<University> deptList = getAllDeptList();
 
@@ -45,7 +48,7 @@ public class SettingsController extends HttpServlet {
 
 
         Detail settingInfo = userService.getUserInfo(userID);
-        log.info("User--------- : {}" ,settingInfo.getUserName());
+        //log.info("User--------- : {}" ,settingInfo.getUserName());
         req.setAttribute("settingInfo",settingInfo);
 
 

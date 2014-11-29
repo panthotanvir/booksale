@@ -31,11 +31,14 @@ public class StudentController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("Fellow Controller is requested ");
-        Integer userId = getUserId(req);
+        int userID = getUserId(req);
         Integer uniId = getUniId(req);
         Integer deptId = getDeptId(req);
-        List<Detail> userDept = userService.getUserDept(userId, uniId, deptId);
+        List<Detail> userDept = userService.getUserDept(userID, uniId, deptId);
         req.setAttribute("userDept",userDept);
+
+        Detail userInfo = userService.getUserInfo(userID);
+        req.setAttribute("userInfo",userInfo);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/dashboard/fellow_students.jsp");
         requestDispatcher.forward(req, resp);
     }

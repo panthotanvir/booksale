@@ -30,9 +30,9 @@ public class ProfileController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("profile Controller is requested ");
-        Integer userID = getUserId(req);
+        int userID = getUserId(req);
         Detail userInfo = userService.getUserInfo(userID);
-        log.info("User--------- : {}" ,userInfo.getUserName());
+        log.info("User in ProfileController--------- : {}" ,userInfo.getUser().getUserName());
         req.setAttribute("userInfo",userInfo);
 
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/dashboard/profile.jsp");

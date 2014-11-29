@@ -1,11 +1,11 @@
 package net.level0.booksale.domain;
 
-import java.io.InputStream;
 
 /**
  * Created on 11/22/14 3:00 PM.
  *
  * @author: mithunshawon
+ *
  */
 public class User {
     private int userId;
@@ -18,7 +18,7 @@ public class User {
     private String address;
     private int user;
     private boolean isUser;
-    private InputStream photo;
+    private String photo;
 
 
     public void setUserName(String userName) {
@@ -85,11 +85,11 @@ public class User {
         return address;
     }
 
-    public InputStream getPhoto() {
+    public String getPhoto() {
         return photo;
     }
 
-    public void setPhoto(InputStream photo) {
+    public void setPhoto(String photo) {
         this.photo = photo;
     }
 

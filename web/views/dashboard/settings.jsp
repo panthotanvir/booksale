@@ -44,7 +44,7 @@
                                             <section>
                                                 <label class="input">
                                                     <i class="icon-append fa fa-envelope"></i>
-                                                    <input type="text" name="user_name" value="<c:out value="${requestScope.settingInfo.userName}"/>"/>
+                                                    <input type="text" name="user_name" value="<c:out value="${requestScope.settingInfo.user.userName}"/>"/>
                                                     <b class="tooltip tooltip-bottom-right">Needed to verify your username</b>
                                                 </label>
                                             </section>
@@ -97,7 +97,7 @@
                                             <section>
                                                 <label class="input">
                                                     <i class="icon-append fa fa-envelope"></i>
-                                                    <input type="email" name="email" value="<c:out value="${requestScope.settingInfo.email}"/>">
+                                                    <input type="email" name="email" value="<c:out value="${requestScope.settingInfo.user.email}"/>">
                                                     <b class="tooltip tooltip-bottom-right">Needed to verify your account</b>
                                                 </label>
                                             </section>
@@ -107,7 +107,7 @@
                                             <section>
                                                 <label class="input">
                                                     <i class="icon-append fa fa-lock"></i>
-                                                    <input type="password"  name="password" value="<c:out value="${requestScope.settingInfo.password}"/>">
+                                                    <input type="password"  name="password" value="<c:out value="${requestScope.settingInfo.user.password}"/>">
                                                     <b class="tooltip tooltip-bottom-right">Don't forget your password</b>
                                                 </label>
                                             </section>
@@ -132,7 +132,7 @@
                                             <section>
                                                 <label class="input">
                                                     <i class="icon-append fa fa-envelope"></i>
-                                                    <input type="email" placeholder="Email address" name="email" value="<c:out value="${requestScope.settingInfo.email}"/>">
+                                                    <input type="email" placeholder="Email address" name="email" value="<c:out value="${requestScope.settingInfo.user.email}"/>">
                                                     <b class="tooltip tooltip-bottom-right">Needed to verify your account</b>
                                                 </label>
                                             </section>
@@ -142,7 +142,7 @@
                                             <section>
                                                 <label class="input">
                                                     <i class="icon-append fa fa-lock"></i>
-                                                    <input type="text" id="phone" placeholder="Contact" name="phone" value="<c:out value="${requestScope.settingInfo.phoneNo}"/>">
+                                                    <input type="text" id="phone" placeholder="Contact" name="phone" value="<c:out value="${requestScope.settingInfo.user.phoneNo}"/>">
                                                     <b class="tooltip tooltip-bottom-right">Needed to verify your Contact</b>
                                                 </label>
                                             </section>
@@ -152,7 +152,7 @@
                                             <section>
                                                 <label class="input">
                                                     <i class="icon-append fa fa-lock"></i>
-                                                    <input type="text" placeholder="Address" name="address" value="<c:out value="${requestScope.settingInfo.address}"/>">
+                                                    <input type="text" placeholder="Address" name="address" value="<c:out value="${requestScope.settingInfo.user.address}"/>">
                                                     <b class="tooltip tooltip-bottom-right">Needed to verify your Address</b>
                                                 </label>
                                             </section>

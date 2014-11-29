@@ -1,6 +1,7 @@
 package net.level0.booksale.controller.user;
 
 
+import net.level0.booksale.domain.Detail;
 import net.level0.booksale.domain.User;
 import net.level0.booksale.service.UserServiceImp;
 import org.slf4j.Logger;
@@ -32,11 +33,12 @@ public class DashboardController extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("Dashboard Controller is requested ");
-        /*Integer userID = getUserId(req);
+        int userID = getUserId(req);
         Detail userInfo = userService.getUserInfo(userID);
-        log.info("User--------- : {}" ,userInfo.getUserName());
+        log.info("User--------- : {}" ,userInfo.getUser().getUserName());
+        log.info("User Photo--------- : {}" ,userInfo.getUser().getUserName());
         req.setAttribute("userInfo",userInfo);
-        */
+
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/dashboard/profile_overview.jsp");
         requestDispatcher.forward(req, resp);
     }
