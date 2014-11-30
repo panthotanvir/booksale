@@ -111,7 +111,7 @@
                                         <li class="notification">
                                             <i class="icon-custom icon-sm rounded-x icon-bg-red icon-line icon-envelope"></i>
                                             <div class="overflow-h">
-                                                <span><strong><c:out value="${requestResult.title}"/></strong> is available now </span>
+                                                <span><strong><a href="singleBook?bookId=${requestResult.bookId}"><c:out value="${requestResult.title}"/></a></strong> is available now </span>
                                             </div>
                                         </li>
                                     </c:forEach>

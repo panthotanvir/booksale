@@ -52,7 +52,6 @@ public class LoginController extends javax.servlet.http.HttpServlet {
         }else {
             resp.sendRedirect(req.getContextPath());
         }
-
     }
 
     private boolean isUserVerified(String email, String password) {
@@ -63,13 +62,12 @@ public class LoginController extends javax.servlet.http.HttpServlet {
 
     private void setUpSession(HttpServletRequest req) {
         HttpSession session = req.getSession();
+
         session.setAttribute("user", user);
         session.setAttribute("authenticatedUser", true);
         log.info("isUser before {}", user.isUser());
         session.setAttribute("isUser", user.isUser());
         log.info("isUser {}", user.isUser());
-        log.info("Uni Id before set : {}", user.getUniId());
-        log.info("Uni Id before set : {}", user.getUniId());
         session.setAttribute("uniId", user.getUniId());
         log.info("Uni Id after set : {}", user.getUniId());
         session.setAttribute("deptId", user.getDeptId());

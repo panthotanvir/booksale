@@ -2,6 +2,7 @@ package net.level0.booksale.controller.book;
 
 import net.level0.booksale.domain.Book;
 import net.level0.booksale.domain.User;
+import net.level0.booksale.service.BookService;
 import net.level0.booksale.service.BookServiceImp;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,7 +33,7 @@ public class BookController extends HttpServlet {
 
 
     private Book book;
-    private BookServiceImp bookService;
+    private BookService bookService;
 
     public BookController() {
        bookService = new BookServiceImp();
@@ -72,7 +73,6 @@ public class BookController extends HttpServlet {
         book.setTag(req.getParameter("tag"));
         book.setDescription(req.getParameter("description"));
         book.setPrice(price);
-//        book.setPhoto(inputStream);
         book.setPhoto(req.getParameter("photo"));
         book.setContactNo(req.getParameter("contact_no"));
         book.setContactAddress(req.getParameter("contact_address"));

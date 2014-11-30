@@ -66,8 +66,6 @@ public class SearchController extends HttpServlet{
         else if(keyWord.equals("publisher")){
             return bookService.searchPublisherBookList(key);
         }
-
         return  null;
-
     }
 }

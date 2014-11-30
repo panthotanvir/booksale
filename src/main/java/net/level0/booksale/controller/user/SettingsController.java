@@ -1,10 +1,10 @@
 package net.level0.booksale.controller.user;
 
+import net.level0.booksale.domain.Book;
 import net.level0.booksale.domain.Detail;
 import net.level0.booksale.domain.University;
 import net.level0.booksale.domain.User;
-import net.level0.booksale.service.UniServiceImp;
-import net.level0.booksale.service.UserServiceImp;
+import net.level0.booksale.service.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,16 +25,19 @@ import java.util.List;
 public class SettingsController extends HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(SettingsController.class);
     private User user;
-    private UserServiceImp userService;
+    private UserService userService;
+    private BookService bookService;
 
     public SettingsController() {
+
         userService = new UserServiceImp();
+        bookService = new BookServiceImp();
     }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("Settings Controller is requested ");
-        int userID = getUserId(req);
-        Detail userInfo = userService.getUserInfo(userID);
+        int userId = getUserId(req);
+        Detail userInfo = userService.getUserInfo(userId);
         req.setAttribute("userInfo",userInfo);
 
         List<University> uniList = getAllUniList();
@@ -46,24 +49,22 @@ public class SettingsController extends HttpServlet {
         req.setAttribute("uniList", uniList);
         req.setAttribute("deptList",deptList);
 
-
-        Detail settingInfo = userService.getUserInfo(userID);
-        //log.info("User--------- : {}" ,settingInfo.getUserName());
+        Detail settingInfo = userService.getUserInfo(userId);
+        log.info("Setting info size : {}",settingInfo.getUser().getUserName());
         req.setAttribute("settingInfo",settingInfo);
 
-
-
+        List<Book> bookList = bookService.getBookList(userId);
+        log.info("Booklist in SettingController :{}",bookList.size());
+        req.setAttribute("bookList",bookList);
 
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/dashboard/settings.jsp");
         requestDispatcher.forward(req, resp);
     }
-
     private Integer getUserId(HttpServletRequest req) {
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");
         return user.getUserId();
     }
-
     private List<University> getAllUniList() {
         return new UniServiceImp().getAllUniversity();
     }

@@ -44,32 +44,26 @@ public class DashboardController extends HttpServlet {
 
         int userId = getUserId(req);
         Detail userInfo = userService.getUserInfo(userId);
+
         log.info("User--------- : {}", userInfo.getUser().getUserName());
         req.setAttribute("userInfo", userInfo);
 
-
         List<Book> requestBook = bookService.getRequestBook(userId);
         List<Book> userBookList = bookService.getBookList(userId);
-        // List<Book> userRequestBook = bookService.getAllRequest(userId);
-
 
         req.setAttribute("userBook", userBookList);
         req.setAttribute("countBook", userBookList.size());
         req.setAttribute("requestResult", requestBook);
         req.setAttribute("countRequest", requestBook.size());
-        // req.setAttribute("requestedBook",userRequestBook);
 
         log.debug("List Size in DashboardController:  {}", userBookList.size());
-
 
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/dashboard/profile_overview.jsp");
         requestDispatcher.forward(req, resp);
     }
-
     private Integer getUserId(HttpServletRequest req) {
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");
         return user.getUserId();
     }
-
 }
