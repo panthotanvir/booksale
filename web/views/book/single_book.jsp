@@ -10,6 +10,34 @@
 <html>
 <head>
     <title></title>
+    <style>
+        /**/
+        /* ratings */
+        /**/
+        .sky-form .rating {
+            margin-bottom: 4px;
+            font-size: 15px;
+            line-height: 27px;
+            color: #404040;
+        }
+        .sky-form .rating:last-child {
+            margin-bottom: 0;
+        }
+        .sky-form .rating input {
+            position: absolute;
+            left: -9999px;
+        }
+        .sky-form .rating label {
+            display: block;
+            float: right;
+            height: 17px;
+            margin-top: 5px;
+            padding: 0 2px;
+            font-size: 17px;
+            line-height: 17px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 

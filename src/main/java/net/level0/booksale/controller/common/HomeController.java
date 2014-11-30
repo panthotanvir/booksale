@@ -35,7 +35,7 @@ public class HomeController extends javax.servlet.http.HttpServlet {
         req.setAttribute("bookList",bookList);
         req.setAttribute("uniList",uniList);
 
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/book/home_page.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/book/all_book_show.jsp");
         requestDispatcher.forward(req, resp);
     }
 

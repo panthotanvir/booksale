@@ -32,5 +32,7 @@ public interface BookService {
 
     public List<Book> getAllRequest(Integer userId);
 
+    public void requestBook(Book book);
+
 
 }

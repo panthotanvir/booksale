@@ -17,7 +17,7 @@ public interface UserService {
 
     public User getUser(String userName, String password);
 
-    public Detail getUserInfo(Integer userID);
+    public Detail getUserInfo(Integer userId);
 
     public List<Detail> getUserDept(int userId, Integer uniId, Integer deptId);
 

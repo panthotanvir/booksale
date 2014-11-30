@@ -193,6 +193,18 @@ public class BookDaoImp implements BookDao {
         return requestBookList;
     }
 
+    @Override
+    public void requestBook(Book book) {
+        String insertQuery = "INSERT INTO `booksale`.`request` (`user_id`, `dept_id`, `title`)" +
+                " VALUES (?, ?, ? );";
+
+        Integer userId = book.getUserId();
+        Integer deptId = book.getDeptId();
+        String title = book.getTitle();
+        DatabaseTemplate.executeInsertQuery(insertQuery, userId, deptId, title);
+        log.debug("request book post  inserted");
+    }
+
     private Book setRequestBook(ResultSet resultSet) throws SQLException{
         Integer count = resultSet.getRow();
         log.info("count value of : {}",count);
