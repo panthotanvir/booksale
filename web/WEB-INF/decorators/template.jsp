@@ -117,6 +117,11 @@
 <script src="<c:url value="/assets/plugins/scrollbar/src/jquery.mousewheel.js"/>"></script>
 <script src="<c:url value="/assets/plugins/scrollbar/src/perfect-scrollbar.js"/>"></script>
 
+<!-- Layer Slider -->
+<script type="text/javascript" src="<c:url value="/assets/plugins/layer-slider/layerslider/js/greensock.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/assets/plugins/layer-slider/layerslider/js/layerslider.transitions.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/assets/plugins/layer-slider/layerslider/js/layerslider.kreaturamedia.jquery.js"/>"></script>
+
 <!-- JS Page Level -->
 
 <script src="<c:url value="/assets/js/app.js"/>"></script>
@@ -130,7 +135,11 @@
     jQuery(document).ready(function() {
         App.init();
         App.initCounter();
+        App.initSliders();
+        Index.initParallaxSlider();
         Datepicker.initDatepicker();
+        Index.initLayerSlider();
+        OwlCarousel.initOwlCarousel();
     });
 </script>
 <script>
@@ -141,13 +150,13 @@
 </script>
 
 
-<script type="text/javascript">
-    jQuery(document).ready(function() {
-        App.init();
-        App.initSliders();
-        Index.initParallaxSlider();
-    });
-</script>
+<%--<script type="text/javascript">--%>
+    <%--jQuery(document).ready(function() {--%>
+        <%--App.init();--%>
+        <%--App.initSliders();--%>
+        <%--Index.initParallaxSlider();--%>
+    <%--});--%>
+<%--</script>--%>
 
 <script type="text/javascript">
     var _gaq = _gaq || [];

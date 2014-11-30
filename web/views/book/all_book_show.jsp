@@ -17,9 +17,7 @@
 <div class="container content">
 
     <div class="headline margin-bottom-35"><h2>Top Rated Books</h2></div>
-
-
-
+    
     <!-- Easy Blocks v1 -->
     <div class="row high-rated margin-bottom-20">
 
@@ -61,8 +59,6 @@
     </div>
     <!-- End Easy Blocks v1 -->
 
-
-
     <!-- Content -->
     <div class="headline"><h2>Another Categories</h2></div>
     <div class="row job-content margin-bottom-40">
@@ -81,7 +77,6 @@
 
 </div>
 <!--=== End Content Part ===-->
-
 
 </body>
 </html>

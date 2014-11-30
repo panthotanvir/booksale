@@ -8,10 +8,12 @@ var OwlCarousel = function () {
 		        //Owl Slider v1
 		        var owl = jQuery(".owl-slider");
 		            owl.owlCarousel({
+                        items: [4],             //****************** customize koreche mithunshawon
 		                itemsDesktop : [1000,4], //5 items between 1000px and 901px
 		                itemsDesktopSmall : [900,4], //4 items betweem 900px and 601px
 		                itemsTablet: [600,3], //3 items between 600 and 0;
-		                itemsMobile : [479,2] //2 itemsMobile disabled - inherit from itemsTablet option
+		                itemsMobile : [479,2], //2 itemsMobile disabled - inherit from itemsTablet option
+                        slideSpeed: 1000        //***************** customize koreche mithunshawon
 		            });
 
 		            // Custom Navigation Events
