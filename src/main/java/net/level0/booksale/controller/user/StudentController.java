@@ -28,6 +28,7 @@ public class StudentController extends HttpServlet {
     public StudentController() {
         userService = new UserServiceImp();
     }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("Fellow Controller is requested ");
@@ -41,6 +42,11 @@ public class StudentController extends HttpServlet {
         req.setAttribute("userInfo",userInfo);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/dashboard/fellow_students.jsp");
         requestDispatcher.forward(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.sendRedirect(req.getContextPath());
     }
 
     private Integer getUniId(HttpServletRequest req) {

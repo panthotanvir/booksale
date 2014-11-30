@@ -32,18 +32,14 @@ import java.util.List;
  */
 
 @WebServlet(name = "BookAddController", urlPatterns = "/addbook")
-@MultipartConfig(maxFileSize = 16177215)    // file size up to 16MB
 
 public class BookController extends HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(BookController.class);
 
     private final String UPLOAD_DIRECTORY = "/home/devil/therap/booksale/web/uploads/books";
 
-
     private Book book;
-
     private UniService uniService;
-
     private BookService bookService;
 
 

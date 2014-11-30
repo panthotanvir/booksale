@@ -25,10 +25,8 @@ public class HomeController extends javax.servlet.http.HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("Home Controller is requested ");
 
-
         List<Book> bookList = getAllBookList();
         List<University> uniList = getAllUniList();
-
 
         log.info("Book list size : {}", bookList.size());
         log.info("University lis size : {}", uniList.size());
@@ -39,9 +37,10 @@ public class HomeController extends javax.servlet.http.HttpServlet {
         requestDispatcher.forward(req, resp);
     }
 
-//    private List<University> getSpecificDeptList(List<University> uniList) {
-//        return new UniServiceImp().getSpecificUniDept(uniList);
-//    }
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.sendRedirect(req.getContextPath());
+    }
 
     private List<University> getAllUniList() {
         return new UniServiceImp().getAllUniversity();

@@ -39,6 +39,11 @@ public class ProfileController extends HttpServlet {
         requestDispatcher.forward(req, resp);
     }
 
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.sendRedirect(req.getContextPath());
+    }
+
     private Integer getUserId(HttpServletRequest req) {
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");

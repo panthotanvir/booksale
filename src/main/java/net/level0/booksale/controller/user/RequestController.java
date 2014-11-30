@@ -1,8 +1,9 @@
 package net.level0.booksale.controller.user;
 
 import net.level0.booksale.domain.Book;
+import net.level0.booksale.domain.Detail;
 import net.level0.booksale.domain.User;
-import net.level0.booksale.service.BookServiceImp;
+import net.level0.booksale.service.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,14 +24,22 @@ public class RequestController extends  HttpServlet{
     private static final Logger log = LoggerFactory.getLogger(RequestController.class);
 
     private Book book;
-    private BookServiceImp bookService;
+    private BookService bookService;
+    private UserService userService;
 
     public RequestController() {
+
         bookService = new BookServiceImp();
+        userService = new UserServiceImp();
     }
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        int userId = getUserId(req);
+        Detail userInfo = userService.getUserInfo(userId);
+
+        log.info("User--------- : {}", userInfo.getUser().getUserName());
+        req.setAttribute("userInfo", userInfo);
 
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/dashboard/request_book.jsp");
         requestDispatcher.forward(req, resp);
@@ -42,9 +51,9 @@ public class RequestController extends  HttpServlet{
         log.debug("Request: {}",book.getTitle());
         bookService.requestBook(book);
 
-
         resp.sendRedirect(req.getContextPath() + "/dashboard");
     }
+
     private void createRequestForm(HttpServletRequest req) throws IOException, ServletException {
         book = new Book();
         log.debug("create Request is called ");

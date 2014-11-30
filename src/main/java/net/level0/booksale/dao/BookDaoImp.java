@@ -193,7 +193,7 @@ public class BookDaoImp implements BookDao {
     public void requestBook(Book book) {
         String insertQuery = "INSERT INTO `booksale`.`request` (`user_id`, `dept_id`, `title`)" +
                 " VALUES (?, ?, ? );";
-
+        log.debug("insert query in requestBook : {}", insertQuery);
         Integer userId = book.getUserId();
         Integer deptId = book.getDeptId();
         String title = book.getTitle();

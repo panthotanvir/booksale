@@ -49,6 +49,11 @@ public class SingleBookController extends HttpServlet {
 
     }
 
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.sendRedirect(req.getContextPath());
+    }
+
     private List<Book> getDeptBookList(Integer deptId)  {
         return new BookServiceImp().getDeptBook(deptId);
     }
