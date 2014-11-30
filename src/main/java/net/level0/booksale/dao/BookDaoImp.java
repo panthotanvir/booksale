@@ -84,7 +84,7 @@ public class BookDaoImp implements BookDao {
     }
 
     @Override
-    public List<Book> getBookList(Integer userId) {
+    public List<Book> getBookList(int userId) {
         String query = "SELECT * FROM book Where book.user_id = '" + userId + "' ";
         log.debug("query fro book list---> {}", query);
         List<Book> userBookList = DatabaseTemplate.queryForObject(query, new ObjectRowMapper<Book>() {
@@ -97,11 +97,7 @@ public class BookDaoImp implements BookDao {
         return userBookList;
     }
 
-    @Override
-    public List<Book> getBookList(String authorName) {
-        String query = "SELECT * FROM book WHERE author = '" + authorName + "' ";
-        return null;
-    }
+
 
     @Override
     public List<Book> getDeptBook(Integer deptId) {

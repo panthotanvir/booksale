@@ -10,7 +10,7 @@
 
 <!--Left Sidebar-->
 <div class="col-md-3 md-margin-bottom-40">
-    <img class="img-responsive profile-img margin-bottom-20" src="uploads/<c:out value="${requestScope.userInfo.user.photo}"/>" alt="profile">
+    <img class="img-responsive profile-img margin-bottom-20" src="uploads/users/<c:out value="${requestScope.userInfo.user.photo}"/>" alt="profile">
 
     <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
         <li class="list-group-item">

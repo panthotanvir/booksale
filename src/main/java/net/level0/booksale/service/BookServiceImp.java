@@ -40,7 +40,7 @@ public class BookServiceImp implements BookService {
     }
 
     @Override
-    public List<Book> getBookList(Integer userId) {
+    public List<Book> getBookList(int userId) {
         return  bookDao.getBookList(userId);
     }
 
@@ -49,11 +49,6 @@ public class BookServiceImp implements BookService {
         return bookDao.searchTitleBookList(title);
     }
 
-    @Override
-
-    public List<Book> getBookList(String authorName) {
-        return bookDao.getBookList(authorName);
-    }
 
     public List<Book> getDeptBook(Integer deptId) {
         return  bookDao.getDeptBook(deptId);

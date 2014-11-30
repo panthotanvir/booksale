@@ -30,7 +30,7 @@ import java.util.List;
 @WebServlet(name = "UserAddController", urlPatterns = "/adduser")
 public class UserAddController extends HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(UserAddController.class);
-    private final String UPLOAD_DIRECTORY = "/home/devil/therap/booksale/web/uploads";
+    private final String UPLOAD_DIRECTORY = "/home/devil/therap/booksale/web/uploads/users";
 
     private User user;
     private UserServiceImp userService;

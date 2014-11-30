@@ -55,7 +55,7 @@
             <c:forEach var="book" items="${requestScope.bookList}" varStatus="item">
                 <div class="col-md-3">
                     <div class="view view-tenth">
-                        <img class="img-responsive" src="uploads/<c:out value="${book.photo}"/>" alt="" />
+                        <img class="img-responsive" src="uploads/books/<c:out value="${book.photo}"/>" alt="" />
                         <div class="mask">
                             <h2><c:out value="${book.title}"/></h2>
                             <h4><c:out value="${book.author}"/></h4>

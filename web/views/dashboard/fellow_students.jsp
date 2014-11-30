@@ -31,7 +31,7 @@
                                 <c:forEach var="us" items="${requestScope.userDept}" varStatus="item">
                                 <div class="col-sm-6 sm-margin-bottom-20">
                                     <div class="profile-blog">
-                                        <img class="rounded-x" src="assets/img/testimonials/img1.jpg" alt="">
+                                        <img class="rounded-x" src="uploads/users/<c:out value="${us.photo}"/>" alt="">
                                         <div class="name-location">
                                             <strong><i class=" icon-user"></i>  <c:out value="${us.userName}"/></strong>
                                             <span><i class="fa fa-envelope"></i>  <a href="#"><c:out value="${us.email}"/></a></span></br>

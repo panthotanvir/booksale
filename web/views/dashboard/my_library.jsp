@@ -28,7 +28,7 @@
                         <c:forEach var="library" items="${requestScope.libraryBook}" varStatus="item">
                             <div class="col-sm-6">
                                 <div class="easy-block-v1">
-                                    <img alt="book" class="img-responsive" src="uploads/<c:out value="${library.photo}"/>.jpg">
+                                    <img alt="book" class="img-responsive" src="uploads/books/<c:out value="${library.photo}"/>">
                                     <div class="easy-block-v1-badge rgba-red"><c:out value="${library.type}"/></div>
                                 </div>
                                 <div class="projects">

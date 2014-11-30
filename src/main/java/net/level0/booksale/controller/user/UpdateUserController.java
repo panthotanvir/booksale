@@ -47,8 +47,7 @@ public class UpdateUserController extends HttpServlet {
         userService.updateUser(user,req.getParameter("flag"));
 
         req.setAttribute("message","Your information is updated");
-//        RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/success/success.jsp");
-//        requestDispatcher.forward(req, resp);
+
         resp.sendRedirect(req.getContextPath() + "/dashboard");
     }
 

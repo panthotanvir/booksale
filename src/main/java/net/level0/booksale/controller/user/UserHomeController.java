@@ -2,6 +2,7 @@ package net.level0.booksale.controller.user;
 
 import net.level0.booksale.domain.Book;
 import net.level0.booksale.domain.User;
+import net.level0.booksale.service.BookService;
 import net.level0.booksale.service.BookServiceImp;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,38 +24,29 @@ import java.util.List;
 public class UserHomeController extends javax.servlet.http.HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(UserHomeController.class);
 
+    private BookService bookService;
+
+    public UserHomeController() {
+        bookService = new BookServiceImp();
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("User Home Controller is requested ");
 
-        Integer deptId = getDeptId(req);
-        List<Book> deptBookList = getDeptBookList(deptId);
-        //List<University> uniList = getAllUniList();
-//        List<University> deptList = getSpecificDeptList(uniList);
-        log.info("Dept Book list size : {}" ,deptBookList.size() );
-     //   log.info("University lis size : {}" ,uniList.size() );
-        req.setAttribute("bookList",deptBookList);
-      //  req.setAttribute("uniList",uniList);
+        Integer userId = getUserId(req);
+        List<Book> bookList = bookService.getBookList(userId);
+        log.info("Dept Book list size : {}", bookList.size());
+        req.setAttribute("bookList",bookList);
 
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/book/dept_book_show.jsp");
         requestDispatcher.forward(req, resp);
     }
 
-//    private List<University> getSpecificDeptList(List<University> uniList) {
-//        return new UniServiceImp().getSpecificUniDept(uniList);
-//    }
-
-  // private List<University> getAllUniList()  { return new UniServiceImp().getAllUniversity();}
-
-    private List<Book> getDeptBookList(Integer deptId)  {
-        return new BookServiceImp().getDeptBook(deptId);
-    }
-
-    private Integer getDeptId(HttpServletRequest req) {
+    private Integer getUserId(HttpServletRequest req) {
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");
-        return user.getDeptId();
+        return user.getUserId();
     }
-
 
 }

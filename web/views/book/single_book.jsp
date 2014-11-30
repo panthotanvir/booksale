@@ -21,7 +21,7 @@
             <div class="carousel slide carousel-v1" id="myCarousel">
                 <div class="carousel-inner">
                     <div class="item active">
-                        <img alt="" src="uploads/<c:out value="${requestScope.bookInfo.book.photo}"/>" height="400px" width="300px">
+                        <img alt="" src="uploads/books/<c:out value="${requestScope.bookInfo.book.photo}"/>" height="400px" width="300px">
                         <!--div class="carousel-caption">
                             <p><c:out value="${requestScope.bookInfo.book.tag}"/></p>
                         </div-->
@@ -133,7 +133,7 @@
                     <div class="item">
                         <a href="#">
                             <em class="overflow-hidden">
-                                <img alt="" src="uploads/<c:out value="${recommend.photo}"/>" height="200px" width="270px">
+                                <img alt="" src="uploads/books/<c:out value="${recommend.photo}"/>" height="200px" width="270px">
                             </em>
                                 <span>
                                     <strong><a class="btn-u btn-u-sm" href="singleBook?bookId=${recommend.bookId}"><c:out value="${recommend.title}"/></a></strong>
