@@ -27,7 +27,7 @@ import java.util.List;
  * @author: mithunshawon
  */
 @WebServlet(name = "DashboardController", urlPatterns = "/dashboard")
-public class DashboardController extends HttpServlet{
+public class DashboardController extends HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(DashboardController.class);
     private User user;
     private UserService userService;
@@ -37,32 +37,30 @@ public class DashboardController extends HttpServlet{
         userService = new UserServiceImp();
         bookService = new BookServiceImp();
     }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("Dashboard Controller is requested ");
 
         int userId = getUserId(req);
         Detail userInfo = userService.getUserInfo(userId);
-        log.info("User--------- : {}" ,userInfo.getUser().getUserName());
-        log.info("User Photo--------- : {}" ,userInfo.getUser().getUserName());
-        req.setAttribute("userInfo",userInfo);
-
+        log.info("User--------- : {}", userInfo.getUser().getUserName());
+        log.info("User Photo--------- : {}", userInfo.getUser().getPhoto());
+        req.setAttribute("userInfo", userInfo);
 
 
         List<Book> requestBook = bookService.getRequestBook(userId);
         List<Book> userBookList = bookService.getBookList(userId);
-       // List<Book> userRequestBook = bookService.getAllRequest(userId);
+        // List<Book> userRequestBook = bookService.getAllRequest(userId);
 
 
-        req.setAttribute("userBook",userBookList);
-        req.setAttribute("countBook",userBookList.size());
-        req.setAttribute("requestResult",requestBook);
-        req.setAttribute("countRequest",requestBook.size());
-       // req.setAttribute("requestedBook",userRequestBook);
+        req.setAttribute("userBook", userBookList);
+        req.setAttribute("countBook", userBookList.size());
+        req.setAttribute("requestResult", requestBook);
+        req.setAttribute("countRequest", requestBook.size());
+        // req.setAttribute("requestedBook",userRequestBook);
 
-        log.debug("List Size in DashboardController:  {}",userBookList.size());
-        log.debug("Count in DashboardController:   {}",userBookList.get(0).getCountBook());
-        log.debug("Count in DashboardController:   {}",userBookList.get(3).getCountBook());
+        log.debug("List Size in DashboardController:  {}", userBookList.size());
 
 
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/dashboard/profile_overview.jsp");

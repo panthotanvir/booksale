@@ -32,7 +32,7 @@ public class UserAddController extends HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(UserAddController.class);
     private final String UPLOAD_DIRECTORY = "/home/devil/therap/booksale/web/uploads";
 
-    private User user ;
+    private User user;
     private UserServiceImp userService;
 
     public UserAddController() {
@@ -59,15 +59,20 @@ public class UserAddController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        log.debug("Request path in UserAddController : {}", req.getRequestURL());
+        log.debug("Request path in UserAddController : {}", req.getRequestURI());
+
+
         try {
             createUserFromRequest(req);
         } catch (FileUploadException e) {
             e.printStackTrace();
         }
-        log.debug("in Post Method UserAddController   :  {}",user.getUserName());
-        log.debug("in Post Method UserAddController   :  {}",user.getPhoto());
-        log.debug("in Post Method UserAddController   :  {}",user.getUniId());
-        log.debug("in Post Method UserAddController   :  {}",user.getDeptId());
+        log.debug("in Post Method UserAddController   :  {}", user.getUserName());
+        log.debug("in Post Method UserAddController   :  {}", user.getPhoto());
+        log.debug("in Post Method UserAddController   :  {}", user.getUniId());
+        log.debug("in Post Method UserAddController   :  {}", user.getDeptId());
         userService.addUser(user);
 
         log.debug("User is added");
@@ -80,19 +85,12 @@ public class UserAddController extends HttpServlet {
         String value = "";
         String fileName = "";
 
-
         log.debug("file request : {}", ServletFileUpload.isMultipartContent(req));
         FileItemFactory factory = new DiskFileItemFactory();
 
-        // Set factory constraints
-//        factory.setSizeThreshold(yourMaxMemorySize);
-//        factory.setRepository(yourTempDirectory);
 
-        // Create a new file upload handler
         ServletFileUpload upload = new ServletFileUpload(factory);
-        // upload.setSizeMax(yourMaxRequestSize);
 
-        // Parse the request
         List<FileItem> uploadItems = upload.parseRequest(req);
 
         for (FileItem uploadItem : uploadItems) {
@@ -123,7 +121,6 @@ public class UserAddController extends HttpServlet {
     }
 
     private User setProperty(String fieldName, String value) {
-
 
         if (fieldName.equals("user_name")) {
             user.setUserName(value);

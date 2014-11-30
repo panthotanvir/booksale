@@ -36,7 +36,7 @@
                                 <h2 class="heading-md">Manage your Name, Department and University.</h2>
 
                                 </br>
-                                <form class="sky-form" id="sky-form4" methon="post" action="updateuser">
+                                <form class="sky-form" method="post" action="updateuser">
                                     <dl class="dl-horizontal">
 
                                         <dt>User Name</dt>
@@ -78,7 +78,7 @@
                                             </section>
                                         </dd>
                                     </dl>
-
+                                    <input type="hidden" name="flag" value="1" />
                                     <button type="button" class="btn-u btn-u-default">Cancel</button>
                                     <button class="btn-u" type="submit">Save Changes</button>
                                 </form>
@@ -89,7 +89,7 @@
                                 <h2 class="heading-md">Manage your Security Settings</h2>
                                 <p>Change your password.</p>
                                 </br>
-                                <form class="sky-form" id="sky-form4" action="#">
+                                <form class="sky-form"  method="post" action="updateuser">
                                     <dl class="dl-horizontal">
 
                                         <dt>Email address</dt>
@@ -114,6 +114,7 @@
                                         </dd>
 
                                     </dl>
+                                    <input type="hidden" name="flag" value="2" />
 
                                     <button type="button" class="btn-u btn-u-default">Cancel</button>
                                     <button class="btn-u" type="submit">Save Changes</button>
@@ -124,18 +125,18 @@
                                 <h2 class="heading-md">Manage your Contact Information</h2>
 
                                 </br>
-                                <form class="sky-form" id="sky-form4" action="#">
+                                <form class="sky-form" method="post" action="updateuser">
                                     <dl class="dl-horizontal">
 
-                                        <dt>Email</dt>
-                                        <dd>
-                                            <section>
-                                                <label class="input">
-                                                    <i class="icon-append fa fa-envelope"></i>
-                                                    <input type="email" placeholder="Email address" name="email" value="<c:out value="${requestScope.settingInfo.user.email}"/>">
-                                                    <b class="tooltip tooltip-bottom-right">Needed to verify your account</b>
-                                                </label>
-                                            </section>
+                                        <%--<dt>Email</dt>--%>
+                                        <%--<dd>--%>
+                                            <%--<section>--%>
+                                                <%--<label class="input">--%>
+                                                    <%--<i class="icon-append fa fa-envelope"></i>--%>
+                                                    <%--<input type="email" placeholder="Email address" name="email" value="<c:out value="${requestScope.settingInfo.user.email}"/>">--%>
+                                                    <%--<b class="tooltip tooltip-bottom-right">Needed to verify your account</b>--%>
+                                                <%--</label>--%>
+                                            <%--</section>--%>
                                         </dd>
                                         <dt>Phone No</dt>
                                         <dd>
@@ -158,6 +159,7 @@
                                             </section>
                                         </dd>
                                     </dl>
+                                    <input type="hidden" name="flag" value="3" />
                                     <button type="button" class="btn-u btn-u-default">Cancel</button>
                                     <button class="btn-u" type="submit">Save Changes</button>
                                 </form>
@@ -167,7 +169,7 @@
                                 <h2 class="heading-md">Manage your Notifications.</h2>
                                 <p>Below are the notifications you may manage.</p>
                                 </br>
-                                <form class="sky-form" id="sky-form" action="#">
+                                <form class="sky-form" method="post" action="#">
                                     <label class="toggle"><input type="checkbox" checked="" name="checkbox-toggle-1"><i></i> biam er add deleter kaj korte parle valo hbe </label>
                                     <hr>
                                     <label class="toggle"><input type="checkbox" checked="" name="checkbox-toggle-1"><i></i>Book er name dea thake choode kore bad dite parbe </label>

@@ -37,7 +37,7 @@
                             </ol>
                             <div class="carousel-inner">
                                 <div class="item active">
-                                    <img alt="book" class="img-responsive" src="uploads/<c:out value="${book.photo}"/>.jpg" height="340" width="260">
+                                    <img alt="book" class="img-responsive" src="uploads/<c:out value="${book.photo}"/>" height="340" width="260">
                                 </div>
 
                             </div>

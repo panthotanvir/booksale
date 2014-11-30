@@ -18,7 +18,11 @@ public interface UserDao {
 
     public List<User> getAllUser();
 
-    public void updateUser(User user);
+    public void updateUserName(User user);
+
+    public void updateUserPassword(User user);
+
+    public void updateUserContact(User user);
 
     public void deleteUser(int userId);
 

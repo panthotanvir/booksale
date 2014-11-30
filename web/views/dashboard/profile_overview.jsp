@@ -28,8 +28,9 @@
                         <div class="service-block-v3 servive-block-u">
                             <i class="icon-users"></i>
                             <span class="service-heading">Overall Posted Book </span>
+                            <c:if test="${requestScope.countBook != null}">
                             <span class="counter"><c:out value="${requestScope.countBook}"/></span>
-
+                            </c:if>
                             <div class="clearfix margin-bottom-10"></div>
 
                             <div class="statistics">
@@ -47,8 +48,9 @@
                         <div class="service-block-v3 servive-block-blue">
                             <i class="icon-screen-desktop"></i>
                             <span class="service-heading">Overall Notification</span>
+                            <c:if test="${requestScope.countBook != null}">
                             <span class="counter"><c:out value="${requestScope.countRequest}"/></span>
-
+                            </c:if>
                             <div class="clearfix margin-bottom-10"></div>
 
 
