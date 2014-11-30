@@ -1,11 +1,12 @@
 
 <%--
   Created by IntelliJ IDEA.
-  User: devil
+  User: mithunshawon
   Date: 11/25/14
   Time: 3:24 PM
-  To change this template use File | Settings | File Templates.
+
 --%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -24,7 +25,6 @@
             <div class="col-md-9">
                 <!--Profile Body-->
                 <div class="profile-body margin-bottom-20">
-
                             <!--Profile Blog-->
                             <div class="row margin-bottom-20">
                                 <c:if test="${requestScope.userDept != null}">

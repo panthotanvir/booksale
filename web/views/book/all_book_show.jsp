@@ -34,7 +34,9 @@
 
                             <div class="carousel-inner">
                                 <div class="item active">
+
                                     <img alt="book" class="img-responsive" src="uploads/books/<c:out value="${book.photo}"/>" height="340" width="260">
+
                                 </div>
 
                             </div>

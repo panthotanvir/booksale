@@ -28,6 +28,7 @@ public class SingleBookController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         Integer bookId = Integer.parseInt(req.getParameter("bookId"));
         log.debug("Single book controller called");
 
@@ -40,8 +41,6 @@ public class SingleBookController extends HttpServlet {
 
         Integer deptId = singleBook.getBook().getBookId();
         List<Book> recommendedBookList = getDeptBookList(deptId);
-//        log.info("Book--------- : {}" ,singleBook.getUserName());
-//        log.info("dept Id in Single book : {} ",singleBook.getDeptId());
 
         req.setAttribute("bookInfo",singleBook);
         req.setAttribute("recommendedBook",recommendedBookList);

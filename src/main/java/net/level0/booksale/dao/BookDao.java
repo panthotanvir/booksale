@@ -29,4 +29,8 @@ public interface BookDao {
     public List<Book> getRequestBook(Integer userID);
 
     public List<Book> getAllRequest(Integer userId);
+
+    public  void requestBook(Book book);
+
+    public void deleteBook(Book book);
 }

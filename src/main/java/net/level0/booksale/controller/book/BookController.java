@@ -3,6 +3,7 @@ package net.level0.booksale.controller.book;
 import net.level0.booksale.domain.Book;
 import net.level0.booksale.domain.University;
 import net.level0.booksale.domain.User;
+import net.level0.booksale.service.BookService;
 import net.level0.booksale.service.BookServiceImp;
 import net.level0.booksale.service.UniService;
 import net.level0.booksale.service.UniServiceImp;
@@ -40,8 +41,11 @@ public class BookController extends HttpServlet {
 
 
     private Book book;
-    private BookServiceImp bookService;
+
     private UniService uniService;
+
+    private BookService bookService;
+
 
     public BookController() {
 
@@ -118,11 +122,8 @@ public class BookController extends HttpServlet {
             }
 
         }
-
-        log.debug("book set updated");
-
-
     }
+
 
     private Book setProperty(String fieldName, String value) {
         if (fieldName.equals("dept_id")) {

@@ -74,4 +74,17 @@ public class BookServiceImp implements BookService {
         return bookDao.getAllRequest(userId);
     }
 
+    @Override
+    public void requestBook(Book book) {
+         bookDao.requestBook(book);
+    }
+
+    @Override
+    public void deleteBook(Book book, String flag) {
+        if(flag.equals("4")){
+            log.debug("Deletebook in BookServiceImp flag 4");
+            bookDao.deleteBook(book);
+        }
+    }
+
 }

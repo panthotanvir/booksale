@@ -23,8 +23,6 @@ public class LogoutController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         log.info("logout controller called");
-
-      //  session.removeAttribute("isUser");
         log.info("before removing : {} ",session.getAttribute("user"));
         session.removeAttribute("user");
         session.removeAttribute("isUser");

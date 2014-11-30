@@ -2,6 +2,7 @@ package net.level0.booksale.service;
 
 import net.level0.booksale.domain.Book;
 import net.level0.booksale.domain.Detail;
+import net.level0.booksale.domain.User;
 
 import java.util.List;
 
@@ -29,6 +30,10 @@ public interface BookService {
     public  List<Book> getRequestBook(Integer userID);
 
     public List<Book> getAllRequest(Integer userId);
+
+    public void requestBook(Book book);
+
+    public void deleteBook(Book book, String flag);
 
 
 }

@@ -166,23 +166,18 @@
                             </div>
 
                             <div id="delete" class="profile-edit tab-pane fade">
-                                <h2 class="heading-md">Manage your Notifications.</h2>
-                                <p>Below are the notifications you may manage.</p>
+                                <h2 class="heading-md">Delete your Book Post</h2>
                                 </br>
-                                <form class="sky-form" method="post" action="#">
-                                    <label class="toggle"><input type="checkbox" checked="" name="checkbox-toggle-1"><i></i> biam er add deleter kaj korte parle valo hbe </label>
-                                    <hr>
-                                    <label class="toggle"><input type="checkbox" checked="" name="checkbox-toggle-1"><i></i>Book er name dea thake choode kore bad dite parbe </label>
-                                    <hr>
-                                    <label class="toggle"><input type="checkbox" checked="" name="checkbox-toggle-1"><i></i>Send me email notification for the latest update</label>
-                                    <hr>
-                                    <label class="toggle"><input type="checkbox" checked="" name="checkbox-toggle-1"><i></i>Send me email notification when a user sends me message</label>
-                                    <hr>
-                                    <label class="toggle"><input type="checkbox" checked="" name="checkbox-toggle-1"><i></i>Receive our monthly newsletter</label>
-                                    <hr>
-                                    <button type="button" class="btn-u btn-u-default">Reset</button>
-                                    <button class="btn-u" type="submit">Save Changes</button>
-                                </form>
+                                <c:if test="${requestScope.bookList != null}">
+                                    <c:forEach var="bookList" items="${requestScope.bookList}" varStatus="item">
+                                        <form class="sky-form" method="post" action="updateuser">
+                                            <input type="hidden" name="flag" value="4" />
+                                            <input type="hidden" name="book_id" value="<c:out value="${bookList.bookId}"/>">
+                                            <label class="toggle"><c:out value="${bookList.title}"/><button class="btn btn-block btn-youtube" type="submit">Delete</button></label>
+                                            <hr>
+                                         </form>
+                                    </c:forEach>
+                                </c:if>
                             </div>
                         </div>
                     </div>
