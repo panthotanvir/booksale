@@ -9,7 +9,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 /**
- * Created by devil on 11/15/14.
+ * Created by mithunshawon on 11/15/14.
  */
 public class DatabaseTemplate {
     private static final Logger log = LoggerFactory.getLogger(DatabaseTemplate.class);

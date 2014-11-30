@@ -45,7 +45,6 @@ public class DashboardController extends HttpServlet {
         int userId = getUserId(req);
         Detail userInfo = userService.getUserInfo(userId);
         log.info("User--------- : {}", userInfo.getUser().getUserName());
-        log.info("User Photo--------- : {}", userInfo.getUser().getUserName());
         req.setAttribute("userInfo", userInfo);
 
 

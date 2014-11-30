@@ -23,7 +23,7 @@ public interface UserService {
 
     public List<User> getAllUser();
 
-    public void updateUser(User user);
+    public void updateUser(User user, String flag);
 
     public void deleteUser(Integer userId);
 }

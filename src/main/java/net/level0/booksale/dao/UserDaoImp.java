@@ -42,8 +42,33 @@ public class UserDaoImp implements UserDao {
     }
 
     @Override
-    public void updateUser(User user) {
+    public void updateUserName(User user) {
+        String updateQuery = "UPDATE user SET user_name = '"+ user.getUserName()+"', " +
+                "uni_id ='"+user.getUniId()+"',dept_id='"+user.getDeptId()+"' WHERE user_id='"+user.getUserId()+"' " ;
 
+        log.debug("update query in updateUserName: {} ",updateQuery);
+        DatabaseTemplate.executeInsertQuery(updateQuery);
+        log.debug("User information updated");
+    }
+
+    @Override
+    public void updateUserPassword(User user) {
+        String updateQuery = "UPDATE user SET email = '"+ user.getEmail()+"', " +
+                "password ='"+user.getPassword()+"' WHERE user_id='"+user.getUserId()+"' " ;
+
+        log.debug("update query in updateUserPassword: {} ",updateQuery);
+        DatabaseTemplate.executeInsertQuery(updateQuery);
+        log.debug("User information updated");
+    }
+
+    @Override
+    public void updateUserContact(User user) {
+        String updateQuery = "UPDATE user SET phone = '"+ user.getPhoneNo()+"', " +
+                "address ='"+user.getAddress()+"' WHERE user_id='"+user.getUserId()+"' " ;
+
+        log.debug("update query in updateUserContact: {} ",updateQuery);
+        DatabaseTemplate.executeInsertQuery(updateQuery);
+        log.debug("User information updated");
     }
 
     @Override

@@ -49,23 +49,12 @@
             <div class="carousel slide carousel-v1" id="myCarousel">
                 <div class="carousel-inner">
                     <div class="item active">
-                        <img alt="" src="uploads/<c:out value="${requestScope.bookInfo.book.photo}"/>.jpg" height="400px" width="300px">
+                        <img alt="" src="uploads/<c:out value="${requestScope.bookInfo.book.photo}"/>" height="400px" width="300px">
                         <!--div class="carousel-caption">
                             <p><c:out value="${requestScope.bookInfo.book.tag}"/></p>
                         </div-->
                     </div>
-                    <!--div class="item">
-                        <img alt="" src="assets/img/main/12.jpg">
-                        <div class="carousel-caption">
-                            <p>photo2.</p>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <img alt="" src="assets/img/main/13.jpg">
-                        <div class="carousel-caption">
-                            <p>photo3</p>
-                        </div>
-                    </div-->
+
                 </div>
 
                 <!--div class="carousel-arrow">
@@ -172,7 +161,7 @@
                     <div class="item">
                         <a href="#">
                             <em class="overflow-hidden">
-                                <img alt="" src="uploads/<c:out value="${recommend.photo}"/>.jpg" height="200px" width="270px">
+                                <img alt="" src="uploads/<c:out value="${recommend.photo}"/>" height="200px" width="270px">
                             </em>
                                 <span>
                                     <strong><a class="btn-u btn-u-sm" href="singleBook?bookId=${recommend.bookId}"><c:out value="${recommend.title}"/></a></strong>

@@ -6,11 +6,13 @@ import net.level0.booksale.service.UserServiceImp;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 
@@ -21,50 +23,66 @@ import java.io.IOException;
 
 @WebServlet(name = "UpdateUserController", urlPatterns = "/updateuser")
 public class UpdateUserController extends HttpServlet {
+
     private static final Logger log = LoggerFactory.getLogger(UserAddController.class);
-
-    public static final String UPDATE_URL = "updatepass";
-
     private User user;
     private UserService userService;
 
     public UpdateUserController() {
         userService = new UserServiceImp();
+        user = new User();
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String requestedURI = req.getRequestURI();
-        if (requestedURI.contains(UPDATE_URL)) {
 
-        }
     }
 
-/*
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        log.debug("data post ");
-        updateUserFromRequest(req);
-        userService.updateUser(user);
 
-        log.debug("User is added");
-        resp.sendRedirect(req.getContextPath() + "/home");
+        updateUserFromRequest(req);
+        log.debug("User is updated in UpdateUserController ======== :{}",req.getRemoteUser());
+        userService.updateUser(user,req.getParameter("flag"));
+
+        req.setAttribute("message","Your information is updated");
+//        RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/success/success.jsp");
+//        requestDispatcher.forward(req, resp);
+        resp.sendRedirect(req.getContextPath() + "/dashboard");
     }
 
     private void updateUserFromRequest(HttpServletRequest req) throws IOException, ServletException {
 
-
-        Integer uniId = Integer.parseInt(req.getParameter("uni_id"));
-        Integer deptId = Integer.parseInt(req.getParameter("dept_id"));
-        Integer userId = Integer.parseInt(req.getParameter("user_id"));
-        user = new User();
+        int userId = getUserId(req);
         user.setUserId(userId);
-        user.setUserName(req.getParameter("user_name"));
-        user.setUniId(uniId);
-        user.setDeptId(deptId);
+        log.debug("Flag variable in UpdateUserController:  {}", req.getParameter("flag"));
+
+        if(req.getParameter("flag").equals("1")){
+            log.debug("in flag 1");
+            Integer uniId = Integer.parseInt(req.getParameter("uni_id"));
+            Integer deptId = Integer.parseInt(req.getParameter("dept_id"));
+            user.setUniId(uniId);
+            user.setDeptId(deptId);
+            user.setUserName(req.getParameter("user_name"));
+        }
+        else if(req.getParameter("flag").equals("2")){
+            user.setEmail(req.getParameter("email"));
+            user.setPassword(req.getParameter("password"));
+
+        }
+        else if(req.getParameter("flag").equals("3")){
+            user.setPhoneNo(req.getParameter("phone"));
+            user.setAddress(req.getParameter("address"));
+        }
 
     }
 
-*/
+    private int getUserId(HttpServletRequest req) {
+        HttpSession session = req.getSession();
+        User user = (User) session.getAttribute("user");
+        return user.getUserId();
+    }
+
 
 }
