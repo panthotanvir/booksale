@@ -27,7 +27,7 @@
                         <div class="row">
                             <div class="col-md-5">
                                 <img class="img-responsive md-margin-bottom-10" src="uploads/users/<c:out value="${requestScope.userInfo.user.photo}"/>" alt="profile">
-                                <a class="btn-u btn-u-sm" href="#">Change Picture</a>
+                                <%--<a class="btn-u btn-u-sm" href="#">Change Picture</a>--%>
                             </div>
                             <div class="col-md-7">
                                 <h2><c:out value="${requestScope.userInfo.user.userName}"/></h2>

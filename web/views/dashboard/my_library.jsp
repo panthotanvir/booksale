@@ -18,38 +18,33 @@
         <!--Left Sidebar-->
         <jsp:include page="left_sidebar.jsp"/>
         <!--End Left Sidebar-->
+        <div class="col-md-8">
+            <ul>
+                <c:if test="${requestScope.libraryBook != null}">
+                    <c:forEach var="book" items="${requestScope.libraryBook}" varStatus="item">
+                        <li class="col-md-3 col-sm-6 col-xs-12 mix category_3 category_2">
 
-        <div class="col-md-9">
-            <!--Profile Body-->
-            <div class="profile-body">
-                <!--Projects-->
-                <div class="row">
-                    <c:if test="${requestScope.libraryBook != null}">
-                        <c:forEach var="library" items="${requestScope.libraryBook}" varStatus="item">
-                            <div class="col-sm-6">
-                                <div class="easy-block-v1">
-                                    <img alt="book" class="img-responsive" src="uploads/books/<c:out value="${library.photo}"/>">
-                                    <div class="easy-block-v1-badge rgba-red"><c:out value="${library.type}"/></div>
-                                </div>
-                                <div class="projects">
-                                    <h2><c:out value="${library.title}"/></h2>
-                                    <ul class="list-unstyled list-inline blog-info-v2">
-                                        <li>Authored By: <a class="color-green" href="#"><c:out value="${library.author}"/></a></li>
-                                        <li>Edition 13</li>
-                                        <li><i class="fa fa-clock-o"></i> <c:out value="${library.date}"/></li>
-                                    </ul>
-                                    <h3 class="heading-xs">Price<span class="pull-right"><c:out value="${library.price}"/></span></h3>
+                            <div class="item">
+                                <div class="thumbnails thumbnail-style thumbnail-kenburn">
+                                    <div class="thumbnail-img">
+                                        <div class="overflow-hidden">
+                                            <img class="img-responsive" src="uploads/books/<c:out value="${book.photo}"/>" alt="">
+                                        </div>
+                                        <a class="btn-more hover-effect" href="singleBook?bookId=${book.bookId}">Details</a>
+                                    </div>
+                                    <div class="caption">
+                                        <h3><c:out value="${book.title}"/></h3>
+                                        <p>price: <c:out value="${book.price}"/></p>
+                                    </div>
                                 </div>
                             </div>
-                        </c:forEach>
-                    </c:if>
-                </div><!--/end row-->
-                <!--End Projects-->
+                        </li>
+                    </c:forEach>
+                </c:if>
 
-                <hr>
+            </ul>
+        </div>
 
-                <button type="button" class="btn-u btn-u-default btn-u-sm btn-block">Load More</button>
-            </div>
             <!--End Profile Body-->
         </div>
     </div><!--/end row-->
