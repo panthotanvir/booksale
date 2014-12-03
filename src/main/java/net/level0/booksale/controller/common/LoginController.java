@@ -34,7 +34,7 @@ public class LoginController extends javax.servlet.http.HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String email = req.getParameter("userEmail");
+        String email = req.getParameter("email");
         String password = req.getParameter("userPassword");
 
         log.debug("email {}, password {}",email,password);

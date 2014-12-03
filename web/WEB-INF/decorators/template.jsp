@@ -16,6 +16,7 @@
     <!-- CSS Global Compulsory -->
     <link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/bootstrap/css/bootstrap.min.css" />" media="all">
     <link rel="stylesheet" type="text/css" href="<c:url value="/assets/css/style.css" />" media="all">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/assets/js/bootstrapvalidator/dist/css/bootstrapValidator.min.css"/>">
 
 
     <!-- CSS Implementing Plugins -->
@@ -95,6 +96,8 @@
 <script src="<c:url value="/assets/plugins/jquery-migrate-1.2.1.min.js"/>"></script>
 <script src="<c:url value="/assets/plugins/bootstrap/js/bootstrap.min.js"/>"></script>
 
+<!-- BootStrap Validator -->
+<script src="<c:url value="/assets/js/bootstrapvalidator/dist/js/bootstrapValidator.min.js"/> "></script>
 <!-- JS Implementing Plugins -->
 
 <script src="<c:url value="/assets/plugins/back-to-top.js"/>"></script>
@@ -140,6 +143,8 @@
         Datepicker.initDatepicker();
         Index.initLayerSlider();
         OwlCarousel.initOwlCarousel();
+//        $('#emailAddressHtml5Form').bootstrapValidator();
+
     });
 </script>
 <script>
