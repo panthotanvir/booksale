@@ -32,92 +32,24 @@
             <ul class="nav navbar-nav">
                 <!-- Home -->
                 <li><a href="home">Home</a> </li>
-
-                <!-- End Home -->
-
-                <!-- University List -->
-                <c:if test="${requestScope.uniList != null}">
-
-                <li class="dropdown">
-                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-
-                        University Name
-                    </a>
-
-                    <ul class="dropdown-menu">
-
-                        <c:forEach var="uni" items="${requestScope.uniList}" varStatus="dept">
-
-                        <!-- About Pages -->
-                            <li >
-                                <a href="#"> <c:out value="${uni.uniName}"/> </a>
-                                <%--<c:if test="${requestScope.uniList[dept.index].id == requestScope.uniList[dept.index + 1].id }">--%>
-                                <%--<ul class="dropdown-menu">--%>
-                                    <%--<c:set var="count" value="0" scope="page" />--%>
-                                    <%--<c:set var="ex_count" value="0" scope="page" />--%>
-                                    <%--<c:forEach var="depts" items="${requestScope.uniList}" varStatus="deptStatus">--%>
-                                        <%----%>
-                                            <%--<c:when test="${depts.id == uni.id}">--%>
-                                            <%--<li><a href="#"><c:out value="${requestScope.uniList[deptStatus.index + ex_count].deptName}"/><c:out value="${deptStatus.index + ex_count}"/></a></li>--%>
-                                            <%--<c:set var="count" value="${count + 1}" scope="page"/>--%>
-                                            <%--</c:when>--%>
-                                <%--</ul>--%>
-                                <%--&lt;%&ndash;</c:if>&ndash;%&gt;--%>
-                            </li>
-                        </c:forEach>
-                    </ul>
-
-                </li>
-                </c:if>
-                <!-- University List -->
-
-
-                <!-- Category -->
-                <li class="dropdown">
-                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-                        Category
-                    </a>
-                    <ul class="dropdown-menu">
-                        <!-- About Pages -->
-                        <li>
-                            <a href="javascript:void(0);">Author</a>
-
-                        </li>
-
-                        <li>
-                            <a href="javascript:void(0);">Publisher</a>
-                        </li>
-                    </ul>
-                </li>
-                <!-- Category -->
-                <!-- Contact -->
-                <li>
-                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-                        Contact
-                    </a>
-
-                </li>
+                <li><a href="#">University</a> </li>
+                <li><a href="#">Autor</a> </li>
+                <li><a href="#">Publisher</a> </li>
+                <li><a href="search">Search</a> </li>
                 <!-- Search Block -->
                 <li>
-                    <%--<i class="search fa fa-search search-btn"></i>--%>
-                    <%--<div class="search-open">--%>
-                        <%--<div class="input-group animated fadeInDown">--%>
-                            <%--<input type="text" class="form-control" placeholder="Search">--%>
-                                    <%--<span class="input-group-btn">--%>
-                                        <%--<button class="btn-u" type="button">Go</button>--%>
-                                    <%--</span>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                    <a href="search">
-                        Search
-                    </a>
+                    <i class="search fa fa-search search-btn"></i>
+                    <div class="search-open">
+                        <div class="input-group animated fadeInDown">
+                            <input type="text" class="form-control" placeholder="Search">
+                                    <span class="input-group-btn">
+                                        <button class="btn-u" type="button">Go</button>
+                                    </span>
+                        </div>
+                    </div>
                 </li>
                 <!-- End Search Block -->
-            </ul>
-            </li>
-            <!-- Category -->
-
-
+            <!-- End Home -->
             </ul>
         </div><!--/navbar-collapse-->
     </div>

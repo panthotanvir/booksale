@@ -26,7 +26,7 @@
                 <div class="row margin-bottom-10">
                     <div class="col-sm-6 sm-margin-bottom-20">
                         <div class="service-block-v3 servive-block-u">
-                            <i class="icon-users"></i>
+                            <i class="icon-book-open"></i>
                             <span class="service-heading">Overall Posted Book </span>
                             <c:if test="${requestScope.countBook != null}">
                             <span class="counter"><c:out value="${requestScope.countBook}"/></span>
@@ -46,7 +46,7 @@
 
                     <div class="col-sm-6">
                         <div class="service-block-v3 servive-block-blue">
-                            <i class="icon-screen-desktop"></i>
+                            <i class="fa fa-bell-o"></i>
                             <span class="service-heading">Overall Notification</span>
                             <c:if test="${requestScope.countBook != null}">
                             <span class="counter"><c:out value="${requestScope.countRequest}"/></span>

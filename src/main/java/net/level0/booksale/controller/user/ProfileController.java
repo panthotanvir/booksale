@@ -30,8 +30,8 @@ public class ProfileController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("profile Controller is requested ");
-        int userID = getUserId(req);
-        Detail userInfo = userService.getUserInfo(userID);
+        int userId = getUserId(req);
+        Detail userInfo = userService.getUserInfo(userId);
         log.info("User in ProfileController--------- : {}" ,userInfo.getUser().getUserName());
         req.setAttribute("userInfo",userInfo);
 

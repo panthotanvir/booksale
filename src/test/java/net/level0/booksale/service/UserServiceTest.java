@@ -14,7 +14,7 @@ import org.junit.Test;
 public class UserServiceTest {
 
     @Test
-    public void getUserTest() {
+   public void getUserTest() {
         User user = new User();
         user.setEmail("mithunshawon@yahoo.com");
         user.setPassword("123");

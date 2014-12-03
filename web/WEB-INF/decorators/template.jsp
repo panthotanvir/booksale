@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="/assets/css/pages/page_log_reg_v1.css" />" media="all">
     <link rel="stylesheet" type="text/css" href="<c:url value="/assets/css/pages/profile.css" />" media="all">
     <link rel="stylesheet" type="text/css" href="<c:url value="/assets/css/pages/page_search_inner.css" />" media="all">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/assets/css/pages/blog_magazine.css" />" media="all">
 
     <!-- CSS Portfoilo -->
     <link rel="stylesheet" type="text/css" href="<c:url value="/assets/css/pages/portfolio-v1.css" />" media="all">
@@ -58,7 +59,7 @@
 
 <decorator:head/>
 </head>
-<body>
+<body class="boxed-layout container">
 
 <!--=== Style Switcher ===-->
 <i class="style-switcher-btn fa fa-cogs hidden-xs"></i>

@@ -4,7 +4,7 @@
     margin-bottom: 30px;
     padding: 4px 0 23px;
     border-bottom: 2px solid #eee;
-    background: url(/assets/img/breadcrumbs.png) repeat;
+    background: url(../../img/breadcrumbs.png) 50% 0 repeat fixed;
 }
 
 .search-block-v2 h2 {
