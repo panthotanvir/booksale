@@ -9,28 +9,114 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title></title>
+    <title>Post</title>
+    <style>
+        .has-feedback .form-control-feedback{
+            top:0;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            $('#regexpForm').bootstrapValidator({
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    title: {
+                        validators: {
+                            regexp: {
+                                regexp: /^[a-z\s]+$/i,
+                                message: 'Alphabetical characters and spaces only'
+                            }
+                        }
+                    },
+                    type: {
+                        validators: {
+                            regexp: {
+                                regexp: /^[a-z\s]+$/i,
+                                message: 'Alphabetical characters and spaces only'
+                            }
+                        }
+                    },
+                    author: {
+                        validators: {
+                            regexp: {
+                                regexp: /^[a-z\s]+$/i,
+                                message: 'Alphabetical characters and spaces only'
+                            }
+                        }
+                    },
+                    tag: {
+                        validators: {
+                            regexp: {
+                                regexp: /^[a-z\s]+$/i,
+                                message: 'Alphabetical characters and spaces only'
+                            }
+                        }
+                    },
+                    publisher: {
+                        validators: {
+                            regexp: {
+                                regexp: /^[a-z\s]+$/i,
+                                message: 'Alphabetical characters and spaces only'
+                            }
+                        }
+                    },
+                    price: {
+                        validators: {
+                            integer: {
+                                message: 'Enter valid price'
+                            }
+                        }
+                    },
+                    contact_no: {
+                        validators: {
+                            regexp: {
+                                regexp: '^([0-9\(\)\/\+ \-]*)$',
+                                message: 'Enter a valid phone number'
+                            }
+                        }
+                    },
+                    photo: {
+                        validators: {
+                            file: {
+                                extension: 'jpg,jpeg,png',
+                                type: 'image.jpg,image/jpeg,image/png',
+                                maxSize: 2097152,   // 2048 * 1024
+                                message: 'The selected file is not valid'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+
 </head>
 <body>
 <div class="container content">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <form id="sky-form" class="sky-form" method="post" action="addbook" enctype="multipart/form-data">
+            <form id= "regexpForm" class="sky-form" method="post" action="addbook" enctype="multipart/form-data">
                 <header>Add Post</header>
-
                 <fieldset>
                     <div class="row">
                         <section class="col col-6">
-                            <label class="input">
-
-                                <input type="text" name="title" placeholder="Title">
-                            </label>
+                            <div class="form-group">
+                                <label class="input">
+                                    <input type="text" name="title" placeholder="Title">
+                                </label>
+                            </div>
                         </section>
 
                         <section class="col col-6">
-                            <label class="input">
-                                <input type="text" name="type" placeholder="Category">
-                            </label>
+                            <div class="form-group">
+                                <label class="input">
+                                    <input type="text" name="type" placeholder="Category">
+                                </label>
+                            </div>
                         </section>
                     </div>
 
@@ -45,26 +131,29 @@
                         </section>
 
                         <section class="col col-6">
-                            <label class="input">
-
-                                <input type="text" name="author" placeholder="Author">
-                            </label>
+                            <div class="form-group">
+                                <label class="input">
+                                    <input type="text" name="author" placeholder="Author">
+                                </label>
+                            </div>
                         </section>
                     </div>
                 </fieldset>
                 <fieldset>
                     <div class="row">
                         <section class="col col-6">
-                            <label class="input">
-
-                                <input type="text" name="tag" placeholder="Tag">
-                            </label>
+                            <div class="form-group">
+                                <label class="input">
+                                    <input type="text" name="tag" placeholder="Tag">
+                                </label>
+                            </div>
                         </section>
                         <section class="col col-6">
-                            <label class="input">
-
-                                <input type="text" name="publisher" placeholder="Publisher">
-                            </label>
+                            <div class="form-group">
+                                <label class="input">
+                                    <input type="text" name="publisher" placeholder="Publisher">
+                                </label>
+                            </div>
                         </section>
                     </div>
 
@@ -83,22 +172,22 @@
                 <fieldset>
                     <div class="row">
                         <section class="col col-6">
-                            <label class="input">
-
-                                <input type="text" name="price" placeholder="Price">
-                            </label>
+                            <div class="form-group">
+                                <label class="input">
+                                    <input type="text" name="price" placeholder="Price">
+                                </label>
+                            </div>
                         </section>
                         <section class="col col-6">
-                            <%--<label class="input">--%>
-                            <%--<input type="file" name="photo" placeholder="Photo">--%>
-                            <%--</label>--%>
+                            <div class="form-group">
                             <label class="input input-file">
                                 <div class="button">
                                     <input type="file" id="file" name="photo"
                                            onchange="this.parentNode.nextSibling.value = this.value">Browse
                                 </div>
-                                <input type="text" readonly="">
+                                <input type="text" readonly="" value="Less then 2 MB">
                             </label>
+                            </div>
                         </section>
                     </div>
 
@@ -106,16 +195,18 @@
                 <fieldset>
                     <div class="row">
                         <section class="col col-6">
-                            <label class="input">
-
-                                <input type="text" name="contact_no" placeholder="contact_no">
-                            </label>
+                            <div class="form-group">
+                                <label class="input">
+                                    <input type="text" name="contact_no" placeholder="Contact No">
+                                </label>
+                            </div>
                         </section>
                         <section class="col col-6">
+                            <div class="form-group">
                             <label class="input">
-
-                                <input type="text" name="contact_address" placeholder="contact_address">
+                                <input type="text" name="contact_address" placeholder="Contact Address">
                             </label>
+                            </div>
                         </section>
                     </div>
 

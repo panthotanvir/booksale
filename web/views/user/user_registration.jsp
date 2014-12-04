@@ -10,24 +10,78 @@
 <html>
 <head>
     <title>User Registration</title>
+    <style>
+        .has-feedback .form-control-feedback{
+            top:0;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            $('#regexpForm').bootstrapValidator({
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    user_name: {
+                        validators: {
+                            regexp: {
+                                regexp: /^[a-z\s]+$/i,
+                                message: 'Alphabetical characters and spaces only'
+                            }
+                        }
+                    },
+                    email: {
+                        validators: {
+                            regexp: {
+                                regexp: '^[^@\\s]+@([^@\\s]+\\.)+[^@\\s]+$',
+                                message: 'Enter valid email address'
+                            }
+                        }
+                    },
+                    phone: {
+                        validators: {
+                            regexp: {
+                                regexp: '^([0-9\(\)\/\+ \-]*)$',
+                                message: 'Enter valid phone number'
+                            }
+                        }
+                    },
+                    photo: {
+                        validators: {
+                            file: {
+                                extension: 'jpg,jpeg,png',
+                                type: 'image.jpg,image/jpeg,image/png',
+                                maxSize: 2097152,   // 2048 * 1024
+                                message: 'The selected file is not valid'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+
+
 </head>
 <body>
 <div class="container content">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <form id= "sky-form" class="sky-form" method="post" action="adduser" enctype="multipart/form-data">
+            <form id= "regexpForm" class="sky-form" method="post" action="adduser" enctype="multipart/form-data">
                 <header>User Registration</header>
 
                 <fieldset>
                     <div class="row">
+                            <section class="col col-6">
+                                <div class="form-group">
+                                <label class="input">
+                                    <input type="text" name="user_name" placeholder="User name">
+                                </label>
+                                </div>
+                            </section>
                         <section class="col col-6">
-                            <label class="input">
-
-                                <input type="text" name="user_name" placeholder="User name">
-                            </label>
-                        </section>
-                        <section class="col col-6">
-
                                 <select name="uni_id" class="form-control">
                                     <c:forEach var="uni" items="${requestScope.uniList}" varStatus="uniStatus">
                                         <option value="<c:out value="${uni.id}"/>"><c:out value="${uni.uniName}"/></option>
@@ -48,10 +102,11 @@
 
                         </section>
                         <section class="col col-6">
+                            <div class="form-group">
                             <label class="input">
-
                                 <input type="text" name="email" placeholder="email">
                             </label>
+                            </div>
                         </section>
                     </div>
                 </fieldset>
@@ -64,10 +119,11 @@
                             </label>
                         </section>
                         <section class="col col-6">
+                            <div class="form-group">
                             <label class="input">
-
                                 <input type="text" name="phone" placeholder="phone no">
                             </label>
+                            </div>
                         </section>
                     </div>
 
@@ -81,13 +137,14 @@
                             </label>
                         </section>
                         <section class="col col-6">
-
+                            <div class="form-group">
                             <label class="input input-file">
-
-                                <input type="file" name="photo"> Browse
-
+                                <div class="button">
+                                    <input type="file" id="file" name="photo">Browse
+                                </div>
+                                <input type="text" readonly="" value="Less then 2 MB">
                             </label>
-
+                            </div>
                         </section>
 
                     </div>
