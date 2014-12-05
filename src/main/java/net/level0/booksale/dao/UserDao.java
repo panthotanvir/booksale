@@ -29,4 +29,6 @@ public interface UserDao {
     public Detail getUserInfo(int userId);
 
     public List<Detail> getUserDept(int userId,Integer uniId , Integer deptId);
+
+    public List<Detail> getAllDivision();
 }

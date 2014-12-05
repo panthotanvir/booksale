@@ -35,5 +35,6 @@ public interface BookService {
 
     public void deleteBook(Book book, String flag);
 
+    public List<Book> getDivisionBook(Integer divisionId);
 
 }

@@ -56,6 +56,10 @@ public class UserServiceImp implements UserService{
     public void deleteUser(Integer userId) {
 
     }
+
+    @Override
+    public List<Detail> getAllDivision() { return userDao.getAllDivision();}
+
     @Override
     public User getUser(String email, String password) {
         return userDao.getUser(email, password);

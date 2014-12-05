@@ -1,10 +1,10 @@
 package net.level0.booksale.controller.common;
 
+import net.level0.booksale.domain.Detail;
 import net.level0.booksale.domain.University;
 import net.level0.booksale.domain.User;
-import net.level0.booksale.service.UniServiceImp;
+import net.level0.booksale.service.*;
 import net.level0.booksale.domain.Book;
-import net.level0.booksale.service.BookServiceImp;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,16 +21,33 @@ import java.util.List;
 public class HomeController extends javax.servlet.http.HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(HomeController.class);
 
+    private UserService userService;
+    private UniService uniService;
+    private BookService bookService;
+
+    public HomeController() {
+        userService = new UserServiceImp();
+        uniService = new UniServiceImp();
+        bookService = new BookServiceImp();
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("Home Controller is requested ");
 
+        List<Detail> divisionList = userService.getAllDivision();
+        log.info("division size : {}",divisionList.size());
 
-        List<Book> bookList = getAllBookList();
-        List<University> uniList = getAllUniList();
-
+        List<Book> bookList = bookService.getAllBookPost();
         log.info("Book list size : {}", bookList.size());
+
+        List<University> uniList = uniService.getAllUniversity();
         log.info("University lis size : {}", uniList.size());
+
+
+
+
+        req.setAttribute("divisionList",divisionList);
         req.setAttribute("bookList", bookList);
         req.setAttribute("uniList", uniList);
 
@@ -43,13 +60,6 @@ public class HomeController extends javax.servlet.http.HttpServlet {
         resp.sendRedirect(req.getContextPath());
     }
 
-    private List<University> getAllUniList() {
-        return new UniServiceImp().getAllUniversity();
-    }
-
-    private List<Book> getAllBookList() {
-        return new BookServiceImp().getAllBookPost();
-    }
 
 
 }

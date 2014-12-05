@@ -33,4 +33,6 @@ public interface BookDao {
     public  void requestBook(Book book);
 
     public void deleteBook(Book book);
+
+    public List<Book> getDivisionBook(Integer divisionId);
 }
