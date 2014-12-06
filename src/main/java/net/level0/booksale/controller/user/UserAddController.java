@@ -4,6 +4,7 @@ import net.level0.booksale.domain.University;
 import net.level0.booksale.domain.User;
 import net.level0.booksale.service.UniServiceImp;
 import net.level0.booksale.service.UserServiceImp;
+import net.level0.booksale.util.validator.UserValidator;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.FileUploadException;
@@ -15,10 +16,11 @@ import org.slf4j.LoggerFactory;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
 /**
@@ -31,7 +33,8 @@ import java.util.List;
 public class UserAddController extends HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(UserAddController.class);
     private final String UPLOAD_DIRECTORY = "/home/devil/therap/booksale/web/uploads/users";
-
+    List<University> uniList = getAllUniList();
+    List<University> deptList = getAllDeptList();
     private User user;
     private UserServiceImp userService;
 
@@ -43,9 +46,6 @@ public class UserAddController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("User Registration Controller is requested ");
-        log.debug("createUserFromRequest in UserAddController doGet: {}", req);
-        List<University> uniList = getAllUniList();
-        List<University> deptList = getAllDeptList();
 
         log.info("Uni List Size in UserAddController : {} ", uniList.size());
         log.info("Dept List Size in UserAddController : {} ", deptList.size());
@@ -59,23 +59,29 @@ public class UserAddController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        log.debug("Request path in UserAddController : {}", req.getRequestURL());
-        log.debug("Request path in UserAddController : {}", req.getRequestURI());
-
-
+        log.debug("Post method in UserAddController Post");
         try {
             createUserFromRequest(req);
         } catch (FileUploadException e) {
             e.printStackTrace();
         }
-        log.debug("in Post Method UserAddController   :  {}", user.getUserName());
-        log.debug("in Post Method UserAddController   :  {}", user.getPhoto());
-        log.debug("in Post Method UserAddController   :  {}", user.getUniId());
-        log.debug("in Post Method UserAddController   :  {}", user.getDeptId());
-        userService.addUser(user);
 
-        log.debug("User is added");
-        resp.sendRedirect(req.getContextPath() + "/home");
+        log.debug("User name in UserAddController : {}", user.getUserName());
+        boolean isValid = UserValidator.validateUserRegistration(user);
+
+        if (isValid) {
+            userService.addUser(user);
+            log.debug("User is added");
+            resp.sendRedirect(req.getContextPath() + "/home");
+        } else {
+            log.debug("User is invalid");
+            req.setAttribute("uniList", uniList);
+            req.setAttribute("deptList", deptList);
+            req.setAttribute("message", "Every fields are required");
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/user/user_registration.jsp");
+            requestDispatcher.forward(req, resp);
+        }
+
     }
 
     private void createUserFromRequest(HttpServletRequest req) throws IOException, ServletException, FileUploadException {

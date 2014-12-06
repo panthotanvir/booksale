@@ -5,6 +5,7 @@
   Date: 11/22/14
   Time: 5:49 PM
   To change this template use File | Settings | File Templates.
+
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -29,6 +30,9 @@
                             regexp: {
                                 regexp: /^[a-z\s]+$/i,
                                 message: 'Alphabetical characters and spaces only'
+                            },
+                            notEmpty: {
+                                message: 'Name is required'
                             }
                         }
                     },
@@ -37,6 +41,9 @@
                             regexp: {
                                 regexp: '^[^@\\s]+@([^@\\s]+\\.)+[^@\\s]+$',
                                 message: 'Enter valid email address'
+                            },
+                            notEmpty: {
+                                message: 'Email is required'
                             }
                         }
                     },
@@ -45,6 +52,23 @@
                             regexp: {
                                 regexp: '^([0-9\(\)\/\+ \-]*)$',
                                 message: 'Enter valid phone number'
+                            },
+                            notEmpty: {
+                                message: 'Phone number is required'
+                            }
+                        }
+                    },
+                    address: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Address is required'
+                            }
+                        }
+                    },
+                    password: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Password is required'
                             }
                         }
                     },
@@ -55,6 +79,9 @@
                                 type: 'image.jpg,image/jpeg,image/png',
                                 maxSize: 1048576,   // 1048 * 1024
                                 message: 'The selected file is not valid'
+                            },
+                            notEmpty: {
+                                message: 'File is required'
                             }
                         }
                     }
@@ -113,10 +140,11 @@
                 <fieldset>
                     <div class="row">
                         <section class="col col-6">
+                            <div class="form-group">
                             <label class="input">
-
                                 <input type="password" name="password" placeholder="password">
                             </label>
+                            </div>
                         </section>
                         <section class="col col-6">
                             <div class="form-group">
@@ -131,10 +159,11 @@
                 <fieldset>
                     <div class="row">
                         <section class="col col-6">
+                            <div class="form-group">
                             <label class="input">
-
                                 <input type="text" name="address" placeholder="address">
                             </label>
+                            </div>
                         </section>
                         <section class="col col-6">
                             <div class="form-group">
@@ -152,16 +181,18 @@
                     <div class="row">
                         <section class="col col-6">
 
-                            <label class="input">
-                                <button type="submit" name="submit" class="btn-u">Submit</button>
-                            </label>
+                                <button class="btn-u"  name="registration"  type="submit">Submit</button>
 
                         </section>
-
                     </div>
                 </fieldset>
             </form>
-
+            <c:if test="${requestScope.message != null}">
+                <div class="alert alert-warning">
+                    <button data-dismiss="alert" class="close" type="button">×</button>
+                    <strong>Warning! </strong> <c:out value="${requestScope.message}" />
+                </div>
+            </c:if>
         </div>
     </div>
 </div>

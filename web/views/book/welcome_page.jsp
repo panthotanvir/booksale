@@ -10,7 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title></title>
+    <title>Welcome to Booksale</title>
 </head>
 <body>
 <!--=== Search Block Version 2 ===-->
