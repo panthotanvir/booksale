@@ -84,7 +84,7 @@
                             file: {
                                 extension: 'jpg,jpeg,png',
                                 type: 'image.jpg,image/jpeg,image/png',
-                                maxSize: 2097152,   // 2048 * 1024
+                                maxSize: 1048576,   // 1048 * 1024
                                 message: 'The selected file is not valid'
                             }
                         }
@@ -185,7 +185,7 @@
                                     <input type="file" id="file" name="photo"
                                            onchange="this.parentNode.nextSibling.value = this.value">Browse
                                 </div>
-                                <input type="text" readonly="" value="Less then 2 MB">
+                                <input type="text" readonly="" value="Less then 1 MB">
                             </label>
                             </div>
                         </section>

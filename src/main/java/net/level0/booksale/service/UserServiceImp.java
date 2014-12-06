@@ -58,6 +58,7 @@ public class UserServiceImp implements UserService{
     }
     @Override
     public User getUser(String email, String password) {
+        log.debug("IN UserServiceImp-----  {}",userDao.getUser(email,password));
         return userDao.getUser(email, password);
     }
 

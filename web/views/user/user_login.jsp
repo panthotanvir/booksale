@@ -5,6 +5,7 @@
   Time: 2:59 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -81,7 +82,12 @@
                     </div>
 
             </form>
-
+            <c:if test="${requestScope.message != null}">
+                <div class="alert alert-warning">
+                    <button data-dismiss="alert" class="close" type="button">×</button>
+                    <strong>Warning! </strong> <c:out value="${requestScope.message}" />
+                </div>
+            </c:if>
         </div>
     </div><!--/row-->
 </div><!--/container-->

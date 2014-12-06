@@ -21,7 +21,10 @@ import java.io.IOException;
 @WebServlet(name = "LoginController", urlPatterns = "/login")
 public class LoginController extends javax.servlet.http.HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(LoginController.class);
+
     private User user;
+    private UserValidator userValidator;
+
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -41,23 +44,33 @@ public class LoginController extends javax.servlet.http.HttpServlet {
 
         boolean isUserValid = UserValidator.validateEmailAndPassword(email,password);
 
-        if(isUserValid){
-            if (isUserVerified(email, password)) {
-                setUpSession(req);
-                log.debug("Home controller redirected ");
-                resp.sendRedirect(req.getContextPath() + "/home");
+
+            if (isUserValid) {
+                if (isUserVerified(email, password)) {
+                    setUpSession(req);
+                    log.debug("Home controller redirected ");
+                    resp.sendRedirect(req.getContextPath() + "/home");
+                } else {
+                    req.setAttribute("message", "Invalid User, try again");
+                    log.debug("Invalid User in Login Controller");
+                    RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/user/user_login.jsp");
+                    requestDispatcher.forward(req, resp);
+                }
             } else {
-                resp.sendRedirect(req.getContextPath());
+                req.setAttribute("message","Some fields are empty");
+                log.debug("------------------",isUserValid);
+                RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/user/user_login.jsp");
+                requestDispatcher.forward(req, resp);
             }
-        }else {
-            resp.sendRedirect(req.getContextPath());
-        }
     }
 
     private boolean isUserVerified(String email, String password) {
         UserService userService = new UserServiceImp();
         user = userService.getUser(email, password);
-        return user != null;
+        if(user != null) {
+            return true;
+        }
+        return false;
     }
 
     private void setUpSession(HttpServletRequest req) {

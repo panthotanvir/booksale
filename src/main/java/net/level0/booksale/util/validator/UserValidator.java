@@ -3,7 +3,7 @@ package net.level0.booksale.util.validator;
 import net.level0.booksale.domain.User;
 
 /**
- * Created by panthotanvir on 11/28/14.
+ * Created by mithunshawon on 11/28/14.
  */
 
 
