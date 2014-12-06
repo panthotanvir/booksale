@@ -1,11 +1,11 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: panthotanvir
-  Date: 11/29/14
-  Time: 12:36 PM
+  Date: 12/5/14
+  Time: 11:28 AM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -16,18 +16,18 @@
 <div class="search-block-v2">
     <div class="container">
         <div class="col-md-6 col-md-offset-3">
-            <h2><c:out value="${requestScope.userInfo.user.userName}"/></h2>
-            <h2><c:out value="${requestScope.userInfo.university.deptName}"/></h2>
-            <!--div class="input-group">
-                <input type="text" class="form-control" placeholder="Search words with regular expressions ...">
+            <h1 class="text-center color-green">Discover your book ...</h1>
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Enter your desired book title ...">
                     <span class="input-group-btn">
                         <button class="btn-u" type="button"><i class="fa fa-search"></i></button>
                     </span>
-            </div-->
+            </div>
         </div>
     </div>
 </div><!--/container-->
 <!--=== End Search Block Version 2 ===-->
+
 
 <!--=== Search Results ===-->
 <div class="container s-results margin-bottom-50">
@@ -39,21 +39,21 @@
 
         <div class="col-md-9">
             <ul>
-                <c:if test="${requestScope.bookList != null}">
-                    <c:forEach var="book" items="${requestScope.bookList}" varStatus="item">
+                <c:if test="${requestScope.divisionBook != null}">
+                    <c:forEach var="divisionBookList" items="${requestScope.divisionBook}" varStatus="item">
                         <li class="col-md-3 col-sm-6 col-xs-12 mix category_3 category_2">
 
                             <div class="item">
                                 <div class="thumbnails thumbnail-style thumbnail-kenburn">
                                     <div class="thumbnail-img">
                                         <div class="overflow-hidden">
-                                            <img class="img-responsive" src="uploads/books/<c:out value="${book.photo}"/>" alt="">
+                                            <img class="img-responsive" src="uploads/books/<c:out value="${divisionBookList.photo}"/>" alt="">
                                         </div>
-                                        <a class="btn-more hover-effect" href="singleBook?bookId=${book.bookId}">Details</a>
+                                        <a class="btn-more hover-effect" href="singleBook?bookId=${divisionBookList.bookId}">Details</a>
                                     </div>
                                     <div class="caption">
-                                        <p><c:out value="${book.title}"/></p>
-                                        <p>price: <c:out value="${book.price}"/></p>
+                                        <p><c:out value="${divisionBookList.title}"/></p>
+                                        <p>Price: <c:out value="${divisionBookList.price}"/></p>
                                     </div>
                                 </div>
                             </div>

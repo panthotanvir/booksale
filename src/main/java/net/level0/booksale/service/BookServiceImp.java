@@ -55,6 +55,9 @@ public class BookServiceImp implements BookService {
     }
 
     @Override
+    public List<Book> getRecommenededBook(Integer deptId, Integer bookId) { return bookDao.getRecommenedBook(deptId,bookId);}
+
+    @Override
     public List<Book> searchAuthorBookList(String authorName) {
         return bookDao.searchAuthorBookList(authorName);
     }
@@ -86,5 +89,8 @@ public class BookServiceImp implements BookService {
             bookDao.deleteBook(book);
         }
     }
+
+    @Override
+    public List<Book> getDivisionBook(Integer divisionId) {return bookDao.getDivisionBook(divisionId);}
 
 }

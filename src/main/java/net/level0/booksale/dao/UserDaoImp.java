@@ -114,6 +114,28 @@ public class UserDaoImp implements UserDao {
 
     }
 
+    @Override
+    public List<Detail> getAllDivision() {
+        String query = "SELECT * FROM division";
+        List<Detail> divisionList = DatabaseTemplate.queryForObject(query,new ObjectRowMapper<Detail>() {
+            @Override
+            public Detail mapRowToObject(ResultSet resultSet) throws SQLException {
+                return setDivisionList(resultSet);
+            }
+        });
+
+        log.debug("All division list returned");
+        return divisionList;
+    }
+    public Detail setDivisionList(ResultSet resultSet) throws SQLException{
+        int divisionId = Integer.parseInt(resultSet.getString("division_id"));
+        Detail detail = new Detail();
+        detail.setDivisionId(divisionId);
+        detail.setDivisionName(resultSet.getString("division_name"));
+        log.info("Division NAme : {}",resultSet.getString("division_name"));
+        return detail;
+    }
+
     public Detail setUserInfo(ResultSet resultSet) throws SQLException{
         int userId = Integer.parseInt(resultSet.getString("user_id"));
         int deptId = Integer.parseInt(resultSet.getString("dept_id"));

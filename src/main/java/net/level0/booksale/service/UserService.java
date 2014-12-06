@@ -26,4 +26,6 @@ public interface UserService {
     public void updateUser(User user, String flag);
 
     public void deleteUser(Integer userId);
+
+    public List<Detail> getAllDivision();
 }

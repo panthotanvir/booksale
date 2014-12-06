@@ -114,6 +114,20 @@ public class BookDaoImp implements BookDao {
     }
 
     @Override
+    public List<Book> getRecommenedBook(Integer deptId, Integer bookId) {
+        String query = "SELECT * FROM book Where book.book_id != '" + bookId + "' AND book.dept_id = '" + deptId + "' ";
+        log.debug("query for dept book list---> {}", query);
+        List<Book> recommendBookList = DatabaseTemplate.queryForObject(query, new ObjectRowMapper<Book>() {
+            @Override
+            public Book mapRowToObject(ResultSet resultSet) throws SQLException {
+                return setBook(resultSet);
+            }
+        });
+
+        return recommendBookList;
+    }
+
+    @Override
     public List<Book> searchTitleBookList(String title) {
         String query = "SELECT * FROM book WHERE title like '" + title + "%'";
         log.info("like query in searchTitleBookList  : {}", query);
@@ -210,6 +224,47 @@ public class BookDaoImp implements BookDao {
         log.debug("book information deleted");
     }
 
+    @Override
+    public List<Book> getDivisionBook(Integer divisionId) {
+        String query = "SELECT * FROM book,division Where book.division_id = division.division_id AND book.division_id = '" + divisionId + "' ";
+        log.debug("query for division book list---> {}", query);
+        List<Book> divisionBookList = DatabaseTemplate.queryForObject(query, new ObjectRowMapper<Book>() {
+            @Override
+            public Book mapRowToObject(ResultSet resultSet) throws SQLException {
+                return setBook(resultSet);
+            }
+        });
+
+        return divisionBookList;
+    }
+    private Detail setDivisionBook(ResultSet resultSet) throws SQLException{
+        Detail sBook = new Detail();
+        Book book = new Book();
+
+        Integer bookId = Integer.parseInt(resultSet.getString("book_id"));
+        Integer divisionId = Integer.parseInt(resultSet.getString("division_id"));
+        Double price = Double.parseDouble(resultSet.getString("price"));
+
+
+        book.setBookId(bookId);
+        book.setType(resultSet.getString("type"));
+        book.setTitle(resultSet.getString("title"));
+        book.setAuthor(resultSet.getString("author"));
+        book.setPublisher(resultSet.getString("publisher"));
+        book.setDescription(resultSet.getString("description"));
+        book.setPhoto(resultSet.getString("photo"));
+        book.setContactAddress(resultSet.getString("contact_address"));
+        book.setContactNo(resultSet.getString("contact_no"));
+        book.setTag(resultSet.getString("tag"));
+        book.setPrice(price);
+        book.setDate(resultSet.getString("date"));
+        sBook.setBook(book);
+        sBook.setDivisionId(divisionId);
+        sBook.setDivisionName(resultSet.getString("division_name"));
+
+        return sBook;
+
+    }
     private Book setRequestBook(ResultSet resultSet) throws SQLException{
         Integer count = resultSet.getRow();
         log.info("count value of : {}",count);

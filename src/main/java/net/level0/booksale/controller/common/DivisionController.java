@@ -1,10 +1,9 @@
 package net.level0.booksale.controller.common;
 
+import net.level0.booksale.domain.Book;
 import net.level0.booksale.domain.Detail;
 import net.level0.booksale.domain.University;
-import net.level0.booksale.domain.User;
 import net.level0.booksale.service.*;
-import net.level0.booksale.domain.Book;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,42 +12,44 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "HomeController", urlPatterns = "/home")
-public class HomeController extends javax.servlet.http.HttpServlet {
-    private static final Logger log = LoggerFactory.getLogger(HomeController.class);
+/**
+ * Created by panthotanvir on 12/5/14.
+ */
+@WebServlet(name = "DivisionController", urlPatterns = "/division")
+public class DivisionController extends javax.servlet.http.HttpServlet {
+    private static final Logger log = LoggerFactory.getLogger(SidebarController.class);
 
-    private UserService userService;
     private UniService uniService;
     private BookService bookService;
+    private UserService userService;
 
-    public HomeController() {
-        userService = new UserServiceImp();
+    public DivisionController() {
         uniService = new UniServiceImp();
         bookService = new BookServiceImp();
+        userService = new UserServiceImp();
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        log.info("Home Controller is requested ");
+        log.info("division Controller is requested ");
+
+        Integer divisionId = Integer.parseInt(req.getParameter("divisionId"));
+
+        List<Book> divisionBookList = bookService.getDivisionBook(divisionId);
 
         List<Detail> divisionList = userService.getAllDivision();
         log.info("division size : {}",divisionList.size());
 
-        List<Book> bookList = bookService.getAllBookPost();
-        log.info("Book list size : {}", bookList.size());
+        log.info("Division Book list size : {}", divisionBookList.size());
 
-        List<University> uniList = uniService.getAllUniversity();
-        log.info("University lis size : {}", uniList.size());
+        req.setAttribute("divisionBook", divisionBookList);
+        req.setAttribute("divisionList",divisionList);;
 
-        req.setAttribute("divisionList",divisionList);
-        req.setAttribute("bookList", bookList);
-        req.setAttribute("uniList", uniList);
 
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/book/welcome_page.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/book/division_book.jsp");
         requestDispatcher.forward(req, resp);
     }
 
@@ -56,7 +57,6 @@ public class HomeController extends javax.servlet.http.HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.sendRedirect(req.getContextPath());
     }
-
 
 
 }

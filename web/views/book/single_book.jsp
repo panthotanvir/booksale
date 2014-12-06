@@ -87,26 +87,7 @@
                             <p><i class="fa fa-mobile-phone"></i>  <span><c:out value="${requestScope.bookInfo.book.contactNo}"/></span></p>
                             <p><i class="fa fa-home"></i>   <span><c:out value="${requestScope.bookInfo.book.contactAddress}"/></span></p>
                             <h5>Price: <span class="label label-info">  <c:out value="${requestScope.bookInfo.book.price}"/></span></h5>
-                            <fieldset>
-                                <section>
-                                    <label class="label">Rate This Book</label>
-                                    <div class="rating">
-                                        <input type="radio" name="stars-rating" id="stars-rating-5">
-                                        <label for="stars-rating-5"><i class="fa fa-star"></i></label>
-                                        <input type="radio" name="stars-rating" id="stars-rating-4">
-                                        <label for="stars-rating-4"><i class="fa fa-star"></i></label>
-                                        <input type="radio" name="stars-rating" id="stars-rating-3">
-                                        <label for="stars-rating-3"><i class="fa fa-star"></i></label>
-                                        <input type="radio" name="stars-rating" id="stars-rating-2">
-                                        <label for="stars-rating-2"><i class="fa fa-star"></i></label>
-                                        <input type="radio" name="stars-rating" id="stars-rating-1">
-                                        <label for="stars-rating-1"><i class="fa fa-star"></i></label>
-                                        Stars
-                                    </div>
 
-
-                                </section>
-                            </fieldset>
 
                         </div>
 
@@ -121,15 +102,41 @@
                         </div>
 
                         <div id="owner" class="profile-edit tab-pane fade">
+
                             <h2 class="heading-md"> <i class="icon-book-open"></i> <c:out value="${requestScope.bookInfo.book.title}"/></h2>
                             </br>
-                            <h3 class="heading-md"> <i class=" icon-user"></i> <c:out value="${requestScope.bookInfo.user.userName}"/></h3>
-                            <p><i class="fa fa-envelope"></i>  <span><c:out value="${requestScope.bookInfo.user.email}"/></span></p>
-                            <p><i class="fa fa-university"></i>  <span><c:out value="${requestScope.bookInfo.university.deptName}"/></span></p>
-                            <p><i class="fa fa-university"></i>  <span><c:out value="${requestScope.bookInfo.university.uniName}"/></span></p>
-                            <p><i class="fa fa-phone"></i>  <span><c:out value="${requestScope.bookInfo.user.phoneNo}"/></span></p>
-                            <p><i class="fa fa-home"></i> <span><c:out value="${requestScope.bookInfo.user.address}"/></span></p>
+                            <div class="col-md-7">
+                                <h3 class="heading-md"> <i class=" icon-user"></i> <c:out value="${requestScope.bookInfo.user.userName}"/></h3>
+                                <p><i class="fa fa-envelope"></i>  <span><c:out value="${requestScope.bookInfo.user.email}"/></span></p>
+                                <p><i class="fa fa-university"></i>  <span><c:out value="${requestScope.bookInfo.university.deptName}"/></span></p>
+                                <p><i class="fa fa-university"></i>  <span><c:out value="${requestScope.bookInfo.university.uniName}"/></span></p>
+                                <p><i class="fa fa-phone"></i>  <span><c:out value="${requestScope.bookInfo.user.phoneNo}"/></span></p>
+                                <p><i class="fa fa-home"></i> <span><c:out value="${requestScope.bookInfo.user.address}"/></span></p>
+                            </div>
+                            <div class="col-md-5">
+                                <form action="#" id="sky-form2" class="sky-form">
+                                    <header>Rate This User</header>
+                                    <fieldset>
+                                        <section>
+                                            <div class="rating">
 
+                                                <input type="radio" name="quality" id="quality-5">
+                                                <label for="quality-5"><i class="fa fa-star"></i></label>
+                                                <input type="radio" name="quality" id="quality-4">
+                                                <label for="quality-4"><i class="fa fa-star"></i></label>
+                                                <input type="radio" name="quality" id="quality-3">
+                                                <label for="quality-3"><i class="fa fa-star"></i></label>
+                                                <input type="radio" name="quality" id="quality-2">
+                                                <label for="quality-2"><i class="fa fa-star"></i></label>
+                                                <input type="radio" name="quality" id="quality-1">
+                                                <label for="quality-1"><i class="fa fa-star"></i></label>
+
+                                            </div>
+                                            <button type="submit" class="btn-u">Rate</button>
+                                        </section>
+                                    </fieldset>
+                                </form>
+                              </div>
                         </div>
                     </div>
                 </div>

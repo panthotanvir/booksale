@@ -32,6 +32,8 @@ public class Detail {
     private Book book;
     private User user;
     private University university;
+    private String divisionName ;
+    private Integer divisionId;
 
 
     public Book getBook() {
@@ -57,6 +59,14 @@ public class Detail {
     public void setUniversity(University university) {
         this.university = university;
     }
+
+    public String getDivisionName() { return divisionName;  }
+
+    public void setDivisionName(String divisionName) {  this.divisionName = divisionName; }
+
+    public Integer getDivisionId() { return divisionId; }
+
+    public void setDivisionId(Integer divisionId) { this.divisionId = divisionId; }
 
 
 //    public String getDate() {

@@ -26,6 +26,8 @@ public class Book {
    private String contactAddress;
    private String date;
 
+
+
     public int getCountRequest() {
         return countRequest;
     }
@@ -157,4 +159,6 @@ public class Book {
     public void setContactAddress(String contactAddress) {
         this.contactAddress = contactAddress;
     }
+
+
 }

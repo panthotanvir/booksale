@@ -40,10 +40,11 @@ public class SingleBookController extends HttpServlet {
         log.info("dept Name in Single book : {} ",singleBook.getUniversity().getDeptName());
 
         Integer deptId = singleBook.getBook().getBookId();
-        List<Book> recommendedBookList = getDeptBookList(deptId);
+        List<Book> recommendedBookList = bookService.getRecommenededBook(deptId,bookId);
 
         req.setAttribute("bookInfo",singleBook);
         req.setAttribute("recommendedBook",recommendedBookList);
+
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/book/single_book.jsp");
         requestDispatcher.forward(req, resp);
 
@@ -54,7 +55,4 @@ public class SingleBookController extends HttpServlet {
         resp.sendRedirect(req.getContextPath());
     }
 
-    private List<Book> getDeptBookList(Integer deptId)  {
-        return new BookServiceImp().getDeptBook(deptId);
-    }
 }

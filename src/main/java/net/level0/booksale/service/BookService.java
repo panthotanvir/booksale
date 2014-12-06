@@ -23,6 +23,8 @@ public interface BookService {
 
     public List<Book> getDeptBook(Integer deptId);
 
+    public List<Book> getRecommenededBook(Integer deptId,Integer bookId);
+
     public List<Book> searchAuthorBookList(String authorName);
 
     public List<Book> searchPublisherBookList(String publisherName);
@@ -35,5 +37,6 @@ public interface BookService {
 
     public void deleteBook(Book book, String flag);
 
+    public List<Book> getDivisionBook(Integer divisionId);
 
 }
