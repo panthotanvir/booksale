@@ -44,9 +44,6 @@ public class HomeController extends javax.servlet.http.HttpServlet {
         List<University> uniList = uniService.getAllUniversity();
         log.info("University lis size : {}", uniList.size());
 
-
-
-
         req.setAttribute("divisionList",divisionList);
         req.setAttribute("bookList", bookList);
         req.setAttribute("uniList", uniList);

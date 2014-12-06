@@ -3,10 +3,7 @@ package net.level0.booksale.controller.common;
 import net.level0.booksale.domain.Book;
 import net.level0.booksale.domain.Detail;
 import net.level0.booksale.domain.University;
-import net.level0.booksale.service.BookService;
-import net.level0.booksale.service.BookServiceImp;
-import net.level0.booksale.service.UniService;
-import net.level0.booksale.service.UniServiceImp;
+import net.level0.booksale.service.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,10 +24,12 @@ public class DivisionController extends javax.servlet.http.HttpServlet {
 
     private UniService uniService;
     private BookService bookService;
+    private UserService userService;
 
     public DivisionController() {
         uniService = new UniServiceImp();
         bookService = new BookServiceImp();
+        userService = new UserServiceImp();
     }
 
     @Override
@@ -41,9 +40,13 @@ public class DivisionController extends javax.servlet.http.HttpServlet {
 
         List<Book> divisionBookList = bookService.getDivisionBook(divisionId);
 
+        List<Detail> divisionList = userService.getAllDivision();
+        log.info("division size : {}",divisionList.size());
+
         log.info("Division Book list size : {}", divisionBookList.size());
 
         req.setAttribute("divisionBook", divisionBookList);
+        req.setAttribute("divisionList",divisionList);;
 
 
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/book/division_book.jsp");

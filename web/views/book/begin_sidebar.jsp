@@ -19,9 +19,9 @@
         <li class="list-group-item list-toggle">
             <a data-toggle="collapse" data-parent="#sidebar-nav" href="#collapse-buttons">University</a>
             <ul id="collapse-buttons" class="collapse">
-                <li><a href="university"><i class="fa fa-flask"></i> Public University</a></li>
-                <li><a href=""><i class="fa fa-flask"></i> Private University</a></li>
-                <li><a href=""><i class="fa fa-flask"></i> Engineering University</a></li>
+                <li><a href="university?uniType=1"><i class="fa fa-university"></i> Public University</a></li>
+                <li><a href="university?uniType=2"><i class="fa fa-university"></i> Private University</a></li>
+                <li><a href="university?uniType=3"><i class="fa fa-university"></i> Engineering University</a></li>
             </ul>
         </li>
         <!-- End Buttons UI -->

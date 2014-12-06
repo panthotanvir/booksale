@@ -114,6 +114,20 @@ public class BookDaoImp implements BookDao {
     }
 
     @Override
+    public List<Book> getRecommenedBook(Integer deptId, Integer bookId) {
+        String query = "SELECT * FROM book Where book.book_id != '" + bookId + "' AND book.dept_id = '" + deptId + "' ";
+        log.debug("query for dept book list---> {}", query);
+        List<Book> recommendBookList = DatabaseTemplate.queryForObject(query, new ObjectRowMapper<Book>() {
+            @Override
+            public Book mapRowToObject(ResultSet resultSet) throws SQLException {
+                return setBook(resultSet);
+            }
+        });
+
+        return recommendBookList;
+    }
+
+    @Override
     public List<Book> searchTitleBookList(String title) {
         String query = "SELECT * FROM book WHERE title like '" + title + "%'";
         log.info("like query in searchTitleBookList  : {}", query);
