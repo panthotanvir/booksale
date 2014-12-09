@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Created by panthotanvir on 11/29/14.
@@ -37,9 +38,12 @@ public class RequestController extends  HttpServlet{
 
         int userId = getUserId(req);
         Detail userInfo = userService.getUserInfo(userId);
+        List<Detail> requestInfo = userService.getUserRequest(userId);
 
         log.info("User--------- : {}", userInfo.getUser().getUserName());
+        log.info("reuqest Info : {}",requestInfo.size());
         req.setAttribute("userInfo", userInfo);
+        req.setAttribute("requestInfo",requestInfo);
 
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/dashboard/request_book.jsp");
         requestDispatcher.forward(req, resp);

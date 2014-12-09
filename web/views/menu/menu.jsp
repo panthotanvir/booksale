@@ -28,30 +28,33 @@
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse navbar-responsive-collapse">
-            <ul class="nav navbar-nav">
-                <!-- Home -->
-                <li><a href="home">Home</a> </li>
-                <li><a href="#">University</a> </li>
-                <li><a href="#">Autor</a> </li>
-                <li><a href="#">Publisher</a> </li>
-                <li><a href="search">Search</a> </li>
-                <!-- Search Block -->
-                <li>
-                    <i class="search fa fa-search search-btn"></i>
-                    <div class="search-open">
-                        <div class="input-group animated fadeInDown">
-                            <input type="text" class="form-control" placeholder="Search">
-                                 <span class="input-group-btn">
-                                     <button class="btn-u" type="button">Go</button>
-                                 </span>
-                        </div>
-                    </div>
-                </li>
-                <!-- End Search Block -->
-            <!-- End Home -->
-            </ul>
-        </div><!--/navbar-collapse-->
+
+                <div class="collapse navbar-collapse navbar-responsive-collapse">
+
+                    <ul class="nav navbar-nav">
+                        <!-- Home -->
+                        <li><a href="home">Home</a> </li>
+                        <li><a href="#">University</a> </li>
+                        <li><a href="#">Author</a> </li>
+                        <li><a href="#">Publisher</a> </li>
+                        <li><a href="search">Search</a> </li>
+                        <!-- Search Block -->
+                        <li>
+                            <i class="search fa fa-search search-btn"></i>
+                            <div class="search-open">
+                                <div class="input-group animated fadeInDown">
+                                    <input type="text" class="form-control" placeholder="Search">
+                                         <span class="input-group-btn">
+                                             <button class="btn-u" type="button">Go</button>
+                                         </span>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- End Search Block -->
+                    <!-- End Home -->
+                    </ul>
+                </div><!--/navbar-collapse-->
+
     </div>
 </div>
 <!-- End Navbar -->

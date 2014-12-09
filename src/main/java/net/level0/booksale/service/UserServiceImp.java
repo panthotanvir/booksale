@@ -30,6 +30,11 @@ public class UserServiceImp implements UserService{
     }
 
     @Override
+    public void rateUser(User user) {
+        userDao.rateUser(user);
+    }
+
+    @Override
     public List<User> getAllUser() {
         return userDao.getAllUser();
     }
@@ -59,6 +64,11 @@ public class UserServiceImp implements UserService{
 
     @Override
     public List<Detail> getAllDivision() { return userDao.getAllDivision();}
+
+    @Override
+    public List<Detail> getUserRequest(int userId) {
+        return userDao.getUserRequest(userId);
+    }
 
     @Override
     public User getUser(String email, String password) {

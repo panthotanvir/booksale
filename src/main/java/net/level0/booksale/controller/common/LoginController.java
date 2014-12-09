@@ -81,6 +81,8 @@ public class LoginController extends javax.servlet.http.HttpServlet {
         log.info("isUser before {}", user.isUser());
         session.setAttribute("isUser", user.isUser());
         log.info("isUser {}", user.isUser());
+        session.setAttribute("userId",user.getUserId());
+        log.info("session user ID : {}",user.getUserId());
         session.setAttribute("uniId", user.getUniId());
         log.info("Uni Id after set : {}", user.getUniId());
         session.setAttribute("deptId", user.getDeptId());

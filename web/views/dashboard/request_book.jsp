@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: panthotanvir
@@ -33,7 +34,37 @@
                             </div>
                         </form>
                     </div>
-             </div>
+                </div>
+                <!--Profile Event-->
+
+                <div class="col-sm-6 md-margin-bottom-20">
+                    <div class="panel panel-profile no-bg">
+                        <div class="panel-heading overflow-h">
+                            <h2 class="panel-title heading-sm pull-left"><i class="fa fa-briefcase"></i>Requested Book List</h2>
+                            <a href="#"><i class="fa fa-cog pull-right"></i></a>
+                        </div>
+                        <div id="scrollbar2" class="panel-body contentHolder">
+                            <c:if test="${requestScope.requestInfo != null}">
+                                <c:forEach var="requestBook" items="${requestScope.requestInfo}" varStatus="item">
+                                    <div class="profile-event">
+                                        <div class="date-formats">
+
+                                            <small><c:out value="${requestBook.book.date}"/></small>
+                                        </div>
+                                        <div class="overflow-h">
+                                            <h3 class="heading-xs"><c:out value="${requestBook.book.title}"/></h3>
+
+                                        </div>
+                                    </div>
+                                </c:forEach>
+                            </c:if>
+
+                        </div>
+                    </div>
+                </div>
+                <!--End Profile Event-->
+
+            </div>
         </div>
     </div>
 </div>

@@ -22,6 +22,11 @@ import java.util.List;
  */
 public class UserDaoImp implements UserDao {
     private static final Logger log = LoggerFactory.getLogger(UserDaoImp.class);
+
+    public static Logger getLog() {
+        return log;
+    }
+
     @Override
     public User getUser(String email, String password) {
         String query = "SELECT * FROM user WHERE email= '" + email + "' AND password = '" + password+ "' ";
@@ -127,6 +132,36 @@ public class UserDaoImp implements UserDao {
         log.debug("All division list returned");
         return divisionList;
     }
+
+    @Override
+    public List<Detail> getUserRequest(int userId) {
+        String query = "SELECT * FROM request Where user_id = '" + userId + "'";
+        List<Detail> requestList = DatabaseTemplate.queryForObject(query,new ObjectRowMapper<Detail>() {
+            @Override
+            public Detail mapRowToObject(ResultSet resultSet) throws SQLException {
+                return setRequestList(resultSet);
+            }
+        });
+
+        log.debug("All request list returned");
+        return requestList;
+    }
+    public Detail setRequestList(ResultSet resultSet) throws SQLException{
+        int requestId = Integer.parseInt(resultSet.getString("request_id"));
+        int userId = Integer.parseInt(resultSet.getString("user_id"));
+        Detail detail = new Detail();
+        User user = new User();
+        Book book = new Book();
+        user.setRequestId(requestId);
+        user.setUserId(userId);
+        book.setTitle(resultSet.getString("title"));
+        book.setDate(resultSet.getString("date"));
+        detail.setUser(user);
+        detail.setBook(book);
+
+        return detail;
+
+    }
     public Detail setDivisionList(ResultSet resultSet) throws SQLException{
         int divisionId = Integer.parseInt(resultSet.getString("division_id"));
         Detail detail = new Detail();
@@ -231,6 +266,30 @@ public class UserDaoImp implements UserDao {
         log.debug("name---> {}", phoneNo);
         DatabaseTemplate.executeInsertQuery(insertQuery, userName,uniId, deptId, email, password, phoneNo, address, photo);
         log.debug("User inserted");
+
+    }
+
+    @Override
+    public void rateUser(User user) {
+        String insertQuery = "INSERT INTO `booksale`.`rating` (`rate`, `user_id`, `viewer_id`)" +
+                " VALUES (?, ?, ?);";
+        log.info("insertQuery value: {},insert query");
+        int rate = user.getRate();
+        int userId = user.getUserId();
+        int viewerId = user.getViewerId();
+
+       /* log.debug("photo---> {}", photo);
+        log.debug("name---> {}", userName);
+        log.debug("name---> {}", uniId);
+        log.debug("name---> {}", deptId);
+        log.debug("name---> {}", email);
+        log.debug("name---> {}", userName);
+        log.debug("name---> {}", password);
+        log.debug("name---> {}", phoneNo);
+
+        */
+        DatabaseTemplate.executeInsertQuery(insertQuery, rate,userId,viewerId);
+        log.debug("rate inserted");
 
     }
 

@@ -15,6 +15,8 @@ public interface UserService {
 
     public void addUser(User user);
 
+    public void rateUser(User user);
+
     public User getUser(String userName, String password);
 
     public Detail getUserInfo(Integer userId);
@@ -28,4 +30,6 @@ public interface UserService {
     public void deleteUser(Integer userId);
 
     public List<Detail> getAllDivision();
+
+    public List<Detail> getUserRequest(int userId);
 }
