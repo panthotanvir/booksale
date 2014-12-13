@@ -17,9 +17,26 @@
         }
     </style>
     <script type="text/javascript">
-        $(document).ready(function(){
-
-        });
+       window.onload = function(){
+           $('#check').on('click', function () {
+               var IsChecked = !! $('.category:checked').length;
+               var value = $('#key').val();
+               if(IsChecked && value.length > 0){
+                   return true;
+               }
+               else
+               {
+                   if(!IsChecked){
+                       $('#msg').show();
+                   }
+                   if(value.length==0){
+                       $('#msg_len').show();
+                   }
+                   return false;
+               }
+               return true;
+           });
+       }
     </script>
 </head>
 <body>
@@ -27,20 +44,21 @@
     <div class="container">
         <div class="col-md-6 col-md-offset-3">
             <h1>Discover <span class="color-green">new</span> things ...</h1>
-            <form action="search" class="sky-form page-search-form" method="POST">
+            <form id="interviewForm" action="search" class="sky-form page-search-form" method="POST">
             <div class="input-group">
-                <input type="text" name="key" class="form-control" placeholder="Search what you need ...">
-                    <span class="input-group-btn">
-                        <button id="btn" class="btn-u" type="submit" name="submit"><i class="fa fa-search"></i></button>
+                <%--<div class="form-group">--%>
+                    <input type="text" id="key" name="key" class="form-control" placeholder="Search what you need ..."/>
+                <%--</div>--%>
+                        <span class="input-group-btn">
+                            <button id="check" class="btn-u" type="submit" name="submit"><i class="fa fa-search"></i></button>
+                        </span>
 
-                    </span>
             </div>
-
-            <div class="inline-group">
-                <label class="checkbox"><input type="radio" name="search_key" value="title" id="title"><i></i>Title</label>
-                <label class="checkbox"><input type="radio" name="search_key" value="author" id="author"><i></i>Author</label>
-                <label class="checkbox"><input type="radio" name="search_key" value="publisher" id="publisher"><i></i>Publisher</label>
-            </div>
+                <div class="inline-group">
+                    <label class="checkbox"><input type="radio" name="search_key" value="title" id="title" class="category"><i></i>Title</label>
+                    <label class="checkbox"><input type="radio" name="search_key" value="author" id="author" class="category"><i></i>Author</label>
+                    <label class="checkbox"><input type="radio" name="search_key" value="publisher" id="publisher" class="category"><i></i>Publisher</label>
+                </div>
             </form>
         </div>
 
@@ -67,6 +85,20 @@
         </c:if>
     </div><!--/row-->
 </div><!--/container-->
+<c:if test="${requestScope.message!=null}">
+<div class="alert alert-info">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <strong>Sorry, </strong><c:out value="${requestScope.message}" />
+</div>
+</c:if>
+<div class="alert alert-warning" id="msg" style="display: none">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    Please choose any category you are trying to search
+</div>
+<div class="alert alert-warning" id="msg_len" style="display: none">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    Please enter any search keyword
+</div>
 <!--=== End Content Part ===-->
 
 </body>

@@ -47,11 +47,18 @@ public class SearchController extends HttpServlet{
         log.debug("Search key  :  {}",searchKey);
 
         List<Book>bookList = FindSearchList(keyWord,searchKey);
-        log.info("Book list size : {}" ,bookList.size() );
-        req.setAttribute("bookList",bookList);
+        if(bookList.size()>0) {
+            log.info("Book list size : {}", bookList.size());
+            req.setAttribute("bookList", bookList);
 
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/search/search.jsp");
-        requestDispatcher.forward(req, resp);
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/search/search.jsp");
+            requestDispatcher.forward(req, resp);
+        }
+        else{
+            req.setAttribute("message","No result found");
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/search/search.jsp");
+            requestDispatcher.forward(req, resp);
+        }
 
     }
 
