@@ -105,28 +105,32 @@
                                 <p><i class="fa fa-home"></i> <span><c:out value="${requestScope.bookInfo.user.address}"/></span></p>
                             </div>
                             <div class="col-md-5">
-                                <form action="#" id="sky-form2" class="sky-form">
-                                    <header>Rate This User</header>
-                                    <fieldset>
-                                        <section>
-                                            <div class="rating">
+                                <c:if test="${sessionScope.isUser}">
+                                    <form action="rating" id="sky-form2" class="sky-form" method="post">
+                                        <header>Rate This User</header>
+                                        <fieldset>
+                                            <section>
+                                                <div class="rating">
 
-                                                <input type="radio" name="quality" id="quality-5">
-                                                <label for="quality-5"><i class="fa fa-star"></i></label>
-                                                <input type="radio" name="quality" id="quality-4">
-                                                <label for="quality-4"><i class="fa fa-star"></i></label>
-                                                <input type="radio" name="quality" id="quality-3">
-                                                <label for="quality-3"><i class="fa fa-star"></i></label>
-                                                <input type="radio" name="quality" id="quality-2">
-                                                <label for="quality-2"><i class="fa fa-star"></i></label>
-                                                <input type="radio" name="quality" id="quality-1">
-                                                <label for="quality-1"><i class="fa fa-star"></i></label>
+                                                    <input type="radio" name="rate" id="quality-5" value="5">
+                                                    <label for="quality-5"><i class="fa fa-star"></i></label>
+                                                    <input type="radio" name="rate" id="quality-4" value="4">
+                                                    <label for="quality-4"><i class="fa fa-star"></i></label>
+                                                    <input type="radio" name="rate" id="quality-3" value="3">
+                                                    <label for="quality-3"><i class="fa fa-star"></i></label>
+                                                    <input type="radio" name="rate" id="quality-2" value="2">
+                                                    <label for="quality-2"><i class="fa fa-star"></i></label>
+                                                    <input type="radio" name="rate" id="quality-1" value="1">
+                                                    <label for="quality-1"><i class="fa fa-star"></i></label>
+                                                    <input type="hidden" name="userId" value="<c:out value="${requestScope.bookInfo.user.userId}"/>"/>
 
-                                            </div>
-                                            <button type="submit" class="btn-u">Rate</button>
-                                        </section>
-                                    </fieldset>
-                                </form>
+                                                </div>
+                                                <button type="submit" class="btn-u" name="submit">Rate</button>
+                                            </section>
+                                        </fieldset>
+                                    </form>
+                                </c:if>
+
                               </div>
                         </div>
                     </div>

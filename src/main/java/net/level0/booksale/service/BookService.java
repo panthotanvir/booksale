@@ -39,4 +39,12 @@ public interface BookService {
 
     public List<Book> getDivisionBook(Integer divisionId);
 
+    public void exchangeBook(Book book);
+
+    public List<Book> getExchangeBook(Integer userId);
+
+    public void deleteExchange(Integer exchangeId);
+
+    public void deleteRequest(Integer requestId);
+
 }

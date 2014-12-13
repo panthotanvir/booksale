@@ -92,4 +92,24 @@ public class BookServiceImp implements BookService {
     @Override
     public List<Book> getDivisionBook(Integer divisionId) {return bookDao.getDivisionBook(divisionId);}
 
+    @Override
+    public void exchangeBook(Book book) {
+        bookDao.exchangeBook(book);
+    }
+
+    @Override
+    public List<Book> getExchangeBook(Integer userId) {
+        return bookDao.getExchangeList(userId);
+    }
+
+    @Override
+    public void deleteExchange(Integer exchangeId) {
+        bookDao.deleteExchange(exchangeId);
+    }
+
+    @Override
+    public void deleteRequest(Integer requestId) {
+        bookDao.deleteRequest(requestId);
+    }
+
 }

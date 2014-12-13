@@ -14,6 +14,8 @@ import net.level0.booksale.domain.User;
 public interface UserDao {
     public void addUser(User user);
 
+    public void rateUser(User user);
+
     public User getUser(String email, String password);
 
     public List<User> getAllUser();
@@ -31,4 +33,6 @@ public interface UserDao {
     public List<Detail> getUserDept(int userId,Integer uniId , Integer deptId);
 
     public List<Detail> getAllDivision();
+
+    public List<Detail> getUserRequest(int userId);
 }

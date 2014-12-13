@@ -38,4 +38,12 @@ public interface BookDao {
 
     public List<Book> getDivisionBook(Integer divisionId);
 
+    public void exchangeBook(Book book);
+
+    public List<Book> getExchangeList(Integer userId);
+
+    public void deleteExchange(Integer exchangeId);
+
+    public  void deleteRequest(Integer requestId);
+
 }

@@ -240,6 +240,68 @@ public class BookDaoImp implements BookDao {
         return divisionBookList;
     }
 
+
+    @Override
+    public void exchangeBook(Book book) {
+        String insertQuery = "INSERT INTO `booksale`.`exchange` (`user_id`, `dept_id`, `exchange_to`,`exchange_with`, `detail` )" +
+                " VALUES (?, ?, ?, ?, ? );";
+        log.debug("insert query in exchangeBook : {}", insertQuery);
+        Integer userId = book.getUserId();
+        Integer deptId = book.getDeptId();
+        String exchangeTo = book.getExchangeTo();
+        String exchangeWith = book.getExchangeWith();
+        String detail = book.getDetail();
+        DatabaseTemplate.executeInsertQuery(insertQuery, userId, deptId, exchangeTo, exchangeWith, detail);
+        log.debug("exchange book post  inserted");
+    }
+
+    @Override
+    public List<Book> getExchangeList(Integer userId) {
+        String query = "SELECT * FROM exchange Where user_id = '" + userId + "' ";
+        log.debug("query for exchange book list---> {}", query);
+        List<Book> exchangeBookList = DatabaseTemplate.queryForObject(query, new ObjectRowMapper<Book>() {
+            @Override
+            public Book mapRowToObject(ResultSet resultSet) throws SQLException {
+                return setExchangeBook(resultSet);
+            }
+        });
+
+        return exchangeBookList;
+    }
+
+    @Override
+    public void deleteExchange(Integer exchangeId) {
+        String deleteQuery = "DELETE FROM exchange WHERE exchange_id = '" +exchangeId +"' " ;
+
+        log.debug("delete query in : {} ",deleteQuery);
+        DatabaseTemplate.executeInsertQuery(deleteQuery);
+        log.debug("exchange information deleted");
+    }
+
+    @Override
+    public void deleteRequest(Integer requestId) {
+        String deleteQuery = "DELETE FROM request WHERE request_id = '" +requestId +"' " ;
+
+        log.debug("delete query in : {} ",deleteQuery);
+        DatabaseTemplate.executeInsertQuery(deleteQuery);
+        log.debug("request information deleted");
+    }
+
+    private Book setExchangeBook(ResultSet resultSet) throws SQLException{
+        Book book = new Book();
+        Integer exchangeId = Integer.parseInt(resultSet.getString("exchange_id"));
+        Integer userId = Integer.parseInt(resultSet.getString("user_id"));
+
+        book.setUserId(userId);
+        book.setExchangeId(exchangeId);
+        book.setExchangeTo(resultSet.getString("exchange_to"));
+        book.setExchangeWith(resultSet.getString("exchange_with"));
+        book.setDetail(resultSet.getString("detail"));
+
+        return book;
+
+    }
+
     private Detail setDivisionBook(ResultSet resultSet) throws SQLException{
         Detail sBook = new Detail();
         Book book = new Book();

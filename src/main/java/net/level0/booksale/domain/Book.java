@@ -15,6 +15,7 @@ public class Book {
    private int requestId;
    private int countRequest;
    private int countBook;
+   private int exchangeId;
    private String title;
    private String author;
    private String publisher;
@@ -26,8 +27,50 @@ public class Book {
    private int divisionId;
    private String divisionName;
    private String edition;
+   private String exchangeTo;
+   private String exchangeWith;
+   private String detail;
+   private String exchangeDate;
 
+    public int getExchangeId() {
+        return exchangeId;
+    }
 
+    public void setExchangeId(int exchangeId) {
+        this.exchangeId = exchangeId;
+    }
+
+    public String getExchangeTo() {
+        return exchangeTo;
+    }
+
+    public void setExchangeTo(String exchangeTo) {
+        this.exchangeTo = exchangeTo;
+    }
+
+    public String getExchangeWith() {
+        return exchangeWith;
+    }
+
+    public void setExchangeWith(String exchangeWith) {
+        this.exchangeWith = exchangeWith;
+    }
+
+    public String getDetail() {
+        return detail;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail;
+    }
+
+    public String getExchangeDate() {
+        return exchangeDate;
+    }
+
+    public void setExchangeDate(String exchangeDate) {
+        this.exchangeDate = exchangeDate;
+    }
 
     public int getCountRequest() {
         return countRequest;

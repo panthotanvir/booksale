@@ -9,6 +9,9 @@ package net.level0.booksale.domain;
  */
 public class User {
     private int userId;
+    private int viewerId;
+    private int requestId;
+    private int rate;
     private String userName;
     private int uniId;
     private int deptId;
@@ -20,6 +23,28 @@ public class User {
     private boolean isUser;
     private String photo;
 
+    public int getRequestId() {
+        return requestId;
+    }
+
+    public void setRequestId(int requestId) {
+        this.requestId = requestId;
+    }
+    public int getRate() {
+        return rate;
+    }
+
+    public void setRate(int rate) {
+        this.rate = rate;
+    }
+
+    public int getViewerId() {
+        return viewerId;
+    }
+
+    public void setViewerId(int viewerId) {
+        this.viewerId = viewerId;
+    }
 
     public void setUserName(String userName) {
         this.userName = userName;

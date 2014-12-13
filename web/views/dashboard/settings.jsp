@@ -166,18 +166,39 @@
                             </div>
 
                             <div id="delete" class="profile-edit tab-pane fade">
-                                <h2 class="heading-md">Delete your Book Post</h2>
-                                </br>
-                                <c:if test="${requestScope.bookList != null}">
-                                    <c:forEach var="bookList" items="${requestScope.bookList}" varStatus="item">
-                                        <form class="sky-form" method="post" action="updateuser">
-                                            <input type="hidden" name="flag" value="4" />
-                                            <input type="hidden" name="book_id" value="<c:out value="${bookList.bookId}"/>">
-                                            <label class="toggle"><c:out value="${bookList.title}"/><button class="btn btn-block btn-youtube" type="submit">Delete</button></label>
-                                            <hr>
-                                         </form>
-                                    </c:forEach>
-                                </c:if>
+                                <div class="col-md-12">
+                                    <div class="panel panel-sea margin-bottom-40">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title"><i class="fa fa-edit"></i> My Exchange List</h3>
+                                        </div>
+                                        <table class="table table-hover">
+                                            <thead>
+                                            <tr>
+
+                                                <th>Book Title</th>
+                                                <th>Action</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <c:if test="${requestScope.bookList != null}">
+                                                <c:forEach var="bookList" items="${requestScope.bookList}" varStatus="item">
+                                                    <form class="sky-form" method="post" action="updateuser">
+                                                        <tr>
+                                                            <input type="hidden" name="flag" value="4" />
+                                                            <input type="hidden" name="book_id" value="<c:out value="${bookList.bookId}"/>">
+
+                                                            <td><c:out value="${bookList.title}"/></td>
+
+                                                            <td><button class="btn btn-danger btn-xs" type="submit"><i class="fa fa-trash-o"></i> Delete</button></td>
+                                                        </tr>
+                                                    </form>
+                                                </c:forEach>
+                                            </c:if>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
