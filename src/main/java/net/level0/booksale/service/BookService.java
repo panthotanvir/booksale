@@ -27,11 +27,15 @@ public interface BookService {
 
     public List<Book> searchAuthorBookList(String authorName);
 
+    public List<Book> searchAllBookList(String name);
+
     public List<Book> searchPublisherBookList(String publisherName);
 
     public  List<Book> getRequestBook(Integer userID);
 
     public List<Book> getAllRequest(Integer userId);
+
+    public List<Book> getUniDeptBookList(int uniId, int deptId);
 
     public void requestBook(Book book);
 
@@ -46,5 +50,7 @@ public interface BookService {
     public void deleteExchange(Integer exchangeId);
 
     public void deleteRequest(Integer requestId);
+
+    public List<Book> getUniBookList(int uniType);
 
 }

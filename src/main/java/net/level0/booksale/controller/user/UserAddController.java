@@ -73,7 +73,7 @@ public class UserAddController extends HttpServlet {
         if (isValid) {
             userService.addUser(user);
             log.debug("User is added");
-            resp.sendRedirect(req.getContextPath() + "/home");
+            resp.sendRedirect(req.getContextPath()+"/home");
         } else {
             log.debug("User is invalid");
             req.setAttribute("uniList", uniList);

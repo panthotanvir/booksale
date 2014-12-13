@@ -178,6 +178,22 @@ public class BookDaoImp implements BookDao {
     }
 
     @Override
+    public List<Book> searchAllBookList(String name) {
+        String query = "SELECT * FROM book WHERE author like '" + name + "%' OR " +
+                "publisher like '"+name+"%' OR type like '"+name+"%' OR title like '"+name+"%' ";
+        log.info("like query in searchAllBookList  : {}", query);
+
+        List<Book> authorBookList = DatabaseTemplate.queryForObject(query, new ObjectRowMapper<Book>() {
+            @Override
+            public Book mapRowToObject(ResultSet resultSet) throws SQLException {
+                return setBook(resultSet);
+            }
+        });
+
+        return authorBookList;
+    }
+
+    @Override
     public List<Book> getRequestBook(Integer userId) {
         String query = "SELECT * FROM book,request Where request.user_id = '" + userId + "' AND request.user_id = book.user_id AND book.title = request.title";
         log.debug("query for dept book list---> {}", query);
@@ -203,6 +219,20 @@ public class BookDaoImp implements BookDao {
         });
 
         return requestBookList;
+    }
+
+    @Override
+    public List<Book> getUniDeptBookList(int uniId, int deptId) {
+        String query = "SELECT * FROM book Where uni_id = '" + uniId + "' AND dept_id = '"+deptId+"' ";
+        log.debug("query for getUniDeptBookList ---> {}", query);
+        List<Book> uniDeptBookList = DatabaseTemplate.queryForObject(query, new ObjectRowMapper<Book>() {
+            @Override
+            public Book mapRowToObject(ResultSet resultSet) throws SQLException {
+                return setBook(resultSet);
+            }
+        });
+
+        return uniDeptBookList;
     }
 
     @Override
@@ -267,6 +297,19 @@ public class BookDaoImp implements BookDao {
         });
 
         return exchangeBookList;
+    }
+
+    @Override
+    public List<Book> getUniBookList(int uniType) {
+        String query = "SELECT * from book,university WHERE book.uni_id = university.uni_id AND university.uni_type ='"+uniType+"' ";
+        List<Book> uniBookList = DatabaseTemplate.queryForObject(query, new ObjectRowMapper<Book>() {
+            @Override
+            public Book mapRowToObject(ResultSet resultSet) throws SQLException {
+                return setBook(resultSet);
+            }
+        });
+
+        return uniBookList;
     }
 
     @Override

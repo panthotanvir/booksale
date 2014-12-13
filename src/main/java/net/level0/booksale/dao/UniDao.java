@@ -15,4 +15,5 @@ public interface UniDao {
     List<University> getSpecificUniDept(int uniId);
 
     public University getDept(int deptID);
+
 }

@@ -2,11 +2,9 @@ package net.level0.booksale.controller.user;
 
 import net.level0.booksale.domain.Book;
 import net.level0.booksale.domain.Detail;
+import net.level0.booksale.domain.University;
 import net.level0.booksale.domain.User;
-import net.level0.booksale.service.BookService;
-import net.level0.booksale.service.BookServiceImp;
-import net.level0.booksale.service.UserService;
-import net.level0.booksale.service.UserServiceImp;
+import net.level0.booksale.service.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -29,10 +28,12 @@ public class UserHomeController extends javax.servlet.http.HttpServlet {
 
     private BookService bookService;
     private UserService userService;
+    private UniService uniService;
 
     public UserHomeController() {
         bookService = new BookServiceImp();
         userService = new UserServiceImp();
+        uniService = new UniServiceImp();
     }
 
     @Override
@@ -45,8 +46,16 @@ public class UserHomeController extends javax.servlet.http.HttpServlet {
 
         Integer deptId = getDeptId(req);
         List<Book> bookList = bookService.getDeptBook(deptId);
+        List<University> uniList = uniService.getAllUniversity();
         log.info("Dept Book list size : {}", bookList.size());
+
+        HashMap<University, List<University>> deptList = new HashMap<University, List<University>>();
+        for(University university: uniList){
+            deptList.put(university, uniService.getSpecificUniDept(university.getId()));
+        }
+        req.setAttribute("deptList", deptList);
         req.setAttribute("bookList",bookList);
+        req.setAttribute("uniList",uniList);
 
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/book/dept_book_show.jsp");
         requestDispatcher.forward(req, resp);

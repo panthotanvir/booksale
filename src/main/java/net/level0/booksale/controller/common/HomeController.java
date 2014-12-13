@@ -44,10 +44,11 @@ public class HomeController extends javax.servlet.http.HttpServlet {
         List<University> uniList = uniService.getAllUniversity();
         log.info("University lis size : {}", uniList.size());
 
-//        HashMap<University, List<University>> deptList = new HashMap<University, List<University>>();
-//        for(University university: uniList){
-//            deptList.put(university, uniService.getSpecificUniDept(university.getId()));
-//        }
+        HashMap<University, List<University>> deptList = new HashMap<University, List<University>>();
+        for(University university: uniList){
+            deptList.put(university, uniService.getSpecificUniDept(university.getId()));
+        }
+//        req.setAttribute("deptList", deptList);
 //        Iterator<Map.Entry<University,List<University>>> entries = deptList.entrySet().iterator();
 //        while (entries.hasNext()) {
 //            Map.Entry<University,List<University>> entry = entries.next();
@@ -59,7 +60,7 @@ public class HomeController extends javax.servlet.http.HttpServlet {
         req.setAttribute("divisionList",divisionList);
         req.setAttribute("bookList", bookList);
         req.setAttribute("uniList", uniList);
-//        req.setAttribute("deptList", deptList);
+        req.setAttribute("deptList", deptList);
 
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/book/welcome_page.jsp");
         requestDispatcher.forward(req, resp);

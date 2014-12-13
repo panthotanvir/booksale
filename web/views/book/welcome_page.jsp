@@ -1,35 +1,26 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
-  User: pmithunshawon
+  User: mithunshawon
   Date: 11/29/14
   Time: 12:36 PM
-  To change this template use File | Settings | File Templates.
+
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Welcome to Booksale</title>
+    <style>
+        .owl-carousel-v1 .item img{
+            height:270px;
+        }
+    </style>
 </head>
 <body>
-<!--=== Search Block Version 2 ===-->
-<div class="search-block-v2">
-    <div class="container">
-        <div class="col-md-6 col-md-offset-3">
-            <h1 class="text-center color-green">Discover your book ...</h1>
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Enter your desired book title ...">
-                    <span class="input-group-btn">
-                        <button class="btn-u" type="button"><i class="fa fa-search"></i></button>
-                    </span>
-            </div>
-        </div>
-    </div>
-</div><!--/container-->
 
 <!--=== Search Results ===-->
-<div class="container s-results margin-bottom-50">
+<div class="container content">
 <div class="row">
 <!-- Begin Sidebar Menu -->
     <jsp:include page="begin_sidebar.jsp"/>
@@ -72,7 +63,7 @@
 <!-- End Recent Works -->
 <!-- Recent Works -->
 <div class="owl-carousel-v1 owl-work-v1 margin-bottom-40">
-    <div class="headline"><h2 class="pull-left">Recent Works</h2>
+    <div class="headline"><h2 class="pull-left">Recent Books</h2>
         <div class="owl-navigation">
             <div class="customNavigation">
                 <a class="owl-btn prev-v1"><i class="fa fa-angle-left"></i></a>

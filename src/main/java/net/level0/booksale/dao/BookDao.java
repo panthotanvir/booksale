@@ -28,9 +28,13 @@ public interface BookDao {
 
     public List<Book> searchPublisherBookList( String publisherName );
 
+    public List<Book> searchAllBookList( String name );
+
     public List<Book> getRequestBook(Integer userID);
 
     public List<Book> getAllRequest(Integer userId);
+
+    public List<Book> getUniDeptBookList(int uniId, int deptId);
 
     public  void requestBook(Book book);
 
@@ -41,6 +45,8 @@ public interface BookDao {
     public void exchangeBook(Book book);
 
     public List<Book> getExchangeList(Integer userId);
+
+    public List<Book> getUniBookList(int uniType);
 
     public void deleteExchange(Integer exchangeId);
 

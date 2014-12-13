@@ -9,25 +9,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title></title>
+    <title>Books</title>
 </head>
 <body>
-<!--=== Search Block Version 2 ===-->
-<div class="search-block-v2">
-    <div class="container">
-        <div class="col-md-6 col-md-offset-3">
-            <h1 class="text-center color-green">Discover your book ...</h1>
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Enter your desired book title ...">
-                    <span class="input-group-btn">
-                        <button class="btn-u" type="button"><i class="fa fa-search"></i></button>
-                    </span>
-            </div>
-        </div>
-    </div>
-</div><!--/container-->
-<!--=== End Search Block Version 2 ===-->
-
 
 <!--=== Search Results ===-->
 <div class="container s-results margin-bottom-50">

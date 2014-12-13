@@ -64,7 +64,14 @@
 
     </div>
 </div>
-
+<div class="alert alert-warning" id="msg" style="display: none">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    Please choose any category you are trying to search
+</div>
+<div class="alert alert-warning" id="msg_len" style="display: none">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    Please enter any search keyword
+</div>
 
 <!--/container-->
 <div class="container content">
@@ -91,14 +98,7 @@
     <strong>Sorry, </strong><c:out value="${requestScope.message}" />
 </div>
 </c:if>
-<div class="alert alert-warning" id="msg" style="display: none">
-    <button type="button" class="close" data-dismiss="alert">×</button>
-    Please choose any category you are trying to search
-</div>
-<div class="alert alert-warning" id="msg_len" style="display: none">
-    <button type="button" class="close" data-dismiss="alert">×</button>
-    Please enter any search keyword
-</div>
+
 <!--=== End Content Part ===-->
 
 </body>

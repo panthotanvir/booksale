@@ -30,13 +30,15 @@ public class UserValidator {
 
         if (!(name.isEmpty()) && !(email.isEmpty()) && !(password.isEmpty()) && !(phone.isEmpty()) && !(address.isEmpty())
                 && !(file.isEmpty())) {
-
-            return isValid;
+            if(phone.length()==11 || phone.length()==7) {
+                return isValid;
+            }
 
         } else {
             return !isValid;
         }
 
+        return true;
     }
 
 }

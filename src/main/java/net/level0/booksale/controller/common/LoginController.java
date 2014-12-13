@@ -44,7 +44,6 @@ public class LoginController extends javax.servlet.http.HttpServlet {
 
         boolean isUserValid = UserValidator.validateEmailAndPassword(email,password);
 
-
             if (isUserValid) {
                 if (isUserVerified(email, password)) {
                     setUpSession(req);

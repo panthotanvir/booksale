@@ -62,6 +62,11 @@ public class BookServiceImp implements BookService {
     }
 
     @Override
+    public List<Book> searchAllBookList(String name) {
+        return bookDao.searchAllBookList(name);
+    }
+
+    @Override
     public List<Book> searchPublisherBookList(String publisherName) {
         return bookDao.searchPublisherBookList(publisherName);
     }
@@ -74,6 +79,11 @@ public class BookServiceImp implements BookService {
     @Override
     public List<Book> getAllRequest(Integer userId) {
         return bookDao.getAllRequest(userId);
+    }
+
+    @Override
+    public List<Book> getUniDeptBookList(int uniId, int deptId) {
+        return bookDao.getUniDeptBookList(uniId, deptId);
     }
 
     @Override
@@ -110,6 +120,11 @@ public class BookServiceImp implements BookService {
     @Override
     public void deleteRequest(Integer requestId) {
         bookDao.deleteRequest(requestId);
+    }
+
+    @Override
+    public List<Book> getUniBookList(int uniType) {
+        return bookDao.getUniBookList(uniType);
     }
 
 }
