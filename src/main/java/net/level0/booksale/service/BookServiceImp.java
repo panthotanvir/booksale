@@ -23,9 +23,8 @@ public class BookServiceImp implements BookService {
 
     @Override
     public void addBook(Book book) {
-        log.debug("addbook called in BookserviceImp");
         bookDao.addBook(book);
-
+        log.debug("addbook called in BookserviceImp");
     }
 
     @Override

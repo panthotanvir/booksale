@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.List;
+import java.util.*;
 
 @WebServlet(name = "HomeController", urlPatterns = "/home")
 public class HomeController extends javax.servlet.http.HttpServlet {
@@ -44,9 +44,22 @@ public class HomeController extends javax.servlet.http.HttpServlet {
         List<University> uniList = uniService.getAllUniversity();
         log.info("University lis size : {}", uniList.size());
 
+//        HashMap<University, List<University>> deptList = new HashMap<University, List<University>>();
+//        for(University university: uniList){
+//            deptList.put(university, uniService.getSpecificUniDept(university.getId()));
+//        }
+//        Iterator<Map.Entry<University,List<University>>> entries = deptList.entrySet().iterator();
+//        while (entries.hasNext()) {
+//            Map.Entry<University,List<University>> entry = entries.next();
+//            for(University university: entry.getValue()) {
+//                log.debug("In homeController : {}, {}", entry.getKey().getUniName(), university.getDeptName());
+//            }
+//        }
+
         req.setAttribute("divisionList",divisionList);
         req.setAttribute("bookList", bookList);
         req.setAttribute("uniList", uniList);
+//        req.setAttribute("deptList", deptList);
 
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/book/welcome_page.jsp");
         requestDispatcher.forward(req, resp);
@@ -56,7 +69,5 @@ public class HomeController extends javax.servlet.http.HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.sendRedirect(req.getContextPath());
     }
-
-
 
 }

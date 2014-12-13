@@ -3,7 +3,7 @@
   User: mithunshawon
   Date: 11/24/14
   Time: 3:43 AM
-  To change this template use File | Settings | File Templates.
+
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -51,20 +51,11 @@
                     <div class="item active">
                         <img alt="" src="uploads/books/<c:out value="${requestScope.bookInfo.book.photo}"/>" height="400px" width="300px">
                         <!--div class="carousel-caption">
-                            <p><c:out value="${requestScope.bookInfo.book.tag}"/></p>
+                            <p><c:out value="${requestScope.bookInfo.book.title}"/></p>
                         </div-->
                     </div>
 
                 </div>
-
-                <!--div class="carousel-arrow">
-                    <a data-slide="prev" href="#myCarousel" class="left carousel-control">
-                        <i class="fa fa-angle-left"></i>
-                    </a>
-                    <a data-slide="next" href="#myCarousel" class="right carousel-control">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-                </div-->
             </div>
         </div>
         <!-- End Carousel -->
@@ -84,8 +75,8 @@
                             <h2 class="heading-md"> <i class="icon-book-open"></i> <c:out value="${requestScope.bookInfo.book.title}"/></h2>
                             <p><i class="fa fa-calendar"></i>   <c:out value="${requestScope.bookInfo.book.date}"/></p>
 
-                            <p><i class="fa fa-mobile-phone"></i>  <span><c:out value="${requestScope.bookInfo.book.contactNo}"/></span></p>
-                            <p><i class="fa fa-home"></i>   <span><c:out value="${requestScope.bookInfo.book.contactAddress}"/></span></p>
+                            <p><i class="fa fa-mobile-phone"></i>  <span><c:out value="${requestScope.bookInfo.user.phoneNo}"/></span></p>
+                            <p><i class="fa fa-home"></i>   <span><c:out value="${requestScope.bookInfo.user.address}"/></span></p>
                             <h5>Price: <span class="label label-info">  <c:out value="${requestScope.bookInfo.book.price}"/></span></h5>
 
 

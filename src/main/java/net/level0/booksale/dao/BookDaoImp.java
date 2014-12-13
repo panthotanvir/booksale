@@ -21,25 +21,27 @@ public class BookDaoImp implements BookDao {
 
     @Override
     public void addBook(Book book) {
-        String insertQuery = "INSERT INTO `booksale`.`book` (`user_id`, `dept_id`, `title`, `author`, `publisher`," +
-                "`tag`,`type`,`description`,`price`,`photo`,`contact_no`,`contact_address`)" +
-                " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        String insertQuery = "INSERT INTO `booksale`.`book` (`user_id`, `dept_id`, `uni_id`, `title`, `author`, `publisher`" +
+                ",`type`,`description`,`price`,`photo`, `division_id`, `edition`)" +
+                " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
-        Integer userId = book.getUserId();
-        Integer deptId = book.getDeptId();
+        log.debug("Query in BookDaoImp : {}",insertQuery);
+
+        int userId = book.getUserId();
+        int deptId = book.getDeptId();
+        int uniId = book.getUniId();
+        int divisionId = book.getDivisionId();
         String title = book.getTitle();
         String author = book.getAuthor();
         String publisher = book.getPublisher();
-        String tag = book.getTag();
         String type = book.getType();
         String description = book.getDescription();
         Double price = book.getPrice();
         String photo = book.getPhoto();
-        String contactNo = book.getContactNo();
-        String contactAddress = book.getContactAddress();
+        String edition = book.getEdition();
 
-        DatabaseTemplate.executeInsertQuery(insertQuery, userId, deptId, title, author, publisher, tag, type, description, price, photo, contactNo, contactAddress);
-        log.debug("book post  inserted");
+        DatabaseTemplate.executeInsertQuery(insertQuery, userId, deptId, uniId, title, author, publisher, type, description, price, photo, divisionId, edition);
+        log.debug("book post inserted");
     }
 
     @Override
@@ -237,6 +239,7 @@ public class BookDaoImp implements BookDao {
 
         return divisionBookList;
     }
+
     private Detail setDivisionBook(ResultSet resultSet) throws SQLException{
         Detail sBook = new Detail();
         Book book = new Book();
@@ -245,7 +248,6 @@ public class BookDaoImp implements BookDao {
         Integer divisionId = Integer.parseInt(resultSet.getString("division_id"));
         Double price = Double.parseDouble(resultSet.getString("price"));
 
-
         book.setBookId(bookId);
         book.setType(resultSet.getString("type"));
         book.setTitle(resultSet.getString("title"));
@@ -253,9 +255,6 @@ public class BookDaoImp implements BookDao {
         book.setPublisher(resultSet.getString("publisher"));
         book.setDescription(resultSet.getString("description"));
         book.setPhoto(resultSet.getString("photo"));
-        book.setContactAddress(resultSet.getString("contact_address"));
-        book.setContactNo(resultSet.getString("contact_no"));
-        book.setTag(resultSet.getString("tag"));
         book.setPrice(price);
         book.setDate(resultSet.getString("date"));
         sBook.setBook(book);
@@ -300,10 +299,8 @@ public class BookDaoImp implements BookDao {
         book.setPublisher(resultSet.getString("publisher"));
         book.setDescription(resultSet.getString("description"));
         book.setPhoto(resultSet.getString("photo"));
-        book.setContactAddress(resultSet.getString("contact_address"));
-        book.setContactNo(resultSet.getString("contact_no"));
-        book.setTag(resultSet.getString("tag"));
         book.setPrice(price);
+        book.setEdition(resultSet.getString("edition"));
         book.setDate(resultSet.getString("date"));
         user.setUserName(resultSet.getString("user_name"));
         user.setEmail(resultSet.getString("email"));
@@ -340,6 +337,7 @@ public class BookDaoImp implements BookDao {
         book.setPhoto(resultSet.getString("photo"));
         book.setPrice(price);
         book.setDate(resultSet.getString("date"));
+        book.setEdition(resultSet.getString("edition"));
         book.setCountBook(count);
 
         return book;

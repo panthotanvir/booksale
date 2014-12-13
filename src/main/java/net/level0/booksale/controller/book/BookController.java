@@ -1,12 +1,11 @@
 package net.level0.booksale.controller.book;
 
 import net.level0.booksale.domain.Book;
+import net.level0.booksale.domain.Detail;
 import net.level0.booksale.domain.University;
 import net.level0.booksale.domain.User;
-import net.level0.booksale.service.BookService;
-import net.level0.booksale.service.BookServiceImp;
-import net.level0.booksale.service.UniService;
-import net.level0.booksale.service.UniServiceImp;
+import net.level0.booksale.service.*;
+import net.level0.booksale.util.validator.BookValidator;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.FileUploadException;
@@ -17,7 +16,6 @@ import org.slf4j.LoggerFactory;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -32,7 +30,6 @@ import java.util.List;
  */
 
 @WebServlet(name = "BookAddController", urlPatterns = "/addbook")
-
 public class BookController extends HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(BookController.class);
 
@@ -41,12 +38,15 @@ public class BookController extends HttpServlet {
     private Book book;
     private UniService uniService;
     private BookService bookService;
+    private UserService userService;
+    private List<University> deptList;
+    private List<Detail> divisionList;
 
 
     public BookController() {
-
         bookService = new BookServiceImp();
         uniService = new UniServiceImp();
+        userService = new UserServiceImp();
         book = new Book();
     }
 
@@ -54,9 +54,11 @@ public class BookController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("Book Add Controller is requested ");
 
-        List<University> deptList = uniService.getAllDept();
+        deptList = uniService.getAllDept();
+        divisionList = userService.getAllDivision();
 
         req.setAttribute("deptList", deptList);
+        req.setAttribute("divList", divisionList);
 
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/book/add_book.jsp");
         requestDispatcher.forward(req, resp);
@@ -70,12 +72,24 @@ public class BookController extends HttpServlet {
         } catch (FileUploadException e) {
             e.printStackTrace();
         }
-        log.debug("Book Description : ---> {}",book.getDescription());
-        log.debug("Book photo : ---> {}",book.getPhoto());
-        bookService.addBook(book);
+        log.debug("Book Description : ---> {}", book.getDescription());
+        log.debug("Book photo : ---> {}", book.getPhoto());
+        log.debug("User DeptId in BookController: {}", book.getDeptId());
+        log.debug("User UniId BookController: {}", book.getUniId());
 
-        log.debug("New book posted ");
-        resp.sendRedirect(req.getContextPath() + "/home");
+        boolean isValid = BookValidator.ValidateBookPost(book);
+
+        if (isValid) {
+            bookService.addBook(book);
+            log.debug("New book posted ");
+            resp.sendRedirect(req.getContextPath() + "/home");
+        } else {
+            req.setAttribute("deptList", deptList);
+            req.setAttribute("divList", divisionList);
+            req.setAttribute("message", "Every fields are required");
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/book/add_book.jsp");
+            requestDispatcher.forward(req, resp);
+        }
     }
 
     private void createAddFromRequest(HttpServletRequest req) throws IOException, ServletException, FileUploadException {
@@ -86,6 +100,8 @@ public class BookController extends HttpServlet {
 
         int userId = getUserId(req);
         book.setUserId(userId);
+        book.setDeptId(getUserDeptId(req));
+        book.setUniId(getUserUniId(req));
 
         log.debug("file request : {}", ServletFileUpload.isMultipartContent(req));
         FileItemFactory factory = new DiskFileItemFactory();
@@ -120,12 +136,9 @@ public class BookController extends HttpServlet {
         }
     }
 
-
     private Book setProperty(String fieldName, String value) {
-        if (fieldName.equals("dept_id")) {
-            int deptId = Integer.parseInt(value);
-            book.setDeptId(deptId);
-        } else if (fieldName.equals("title")) {
+
+        if (fieldName.equals("title")) {
             book.setTitle(value);
         } else if (fieldName.equals("author")) {
             book.setAuthor(value);
@@ -133,8 +146,6 @@ public class BookController extends HttpServlet {
             book.setPublisher(value);
         } else if (fieldName.equals("type")) {
             book.setType(value);
-        } else if (fieldName.equals("tag")) {
-            book.setTag(value);
         } else if (fieldName.equals("description")) {
             book.setDescription(value);
         } else if (fieldName.equals("price")) {
@@ -142,20 +153,34 @@ public class BookController extends HttpServlet {
             book.setPrice(price);
         } else if (fieldName.equals("photo")) {
             book.setPhoto(value);
-        } else if (fieldName.equals("contact_no")) {
-            book.setContactNo(value);
-        } else if (fieldName.equals("contact_address")) {
-            book.setContactAddress(value);
+        } else if (fieldName.equals("division")) {
+            int divisionId = Integer.parseInt(value);
+            book.setDivisionId(divisionId);
+        } else if (fieldName.equals("edition")) {
+            book.setEdition(value);
         }
 
         return book;
     }
 
-    private Integer getUserId(HttpServletRequest req) {
+    private int getUserId(HttpServletRequest req) {
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");
         log.debug("User Id from Session in bookController: {}", user.getUserId());
         return user.getUserId();
+    }
+
+    private int getUserDeptId(HttpServletRequest req) {
+        HttpSession session = req.getSession();
+        User user = (User) session.getAttribute("user");
+        ;
+        return user.getDeptId();
+    }
+
+    private int getUserUniId(HttpServletRequest req) {
+        HttpSession session = req.getSession();
+        User user = (User) session.getAttribute("user");
+        return user.getUniId();
     }
 
 }

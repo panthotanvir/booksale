@@ -15,6 +15,13 @@
         .has-feedback .form-control-feedback{
             top:0;
         }
+        .sky-form{
+            border: 1px solid #2ecc71;
+        }
+        .sky-form header{
+            background-color: #2ecc71;
+            color: #ffffff;
+        }
     </style>
     <script>
         window.onload = function(){
@@ -180,9 +187,7 @@
 
                     <div class="row">
                         <section class="col col-6">
-
                                 <button class="btn-u"  name="registration"  type="submit">Submit</button>
-
                         </section>
                     </div>
                 </fieldset>

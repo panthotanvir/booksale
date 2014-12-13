@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
- * Created by devil on 11/15/14.
+ * Created by mithunshawon on 11/15/14.
  */
 public class UniDaoImp implements UniDao {
     private static final Logger log = LoggerFactory.getLogger(UniDaoImp.class);
@@ -59,15 +59,16 @@ public class UniDaoImp implements UniDao {
 
     @Override
     public List<University> getSpecificUniDept(int uniId) {
-        String query = "SELECT * FROM department where uni_id = '"+uniId+"' ";
-        List<University> uniList = DatabaseTemplate.queryForObject(query,new ObjectRowMapper<University>() {
+
+        String selectQuery = "SELECT * FROM university,department,uni_dept WHERE university.uni_id = '"+uniId+"' AND university.uni_id = uni_dept.uni_id AND department.dept_id = uni_dept.dept_id ";
+        log.info("query in getSpecificUniDept : {} " , selectQuery);
+        List<University> uniList = DatabaseTemplate.queryForObject(selectQuery,new ObjectRowMapper<University>() {
             @Override
             public University mapRowToObject(ResultSet resultSet) throws SQLException {
                 return setUniDept(resultSet);
             }
         });
 
-        log.info("Uni List Size : {} " , uniList.size());
         return uniList;
     }
 

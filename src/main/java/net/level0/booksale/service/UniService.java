@@ -5,7 +5,7 @@ import net.level0.booksale.domain.University;
 import java.util.List;
 
 /**
- * Created by mithun on 11/15/14.
+ * Created by mithunshawon on 11/15/14.
  */
 public interface UniService {
 

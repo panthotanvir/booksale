@@ -27,7 +27,6 @@
         </div>
     </div>
 </div><!--/container-->
-<!--=== End Search Block Version 2 ===-->
 
 <!--=== Search Results ===-->
 <div class="container s-results margin-bottom-50">

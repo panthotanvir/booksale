@@ -33,8 +33,9 @@ import java.util.List;
 public class UserAddController extends HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(UserAddController.class);
     private final String UPLOAD_DIRECTORY = "/home/devil/therap/booksale/web/uploads/users";
-    List<University> uniList = getAllUniList();
-    List<University> deptList = getAllDeptList();
+
+    private List<University> uniList = getAllUniList();
+    private List<University> deptList = getAllDeptList();
     private User user;
     private UserServiceImp userService;
 
@@ -81,7 +82,6 @@ public class UserAddController extends HttpServlet {
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/user/user_registration.jsp");
             requestDispatcher.forward(req, resp);
         }
-
     }
 
     private void createUserFromRequest(HttpServletRequest req) throws IOException, ServletException, FileUploadException {
@@ -92,7 +92,6 @@ public class UserAddController extends HttpServlet {
 
         log.debug("file request : {}", ServletFileUpload.isMultipartContent(req));
         FileItemFactory factory = new DiskFileItemFactory();
-
 
         ServletFileUpload upload = new ServletFileUpload(factory);
 
@@ -146,7 +145,6 @@ public class UserAddController extends HttpServlet {
         } else if (fieldName.equals("photo")) {
             user.setPhoto(value);
         }
-
         return user;
     }
 

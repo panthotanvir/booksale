@@ -6,6 +6,7 @@
   Time: 7:01 PM
   To change this template use File | Settings | File Templates.
 --%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -13,6 +14,13 @@
     <style>
         .has-feedback .form-control-feedback{
             top:0;
+        }
+        .sky-form{
+            border: 1px solid #2ecc71;
+        }
+        .sky-form header{
+            background-color: #2ecc71;
+            color: #ffffff;
         }
     </style>
     <script>
@@ -48,7 +56,7 @@
                             }
                         }
                     },
-                    tag: {
+                    publisher: {
                         validators: {
                             regexp: {
                                 regexp: /^[a-z\s]+$/i,
@@ -56,7 +64,7 @@
                             }
                         }
                     },
-                    publisher: {
+                    edition: {
                         validators: {
                             regexp: {
                                 regexp: /^[a-z\s]+$/i,
@@ -68,14 +76,6 @@
                         validators: {
                             integer: {
                                 message: 'Enter valid price'
-                            }
-                        }
-                    },
-                    contact_no: {
-                        validators: {
-                            regexp: {
-                                regexp: '^([0-9\(\)\/\+ \-]*)$',
-                                message: 'Enter a valid phone number'
                             }
                         }
                     },
@@ -100,7 +100,7 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <form id= "regexpForm" class="sky-form" method="post" action="addbook" enctype="multipart/form-data">
-                <header>Add Post</header>
+                <header>Post Book Ad</header>
                 <fieldset>
                     <div class="row">
                         <section class="col col-6">
@@ -122,29 +122,9 @@
 
                     <div class="row">
                         <section class="col col-6">
-                            <select name="dept_id" class="form-control">
-                                <c:forEach var="dept" items="${requestScope.deptList}" varStatus="deptStatus">
-                                    <option value="<c:out value="${dept.deptId}"/>"><c:out
-                                            value="${dept.deptName}"/></option>
-                                </c:forEach>
-                            </select>
-                        </section>
-
-                        <section class="col col-6">
                             <div class="form-group">
                                 <label class="input">
                                     <input type="text" name="author" placeholder="Author">
-                                </label>
-                            </div>
-                        </section>
-                    </div>
-                </fieldset>
-                <fieldset>
-                    <div class="row">
-                        <section class="col col-6">
-                            <div class="form-group">
-                                <label class="input">
-                                    <input type="text" name="tag" placeholder="Tag">
                                 </label>
                             </div>
                         </section>
@@ -156,21 +136,17 @@
                             </div>
                         </section>
                     </div>
-
                 </fieldset>
                 <fieldset>
                     <div class="row">
-                        <section>
-
-                            <label class="textarea textarea-expandable">
-                                <textarea placeholder="Book Description" name="description" rows="3"></textarea>
-                            </label>
+                        <section class="col col-6">
+                            <select name="division" class="form-control">
+                                <c:forEach var="division" items="${requestScope.divList}">
+                                    <option value="<c:out value="${division.divisionId}"/>">
+                                        <c:out value="${division.divisionName}"/></option>
+                                </c:forEach>
+                            </select>
                         </section>
-                    </div>
-
-                </fieldset>
-                <fieldset>
-                    <div class="row">
                         <section class="col col-6">
                             <div class="form-group">
                                 <label class="input">
@@ -178,7 +154,20 @@
                                 </label>
                             </div>
                         </section>
-                        <section class="col col-6">
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="row">
+                        <section>
+                            <label class="textarea textarea-expandable">
+                                <textarea placeholder="Book Description" name="description" rows="3"></textarea>
+                            </label>
+                        </section>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="row">
+                       <section class="col col-6">
                             <div class="form-group">
                             <label class="input input-file">
                                 <div class="button">
@@ -189,42 +178,29 @@
                             </label>
                             </div>
                         </section>
-                    </div>
-
-                </fieldset>
-                <fieldset>
-                    <div class="row">
                         <section class="col col-6">
                             <div class="form-group">
                                 <label class="input">
-                                    <input type="text" name="contact_no" placeholder="Contact No">
+                                    <input type="text" name="edition" placeholder="Edition">
                                 </label>
                             </div>
                         </section>
-                        <section class="col col-6">
-                            <div class="form-group">
-                            <label class="input">
-                                <input type="text" name="contact_address" placeholder="Contact Address">
-                            </label>
-                            </div>
-                        </section>
                     </div>
-
                 </fieldset>
                 <fieldset>
-
                     <div class="row">
                         <section class="col col-6">
-
-                            <label class="input">
-                                <button type="submit" name="submit" class="btn-u">Submit</button>
-                            </label>
-
+                            <button class="btn-u"  name="add"  type="submit">Submit</button>
                         </section>
                     </div>
                 </fieldset>
             </form>
-
+            <c:if test="${requestScope.message != null}">
+                <div class="alert alert-warning">
+                    <button data-dismiss="alert" class="close" type="button">×</button>
+                    <strong>Warning! </strong> <c:out value="${requestScope.message}" />
+                </div>
+            </c:if>
         </div>
     </div>
 </div>

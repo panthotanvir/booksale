@@ -10,6 +10,7 @@ public class Book {
 
    private int userId;
    private int deptId;
+   private int uniId;
    private int bookId;
    private int requestId;
    private int countRequest;
@@ -17,14 +18,14 @@ public class Book {
    private String title;
    private String author;
    private String publisher;
-   private String tag;
    private String type;
    private String description;
    private Double price;
    private String photo;
-   private String contactNo;
-   private String contactAddress;
    private String date;
+   private int divisionId;
+   private String divisionName;
+   private String edition;
 
 
 
@@ -104,14 +105,6 @@ public class Book {
         this.publisher = publisher;
     }
 
-    public String getTag() {
-        return tag;
-    }
-
-    public void setTag(String tag) {
-        this.tag = tag;
-    }
-
     public String getType() {
         return type;
     }
@@ -144,21 +137,35 @@ public class Book {
         this.photo = photo;
     }
 
-    public String getContactNo() {
-        return contactNo;
+    public int getUniId() {
+        return uniId;
     }
 
-    public void setContactNo(String contactNo) {
-        this.contactNo = contactNo;
+    public void setUniId(int uniId) {
+        this.uniId = uniId;
     }
 
-    public String getContactAddress() {
-        return contactAddress;
+    public int getDivisionId() {
+        return divisionId;
     }
 
-    public void setContactAddress(String contactAddress) {
-        this.contactAddress = contactAddress;
+    public void setDivisionId(int divisionId) {
+        this.divisionId = divisionId;
     }
 
+    public String getDivisionName() {
+        return divisionName;
+    }
 
+    public void setDivisionName(String divisionName) {
+        this.divisionName = divisionName;
+    }
+
+    public String getEdition() {
+        return edition;
+    }
+
+    public void setEdition(String edition) {
+        this.edition = edition;
+    }
 }

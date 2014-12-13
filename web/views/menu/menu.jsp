@@ -32,7 +32,31 @@
             <ul class="nav navbar-nav">
                 <!-- Home -->
                 <li><a href="home">Home</a> </li>
-                <li><a href="#">University</a> </li>
+                <%--<!-- University -->--%>
+                <%--<li class="dropdown">--%>
+                    <%--<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">--%>
+                        <%--University--%>
+                    <%--</a>--%>
+
+                    <%--<ul class="dropdown-menu">--%>
+                        <%--<c:forEach var="uni" items="${requestScope.deptList}">--%>
+                            <%--<c:if test="${uni.value.size() > 0}">--%>
+                            <%--<li class="dropdown-submenu">--%>
+                                <%--<a href="#"><c:out value="${uni.key.uniName}"/></a>--%>
+                                <%--&lt;%&ndash;<c:if test="${uni.value.size()>0}" >&ndash;%&gt;--%>
+                                    <%--<ul class="dropdown-menu">--%>
+                                        <%--<c:forEach var="dept" items="${uni.value}">--%>
+                                            <%--<li><a href="#"><c:out value="${dept.deptName}"/></a></li>--%>
+                                        <%--</c:forEach>--%>
+                                    <%--</ul>--%>
+                                <%--&lt;%&ndash;</c:if>&ndash;%&gt;--%>
+                            <%--</li>--%>
+                            <%--</c:if>--%>
+                        <%--</c:forEach>--%>
+                    <%--</ul>--%>
+
+                <%--</li>--%>
+                <%--<!-- End University -->--%>
                 <li><a href="#">Autor</a> </li>
                 <li><a href="#">Publisher</a> </li>
                 <li><a href="search">Search</a> </li>
