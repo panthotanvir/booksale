@@ -332,6 +332,7 @@ public class BookDaoImp implements BookDao {
         Integer userId = Integer.parseInt(resultSet.getString("user_id"));
         Integer requestId = Integer.parseInt(resultSet.getString("request_id"));
 
+        
         Book book = new Book();
 
         book.setUserId(userId);

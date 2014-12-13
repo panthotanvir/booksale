@@ -19,6 +19,7 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="/assets/js/bootstrapvalidator/dist/css/bootstrapValidator.min.css"/>">
 
 
+
     <!-- CSS Implementing Plugins -->
     <link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/line-icons/line-icons.css" />" media="all">
     <link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/font-awesome/css/font-awesome.min.css" />" media="all">
@@ -27,6 +28,8 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/owl-carousel/owl-carousel/owl.carousel.css" />" media="all">
     <link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/sky-forms/version-2.0.1/css/custom-sky-forms.css" />" media="all">
     <link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/scrollbar/src/perfect-scrollbar.css" />" media="all">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/ladda-buttons/css/custom-lada-btn.css" />" media="all">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/assets/css/plugins/hover-effect/css/custom-hover-effects.css" />" media="all">
 
     <!-- CSS Page Style -->
     <link rel="stylesheet" type="text/css" href="<c:url value="/assets/css/pages/page_search.css" />" media="all">
@@ -112,6 +115,8 @@
 <script src="<c:url value="/assets/plugins/counter/waypoints.min.js"/>"></script>
 <script src="<c:url value="/assets/plugins/counter/jquery.counterup.min.js"/>"></script>
 <script src="<c:url value="/assets/plugins/circles-master/circles.js"/>"></script>
+<script src="<c:url value="/assets/plugins/ladda-buttons/js/spin.min.js"/>"></script>
+<script src="<c:url value="/assets/plugins/ladda-buttons/js/ladda.min.js"/>"></script>
 
 <!-- Datepicker Form -->
 <script src="<c:url value="/assets/plugins/sky-forms/version-2.0.1/js/jquery-ui.min.js"/>"></script>

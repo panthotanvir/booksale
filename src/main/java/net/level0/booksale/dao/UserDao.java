@@ -2,6 +2,7 @@ package net.level0.booksale.dao;
 
 import java.util.List;
 
+import net.level0.booksale.domain.Book;
 import net.level0.booksale.domain.Detail;
 import net.level0.booksale.domain.User;
 
@@ -34,5 +35,5 @@ public interface UserDao {
 
     public List<Detail> getAllDivision();
 
-    public List<Detail> getUserRequest(int userId);
+    public List<Book> getUserRequest(int userId);
 }

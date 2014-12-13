@@ -11,6 +11,17 @@
 <html>
 <head>
     <title></title>
+    <style>
+
+        .topbar ul.loginbar > li{
+            padding-right: 10px;
+        }
+        .topbar ul.loginbar > li > a,
+        .topbar ul.loginbar > li > a:hover{
+            color: white;
+            font-size: 16px;
+        }
+    </style>
 </head>
 <body>
 <div class="topbar">
@@ -18,24 +29,31 @@
         <!-- Topbar Navigation -->
         <ul class="loginbar pull-right">
 
-            <li><a href="adduser">Registration</a></li>
-
             <c:choose>
                 <c:when test="${sessionScope.isUser}">
-                    <li><a href="addbook">Add Post</a></li>
+                    <li><a href="addbook" rel="grow-rotate" class="btn-u btn-u-red grow-rotate">Add Post</a></li>
                 </c:when>
                 <c:otherwise>
-                    <li><a href="login">Add Post</a></li>
+                    <li><a href="login" rel="grow-rotate" class="btn-u btn-u-red grow-rotate">Add Post</a></li>
                 </c:otherwise>
             </c:choose>
             <c:choose>
                 <c:when test="${sessionScope.isUser}">
-                    <li><a href="dashboard">Dashboard</a></li>
-                    <li><a href="logout">Logout</a></li>
+
+                </c:when>
+                <c:otherwise>
+                    <li><a href="adduser" rel="grow-rotate" class="btn-u btn-u-dark-blue grow-rotate">Registration</a></li>
+                </c:otherwise>
+            </c:choose>
+
+            <c:choose>
+                <c:when test="${sessionScope.isUser}">
+                    <li><a href="dashboard" rel="grow-rotate" class="btn-u btn-u-green grow-rotate">Dashboard</a></li>
+                    <li><a href="logout" rel="grow-rotate" class="btn-u grow-rotate">Logout</a></li>
                 </c:when>
 
                 <c:otherwise>
-                    <li><a href="login">Login</a></li>
+                    <li><a href="login" rel="grow-rotate" class="btn-u grow-rotate">Login</a></li>
                 </c:otherwise>
             </c:choose>
         </ul>

@@ -55,9 +55,9 @@
                                 <c:forEach var="requestBook" items="${requestScope.requestInfo}" varStatus="item">
                                     <form class="sky-form" method="post" action="deleteRequest">
                                         <tr>
-                                            <input type="hidden" name="request_id" value="<c:out value="${requestBook.book.requestId}"/>">
-                                            <td><c:out value="${requestBook.book.date}"/></td>
-                                            <td><c:out value="${requestBook.book.title}"/></td>
+                                            <input type="hidden" name="request_id" value="<c:out value="${requestBook.requestId}"/>">
+                                            <td><c:out value="${requestBook.date}"/></td>
+                                            <td><c:out value="${requestBook.title}"/></td>
                                             <td><button class="btn btn-danger btn-xs" type="submit"><i class="fa fa-trash-o"></i> Delete</button></td>
                                         </tr>
                                     </form>

@@ -16,11 +16,11 @@ public class UserServiceTest {
     @Test
    public void getUserTest() {
         User user = new User();
-        user.setEmail("mithunshawon@yahoo.com");
+        user.setEmail("mithunshawon@gmail.com");
         user.setPassword("123");
 
         UserService userService = new UserServiceImp();
-        User userFromDb = userService.getUser("mithunshawon@yahoo.com", user.getPassword());
+        User userFromDb = userService.getUser("mithunshawon@gmail.com", user.getPassword());
         Assert.assertEquals(user.getEmail(),userFromDb.getEmail());
     }
 

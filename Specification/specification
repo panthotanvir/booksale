@@ -1,0 +1,75 @@
+BookSale
+University book
+
+
+Developed by
+1. Tanvir Ahmed, Department of Computer Science And Engineering, University of Dhaka
+2. Mithun Mondal, Department of Computer Science And Engineering, University of Dhaka
+
+Introduction
+Book is an important part in every step in our life. God has been kind enough to create such
+miracles of narrowing down the world into small, flat, rigid squares of papers. Book is the
+primary material for developing ourselves. It’s a basic element of study material for a student.
+In Bangladesh, There are so many public and private universities which have numerous
+departments and subjects. Every year, a large amount of students are admitted into those
+universities and they need lots of books in every semester of their following studying duration of
+their academic career. In our country, major portion of students are come from middle class
+family. So that, their family are not enough capable for maintain their educational expenses. But
+students need their academic and reference books to continue their study. So there create a
+problem for those students.
+To analysis this particular problem for university students, we design and develop an
+e-commerce site like online book shop named “BookSale”.
+
+Users and their roles :
+This part will describe users, important features of “BookSale” and  use cases of the system.
+
+Anonymous user:
+
+1. Basically anonymous users are the university going students who are looking for
+their desired academic and reference books in every semester of their academic
+life through our BookSale E-commerce site.
+
+2. They can search or view their departmental reference books to buy those are to be
+sold.
+
+3. Students can find books in various ways like division wise books, university wise books, latest books
+
+3. They can find the contact information of book’s owner from add posting of book
+through our website and ask to the book’s owner for buy through email or mobile.
+
+4. They can find using better search option to buy their desired books in nearby
+locations of their own university or others.
+
+
+Registered User:
+
+1. Registered users are mainly university’s students those use lots of academic and
+their reference books in every semester or year.
+
+2. Users can add post of books which they interest to sale.
+
+3. They can also create their own category list like a library using their university
+recommendation of posted books.
+
+4. They can also buy/exchange from this site.
+
+5. They can request for their necessary books which they want to buy and get notification whenever this requested book is available.
+
+6. They can give rating those users who are supposed to be good seller.
+
+
+Technology
+1. JSP SERVLET
+2. Sitemesh
+3. Twitter Bootstrap 3 (Latest)
+4. Css 3 (Latest)
+5. Jquery
+
+Build Tools
+1. Gradle 1.12
+
+Web Server
+1.Tomcat 7.0
+
+Database
+1.MySQL
