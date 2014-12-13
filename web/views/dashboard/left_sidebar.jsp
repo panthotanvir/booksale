@@ -20,13 +20,16 @@
             <a href="profile"><i class="fa fa-user"></i> Profile</a>
         </li>
         <li class="list-group-item">
-            <a href="library"><i class="fa fa-cubes"></i> My Books</a>
+            <a href="library"><i class="fa fa-cubes"></i> My Posted Books</a>
         </li>
         <li class="list-group-item">
             <a href="fellow"><i class="fa fa-group"></i>Departmental Students</a>
         </li>
         <li class="list-group-item">
-            <a href="request"><i class="fa fa-group"></i>Book Request</a>
+            <a href="request"><i class="fa fa-group"></i>My Requested List</a>
+        </li>
+        <li class="list-group-item">
+            <a href="exchange"><i class="fa fa-group"></i>My Exchange List</a>
         </li>
         <li class="list-group-item">
             <a href="settings"><i class="fa fa-cog"></i>Settings</a>

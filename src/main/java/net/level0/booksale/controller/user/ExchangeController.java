@@ -3,7 +3,10 @@ package net.level0.booksale.controller.user;
 import net.level0.booksale.domain.Book;
 import net.level0.booksale.domain.Detail;
 import net.level0.booksale.domain.User;
-import net.level0.booksale.service.*;
+import net.level0.booksale.service.BookService;
+import net.level0.booksale.service.BookServiceImp;
+import net.level0.booksale.service.UserService;
+import net.level0.booksale.service.UserServiceImp;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,54 +21,55 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Created by panthotanvir on 11/29/14.
+ * Created by panthotanvir on 12/12/14.
  */
-@WebServlet(name = "RequestController", urlPatterns = "/request")
-public class RequestController extends  HttpServlet{
+@WebServlet(name = "ExchangeController", urlPatterns = "/exchange")
+public class ExchangeController extends HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(RequestController.class);
 
     private Book book;
     private BookService bookService;
     private UserService userService;
 
-    public RequestController() {
+    public ExchangeController() {
 
         bookService = new BookServiceImp();
         userService = new UserServiceImp();
     }
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         int userId = getUserId(req);
         Detail userInfo = userService.getUserInfo(userId);
-        List<Detail> requestInfo = userService.getUserRequest(userId);
+        log.info("Exchange controller called");
+        List<Book> exchangeList = bookService.getExchangeBook(userInfo.getUser().getUserId());
 
         log.info("User--------- : {}", userInfo.getUser().getUserName());
-        log.info("reuqest Info : {}",requestInfo.size());
+        log.info("exchange book list size : {}",exchangeList.size());
         req.setAttribute("userInfo", userInfo);
-        req.setAttribute("requestInfo",requestInfo);
+        req.setAttribute("exchangeList",exchangeList);
 
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/dashboard/request_book.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/dashboard/exchange_book.jsp");
         requestDispatcher.forward(req, resp);
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        log.debug("New book request posted ");
-        createRequestForm(req);
-        log.debug("Request: {}",book.getTitle());
-        bookService.requestBook(book);
+        log.debug("exchange posted ");
+        createExchangeForm(req);
+        bookService.exchangeBook(book);
 
-        resp.sendRedirect(req.getContextPath() + "/request");
+        resp.sendRedirect(req.getContextPath() + "/exchange");
+
     }
+    private void createExchangeForm(HttpServletRequest req) throws IOException, ServletException{
 
-    private void createRequestForm(HttpServletRequest req) throws IOException, ServletException {
         book = new Book();
-        log.debug("create Request is called ");
+        log.debug("create Exchange is called ");
 
         book.setUserId(getUserId(req));
         book.setDeptId(getDeptId(req));
-        book.setTitle(req.getParameter("title"));
-        log.debug("Request book set updated");
+        book.setExchangeTo(req.getParameter("exchange_to"));
+        book.setExchangeWith(req.getParameter("exchange_with"));
+        book.setDetail(req.getParameter("detail"));
     }
 
     private Integer getUserId(HttpServletRequest req) {

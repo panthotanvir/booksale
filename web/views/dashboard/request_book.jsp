@@ -36,32 +36,36 @@
                     </div>
                 </div>
                 <!--Profile Event-->
-
-                <div class="col-sm-6 md-margin-bottom-20">
-                    <div class="panel panel-profile no-bg">
-                        <div class="panel-heading overflow-h">
-                            <h2 class="panel-title heading-sm pull-left"><i class="fa fa-briefcase"></i>Requested Book List</h2>
-                            <a href="#"><i class="fa fa-cog pull-right"></i></a>
+                <div class="col-md-12">
+                    <div class="panel panel-sea margin-bottom-40">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><i class="fa fa-edit"></i> My Request List</h3>
                         </div>
-                        <div id="scrollbar2" class="panel-body contentHolder">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+
+                                <th>Date</th>
+                                <th>Book Title</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
                             <c:if test="${requestScope.requestInfo != null}">
                                 <c:forEach var="requestBook" items="${requestScope.requestInfo}" varStatus="item">
-                                    <div class="profile-event">
-                                        <div class="date-formats">
-
-                                            <small><c:out value="${requestBook.book.date}"/></small>
-                                        </div>
-                                        <div class="overflow-h">
-                                            <h3 class="heading-xs"><c:out value="${requestBook.book.title}"/></h3>
-
-                                        </div>
-                                    </div>
+                                    <tr>
+                                        <td><c:out value="${requestBook.book.date}"/></td>
+                                        <td><c:out value="${requestBook.book.title}"/></td>
+                                        <td><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</button></td>
+                                    </tr>
                                 </c:forEach>
                             </c:if>
-
-                        </div>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
+
+
                 <!--End Profile Event-->
 
             </div>
