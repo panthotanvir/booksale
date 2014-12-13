@@ -108,4 +108,9 @@ public class BookServiceImp implements BookService {
         bookDao.deleteExchange(exchangeId);
     }
 
+    @Override
+    public void deleteRequest(Integer requestId) {
+        bookDao.deleteRequest(requestId);
+    }
+
 }

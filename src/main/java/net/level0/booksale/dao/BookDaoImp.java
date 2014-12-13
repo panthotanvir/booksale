@@ -275,6 +275,15 @@ public class BookDaoImp implements BookDao {
         log.debug("exchange information deleted");
     }
 
+    @Override
+    public void deleteRequest(Integer requestId) {
+        String deleteQuery = "DELETE FROM request WHERE request_id = '" +requestId +"' " ;
+
+        log.debug("delete query in : {} ",deleteQuery);
+        DatabaseTemplate.executeInsertQuery(deleteQuery);
+        log.debug("request information deleted");
+    }
+
     private Book setExchangeBook(ResultSet resultSet) throws SQLException{
         Book book = new Book();
         Integer exchangeId = Integer.parseInt(resultSet.getString("exchange_id"));

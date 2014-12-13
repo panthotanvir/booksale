@@ -45,4 +45,6 @@ public interface BookService {
 
     public void deleteExchange(Integer exchangeId);
 
+    public void deleteRequest(Integer requestId);
+
 }

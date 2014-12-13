@@ -43,4 +43,6 @@ public interface BookDao {
     public List<Book> getExchangeList(Integer userId);
 
     public void deleteExchange(Integer exchangeId);
+
+    public  void deleteRequest(Integer requestId);
 }

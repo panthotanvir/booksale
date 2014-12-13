@@ -35,7 +35,7 @@ public class RequestController extends  HttpServlet{
     }
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        log.info("request Controller is Called");
         int userId = getUserId(req);
         Detail userInfo = userService.getUserInfo(userId);
         List<Detail> requestInfo = userService.getUserRequest(userId);
