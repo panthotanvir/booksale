@@ -134,11 +134,11 @@ public class UserDaoImp implements UserDao {
     }
 
     @Override
-    public List<Detail> getUserRequest(int userId) {
+    public List<Book> getUserRequest(int userId) {
         String query = "SELECT * FROM request Where user_id = '" + userId + "'";
-        List<Detail> requestList = DatabaseTemplate.queryForObject(query,new ObjectRowMapper<Detail>() {
+        List<Book> requestList = DatabaseTemplate.queryForObject(query,new ObjectRowMapper<Book>() {
             @Override
-            public Detail mapRowToObject(ResultSet resultSet) throws SQLException {
+            public Book mapRowToObject(ResultSet resultSet) throws SQLException {
                 return setRequestList(resultSet);
             }
         });
@@ -146,20 +146,19 @@ public class UserDaoImp implements UserDao {
         log.debug("All request list returned");
         return requestList;
     }
-    public Detail setRequestList(ResultSet resultSet) throws SQLException{
+    public Book setRequestList(ResultSet resultSet) throws SQLException{
         int requestId = Integer.parseInt(resultSet.getString("request_id"));
         int userId = Integer.parseInt(resultSet.getString("user_id"));
-        Detail detail = new Detail();
-        User user = new User();
+
+
         Book book = new Book();
-        user.setRequestId(requestId);
-        user.setUserId(userId);
+        book.setRequestId(requestId);
+        book.setUserId(userId);
         book.setTitle(resultSet.getString("title"));
         book.setDate(resultSet.getString("date"));
-        detail.setUser(user);
-        detail.setBook(book);
 
-        return detail;
+
+        return book;
 
     }
     public Detail setDivisionList(ResultSet resultSet) throws SQLException{
@@ -206,6 +205,7 @@ public class UserDaoImp implements UserDao {
         user.setUserName(resultSet.getString("user_name"));
         user.setUserId(userId);
         user.setEmail(resultSet.getString("email"));
+        user.setPhoto(resultSet.getString("user_photo"));
         user.setAddress(resultSet.getString("address"));
 
         userDept.setUser(user);

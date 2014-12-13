@@ -38,7 +38,7 @@ public class RequestController extends  HttpServlet{
         log.info("request Controller is Called");
         int userId = getUserId(req);
         Detail userInfo = userService.getUserInfo(userId);
-        List<Detail> requestInfo = userService.getUserRequest(userId);
+        List<Book> requestInfo = userService.getUserRequest(userId);
 
         log.info("User--------- : {}", userInfo.getUser().getUserName());
         log.info("reuqest Info : {}",requestInfo.size());

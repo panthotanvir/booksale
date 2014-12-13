@@ -31,11 +31,11 @@
                                 <c:forEach var="us" items="${requestScope.userDept}" varStatus="item">
                                 <div class="col-sm-6 sm-margin-bottom-20">
                                     <div class="profile-blog">
-                                        <img class="rounded-x" src="uploads/users/<c:out value="${us.photo}"/>" alt="">
+                                        <img class="rounded-x" src="uploads/users/<c:out value="${us.user.photo}"/>" alt="">
                                         <div class="name-location">
-                                            <strong><i class=" icon-user"></i>  <c:out value="${us.userName}"/></strong>
-                                            <span><i class="fa fa-envelope"></i>  <a href="#"><c:out value="${us.email}"/></a></span></br>
-                                            <span><i class="fa fa-map-marker"></i>  <a href="#"><c:out value="${us.address}"/></a></span>
+                                            <strong><i class=" icon-user"></i>  <c:out value="${us.user.userName}"/></strong>
+                                            <span><i class="fa fa-envelope"></i>  <a href="#"><c:out value="${us.user.email}"/></a></span></br>
+                                            <span><i class="fa fa-map-marker"></i>  <a href="#"><c:out value="${us.user.address}"/></a></span>
                                         </div>
                                         <div class="clearfix margin-bottom-20"></div>
                                         <hr>
@@ -45,7 +45,7 @@
                                 </c:if>
                             </div><!--/end row-->
                             <!--End Profile Blog-->
-                    <button type="button" class="btn-u btn-u-default btn-block text-center">Load More</button>
+
                     <!--End Profile Blog-->
                 </div>
                 <!--End Profile Body-->
