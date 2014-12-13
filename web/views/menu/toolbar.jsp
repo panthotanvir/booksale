@@ -59,21 +59,7 @@
         </ul>
 
         <!-- End Topbar Navigation -->
-        <!--
-        <div>
-            <div class="btn-group">
-                <button type="button" class="btn-u btn-u-default"><a style="color:white;">Home</a></button>
-                <button type="button" class="btn-u btn-u-blue">
 
-                    <a style="color:white;">Registration</a>
-                </button>
-                <button type="button" class="btn-u"><a style="color:white;">Dashboard</a></button>
-                <button type="button" class="btn-u btn-u-purple"><a style="color:white;">Add Post</a></button>
-
-            </div>
-
-        </div>
-        -->
     </div>
 </div>
 </body>

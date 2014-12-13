@@ -34,33 +34,33 @@
                 <!-- Home -->
                 <li><a href="home">Home</a> </li>
                 <!-- University -->
-                <li class="dropdown">
-                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-                        University
-                    </a>
+                <%--<li class="dropdown">--%>
+                    <%--<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">--%>
+                        <%--University--%>
+                    <%--</a>--%>
 
-                    <ul class="dropdown-menu">
+                    <%--<ul class="dropdown-menu">--%>
 
-                        <c:forEach var="uni" items="${requestScope.deptList}">
-                            <c:if test="${uni.value.size() > 0}">
-                            <li class="dropdown-submenu">
-                                <a href="#"><c:out value="${uni.key.uniName}"/></a>
-                                <c:if test="${uni.value.size()>0}" >
-                                    <ul class="dropdown-menu">
-                                        <c:forEach var="dept" items="${uni.value}">
-                                            <li><a href="unidept?uniId=${uni.key.id}&deptId=${dept.deptId}"><c:out value="${dept.deptName}"/></a></li>
-                                        </c:forEach>
-                                    </ul>
-                                </c:if>
-                            </li>
-                            </c:if>
-                        </c:forEach>
+                        <%--<c:forEach var="uni" items="${requestScope.deptList}">--%>
+                            <%--<c:if test="${uni.value.size() > 0}">--%>
+                            <%--<li class="dropdown-submenu">--%>
+                                <%--<a href="#"><c:out value="${uni.key.uniName}"/></a>--%>
+                                <%--<c:if test="${uni.value.size()>0}" >--%>
+                                    <%--<ul class="dropdown-menu">--%>
+                                        <%--<c:forEach var="dept" items="${uni.value}">--%>
+                                            <%--<li><a href="unidept?uniId=${uni.key.id}&deptId=${dept.deptId}"><c:out value="${dept.deptName}"/></a></li>--%>
+                                        <%--</c:forEach>--%>
+                                    <%--</ul>--%>
+                                <%--</c:if>--%>
+                            <%--</li>--%>
+                            <%--</c:if>--%>
+                        <%--</c:forEach>--%>
 
-                    </ul>
+                    <%--</ul>--%>
 
-                </li>
-                <!-- End University -->
-                <li><a href="#">Exchange List</a> </li>
+                <%--</li>--%>
+                <%--<!-- End University -->--%>
+                <%--<li><a href="#">Exchange List</a> </li>--%>
                 <li><a href="search">Search</a> </li>
                 <!-- Search Block -->
                 <li>

@@ -1,8 +1,5 @@
 package net.level0.booksale.util;
 
-/**
- * Created by devil on 11/13/14.
- */
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.sql.*;

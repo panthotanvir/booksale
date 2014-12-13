@@ -1,7 +1,7 @@
 package net.level0.booksale.util;
 
 /**
- * Created by devil on 11/13/14.
+ * Created by mithunshawon on 11/13/14.
  */
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
@@ -17,7 +17,7 @@ public class DatabaseConnectionPool {
     private static final String URL;
     private static final String USER_NAME;
     private static final String PASSWORD;
-    /*private static final Logger log = LoggerFactory.getLogger(DatabaseConnectionPool.class);*/
+
     static {
         final ResourceBundle config = ResourceBundle.getBundle("db");
         DRIVER_NAME = config.getString("jdbc.driver");

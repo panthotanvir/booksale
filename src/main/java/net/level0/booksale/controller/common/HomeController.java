@@ -48,19 +48,11 @@ public class HomeController extends javax.servlet.http.HttpServlet {
         for(University university: uniList){
             deptList.put(university, uniService.getSpecificUniDept(university.getId()));
         }
-//        req.setAttribute("deptList", deptList);
-//        Iterator<Map.Entry<University,List<University>>> entries = deptList.entrySet().iterator();
-//        while (entries.hasNext()) {
-//            Map.Entry<University,List<University>> entry = entries.next();
-//            for(University university: entry.getValue()) {
-//                log.debug("In homeController : {}, {}", entry.getKey().getUniName(), university.getDeptName());
-//            }
-//        }
+        req.setAttribute("deptList", deptList);
 
         req.setAttribute("divisionList",divisionList);
         req.setAttribute("bookList", bookList);
         req.setAttribute("uniList", uniList);
-        req.setAttribute("deptList", deptList);
 
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/book/welcome_page.jsp");
         requestDispatcher.forward(req, resp);

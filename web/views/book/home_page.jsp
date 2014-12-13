@@ -18,12 +18,7 @@
         <div class="col-md-6 col-md-offset-3">
             <h2>Tanvir Ahmed</h2>
             <h2>Computer Science & Engneering</h2>
-            <!--div class="input-group">
-                <input type="text" class="form-control" placeholder="Search words with regular expressions ...">
-                    <span class="input-group-btn">
-                        <button class="btn-u" type="button"><i class="fa fa-search"></i></button>
-                    </span>
-            </div-->
+
         </div>
     </div>
 </div><!--/container-->
