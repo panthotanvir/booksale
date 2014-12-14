@@ -55,11 +55,7 @@
                             </c:if>
                         </c:forEach>
 
-                    </ul>
-
-                </li>
-                <!-- End University -->
-                <%--<li><a href="exchangeview">Exchange List</a> </li>--%>
+                <%--<li><a href="#">Exchange List</a> </li>--%>
                 <li><a href="search">Search</a> </li>
                 <!-- Search Block -->
                 <li>

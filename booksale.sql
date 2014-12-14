@@ -3,7 +3,11 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
+<<<<<<< HEAD
 -- Generation Time: Dec 14, 2014 at 09:50 AM
+=======
+-- Generation Time: Dec 13, 2014 at 10:56 PM
+>>>>>>> 8570b13c83db291d665634ccfde4dbd7d746b426
 -- Server version: 5.5.40-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.5
 
@@ -44,19 +48,37 @@ CREATE TABLE IF NOT EXISTS `book` (
   PRIMARY KEY (`book_id`,`user_id`,`dept_id`),
   KEY `user_id` (`user_id`),
   KEY `dept_id` (`dept_id`)
+<<<<<<< HEAD
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+=======
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
+>>>>>>> 8570b13c83db291d665634ccfde4dbd7d746b426
 
 --
 -- Dumping data for table `book`
 --
 
 INSERT INTO `book` (`book_id`, `user_id`, `dept_id`, `uni_id`, `title`, `author`, `publisher`, `type`, `description`, `price`, `photo`, `date`, `division_id`, `edition`) VALUES
+<<<<<<< HEAD
 (9, 7, 1, 1, 'Introduction to Automata Theory', 'John E. Hopcroft\r\n', 'ISBN\r\n', 'Automata\r\n', 'This is an academic textbook that is also suitable for a far broader readership\r\n', 250, '1.jpg', '2014-12-13 12:15:52', 1, '5th'),
 (10, 7, 1, 1, 'A Quantitative Approach (The Morgan Kaufmann Series in Computer Architecture and Design)\r\n', 'David A. Patterson\r\n', 'Morgan Kaufmann Series\r\n', 'Computer Architecture\r\n', 'This is an academic textbook that is also suitable for a far broader readership\r\n', 150, '2.jpg', '2014-12-13 12:18:47', 1, '6th'),
 (11, 7, 1, 1, 'Computer Networks: Principles, Technologies and Protocols for Network Design\r\n', 'Natalia Olifer\r\n', 'Wiley\r\n', 'Networking', 'Urgent for sale', 165, '3.jpg', '2014-12-13 15:23:49', 1, '8th'),
 (12, 7, 1, 1, 'Optics & Modern Physics', 'Natalia Olifer\r\n', 'Wiley\r\n', 'Telecom', 'Urgent for sale', 185, '4.jpg', '2014-12-13 15:25:23', 1, '9th'),
 (13, 8, 1, 1, 'Digital Systems: Principles and Applications\r\n', 'Jonson ', 'ISBN', 'Digital System', 'Condition is good', 280, '5.jpg', '2014-12-13 15:34:08', 1, '8th'),
 (14, 7, 1, 1, 'Organic Chemistry', 'Jonathan Clayden', 'Robbins group', 'Chemistry', 'quality is good', 120, '0.20733758263665784.jpg', '2014-12-14 03:05:16', 1, 'second');
+=======
+(9, 7, 1, 1, 'Introduction to Automata Theory, Languages, and Computation\n', 'John E. Hopcroft\r\n', 'ISBN\r\n', 'Automata\r\n', 'This is an academic textbook that is also suitable for a far broader readership\r\n', 250, '1.jpg', '2014-12-13 12:15:52', 1, '5th'),
+(10, 7, 1, 1, 'A Quantitative Approach (The Morgan Kaufmann Series in Computer Architecture and Design)\r\n', 'David A. Patterson\r\n', 'Morgan Kaufmann Series\r\n', 'Computer Architecture\r\n', 'This is an academic textbook that is also suitable for a far broader readership\r\n', 150, '2.jpg', '2014-12-13 12:18:47', 1, '6th'),
+(11, 7, 1, 1, 'Computer Networks: Principles, Technologies and Protocols for Network Design\r\n', 'Natalia Olifer\r\n', 'Wiley\r\n', 'Networking', 'Urgent for sale', 165, '3.jpg', '2014-12-13 15:23:49', 1, '8th'),
+(12, 7, 1, 1, 'Telecom, Datacom and Networking for Non-Engineers\r\n', 'Natalia Olifer\r\n', 'Wiley\r\n', 'Telecom', 'Urgent for sale', 185, '4.jpg', '2014-12-13 15:25:23', 1, '9th'),
+(13, 8, 1, 6, 'Digital Systems: Principles and Applications\r\n', 'Jonson ', 'ISBN', 'Digital System', 'Condition is good', 280, '5.jpg', '2014-12-13 15:34:08', 1, '8th'),
+(14, 9, 1, 7, 'Compilers: Principles, Techniques, and Tools\r\n', 'Jacok Jone', 'Missler', 'Conpiler', 'This is good', 150, '6.jpg', '2014-12-13 16:01:07', 2, '8th'),
+(15, 10, 1, 1, 'Compilers:\r\n', 'Jacok Jone', 'Missler', 'Conpiler', 'This is good', 150, '6.jpg', '2014-12-13 16:02:48', 3, '8th'),
+(16, 10, 1, 1, 'Chemistry: Concepts and Problems: A Self-Teaching Guide\r\n', 'Jacok Jone', 'Missler', 'Chemistry', 'This is good', 150, '7.jpg', '2014-12-13 16:02:48', 4, '8th'),
+(17, 11, 1, 1, 'Basic Physics: A Self-Teaching Guide\r\n', ' Karl F. Kuhn\r\n', 'Karl Book House', 'Physics', 'Good', 120, '8.jpg', '2014-12-13 16:04:42', 5, '7th'),
+(18, 11, 1, 3, 'Understanding Basic Electronics\r\n', ' Karl F. Kuhn\r\n', 'Karl Book House', 'Electronics', 'Good', 120, '9.jpg', '2014-12-13 16:06:07', 6, '7th'),
+(19, 11, 1, 4, 'Social Science: An Introduction to the Study of Society\r\n', ' Karl F. Kuhn\r\n', 'Karl Book House', 'Social Science', 'Good', 120, '10.jpg', '2014-12-13 16:06:07', 7, '7th');
+>>>>>>> 8570b13c83db291d665634ccfde4dbd7d746b426
 
 -- --------------------------------------------------------
 
@@ -292,7 +314,11 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`user_id`,`uni_id`,`dept_id`),
   KEY `uni_id` (`uni_id`),
   KEY `dept_id` (`dept_id`)
+<<<<<<< HEAD
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
+=======
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
+>>>>>>> 8570b13c83db291d665634ccfde4dbd7d746b426
 
 --
 -- Dumping data for table `user`

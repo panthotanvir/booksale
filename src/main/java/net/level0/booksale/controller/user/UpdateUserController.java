@@ -85,7 +85,6 @@ public class UpdateUserController extends HttpServlet {
             Integer bookId = Integer.parseInt(req.getParameter("book_id"));
             book.setBookId(bookId);
 
-
         }
 
     }

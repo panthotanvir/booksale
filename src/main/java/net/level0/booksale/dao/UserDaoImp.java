@@ -278,16 +278,6 @@ public class UserDaoImp implements UserDao {
         int userId = user.getUserId();
         int viewerId = user.getViewerId();
 
-       /* log.debug("photo---> {}", photo);
-        log.debug("name---> {}", userName);
-        log.debug("name---> {}", uniId);
-        log.debug("name---> {}", deptId);
-        log.debug("name---> {}", email);
-        log.debug("name---> {}", userName);
-        log.debug("name---> {}", password);
-        log.debug("name---> {}", phoneNo);
-
-        */
         DatabaseTemplate.executeInsertQuery(insertQuery, rate,userId,viewerId);
         log.debug("rate inserted");
 

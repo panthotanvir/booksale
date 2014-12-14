@@ -1,7 +1,7 @@
 package net.level0.booksale.domain;
 
 /**
- * Created by devil on 11/15/14.
+ * Created by mithunshawon on 11/15/14.
  */
 public class University {
     private String uniName ;
