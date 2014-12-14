@@ -95,6 +95,9 @@
                 }
             });
         }
+        function GiveAlert(){
+            alert("You are successfully registered");
+        }
     </script>
 
 
@@ -127,7 +130,6 @@
 
                     <div class="row">
                         <section class="col col-6">
-
                                 <select name="dept_id" class="form-control">
                                     <c:forEach var="dept" items="${requestScope.deptList}" varStatus="deptStatus">
                                         <option value="<c:out value="${dept.deptId}"/>"><c:out value="${dept.deptName}"/></option>
@@ -187,7 +189,7 @@
 
                     <div class="row">
                         <section class="col col-6">
-                                <button class="btn-u"  name="registration"  type="submit">Submit</button>
+                                <button class="btn-u"  name="registration"  type="submit" onclick="GiveAlert()">Submit</button>
                         </section>
                     </div>
                 </fieldset>

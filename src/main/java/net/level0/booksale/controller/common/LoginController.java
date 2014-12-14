@@ -1,6 +1,9 @@
 package net.level0.booksale.controller.common;
 
+import net.level0.booksale.domain.University;
 import net.level0.booksale.domain.User;
+import net.level0.booksale.service.UniService;
+import net.level0.booksale.service.UniServiceImp;
 import net.level0.booksale.service.UserService;
 import net.level0.booksale.service.UserServiceImp;
 import net.level0.booksale.util.validator.UserValidator;
@@ -14,6 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by devil on 11/15/14.
@@ -23,13 +28,24 @@ public class LoginController extends javax.servlet.http.HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(LoginController.class);
 
     private User user;
-    private UserValidator userValidator;
+    private UniService uniService;
+    private List<University> uniList;
+    private HashMap<University, List<University>> uniDeptList;
+
+    public LoginController(){
+        uniService = new UniServiceImp();
+    }
 
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        log.debug("BLogin Controller is requested ");
+        uniList = uniService.getAllUniversity();
+        uniDeptList = new HashMap<University, List<University>>();
+        for(University university: uniList){
+            uniDeptList.put(university, uniService.getSpecificUniDept(university.getId()));
+        }
+        req.setAttribute("uniDeptList", uniDeptList);
 
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/user/user_login.jsp");
         requestDispatcher.forward(req, resp);
@@ -52,12 +68,14 @@ public class LoginController extends javax.servlet.http.HttpServlet {
                 } else {
                     req.setAttribute("message", "Invalid User, try again");
                     log.debug("Invalid User in Login Controller");
+                    req.setAttribute("uniDeptList", uniDeptList);
                     RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/user/user_login.jsp");
                     requestDispatcher.forward(req, resp);
                 }
             } else {
                 req.setAttribute("message","Some fields are empty");
                 log.debug("------------------",isUserValid);
+                req.setAttribute("uniDeptList", uniDeptList);
                 RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/user/user_login.jsp");
                 requestDispatcher.forward(req, resp);
             }

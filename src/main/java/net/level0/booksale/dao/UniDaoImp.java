@@ -28,7 +28,7 @@ public class UniDaoImp implements UniDao {
             }
         });
 
-        log.info("Uni List Size : {} " , uniList.size());
+        log.info("Uni List Size in UniDaoImp: {} " , uniList.size());
         return uniList;
     }
 
@@ -61,7 +61,7 @@ public class UniDaoImp implements UniDao {
     public List<University> getSpecificUniDept(int uniId) {
 
         String selectQuery = "SELECT * FROM university,department,uni_dept WHERE university.uni_id = '"+uniId+"' AND university.uni_id = uni_dept.uni_id AND department.dept_id = uni_dept.dept_id ";
-        log.info("query in getSpecificUniDept : {} " , selectQuery);
+//        log.info("query in getSpecificUniDept : {} " , selectQuery);
         List<University> uniList = DatabaseTemplate.queryForObject(selectQuery,new ObjectRowMapper<University>() {
             @Override
             public University mapRowToObject(ResultSet resultSet) throws SQLException {

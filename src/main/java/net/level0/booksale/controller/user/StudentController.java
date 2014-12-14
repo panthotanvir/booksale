@@ -1,7 +1,10 @@
 package net.level0.booksale.controller.user;
 
 import net.level0.booksale.domain.Detail;
+import net.level0.booksale.domain.University;
 import net.level0.booksale.domain.User;
+import net.level0.booksale.service.UniService;
+import net.level0.booksale.service.UniServiceImp;
 import net.level0.booksale.service.UserServiceImp;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -24,9 +28,13 @@ public class StudentController extends HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(StudentController.class);
     private User user;
     private UserServiceImp userService;
+    private HashMap<University, List<University>> uniDeptList;
+    private List<University> uniList;
+    private UniService uniService;
 
     public StudentController() {
         userService = new UserServiceImp();
+        uniService = new UniServiceImp();
     }
 
     @Override
@@ -39,6 +47,12 @@ public class StudentController extends HttpServlet {
         req.setAttribute("userDept",userDept);
 
         Detail userInfo = userService.getUserInfo(userID);
+        uniList = uniService.getAllUniversity();
+        uniDeptList = new HashMap<University, List<University>>();
+        for(University university: uniList){
+            uniDeptList.put(university, uniService.getSpecificUniDept(university.getId()));
+        }
+        req.setAttribute("uniDeptList", uniDeptList);
         req.setAttribute("userInfo",userInfo);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/dashboard/fellow_students.jsp");
         requestDispatcher.forward(req, resp);

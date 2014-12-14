@@ -39,6 +39,11 @@ public class BookServiceImp implements BookService {
     }
 
     @Override
+    public List<Book> getLatestBookPost() {
+        return bookDao.getLatestBookPost();
+    }
+
+    @Override
     public List<Book> getBookList(int userId) {
         return  bookDao.getBookList(userId);
     }
@@ -125,6 +130,11 @@ public class BookServiceImp implements BookService {
     @Override
     public List<Book> getUniBookList(int uniType) {
         return bookDao.getUniBookList(uniType);
+    }
+
+    @Override
+    public List<Detail> getExchangeList() {
+        return bookDao.getExchangeList();
     }
 
 }

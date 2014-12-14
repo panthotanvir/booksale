@@ -22,7 +22,6 @@ public class DeleteRequestController extends HttpServlet {
     private BookService bookService;
 
     public DeleteRequestController() {
-
         bookService = new BookServiceImp();
 
     }

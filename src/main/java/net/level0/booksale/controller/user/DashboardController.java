@@ -3,11 +3,9 @@ package net.level0.booksale.controller.user;
 
 import net.level0.booksale.domain.Book;
 import net.level0.booksale.domain.Detail;
+import net.level0.booksale.domain.University;
 import net.level0.booksale.domain.User;
-import net.level0.booksale.service.BookService;
-import net.level0.booksale.service.BookServiceImp;
-import net.level0.booksale.service.UserService;
-import net.level0.booksale.service.UserServiceImp;
+import net.level0.booksale.service.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -32,10 +31,14 @@ public class DashboardController extends HttpServlet {
     private User user;
     private UserService userService;
     private BookService bookService;
+    private UniService uniService;
+    private List<University> uniList;
+    private HashMap<University, List<University>> uniDeptList;
 
     public DashboardController() {
         userService = new UserServiceImp();
         bookService = new BookServiceImp();
+        uniService = new UniServiceImp();
     }
 
     @Override
@@ -50,7 +53,12 @@ public class DashboardController extends HttpServlet {
 
         List<Book> requestBook = bookService.getRequestBook(userId);
         List<Book> userBookList = bookService.getBookList(userId);
-
+        uniList = uniService.getAllUniversity();
+        uniDeptList = new HashMap<University, List<University>>();
+        for(University university: uniList){
+            uniDeptList.put(university, uniService.getSpecificUniDept(university.getId()));
+        }
+        req.setAttribute("uniDeptList", uniDeptList);
         req.setAttribute("userBook", userBookList);
         req.setAttribute("countBook", userBookList.size());
         req.setAttribute("requestResult", requestBook);

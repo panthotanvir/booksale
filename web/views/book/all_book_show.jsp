@@ -31,9 +31,10 @@
                             <div class="view view-tenth">
                                 <img class="img-responsive" src="uploads/books/<c:out value="${book.photo}"/>" alt="" />
                                 <div class="mask">
+
+                                    <a href="singleBook?bookId=${book.bookId}" class="info">View Details</a>
                                     <h2><c:out value="${book.title}"/></h2>
                                     <h4><c:out value="${book.author}"/></h4>
-                                    <a href="singleBook?bookId=${book.bookId}" class="info">View Details</a>
                                 </div>
                             </div>
                         </div>

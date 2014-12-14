@@ -2,10 +2,7 @@ package net.level0.booksale.controller.user;
 
 import net.level0.booksale.domain.Book;
 import net.level0.booksale.domain.User;
-import net.level0.booksale.service.BookService;
-import net.level0.booksale.service.BookServiceImp;
-import net.level0.booksale.service.UserService;
-import net.level0.booksale.service.UserServiceImp;
+import net.level0.booksale.service.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,12 +29,14 @@ public class UpdateUserController extends HttpServlet {
     private Book book;
     private UserService userService;
     private BookService bookService;
+    private UniService uniService;
 
     public UpdateUserController() {
         userService = new UserServiceImp();
         bookService = new BookServiceImp();
         user = new User();
         book = new Book();
+        uniService = new UniServiceImp();
     }
 
     @Override

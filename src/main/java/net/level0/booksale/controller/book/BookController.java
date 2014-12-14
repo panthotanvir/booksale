@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,6 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -33,7 +35,8 @@ import java.util.List;
 public class BookController extends HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(BookController.class);
 
-    private final String UPLOAD_DIRECTORY = "/home/devil/therap/booksale/web/uploads/books";
+    private String UPLOAD_DIRECTORY = null;
+    private String path;
 
     private Book book;
     private UniService uniService;
@@ -41,6 +44,8 @@ public class BookController extends HttpServlet {
     private UserService userService;
     private List<University> deptList;
     private List<Detail> divisionList;
+    private HashMap<University, List<University>> uniDeptList;
+    private List<University> uniList;
 
 
     public BookController() {
@@ -54,9 +59,18 @@ public class BookController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("Book Add Controller is requested ");
 
+        UPLOAD_DIRECTORY = "/uploads/books";
+        ServletContext context = this.getServletContext();
+        path = context.getRealPath(UPLOAD_DIRECTORY);
+
         deptList = uniService.getAllDept();
         divisionList = userService.getAllDivision();
-
+        uniList = uniService.getAllUniversity();
+        uniDeptList = new HashMap<University, List<University>>();
+        for(University university: uniList){
+            uniDeptList.put(university, uniService.getSpecificUniDept(university.getId()));
+        }
+        req.setAttribute("uniDeptList", uniDeptList);
         req.setAttribute("deptList", deptList);
         req.setAttribute("divList", divisionList);
 
@@ -72,6 +86,9 @@ public class BookController extends HttpServlet {
         } catch (FileUploadException e) {
             e.printStackTrace();
         }
+
+        req.setAttribute("uniDeptList", uniDeptList);
+
         log.debug("Book Description : ---> {}", book.getDescription());
         log.debug("Book photo : ---> {}", book.getPhoto());
         log.debug("User DeptId in BookController: {}", book.getDeptId());
@@ -86,6 +103,7 @@ public class BookController extends HttpServlet {
         } else {
             req.setAttribute("deptList", deptList);
             req.setAttribute("divList", divisionList);
+            req.setAttribute("uniDeptList", uniDeptList);
             req.setAttribute("message", "Every fields are required");
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/book/add_book.jsp");
             requestDispatcher.forward(req, resp);
@@ -125,8 +143,8 @@ public class BookController extends HttpServlet {
                     double tmp = Math.random();
                     fileName = tmp + value;
                     log.debug("file name final BookAddController: {}", fileName);
-                    log.debug("file path final BookAddController: {}", UPLOAD_DIRECTORY + File.separator + fieldName);
-                    uploadItem.write(new File(UPLOAD_DIRECTORY + File.separator + fileName));
+                    log.debug("file path final BookAddController: {}", path + File.separator + fieldName);
+                    uploadItem.write(new File(path + File.separator + fileName));
                     setProperty(fieldName, fileName);
                 } catch (Exception e) {
                     e.printStackTrace();

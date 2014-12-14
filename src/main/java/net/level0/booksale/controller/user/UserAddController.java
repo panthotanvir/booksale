@@ -2,7 +2,9 @@ package net.level0.booksale.controller.user;
 
 import net.level0.booksale.domain.University;
 import net.level0.booksale.domain.User;
+import net.level0.booksale.service.UniService;
 import net.level0.booksale.service.UniServiceImp;
+import net.level0.booksale.service.UserService;
 import net.level0.booksale.service.UserServiceImp;
 import net.level0.booksale.util.validator.UserValidator;
 import org.apache.commons.fileupload.FileItem;
@@ -14,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,6 +24,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -32,27 +36,41 @@ import java.util.List;
 @WebServlet(name = "UserAddController", urlPatterns = "/adduser")
 public class UserAddController extends HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(UserAddController.class);
-    private final String UPLOAD_DIRECTORY = "/home/devil/therap/booksale/web/uploads/users";
+    private String UPLOAD_DIRECTORY = null;
 
     private List<University> uniList = getAllUniList();
     private List<University> deptList = getAllDeptList();
+    private HashMap<University, List<University>> uniDeptList;
     private User user;
-    private UserServiceImp userService;
+    private UserService userService;
+    private UniService uniService;
+    String path;
 
     public UserAddController() {
         userService = new UserServiceImp();
         user = new User();
+        uniService = new UniServiceImp();
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        UPLOAD_DIRECTORY = "/uploads/users";
+        ServletContext context = this.getServletContext();
+        path = context.getRealPath(UPLOAD_DIRECTORY);
+
         log.info("User Registration Controller is requested ");
 
         log.info("Uni List Size in UserAddController : {} ", uniList.size());
         log.info("Dept List Size in UserAddController : {} ", deptList.size());
 
-        req.setAttribute("uniList", uniList);
+
+        uniDeptList = new HashMap<University, List<University>>();
+        for(University university: uniList){
+            uniDeptList.put(university, uniService.getSpecificUniDept(university.getId()));
+        }
+        req.setAttribute("uniDeptList", uniDeptList);
         req.setAttribute("deptList", deptList);
+        req.setAttribute("uniList", uniList);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/user/user_registration.jsp");
         requestDispatcher.forward(req, resp);
     }
@@ -61,6 +79,11 @@ public class UserAddController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         log.debug("Post method in UserAddController Post");
+        HashMap<University, List<University>> deptList = new HashMap<University, List<University>>();
+        for(University university: uniList){
+            deptList.put(university, uniService.getSpecificUniDept(university.getId()));
+        }
+        req.setAttribute("deptList", deptList);
         try {
             createUserFromRequest(req);
         } catch (FileUploadException e) {
@@ -112,8 +135,8 @@ public class UserAddController extends HttpServlet {
                     double tmp = Math.random() % 100;
                     fileName = tmp + value;
                     log.debug("file name final : {}", fileName);
-                    log.debug("file path final : {}", UPLOAD_DIRECTORY + File.separator + fieldName);
-                    uploadItem.write(new File(UPLOAD_DIRECTORY + File.separator + fileName));
+                    log.debug("file path final : {}", path + File.separator + fileName);
+                    uploadItem.write(new File(path + File.separator + fileName));
                     setProperty(fieldName, fileName);
                 } catch (Exception e) {
                     e.printStackTrace();

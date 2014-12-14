@@ -1,7 +1,10 @@
 package net.level0.booksale.controller.user;
 
 import net.level0.booksale.domain.Detail;
+import net.level0.booksale.domain.University;
 import net.level0.booksale.domain.User;
+import net.level0.booksale.service.UniService;
+import net.level0.booksale.service.UniServiceImp;
 import net.level0.booksale.service.UserServiceImp;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by panthotanvir on 11/26/14.
@@ -23,9 +28,13 @@ public class ProfileController extends HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(ProfileController.class);
     private User user;
     private UserServiceImp userService;
+    private UniService uniService;
+    private List<University> uniList;
+    private HashMap<University, List<University>> uniDeptList;
 
     public ProfileController() {
         userService = new UserServiceImp();
+        uniService = new UniServiceImp();
     }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -34,6 +43,12 @@ public class ProfileController extends HttpServlet {
         Detail userInfo = userService.getUserInfo(userId);
         log.info("User in ProfileController--------- : {}" ,userInfo.getUser().getUserName());
         req.setAttribute("userInfo",userInfo);
+        uniList = uniService.getAllUniversity();
+        uniDeptList = new HashMap<University, List<University>>();
+        for(University university: uniList){
+            uniDeptList.put(university, uniService.getSpecificUniDept(university.getId()));
+        }
+        req.setAttribute("uniDeptList", uniDeptList);
 
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/dashboard/profile.jsp");
         requestDispatcher.forward(req, resp);

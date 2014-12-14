@@ -40,8 +40,7 @@
                     </a>
 
                     <ul class="dropdown-menu">
-
-                        <c:forEach var="uni" items="${requestScope.deptList}">
+                        <c:forEach var="uni" items="${requestScope.uniDeptList}">
                             <c:if test="${uni.value.size() > 0}">
                             <li class="dropdown-submenu">
                                 <a href="#"><c:out value="${uni.key.uniName}"/></a>
@@ -60,7 +59,7 @@
 
                 </li>
                 <!-- End University -->
-                <li><a href="#">Exchange List</a> </li>
+                <%--<li><a href="exchangeview">Exchange List</a> </li>--%>
                 <li><a href="search">Search</a> </li>
                 <!-- Search Block -->
                 <li>

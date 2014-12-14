@@ -1,7 +1,7 @@
 package net.level0.booksale.util;
 
 /**
- * Created by devil on 11/13/14.
+ * Created by mithunshawon on 11/13/14.
  */
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
@@ -41,7 +41,7 @@ public class DatabaseConnectionPool {
         comboPooledDataSource.setPassword(PASSWORD);
         comboPooledDataSource.setMinPoolSize(5);
         comboPooledDataSource.setAcquireIncrement(5);
-        comboPooledDataSource.setMaxPoolSize(400);
+        comboPooledDataSource.setMaxPoolSize(500);
         return comboPooledDataSource;
     }
 }

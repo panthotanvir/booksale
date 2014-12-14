@@ -35,32 +35,25 @@ public class HomeController extends javax.servlet.http.HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("Home Controller is requested ");
 
+
         List<Detail> divisionList = userService.getAllDivision();
         log.info("division size : {}",divisionList.size());
 
         List<Book> bookList = bookService.getAllBookPost();
         log.info("Book list size : {}", bookList.size());
 
+        List<Book> latestBookList = bookService.getLatestBookPost();
+        req.setAttribute("latestBookList",latestBookList);
+
         List<University> uniList = uniService.getAllUniversity();
-        log.info("University lis size : {}", uniList.size());
-
-        HashMap<University, List<University>> deptList = new HashMap<University, List<University>>();
+        HashMap<University, List<University>> uniDeptList = new HashMap<University, List<University>>();
         for(University university: uniList){
-            deptList.put(university, uniService.getSpecificUniDept(university.getId()));
+            uniDeptList.put(university, uniService.getSpecificUniDept(university.getId()));
         }
-//        req.setAttribute("deptList", deptList);
-//        Iterator<Map.Entry<University,List<University>>> entries = deptList.entrySet().iterator();
-//        while (entries.hasNext()) {
-//            Map.Entry<University,List<University>> entry = entries.next();
-//            for(University university: entry.getValue()) {
-//                log.debug("In homeController : {}, {}", entry.getKey().getUniName(), university.getDeptName());
-//            }
-//        }
-
+        req.setAttribute("uniDeptList", uniDeptList);
         req.setAttribute("divisionList",divisionList);
         req.setAttribute("bookList", bookList);
         req.setAttribute("uniList", uniList);
-        req.setAttribute("deptList", deptList);
 
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/book/welcome_page.jsp");
         requestDispatcher.forward(req, resp);

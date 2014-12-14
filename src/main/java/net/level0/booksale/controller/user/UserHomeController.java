@@ -29,6 +29,7 @@ public class UserHomeController extends javax.servlet.http.HttpServlet {
     private BookService bookService;
     private UserService userService;
     private UniService uniService;
+    private HashMap<University, List<University>> uniDeptList;
 
     public UserHomeController() {
         bookService = new BookServiceImp();
@@ -49,11 +50,11 @@ public class UserHomeController extends javax.servlet.http.HttpServlet {
         List<University> uniList = uniService.getAllUniversity();
         log.info("Dept Book list size : {}", bookList.size());
 
-        HashMap<University, List<University>> deptList = new HashMap<University, List<University>>();
+        uniDeptList = new HashMap<University, List<University>>();
         for(University university: uniList){
-            deptList.put(university, uniService.getSpecificUniDept(university.getId()));
+            uniDeptList.put(university, uniService.getSpecificUniDept(university.getId()));
         }
-        req.setAttribute("deptList", deptList);
+        req.setAttribute("uniDeptList", uniDeptList);
         req.setAttribute("bookList",bookList);
         req.setAttribute("uniList",uniList);
 

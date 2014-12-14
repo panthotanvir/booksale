@@ -16,6 +16,8 @@ public interface BookDao {
 
     public List<Book> getAllBookPost();
 
+    public List<Book> getLatestBookPost();
+
     public List<Book> getBookList( int userId);
 
     public List<Book> getDeptBook( Integer deptId);
@@ -47,6 +49,8 @@ public interface BookDao {
     public List<Book> getExchangeList(Integer userId);
 
     public List<Book> getUniBookList(int uniType);
+
+    public List<Detail> getExchangeList();
 
     public void deleteExchange(Integer exchangeId);
 

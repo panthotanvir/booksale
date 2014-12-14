@@ -2,10 +2,9 @@ package net.level0.booksale.controller.user;
 
 import net.level0.booksale.domain.Book;
 import net.level0.booksale.domain.Detail;
+import net.level0.booksale.domain.University;
 import net.level0.booksale.domain.User;
-import net.level0.booksale.service.BookServiceImp;
-import net.level0.booksale.service.UserService;
-import net.level0.booksale.service.UserServiceImp;
+import net.level0.booksale.service.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -28,11 +28,15 @@ public class LibraryController extends HttpServlet {
     private User user;
     private BookServiceImp bookService;
     private UserService userService;
+    private UniService uniService;
+    private HashMap<University, List<University>> uniDeptList;
+    private List<University> uniList;
 
     public LibraryController() {
 
         bookService = new BookServiceImp();
         userService = new UserServiceImp();
+        uniService = new UniServiceImp();
     }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -41,6 +45,13 @@ public class LibraryController extends HttpServlet {
         Detail userInfo = userService.getUserInfo(userID);
         req.setAttribute("userInfo",userInfo);
         List<Book> libraryBook = bookService.getBookList(userID);
+
+        uniList = uniService.getAllUniversity();
+        uniDeptList = new HashMap<University, List<University>>();
+        for(University university: uniList){
+            uniDeptList.put(university, uniService.getSpecificUniDept(university.getId()));
+        }
+        req.setAttribute("uniDeptList", uniDeptList);
 
         req.setAttribute("libraryBook",libraryBook);
 

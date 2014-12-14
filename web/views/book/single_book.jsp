@@ -49,10 +49,9 @@
             <div class="carousel slide carousel-v1" id="myCarousel">
                 <div class="carousel-inner">
                     <div class="item active">
-                        <img alt="" src="uploads/books/<c:out value="${requestScope.bookInfo.book.photo}"/>" height="400px" width="300px">
-                        <!--div class="carousel-caption">
+                        <img alt="" src="uploads/books/<c:out value="${requestScope.bookInfo.book.photo}"/>" >
                             <p><c:out value="${requestScope.bookInfo.book.title}"/></p>
-                        </div-->
+
                     </div>
 
                 </div>
@@ -89,6 +88,8 @@
                             <p><i class="icon-user-follow"></i>  <span><c:out value="${requestScope.bookInfo.book.author}"/></span></p>
                             <p><i class="icon-user"></i>  <span><c:out value="${requestScope.bookInfo.book.publisher}"/></span></p>
                             <p><i class="fa fa-list"></i>  <span><c:out value="${requestScope.bookInfo.book.type}"/></span></p>
+                            <p><i class="fa fa-list"></i>  <span><c:out value="${requestScope.bookInfo.book.edition}"/></span></p>
+
 
                         </div>
 

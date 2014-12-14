@@ -17,6 +17,8 @@ public interface BookService {
 
     public List<Book> getAllBookPost();
 
+    public List<Book> getLatestBookPost();
+
     public List<Book> getBookList(int userId);
 
     public List<Book> searchTitleBookList(String title);
@@ -52,5 +54,7 @@ public interface BookService {
     public void deleteRequest(Integer requestId);
 
     public List<Book> getUniBookList(int uniType);
+
+    public List<Detail> getExchangeList();
 
 }

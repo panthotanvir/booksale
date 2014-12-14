@@ -64,18 +64,6 @@
 </head>
 <body class="boxed-layout container">
 
-<!--=== Style Switcher ===-->
-<i class="style-switcher-btn fa fa-cogs hidden-xs"></i>
-<div class="style-switcher animated fadeInRight">
-    <div class="theme-close"><i class="icon-close"></i></div>
-    <div class="theme-heading">Layouts</div>
-    <div class="text-center">
-        <a href="javascript:void(0);" class="btn-u btn-u-green btn-block active-switcher-btn wide-layout-btn">Wide</a>
-        <a href="javascript:void(0);" class="btn-u btn-u-green btn-block boxed-layout-btn">Boxed</a>
-    </div>
-</div><!--/style-switcher-->
-<!--=== End Style Switcher ===-->
-
 <div class="wrapper">
     <!--=== Header ===-->
     <div class="header">

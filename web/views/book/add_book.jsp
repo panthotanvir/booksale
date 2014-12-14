@@ -91,6 +91,9 @@
                     }
                 }
             });
+            function GiveAlert(){
+                alert("You are successfully registered");
+            }
         }
     </script>
 
@@ -190,7 +193,7 @@
                 <fieldset>
                     <div class="row">
                         <section class="col col-6">
-                            <button class="btn-u"  name="add"  type="submit">Submit</button>
+                            <button class="btn-u"  name="add"  type="submit" onclick="GiveAlert()">Submit</button>
                         </section>
                     </div>
                 </fieldset>

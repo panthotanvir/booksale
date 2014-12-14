@@ -79,7 +79,6 @@
                                         </dd>
                                     </dl>
                                     <input type="hidden" name="flag" value="1" />
-                                    <button type="button" class="btn-u btn-u-default">Cancel</button>
                                     <button class="btn-u" type="submit">Save Changes</button>
                                 </form>
 
@@ -115,8 +114,6 @@
 
                                     </dl>
                                     <input type="hidden" name="flag" value="2" />
-
-                                    <button type="button" class="btn-u btn-u-default">Cancel</button>
                                     <button class="btn-u" type="submit">Save Changes</button>
                                 </form>
                             </div>
@@ -127,16 +124,6 @@
                                 </br>
                                 <form class="sky-form" method="post" action="updateuser">
                                     <dl class="dl-horizontal">
-
-                                        <%--<dt>Email</dt>--%>
-                                        <%--<dd>--%>
-                                            <%--<section>--%>
-                                                <%--<label class="input">--%>
-                                                    <%--<i class="icon-append fa fa-envelope"></i>--%>
-                                                    <%--<input type="email" placeholder="Email address" name="email" value="<c:out value="${requestScope.settingInfo.user.email}"/>">--%>
-                                                    <%--<b class="tooltip tooltip-bottom-right">Needed to verify your account</b>--%>
-                                                <%--</label>--%>
-                                            <%--</section>--%>
                                         </dd>
                                         <dt>Phone No</dt>
                                         <dd>
@@ -160,7 +147,6 @@
                                         </dd>
                                     </dl>
                                     <input type="hidden" name="flag" value="3" />
-                                    <button type="button" class="btn-u btn-u-default">Cancel</button>
                                     <button class="btn-u" type="submit">Save Changes</button>
                                 </form>
                             </div>
@@ -174,7 +160,6 @@
                                         <table class="table table-hover">
                                             <thead>
                                             <tr>
-
                                                 <th>Book Title</th>
                                                 <th>Action</th>
                                             </tr>

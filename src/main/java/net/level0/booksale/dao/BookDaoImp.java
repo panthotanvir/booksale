@@ -23,7 +23,7 @@ public class BookDaoImp implements BookDao {
     public void addBook(Book book) {
         String insertQuery = "INSERT INTO `booksale`.`book` (`user_id`, `dept_id`, `uni_id`, `title`, `author`, `publisher`" +
                 ",`type`,`description`,`price`,`photo`, `division_id`, `edition`)" +
-                " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
         log.debug("Query in BookDaoImp : {}",insertQuery);
 
@@ -74,6 +74,22 @@ public class BookDaoImp implements BookDao {
         log.info("GetAll Book Called ");
 
         String query = "SELECT * FROM book";
+        List<Book> bookList = DatabaseTemplate.queryForObject(query, new ObjectRowMapper<Book>() {
+            @Override
+            public Book mapRowToObject(ResultSet resultSet) throws SQLException {
+                return setBook(resultSet);
+            }
+        });
+
+        log.info("book List Size : {} ", bookList.size());
+        return bookList;
+    }
+
+    @Override
+    public List<Book> getLatestBookPost() {
+        log.info("GetAll Book Called ");
+
+        String query = "SELECT * FROM `book` ORDER BY date desc LIMIT 5";
         List<Book> bookList = DatabaseTemplate.queryForObject(query, new ObjectRowMapper<Book>() {
             @Override
             public Book mapRowToObject(ResultSet resultSet) throws SQLException {
@@ -313,6 +329,40 @@ public class BookDaoImp implements BookDao {
     }
 
     @Override
+    public List<Detail> getExchangeList() {
+        String query = "SELECT * FROM exchange,user WHERE exchange.user_id = user.user_id";
+        List<Detail> exchangeList = DatabaseTemplate.queryForObject(query, new ObjectRowMapper<Detail>() {
+            @Override
+            public Detail mapRowToObject(ResultSet resultSet) throws SQLException {
+                return setExchangeBookList(resultSet);
+            }
+        });
+
+        return exchangeList;
+    }
+
+    private Detail setExchangeBookList(ResultSet resultSet) throws SQLException {
+        Book book = new Book();
+        Detail detail = new Detail();
+        User user = new User();
+        Integer exchangeId = Integer.parseInt(resultSet.getString("exchange_id"));
+        Integer userId = Integer.parseInt(resultSet.getString("user_id"));
+
+        book.setUserId(userId);
+        book.setExchangeId(exchangeId);
+        book.setExchangeTo(resultSet.getString("exchange_to"));
+        book.setExchangeWith(resultSet.getString("exchange_with"));
+        book.setDetail(resultSet.getString("detail"));
+        book.setExchangeDate(resultSet.getString("exchange_date"));
+        user.setUserName(resultSet.getString("user_name"));
+        user.setPhoneNo(resultSet.getString("phone"));
+
+        detail.setBook(book);
+        detail.setUser(user);
+        return detail;
+    }
+
+    @Override
     public void deleteExchange(Integer exchangeId) {
         String deleteQuery = "DELETE FROM exchange WHERE exchange_id = '" +exchangeId +"' " ;
 
@@ -340,6 +390,7 @@ public class BookDaoImp implements BookDao {
         book.setExchangeTo(resultSet.getString("exchange_to"));
         book.setExchangeWith(resultSet.getString("exchange_with"));
         book.setDetail(resultSet.getString("detail"));
+        book.setExchangeDate(resultSet.getString("exchange_date"));
 
         return book;
 

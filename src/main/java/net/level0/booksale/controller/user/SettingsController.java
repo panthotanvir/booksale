@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -24,13 +25,16 @@ import java.util.List;
 @WebServlet(name = "SettingsController", urlPatterns = "/settings")
 public class SettingsController extends HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(SettingsController.class);
+    private final UniService uniService;
     private User user;
     private UserService userService;
     private BookService bookService;
+    private HashMap<University, List<University>> uniDeptList;
 
     public SettingsController() {
         userService = new UserServiceImp();
         bookService = new BookServiceImp();
+        uniService = new UniServiceImp();
     }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -53,8 +57,14 @@ public class SettingsController extends HttpServlet {
         req.setAttribute("settingInfo",settingInfo);
 
         List<Book> bookList = bookService.getBookList(userId);
-        log.info("Booklist in SettingController :{}",bookList.size());
+        log.info("Booklist in SettingController :{}", bookList.size());
         req.setAttribute("bookList",bookList);
+
+        uniDeptList = new HashMap<University, List<University>>();
+        for(University university: uniList){
+            uniDeptList.put(university, uniService.getSpecificUniDept(university.getId()));
+        }
+        req.setAttribute("uniDeptList", uniDeptList);
 
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/dashboard/settings.jsp");
         requestDispatcher.forward(req, resp);
