@@ -46,8 +46,11 @@ public class DatabaseTemplate {
             throw new RuntimeException(e);
         } finally {
             try {
-                resultSet.close();
-                stmt.close();
+                if (conToUse != null){
+                 //   resultSet.close();
+                    stmt.close();
+                    conToUse.close();
+                }
             } catch (SQLException e) {
                 closeConnection(conToUse);
                 throw new RuntimeException(e);

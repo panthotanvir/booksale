@@ -46,6 +46,7 @@ public class DashboardController extends HttpServlet {
         log.info("Dashboard Controller is requested ");
 
         int userId = getUserId(req);
+        log.info("Dashboard Controller is requested and UserID is: {} ",userId);
         Detail userInfo = userService.getUserInfo(userId);
 
         log.info("User--------- : {}", userInfo.getUser().getUserName());

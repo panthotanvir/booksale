@@ -56,4 +56,5 @@ public interface BookDao {
 
     public  void deleteRequest(Integer requestId);
 
+    public List<Book> getRatedUserBook();
 }

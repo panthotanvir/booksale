@@ -62,9 +62,8 @@ public class UserServiceImp implements UserService{
     public void deleteUser(Integer userId) {
 
     }
-
-    @Override
-    public List<Detail> getAllDivision() { return userDao.getAllDivision();}
+     @Override
+   public List<Detail> getAllDivision() { return userDao.getAllDivision();}
 
     @Override
     public List<Book> getUserRequest(int userId) {
@@ -78,7 +77,7 @@ public class UserServiceImp implements UserService{
     }
 
     @Override
-    public Detail getUserInfo(Integer userId) {
+    public Detail getUserInfo(int userId) {
         return userDao.getUserInfo(userId);
     }
 

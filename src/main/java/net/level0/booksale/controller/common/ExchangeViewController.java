@@ -48,8 +48,8 @@ public class ExchangeViewController extends HttpServlet{
         log.info("exchangeList list size : {}", exchangeList.size());
         req.setAttribute("exchangeList", exchangeList);
 
-        divisionList = userService.getAllDivision();
-        log.info("division size : {}",divisionList.size());
+//        divisionList = userService.getAllDivision();
+//        log.info("division size : {}",divisionList.size());
 
         bookList = bookService.getAllBookPost();
         log.info("Book list size : {}", bookList.size());
@@ -60,7 +60,7 @@ public class ExchangeViewController extends HttpServlet{
             uniDeptList.put(university, uniService.getSpecificUniDept(university.getId()));
         }
         req.setAttribute("uniDeptList", uniDeptList);
-        req.setAttribute("divisionList",divisionList);
+//        req.setAttribute("divisionList",divisionList);
         req.setAttribute("bookList", bookList);
         req.setAttribute("uniList", uniList);
 

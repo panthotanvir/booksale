@@ -89,7 +89,7 @@ public class BookDaoImp implements BookDao {
     public List<Book> getLatestBookPost() {
         log.info("GetAll Book Called ");
 
-        String query = "SELECT * FROM `book` ORDER BY date desc LIMIT 5";
+        String query = "SELECT * FROM `book` ORDER BY date desc LIMIT 8";
         List<Book> bookList = DatabaseTemplate.queryForObject(query, new ObjectRowMapper<Book>() {
             @Override
             public Book mapRowToObject(ResultSet resultSet) throws SQLException {
@@ -380,6 +380,35 @@ public class BookDaoImp implements BookDao {
         log.debug("request information deleted");
     }
 
+    @Override
+    public List<Book> getRatedUserBook() {
+        log.info("GetAll rated users Book Called ");
+
+        String query = "\n" +
+                "SELECT DISTINCT book.book_id,book.title,book.price,book.photo FROM book,rating WHERE book.user_id = rating.user_id AND rating.rate >= 4 ";
+        List<Book> bookList = DatabaseTemplate.queryForObject(query, new ObjectRowMapper<Book>() {
+            @Override
+            public Book mapRowToObject(ResultSet resultSet) throws SQLException {
+                return setRatedBook(resultSet);
+            }
+        });
+
+        log.info("book List Size : {} ", bookList.size());
+        return bookList;
+    }
+    private Book setRatedBook(ResultSet resultSet) throws SQLException{
+        Book book = new Book();
+
+        Integer bookId = Integer.parseInt(resultSet.getString("book_id"));
+
+        Double price = Double.parseDouble(resultSet.getString("price"));
+
+        book.setBookId(bookId);
+        book.setTitle(resultSet.getString("title"));
+        book.setPhoto(resultSet.getString("photo"));
+        book.setPrice(price);
+        return book;
+    }
     private Book setExchangeBook(ResultSet resultSet) throws SQLException{
         Book book = new Book();
         Integer exchangeId = Integer.parseInt(resultSet.getString("exchange_id"));

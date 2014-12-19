@@ -43,8 +43,8 @@ public class DivisionController extends javax.servlet.http.HttpServlet {
 
         List<Book> divisionBookList = bookService.getDivisionBook(divisionId);
 
-        List<Detail> divisionList = userService.getAllDivision();
-        log.info("division size : {}",divisionList.size());
+//        List<Detail> divisionList = userService.getAllDivision();
+//        log.info("division size : {}",divisionList.size());
 
         log.info("Division Book list size : {}", divisionBookList.size());
         uniList = uniService.getAllUniversity();
@@ -55,7 +55,7 @@ public class DivisionController extends javax.servlet.http.HttpServlet {
         req.setAttribute("uniDeptList", uniDeptList);
 
         req.setAttribute("divisionBook", divisionBookList);
-        req.setAttribute("divisionList",divisionList);;
+//        req.setAttribute("divisionList",divisionList);;
 
 
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/book/division_book.jsp");

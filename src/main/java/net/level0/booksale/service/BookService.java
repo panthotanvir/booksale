@@ -57,4 +57,6 @@ public interface BookService {
 
     public List<Detail> getExchangeList();
 
+    public List<Book> getRatedUserBook();
+
 }

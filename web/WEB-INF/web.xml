@@ -17,10 +17,10 @@
 
 
     <!--Exception handler-->
-    <error-page>
-        <exception-type>java.lang.RuntimeException</exception-type>
-        <location>/views/error/error_page.jsp</location>
-    </error-page>
+    <!--<error-page>-->
+        <!--<exception-type>java.lang.RuntimeException</exception-type>-->
+        <!--<location>/views/error/error_page.jsp</location>-->
+    <!--</error-page>-->
 
     <error-page>
         <error-code>404</error-code>

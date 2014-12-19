@@ -59,12 +59,12 @@ public class BookController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("Book Add Controller is requested ");
 
-        UPLOAD_DIRECTORY = "/uploads/books";
-        ServletContext context = this.getServletContext();
-        path = context.getRealPath(UPLOAD_DIRECTORY);
+        UPLOAD_DIRECTORY = "/home/panthotanvir/Therap/booksale/uploads/books";
+//        ServletContext context = this.getServletContext();
+//        path = context.getRealPath(UPLOAD_DIRECTORY);
 
         deptList = uniService.getAllDept();
-        divisionList = userService.getAllDivision();
+//        divisionList = userService.getAllDivision();
         uniList = uniService.getAllUniversity();
         uniDeptList = new HashMap<University, List<University>>();
         for(University university: uniList){
@@ -143,8 +143,8 @@ public class BookController extends HttpServlet {
                     double tmp = Math.random();
                     fileName = tmp + value;
                     log.debug("file name final BookAddController: {}", fileName);
-                    log.debug("file path final BookAddController: {}", path + File.separator + fieldName);
-                    uploadItem.write(new File(path + File.separator + fileName));
+                    log.debug("file path final BookAddController: {}", UPLOAD_DIRECTORY + File.separator + fieldName);
+                    uploadItem.write(new File(UPLOAD_DIRECTORY + File.separator + fileName));
                     setProperty(fieldName, fileName);
                 } catch (Exception e) {
                     e.printStackTrace();

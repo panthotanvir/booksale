@@ -54,9 +54,9 @@ public class UserAddController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        UPLOAD_DIRECTORY = "/uploads/users";
-        ServletContext context = this.getServletContext();
-        path = context.getRealPath(UPLOAD_DIRECTORY);
+        UPLOAD_DIRECTORY = "/home/panthotanvir/Therap/booksale/uploads/users";
+//        ServletContext context = this.getServletContext();
+//        path = context.getRealPath(UPLOAD_DIRECTORY);
 
         log.info("User Registration Controller is requested ");
 
@@ -135,8 +135,8 @@ public class UserAddController extends HttpServlet {
                     double tmp = Math.random() % 100;
                     fileName = tmp + value;
                     log.debug("file name final : {}", fileName);
-                    log.debug("file path final : {}", path + File.separator + fileName);
-                    uploadItem.write(new File(path + File.separator + fileName));
+                    log.debug("file path final : {}", UPLOAD_DIRECTORY + File.separator + fileName);
+                    uploadItem.write(new File(UPLOAD_DIRECTORY + File.separator + fileName));
                     setProperty(fieldName, fileName);
                 } catch (Exception e) {
                     e.printStackTrace();

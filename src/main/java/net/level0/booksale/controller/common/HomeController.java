@@ -45,6 +45,9 @@ public class HomeController extends javax.servlet.http.HttpServlet {
         List<Book> latestBookList = bookService.getLatestBookPost();
         req.setAttribute("latestBookList",latestBookList);
 
+        List<Book> ratedBookList = bookService.getRatedUserBook();
+        req.setAttribute("ratedBookList",ratedBookList);
+
         List<University> uniList = uniService.getAllUniversity();
         HashMap<University, List<University>> uniDeptList = new HashMap<University, List<University>>();
         for(University university: uniList){

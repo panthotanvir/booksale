@@ -137,4 +137,9 @@ public class BookServiceImp implements BookService {
         return bookDao.getExchangeList();
     }
 
+    @Override
+    public List<Book> getRatedUserBook() {
+        return bookDao.getRatedUserBook();
+    }
+
 }

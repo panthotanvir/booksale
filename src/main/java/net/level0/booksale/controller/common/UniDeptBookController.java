@@ -46,8 +46,8 @@ public class UniDeptBookController extends HttpServlet{
         int deptId = Integer.parseInt(req.getParameter("deptId"));
         log.debug("uniID in University   {}",uniId);
         log.debug("deptID in University   {}",deptId);
-        List<Detail> divisionList = userService.getAllDivision();
-        log.debug("divisionList size",divisionList.size());
+//        List<Detail> divisionList = userService.getAllDivision();
+//        log.debug("divisionList size",divisionList.size());
         List<Book> bookList = bookService.getUniDeptBookList(uniId, deptId);
         uniList = uniService.getAllUniversity();
         uniDeptList = new HashMap<University, List<University>>();
@@ -57,7 +57,7 @@ public class UniDeptBookController extends HttpServlet{
         req.setAttribute("uniDeptList", uniDeptList);
 
         req.setAttribute("bookList",bookList);
-        req.setAttribute("divisionList",divisionList);
+//        req.setAttribute("divisionList",divisionList);
 
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/book/all_book_show.jsp");
         requestDispatcher.forward(req, resp);

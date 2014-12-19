@@ -20,7 +20,7 @@ public interface UserService {
 
     public User getUser(String userName, String password);
 
-    public Detail getUserInfo(Integer userId);
+    public Detail getUserInfo(int userId);
 
     public List<Detail> getUserDept(int userId, Integer uniId, Integer deptId);
 
